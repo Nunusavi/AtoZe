@@ -2,11 +2,11 @@
 <html lang="en">
 
 <head>
-    <title>AtoZE Engineering — CCTV Services Website Template</title>
+    <title>AtoZE Engineering — CCTV Services Website </title>
     <link rel="icon" href="images/icon.webp" type="image/gif" sizes="16x16">
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="AtoZE Engineering — CCTV Services Website Template" name="description">
+    <meta content="AtoZE Engineering — CCTV Services Website " name="description">
     <meta content="" name="keywords">
     <meta content="" name="author">
     <!-- CSS Files
@@ -79,7 +79,7 @@
                                             <li><a class="menu-item" href="service-single.html">Service Single</a></li>
                                         </ul>
                                     </li>
-                                    <li><a class="menu-item" href="brands.html">Brands</a></li>
+                                    <li><a class="menu-item" href="brands.html">Products</a></li>
                                     <li><a class="menu-item" href="projects.html">Projects</a></li>
                                     <li><a class="menu-item" href="contact.html">Contact</a></li>
                                 </ul>
@@ -118,24 +118,59 @@
 
                     <div class="spacer-single"></div>
 
-                    <div class="row g-4">
+                    <div class="row g-4" id="project-info-row">
                         <div class="col-lg-3 col-sm-6 text-center">
                             <div class="fw-bold">Client</div>
-                            Envato Corps
+                            <span id="project-client">Loading...</span>
                         </div>
                         <div class="col-lg-3 col-sm-6 text-center">
                             <div class="fw-bold">Industry</div>
-                            Manufacturing
+                            <span id="project-industry">N/A</span>
                         </div>
                         <div class="col-lg-3 col-sm-6 text-center">
                             <div class="fw-bold">Location</div>
-                            Addis Ababa, Ethiopia
+                            <span id="project-location">Loading...</span>
                         </div>
                         <div class="col-lg-3 col-sm-6 text-center">
                             <div class="fw-bold">Year</div>
-                            2023
+                            <span id="project-year">N/A</span>
                         </div>
                     </div>
+                    <script>
+                        document.addEventListener('DOMContentLoaded', () => {
+                            function getQueryParam(name) {
+                                const url = new URL(window.location.href);
+                                return url.searchParams.get(name);
+                            }
+                            const client = getQueryParam('client');
+                            if (!client) return;
+
+                            fetch('projects.json')
+                                .then(res => res.json())
+                                .then(data => {
+                                    const found = data.clients.find(
+                                        p => p.company_name && p.company_name === client
+                                    );
+                                    // Info row elements
+                                    const clientEl = document.getElementById('project-client');
+                                    const industryEl = document.getElementById('project-industry');
+                                    const locationEl = document.getElementById('project-location');
+                                    const yearEl = document.getElementById('project-year');
+                                    if (found) {
+                                        clientEl.textContent = found.company_name || 'N/A';
+                                        // If you have industry/year in your data, use them, else leave as N/A
+                                        industryEl.textContent = found.industry || 'N/A';
+                                        locationEl.textContent = found.location || 'N/A';
+                                        yearEl.textContent = found.year || 'N/A';
+                                    } else {
+                                        clientEl.textContent = 'Not found';
+                                        industryEl.textContent = 'N/A';
+                                        locationEl.textContent = 'N/A';
+                                        yearEl.textContent = 'N/A';
+                                    }
+                                });
+                        });
+                    </script>
                 </div>
                 <div class="crumb-wrapper">
                     <ul class="crumb">
@@ -152,7 +187,7 @@
             <section>
                 <div class="container">
 
-                    <div class="row g-4 gx-5">
+                    <!-- <div class="row g-4 gx-5">
                         <div class="col-lg-6">
                             <div class="relative">
                                 <div class="triangle-bottomright-dark"></div>
@@ -166,28 +201,109 @@
                                 <img src="images/projects/2.jpg" class="w-100 rounded-1 wow scaleOut"
                                     data-wow-delay=".2s" alt="">
                             </div>
+                        </div> -->
+
+                    <!-- ...existing code... -->
+
+                    <div class="spacer-single"></div>
+
+                    <div class="row align-items-start g-5">
+                        <div class="col-lg-4">
+                            <div class="card shadow-lg border-0 rounded-3 bg-dark-2 text-light mb-4">
+                                <div class="card-body text-center">
+                                    <img id="project-img" src="images/projects/1.jpg" class="img-fluid rounded-2 mb-3"
+                                        alt="Project Image" style="max-height:220px;object-fit:cover;">
+                                    <h3 id="project-title" class="mb-2">Project Overview</h3>
+                                    <div id="project-meta" class="mb-3">
+                                        <!-- Meta info will be injected here -->
+                                    </div>
+                                    <span class="badge bg-primary" id="project-price"></span>
+                                </div>
+                            </div>
                         </div>
-
-                        <div class="spacer-single"></div>
-
-                        <div class="col-lg-3">
-                            <h3>Project Overview</h3>
+                        <div class="col-lg-8">
+                            <div class="bg-dark-2 rounded-3 p-4 shadow-sm">
+                                <h4 class="mb-3 text-accent">Project Description</h4>
+                                <div id="project-overview">
+                                    <p>Loading project details...</p>
+                                </div>
+                                <hr class="my-4" />
+                                <div id="project-items"></div>
+                            </div>
                         </div>
-
-                        <div class="col-lg-9">
-                            <p>In nisi proident aliqua et nulla ut cillum cupidatat laborum dolore labore commodo
-                                voluptate tempor non consequat laboris excepteur ad veniam sunt aliquip exercitation
-                                velit laborum aliquip commodo excepteur sed nisi anim anim velit qui dolore anim laboris
-                                est dolor incididunt mollit ut ullamco sint adipisicing reprehenderit ad reprehenderit
-                                ut magna adipisicing labore laboris laboris fugiat ut eiusmod aliqua dolore minim amet
-                                occaecat occaecat amet id excepteur sed dolor consectetur laborum irure in sint et sit
-                                nostrud et cupidatat proident ad duis commodo velit velit eu eiusmod laboris anim minim.
-                            </p>
-                        </div>
-
-                        <div class="spacer-single"></div>
                     </div>
 
+                    <div class="spacer-single"></div>
+
+                    <script>
+                        // Dynamically load project details based on client name in URL
+                        document.addEventListener('DOMContentLoaded', () => {
+                            function getQueryParam(name) {
+                                const url = new URL(window.location.href);
+                                return url.searchParams.get(name);
+                            }
+                            const client = getQueryParam('client');
+                            if (!client) return;
+
+                            fetch('projects.json')
+                                .then(res => res.json())
+                                .then(data => {
+                                    const found = data.clients.find(
+                                        p => p.company_name && p.company_name === client
+                                    );
+                                    // Elements
+                                    const overview = document.getElementById('project-overview');
+                                    const title = document.getElementById('project-title');
+                                    const meta = document.getElementById('project-meta');
+                                    const price = document.getElementById('project-price');
+                                    const items = document.getElementById('project-items');
+                                    const img = document.getElementById('project-img');
+
+                                    if (found) {
+                                        // Set title
+                                        title.textContent = found.company_name;
+                                        // Set meta info
+                                        meta.innerHTML = `
+                                            <div><i class="icofont-location-pin text-accent"></i> <strong>Location:</strong> ${found.location || 'N/A'}</div>
+                                            <div><i class="icofont-list text-accent"></i> <strong>Items:</strong></div>
+                                            <ul class="list-group list-group-flush mb-0">
+                                                ${found.items && found.items.length ? found.items.map(item => `<li class="list-group-item bg-dark-2 text-light border-0 ps-4">${item}</li>`).join('') : '<li class="list-group-item bg-dark-2 text-light border-0 ps-4">N/A</li>'}
+                                            </ul>
+                                        `;
+                                        // Set price
+                                        price.textContent = found.total_price ? `Total Price: ${found.total_price} ETB` : '';
+                                        // Set description
+                                        overview.innerHTML = `<p>${found.description || 'No description available.'}</p>`;
+                                        // Set items as a list if available
+                                        if (found.items && found.items.length) {
+                                            items.innerHTML = `
+                                                <h5 class="mb-2">Supplied Items</h5>
+                                                <ul class="list-group list-group-flush mb-0">
+                                                    ${found.items.map(item => `<li class="list-group-item bg-dark-2 text-light border-0">${item}</li>`).join('')}
+                                                </ul>
+                                            `;
+                                        } else {
+                                            items.innerHTML = '';
+                                        }
+                                        // Optionally set a project image based on index or client
+                                        const idx = data.clients.findIndex(p => p.company_name === found.company_name);
+                                        if (img) img.src = `images/projects/${(idx % 6) + 1}.jpg`;
+                                        // Optionally update the page <title>
+                                        document.title = `Project: ${found.company_name} — AtoZE Engineering`;
+                                    } else {
+                                        overview.innerHTML = `<p class="text-danger">Project not found.</p>`;
+                                        title.textContent = "Project Not Found";
+                                        meta.innerHTML = "";
+                                        price.textContent = "";
+                                        items.innerHTML = "";
+                                        img.src = "images/projects/1.jpg";
+                                    }
+                                });
+                        });
+                    </script>
+                    <!-- ...existing code... -->
+                </div>
+                <!-- 
                     <div class="row g-5">
                         <div class="col-lg-6 wow fadeInLeft">
                             <div class="p-40 bg-dark-2 rounded-1 h-100 relative">
@@ -224,101 +340,101 @@
                                 </ol>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </section>
-
+                    </div> -->
         </div>
-        <!-- content close -->
-        <!-- footer begin -->
-        <footer>
-            <div class="container">
-                <div class="row gx-5">
-                    <div class="col-lg-4 col-sm-6">
-                        <img src="images/logo.webp" class="w-150px" alt="">
-                        <div class="spacer-20"></div>
-                        <p>Keep your home or business safe with CCTV systems designed to provide 24/7 surveillance and
-                            peace of mind. Our expert team offers tailored security solutions, from installation to
-                            remote monitoring, ensuring your property is always protected. </p>
+        </section>
 
-                        <div class="social-icons mb-sm-30">
-                            <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
-                            <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
-                            <a href="#"><i class="fa-brands fa-discord"></i></a>
-                            <a href="#"><i class="fa-brands fa-tiktok"></i></a>
-                            <a href="#"><i class="fa-brands fa-youtube"></i></a>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-sm-12 order-lg-1 order-sm-2">
-                        <div class="row">
-                            <div class="col-lg-6 col-sm-6">
-                                <div class="widget">
-                                    <h5>Company</h5>
-                                    <ul>
-                                        <li><a href="index.html">Home</a></li>
-                                        <li><a href="services">Our Services</a></li>
-                                        <li><a href="projects.html">Projects</a></li>
-                                        <li><a href="contact.html">Get a Free Quote</a></li>
-                                        <li><a href="blog.html">Blog</a></li>
-                                        <li><a href="contact.html">Contact</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-sm-6">
-                                <div class="widget">
-                                    <h5>Our Services</h5>
-                                    <ul>
-                                        <li><a href="services.html">System Consultation</a></li>
-                                        <li><a href="services.html">Installation Services</a></li>
-                                        <li><a href="services.html">System Configuration</a></li>
-                                        <li><a href="services.html">Monitoring Services</a></li>
-                                        <li><a href="services.html">Maintenance</a></li>
-                                        <li><a href="services.html">Storage and Backup</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-sm-6 order-lg-2 order-sm-1">
-                        <div class="widget">
-                            <div class="fw-bold text-white"><i class="icofont-clock-time me-2 id-color"></i>We're Open
-                            </div>
-                            Monday - Saturday 08.00 - 18.00
+    </div>
+    <!-- content close -->
+    <!-- footer begin -->
+    <footer>
+        <div class="container">
+            <div class="row gx-5">
+                <div class="col-lg-4 col-sm-6">
+                    <img src="images/logo.webp" class="w-150px" alt="">
+                    <div class="spacer-20"></div>
+                    <p>Keep your home or business safe with CCTV systems designed to provide 24/7 surveillance and
+                        peace of mind. Our expert team offers tailored security solutions, from installation to
+                        remote monitoring, ensuring your property is always protected. </p>
 
-                            <div class="spacer-20"></div>
-
-                            <div class="fw-bold text-white"><i class="icofont-location-pin me-2 id-color"></i>Workshop
-                                Location</div>
-                            Addis Ababa. Ethiopia
-
-                            <div class="spacer-20"></div>
-
-                            <div class="fw-bold text-white"><i class="icofont-envelope me-2 id-color"></i>Send a Message
-                            </div>
-                            contact@atozeengineering.com
-                        </div>
+                    <div class="social-icons mb-sm-30">
+                        <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+                        <a href="#"><i class="fa-brands fa-discord"></i></a>
+                        <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+                        <a href="#"><i class="fa-brands fa-youtube"></i></a>
                     </div>
                 </div>
-            </div>
-            <div class="subfooter">
-                <div class="container">
+                <div class="col-lg-4 col-sm-12 order-lg-1 order-sm-2">
                     <div class="row">
-                        <div class="col-md-12">
-                            <div class="de-flex">
-                                <div class="de-flex-col">
-                                    Copyright 2025 - AtoZE Engineering by <a href="https://nate.et">Nathan Mesfin</a>
-                                </div>
-                                <ul class="menu-simple">
-                                    <li><a href="#">Terms &amp; Conditions</a></li>
-                                    <li><a href="#">Privacy Policy</a></li>
+                        <div class="col-lg-6 col-sm-6">
+                            <div class="widget">
+                                <h5>Company</h5>
+                                <ul>
+                                    <li><a href="index.html">Home</a></li>
+                                    <li><a href="services">Our Services</a></li>
+                                    <li><a href="projects.html">Projects</a></li>
+                                    <li><a href="contact.html">Get a Free Quote</a></li>
+                                    <li><a href="blog.html">Blog</a></li>
+                                    <li><a href="contact.html">Contact</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-sm-6">
+                            <div class="widget">
+                                <h5>Our Services</h5>
+                                <ul>
+                                    <li><a href="services.html">System Consultation</a></li>
+                                    <li><a href="services.html">Installation Services</a></li>
+                                    <li><a href="services.html">System Configuration</a></li>
+                                    <li><a href="services.html">Monitoring Services</a></li>
+                                    <li><a href="services.html">Maintenance</a></li>
+                                    <li><a href="services.html">Storage and Backup</a></li>
                                 </ul>
                             </div>
                         </div>
                     </div>
                 </div>
+                <div class="col-lg-4 col-sm-6 order-lg-2 order-sm-1">
+                    <div class="widget">
+                        <div class="fw-bold text-white"><i class="icofont-clock-time me-2 id-color"></i>We're Open
+                        </div>
+                        Monday - Saturday 08.00 - 18.00
+
+                        <div class="spacer-20"></div>
+
+                        <div class="fw-bold text-white"><i class="icofont-location-pin me-2 id-color"></i>Workshop
+                            Location</div>
+                        Addis Ababa. Ethiopia
+
+                        <div class="spacer-20"></div>
+
+                        <div class="fw-bold text-white"><i class="icofont-envelope me-2 id-color"></i>Send a Message
+                        </div>
+                        contact@atozeengineering.com
+                    </div>
+                </div>
             </div>
-        </footer>
-        <!-- footer close -->
+        </div>
+        <div class="subfooter">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="de-flex">
+                            <div class="de-flex-col">
+                                Copyright 2025 - AtoZE Engineering by <a href="https://nate.et">Nathan Mesfin</a>
+                            </div>
+                            <ul class="menu-simple">
+                                <li><a href="#">Terms &amp; Conditions</a></li>
+                                <li><a href="#">Privacy Policy</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- footer close -->
     </div>
 
     <!-- overlay content begin -->

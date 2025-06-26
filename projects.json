@@ -1,0 +1,134 @@
+{
+    "project_description": "This dataset documents security and automation system installations for various clients, including CCTV surveillance, fire alarm systems, access control, and networking solutions. Each entry represents a unique project with different requirements and scales.",
+    "clients": [
+        {
+            "company_name": "Aticom investment group",
+            "items": [
+                "Cctv camera",
+                "Smart parking system",
+                "Slide gate automation",
+                "Fire alarm panel bored 16 zone",
+                "Smoke detector",
+                "Gas detector",
+                "Cat Network data cable",
+                "Fire Alarm cable"
+            ],
+            "total_price": "2,461,000",
+            "location": "Addis Ababa, Ethiopia",
+            "description": "A comprehensive security and automation project featuring multi-zone fire detection, smart parking, and gate automation. The inclusion of network cabling suggests integration with existing IT infrastructure, making it a large-scale installation for a high-security facility."
+        },
+        {
+            "company_name": "Bmy General contractor",
+            "items": [
+                "Slide gate automation system",
+                "Fire Alarm panel bored 16 zone",
+                "Smoke detector",
+                "Gas detector"
+            ],
+            "total_price": "897,000",
+            "location": "Addis Ababa, Ethiopia",
+            "description": "Focused on access control (automated gates) and fire safety, this project likely served a commercial or industrial site requiring zoned fire detection and secure entry management."
+        },
+        {
+            "company_name": "Ethiopian Red cross",
+            "items": [
+                "Cctv camera"
+            ],
+            "total_price": "944,000",
+            "location": "Addis Ababa, Ethiopia",
+            "description": "A high-value CCTV installation, possibly covering a large area or featuring advanced cameras (e.g., night vision, PTZ) for monitoring humanitarian facilities."
+        },
+        {
+            "company_name": "Bahyilu dadi Bedane General contractor",
+            "items": [
+                "Cctv camera"
+            ],
+            "total_price": "1,220,150",
+            "location": "Addis Ababa, Ethiopia",
+            "description": "Another premium CCTV project, potentially for construction site surveillance or a high-risk area, given the contractor specialization and elevated cost."
+        },
+        {
+            "company_name": "Church of christ",
+            "items": [
+                "Cctv camera"
+            ],
+            "total_price": "515,000",
+            "location": "Addis Ababa, Ethiopia",
+            "description": "A standard security camera system for a religious institution, likely covering entrances, worship areas, and outdoor spaces to deter theft or vandalism."
+        },
+        {
+            "company_name": "Genet Hotel",
+            "items": [
+                "Cctv camera"
+            ],
+            "total_price": "1,233,605",
+            "location": "Addis Ababa, Ethiopia",
+            "description": "A high-end hotel surveillance system, probably including lobby, hallway, and perimeter coverage with features like facial recognition or 24/7 recording."
+        },
+        {
+            "company_name": "Cistercian Monastery Mariam tsion Catholic School",
+            "items": [
+                "Cctv camera"
+            ],
+            "total_price": "242,250",
+            "location": "Addis Ababa, Ethiopia",
+            "description": "A basic CCTV setup for a school-monitoring classrooms, entrances, and playgrounds to ensure student safety and asset protection."
+        },
+        {
+            "company_name": "Capital Cement milling and Packing PLC.",
+            "items": [
+                "Cctv camera"
+            ],
+            "total_price": "604,785",
+            "location": "Addis Ababa, Ethiopia",
+            "description": "An industrial-grade camera system for a cement plant, likely dust-proof and weather-resistant, to monitor production lines and storage areas."
+        },
+        {
+            "company_name": "BYMT,BC",
+            "items": [
+                "Cctv camera"
+            ],
+            "total_price": "623,849",
+            "location": "Addis Ababa, Ethiopia",
+            "description": "A mid-range CCTV installation for an unspecified facility (possibly an office or institution), balancing coverage and image quality."
+        },
+        {
+            "company_name": "Pioneer cement manufacturing plc.",
+            "items": [
+                "Cctv camera"
+            ],
+            "total_price": "108,100",
+            "location": "Addis Ababa, Ethiopia",
+            "description": "A small-scale camera system, potentially for limited-area monitoring in an industrial setting like a warehouse or loading dock."
+        },
+        {
+            "company_name": "IMCO Agro industry plc",
+            "items": [
+                "Time attendance"
+            ],
+            "total_price": "74,750",
+            "location": "Addis Ababa, Ethiopia",
+            "description": "A workforce management solution (time attendance system) for tracking employee hours, likely integrated with payroll in an agricultural processing facility."
+        },
+        {
+            "company_name": "Mestawet berhanu",
+            "items": [
+                "Intercom"
+            ],
+            "total_price": "216,000",
+            "location": "Addis Ababa, Ethiopia",
+            "description": "An intercom system installation, possibly for a residential complex or small business requiring internal communication and access control."
+        },
+        {
+            "company_name": "የኦሮሚያ ሙያ ብቃት ማረጋገጫ ኤጀንሲ",
+            "items": [
+                "Cctv camera",
+                "Ac system",
+                "Sound system"
+            ],
+            "total_price": "2,500,544",
+            "location": "Adama, Ethiopia",
+            "description": "A multi-system project for a government agency (Oromia Skill Verification Agency), combining security (CCTV), climate control (AC), and audio (sound system) for a modern office or training facility in Adama."
+        }
+    ]
+}

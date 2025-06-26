@@ -2,11 +2,37 @@
 <html lang="en">
 
 <head>
-    <title>AtoZE Engineering — CCTV Services Website Template</title>
+    <title>AtoZE Engineering — CCTV Services Website </title>
     <link rel="icon" href="images/icon.webp" type="image/gif" sizes="16x16">
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="AtoZE Engineering — CCTV Services Website Template" name="description">
+    <meta content="" name="description" id="dynamic-description">
+    <script>
+        // Dynamically update meta description based on product details
+        document.addEventListener('DOMContentLoaded', () => {
+            function getQueryParam(name) {
+                const url = new URL(window.location.href);
+                return url.searchParams.get(name);
+            }
+            const category = getQueryParam('category');
+            const brand = getQueryParam('brand');
+            const model = getQueryParam('model');
+            fetch('./normalized_products.json')
+                .then(res => res.json())
+                .then(data => {
+                    const found = data.find(
+                        m =>
+                            m.category === category &&
+                            m.brand === brand &&
+                            m.model === model
+                    );
+                    if (found && found.description) {
+                        const meta = document.querySelector('meta[name="description"][id="dynamic-description"]');
+                        if (meta) meta.setAttribute('content', found.description);
+                    }
+                });
+        });
+    </script>
     <meta content="" name="keywords">
     <meta content="" name="author">
     <!-- CSS Files
@@ -79,7 +105,7 @@
                                             <li><a class="menu-item" href="service-single.html">Service Single</a></li>
                                         </ul>
                                     </li>
-                                    <li><a class="menu-item" href="brands.html">Brands</a></li>
+                                    <li><a class="menu-item" href="brands.html">Products</a></li>
                                     <li><a class="menu-item" href="projects.html">Projects</a></li>
                                     <li><a class="menu-item" href="contact.html">Contact</a></li>
                                 </ul>
@@ -272,7 +298,7 @@
                         <div class="col-md-12">
                             <div class="de-flex">
                                 <div class="de-flex-col">
-                                    Copyright 2025 - AtoZE Engineering by <a href="https://nate.et">Nathan Mesfin</a>
+                                    Copyright 2025 - AtoZE Engineering by &nbsp; <a href="https://nate.et">Nathan Mesfin</a>
                                 </div>
                                 <ul class="menu-simple">
                                     <li><a href="#">Terms &amp; Conditions</a></li>
@@ -340,6 +366,106 @@
     ================================================== -->
     <script src="js/vendors.js"></script>
     <script src="js/script.js"></script>
+    <script>
+        // filepath: /home/nunu/Desktop/AtoZe/Website 1/AtoZe/brand-details.html
+
+        function getQueryParam(name) {
+            const url = new URL(window.location.href);
+            return url.searchParams.get(name);
+        }
+
+        function formatFeatures(features) {
+            if (!features) return '';
+            if (Array.isArray(features)) {
+                return features.map(f => `<li>${f}</li>`).join('');
+            } else if (typeof features === 'object') {
+                return Object.entries(features).map(([k, v]) => `<li><b>${k}:</b> ${Array.isArray(v) ? v.join(', ') : v}</li>`).join('');
+            } else {
+                return `<li>${features}</li>`;
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const category = getQueryParam('category');
+            const brand = getQueryParam('brand');
+            const model = getQueryParam('model');
+
+            fetch('./normalized_products.json')
+                .then(res => res.json())
+                .then(data => {
+                    // Find the model
+                    const found = data.find(
+                        m =>
+                            m.category === category &&
+                            m.brand === brand &&
+                            m.model === model
+                    );
+
+                    // Select the section to update
+                    const section = document.querySelector('section > .container > .row.g-4.gx-5.align-items-center')?.parentNode;
+                    if (!section) return;
+
+                    if (found) {
+                        section.innerHTML = `
+                <div class="container">
+                    <div class="row g-4 gx-5 align-items-center">
+                        <div class="col-lg-6">
+                            <div class="relative bg-dark-2 px-5">
+                                <!-- Carousel for product images -->
+                                <div id="productImagesCarousel" class="carousel slide" data-bs-ride="carousel">
+                                    <div class="carousel-inner">
+                                        ${Array.isArray(found.image) && found.image.length > 0
+                                ? found.image.map((img, idx, arr) => `
+                                                    <div class="carousel-item${idx === arr.length - 1 ? ' active' : ''}">
+                                                        <img src="${img}" class="d-block h-100 w-100" alt="${found.model} image ${idx + 1}">
+                                                    </div>
+                                                `).join('')
+                                : `
+                                                    <div class="carousel-item active">
+                                                        <img src="images/products/6.webp" class="d-block w-100" alt="${found.model}">
+                                                    </div>
+                                                `
+                            }
+                                    </div>
+                                    ${Array.isArray(found.image) && found.image.length > 1
+                                ? `
+                                                <button class="carousel-control-prev" type="button" data-bs-target="#productImagesCarousel" data-bs-slide="prev" style="opacity:0.3;">
+                                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                                    <span class="visually-hidden">Previous</span>
+                                                </button>
+                                                <button class="carousel-control-next" type="button" data-bs-target="#productImagesCarousel" data-bs-slide="next" style="opacity:0.3;">
+                                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                                    <span class="visually-hidden">Next</span>
+                                                </button>
+                                            `
+                                : ''
+                            }
+                                </div>
+                                <div class="triangle-bottomright-dark"></div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <h3 class="mb-2">${found.model}</h3>
+                            <h5 class="text-muted mb-3">${brand}&nbsp<span class="badge bg-secondary">${category.replace(/_/g, ' ')}</span></h5>
+                            ${found.description ? `<p>${found.description}</p>` : ''}
+                            <h4 class="mt-4 mb-2">Key Features</h4>
+                            <ul style="font-size:1.1em;">
+                                ${formatFeatures(found.features)}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                `;
+                    } else {
+                        section.innerHTML = `
+                <div class="container">
+                    <div class="alert alert-danger mt-5">Model not found.</div>
+                </div>
+                `;
+                    }
+                });
+        });
+    </script>
 
 </body>
 

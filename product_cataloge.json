@@ -1,0 +1,391 @@
+{
+    "CCTV": {
+        "Hikvision": [
+            {
+                "model": "DS2CD1023G2LIU / DS2CD1043G2LIU(F)",
+                "features": [
+                    "High quality imaging with 2 MP/4 MP/8 MP resolution",
+                    "Support Human and Vehicle Detection",
+                    "Smart Hybrid Light with long range",
+                    "Built-in microphone for real-time audio security",
+                    "Efficient H.265+ compression",
+                    "Supports onboard storage up to 512 GB (optional)",
+                    "Water and dust resistant (IP67)"
+                ],
+                "image": [
+                    "./images/products/Hikvision/4.png",
+                    "./images/products/Hikvision/DS2CD1023G2LIU_DS2CD1043G2LIU.png"
+                ]
+            },
+            {
+                "model": "DS2CD1123G2LIU",
+                "features": [
+                    "High quality imaging with 2 MP/4 MP/8 MP resolution",
+                    "Support Human and Vehicle Detection",
+                    "Smart Hybrid Light with long range",
+                    "Built-in microphone for real-time audio security",
+                    "Supports onboard storage up to 512 GB (optional)",
+                    "Efficient H.265+ compression",
+                    "Water and dust resistant (IP67)",
+                    "Vandal resistant (IK08)"
+                ],
+                "image": [
+                    "./images/products/Hikvision/4.webp",
+                    "images/hikvision/DS2CD1123G2LIU.jpg"
+                ]
+            },
+            {
+                "model": "DS2DE4225IWDE",
+                "features": [
+                    "2 MP/4 MP/8 MP 25× Network IR Speed Dome",
+                    "1/2.8\" progressive scan CMOS",
+                    "Powered-by-DarkFighter technology",
+                    "25× optical zoom, 16× digital zoom",
+                    "Expansive night view up to 100 m IR",
+                    "Supports face capture (up to 5 faces)",
+                    "Deep learning based target classification",
+                    "H.265+/H.265 video compression"
+                ],
+                "image": [
+                    "./images/products/Hikvision/4.webp",
+                    "images/hikvision/DS2CD1123G2LIU.jpg"
+                ]
+            },
+            {
+                "model": "DS2CD2T43G24LI",
+                "features": [
+                    "2 MP/4 MP/8 MP Acusense Smart Hybrid Light Bullet Camera",
+                    "Acusense: Human and vehicle classification",
+                    "Smart Hybrid Light with 4 modes",
+                    "Built-in dual microphone",
+                    "120 dB true WDR",
+                    "H.265+ compression",
+                    "Water and dust resistant (IP67), Vandal resistant (IK10)"
+                ],
+                "image": [
+                    "./images/products/Hikvision/4.webp",
+                    "images/hikvision/DS2CD1123G2LIU.jpg"
+                ]
+            }
+        ],
+        "Dahua": [
+            {
+                "model": "DH-HAC-B1A21P",
+                "features": [
+                    "Max. 30fps@1080P",
+                    "HD/SD switchable",
+                    "3.6mm fixed lens (6mm optional)",
+                    "20m Smart IR",
+                    "IP67"
+                ],
+                "image": [
+                    "./images/products/Dahua/5.webp",
+                    "./images/dahua/DH-HAC-B1A21P.jpg"
+                ]
+            },
+            {
+                "model": "DH-HAC-T2A21P",
+                "features": [
+                    "Max. 30fps@1080P",
+                    "HD/SD switchable",
+                    "3.6mm fixed lens (2.8mm/6mm optional)",
+                    "20m Smart IR",
+                    "IP67"
+                ],
+                "image": [
+                    "./images/products/Dahua/5.webp",
+                    "./images/dahua/DH-HAC-T2A21P.jpg"
+                ]
+            }
+        ],
+        "Wireless": [
+            {
+                "model": "EZVIZ CSTY2",
+                "features": {
+                    "Resolution": "1920x1080 (2MP)",
+                    "Video Compression": "H.264",
+                    "Lens": "4mm (85° diagonal FOV)",
+                    "Night Vision": "Up to 10m IR",
+                    "Pan/Tilt": "340° H / 55° V",
+                    "Storage": "microSD up to 256GB",
+                    "Connectivity": "WiFi & Ethernet",
+                    "Audio": "Two-way",
+                    "Power": "DC 5V/1A",
+                    "Environment": "14°F to 113°F",
+                    "Extras": [
+                        "Motion detection",
+                        "Privacy mode",
+                        "Cloud storage"
+                    ]
+                },
+                "image": [
+                    "./images/products/Wireless/EZVIZ.png   ",
+                    "./images/wireless/EZVIZ_CSTY2.jpg"
+                ]
+            }
+        ]
+    },
+    "NVR_and_DVR": {
+        "Hikvision":[
+        {
+            "model": "DS7100_Series",
+            "Camera Inputs": "HDTVI, AHD, CVI, CVBS, IP",
+            "Channels": [
+            4,
+            8,
+            16
+            ],
+            "Storage": "Up to 10TB",
+            "Features": [
+            "Smart search",
+            "Deep learning motion detection",
+            "PoE",
+            "HikConnect",
+            "Supports 8MP recording"
+            ],
+            "image": [
+            "./images/products/Hikvision/4.png",
+            "./images/nvr_and_dvr/DS7100_Series.jpg"
+            ]
+        },
+        {
+            "model": "DS7600_Series",
+            "Channels": [
+            4,
+            8,
+            16,
+            32
+            ],
+            "Resolution": "Up to 4K",
+            "Formats": [
+            "H.265+",
+            "H.265",
+            "H.264+",
+            "H.264"
+            ],
+            "Network": "10/100/1000 Mbps",
+            "Video Output": "HDMI + VGA",
+            "Smart Functions": [
+            "VCA detection",
+            "Line crossing",
+            "Intrusion"
+            ],
+            "Connectivity": [
+            "HikConnect",
+            "DDNS"
+            ],
+            "PoE": true,
+            "Decoding": "Up to 8MP",
+            "Bandwidth": "Up to 256 Mbps",
+            "image": [
+            "./images/products/Hikvision/4.png",
+            "./images/nvr_and_dvr/DS7600_Series.jpg"
+            ]
+        }]
+    },
+    "Gate_Openers": {
+        "Nice": [
+            {
+                "model": "Nice_Robus_600",
+                "Max Weight": "600kg",
+                "Speed": "0.10-0.3 m/s",
+                "Power": "230Vac, 515W",
+                "Features": [
+                    "BlueBUS",
+                    "Obstacle Detection",
+                    "Automatic Programming",
+                    "Manual Release",
+                    "IP44"
+                ],
+                "image": [
+                    "./images/products/Gate Opener /nice.png",
+                    "./images/gate_openers/Nice_Robus_600.jpg"
+                ]
+            },
+            {
+                "model": "Nice_Robus_800",
+                "Max Weight": "800kg",
+                "Voltage": "24V DC",
+                "Speed": "9.0–18.6 m/min",
+                "Features": [
+                    "Magnetic Encoder",
+                    "Easy Installation",
+                    "Silent Operation",
+                    "Manual Release"
+                ],
+                "image": [
+                    "./images/products/Gate Opener /nice.png",
+                    "./images/gate_openers/Nice_Robus_800.jpg"
+                ]
+            }
+        ],
+        "Centurion": [
+            {
+                "model": "D5Evo",
+                "weight": "500kg",
+                "speed": "22m/min",
+                "features": [
+                    "Battery backup",
+                    "Anti-crushing",
+                    "Magnetic limit switches"
+                ],
+                "image": [
+                    "./images/products/Gate Opener /Centurion/CENTURION-logo.png",
+                    "./images/gate_openers/Centurion_D5Evo.jpg"
+                ]
+            },
+            {
+                "model": "D6 SMΔRT",
+                "weight": "600kg",
+                "speed": "35m/min",
+                "features": [
+                    "Tamper detection",
+                    "Electric lock compatibility",
+                    "Weatherproof"
+                ],
+                "image": [
+                    "./images/products/Gate Opener /Centurion/CENTURION-logo.png",
+                    "./images/gate_openers/Centurion_D6_SMΔRT.jpg"
+                ]
+            },
+            {
+                "model": "D10",
+                "weight": "1000kg",
+                "features": [
+                    "24V DC motor",
+                    "LCD controller",
+                    "Battery backup"
+                ],
+                "image": [
+                    "./images/products/Gate Opener /Centurion/CENTURION-logo.png",
+                    "./images/gate_openers/Centurion_D10.jpg"
+                ]
+            }
+        ],
+        "Custom_Gate_Openers": {
+            "Variants": [
+                "500kg",
+                "800kg"
+            ],
+            "Motor Voltage": "24V DC",
+            "Power": "515W",
+            "Cycle": "100/day",
+            "Features": [
+                "Magnetic Encoder",
+                "Amperometric obstacle detection",
+                "Backup battery",
+                "Manual release",
+                "Aluminum housing",
+                "Silent Operation"
+            ],
+            "image": [
+                "./images/products/Gate_opener.png",
+                "./images/gate_openers/Custom_Gate_Openers.jpg"
+            ]
+        }
+    },
+    "Intercoms": {
+        "Hikvision": [
+            {
+            "model": "DSKH9510WTE1 / DSKH9510WTE2",
+            "features": [
+                "10” Touchscreen (1024x600)",
+                "Android OS",
+                "HikConnect support",
+                "Video Intercom",
+                "8 Alarm Inputs / 2 Outputs",
+                "WiFi + Ethernet",
+                "microSD support up to 128GB"
+            ]
+            },
+            {
+            "model": "DSKB2411TIM / DSKH2220",
+            "features": [
+                "Door Station: 1920x1080, 66.2° FOV, Built-in mic/speaker, 12V DC",
+                "Indoor Station: 7” TFT LCD (800x480), Physical buttons, Supports 1 door + 1 indoor (expandable)"
+            ],
+            "image": [
+                "./images/products/Hikvision/4.png",
+                "./images/intercoms/Hikvision_DSKH9510WTE1.jpg"
+            ]
+            }
+        ]
+    },
+    "Time_Attendance": {
+        "SFace_900": {
+            "Biometrics": {
+                "Face": 3000,
+                "Fingerprint": 4000,
+                "Card": 10000
+            },
+            "Display": "4.3” Touchscreen",
+            "Logs": "100,000+",
+            "Connectivity": [
+                "TCP/IP",
+                "RS232/485",
+                "USB"
+            ],
+            "Extras": [
+                "Semi-outdoor",
+                "Battery backup"
+            ],
+            "image": [
+                "./images/products/Time Attendance/zt_flag.webp",
+                "./images/time_attendance/SFace_900.jpg"
+            ]
+        },
+        "SFace_Lite": {
+            "Biometrics": {
+                "Face": 1500,
+                "Fingerprint": 2000,
+                "Card": 2000
+            },
+            "Display": "2.8” TFT",
+            "Logs": "100,000",
+            "Features": [
+                "WiFi optional",
+                "Multi-language",
+                "12V DC"
+            ],
+            "image": [
+                "./images/products/Time_attendance.png"
+            ]
+        },
+        "SFace_7": {
+            "Biometrics": {
+                "Face": 5000,
+                "Fingerprint": 10000,
+                "Card": 10000
+            },
+            "Display": "5” Touchscreen",
+            "Logs": "200,000+",
+            "Features": [
+                "Android OS",
+                "IP65",
+                "4G/WiFi"
+            ],
+            "image": [
+                "./images/products/Time Attendance/zt_flag.webp",
+                "./images/time_attendance/SFace_7.jpg"
+            ]
+        },
+        "SFace_5": {
+            "Biometrics": {
+                "Face": 2000,
+                "Fingerprint": 3000,
+                "Card": 5000
+            },
+            "Display": "4” LCD",
+            "Logs": "150,000",
+            "Features": [
+                "Linux OS",
+                "Payroll support",
+                "Tamper alarm"
+            ],
+            "image": [
+                "./images/products/Time_attendance.png",
+                "./images/time_attendance/SFace_5.jpg"
+            ]
+        }
+    }
+}
