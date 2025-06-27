@@ -133,7 +133,7 @@
             </section>
             <script>
                 // Dynamically load projects from projects.json and render cards
-                fetch('projects.json')
+                fetch('./Json/projects.json')
                     .then(res => res.json())
                     .then(data => {
                         const projects = data.clients;

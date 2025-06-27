@@ -197,308 +197,84 @@
 
             <section>
                 <div class="container">
-                    <div class="row g-4 gx-5 align-items-center">
-                        <div class="col-lg-6">
-                            <div class="relative">
-                                <img src="images/misc/4.webp" class="w-100" alt="">
-                                <div class="triangle-bottomright-dark"></div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-6">
-                            <h2>CCTV Installation</h2>
-
-                            <p>At AtoZE Engineering, we specialize in providing state-of-the-art CCTV solutions to
-                                safeguard your home or business. Whether you're looking for a basic surveillance setup
-                                or a fully integrated security system, our expert team will ensure you have the right
-                                solution for your needs.</p>
-
-                            <h4>Our CCTV Installation Services Include:</h4>
-                            <ul class="ul-style-2">
-                                <li>Site Assessment & Consultation</li>
-                                <li>Customized Security Solutions</li>
-                                <li>High-Quality Cameras</li>
-                                <li>Installation & Setup</li>
-                                <li>Remote Viewing Access</li>
-                                <li>Maintenance & Support</li>
-                            </ul>
-                        </div>
+                    <div class="row g-4 gx-5 align-items-center" id="service-single-row">
+                        <!-- Dynamic service content will be injected here -->
                     </div>
                 </div>
             </section>
+            <script>
+                document.addEventListener('DOMContentLoaded', () => {
+                    function getQueryParam(name) {
+                        const url = new URL(window.location.href);
+                        return url.searchParams.get(name);
+                    }
+                    const serviceName = getQueryParam('service');
+                    if (!serviceName) return;
 
-            <section class="pt-0">
-                <div class="container">
-                    <div class="row g-4 slider-extra sm-hide">
-                        <div class="col-lg-4 col-md-6 mb-sm-30">
-                            <div class="relative">
-                                <img src="images/svg-color/ultra-high-resolution.svg" class="absolute w-70px z-2"
-                                    alt="">
-                                <div class="ps-90">
-                                    <h4 class="mb-0">Ultra High Resolution</h4>
-                                    <p>Trust us to deliver reliable solutions.</p>
-                                </div>
-                            </div>
-                        </div>
+                    fetch('Json/Service.json')
+                        .then(res => res.json())
+                        .then(data => {
+                            let foundService = null;
+                            let foundCategory = null;
+                            data.forEach(category => {
+                                category.services.forEach(service => {
+                                    if (service.name === serviceName) {
+                                        foundService = service;
+                                        foundCategory = category.category;
+                                    }
+                                });
+                            });
 
-                        <div class="col-lg-4 col-md-6 mb-sm-30">
-                            <div class="relative">
-                                <img src="images/svg-color/night-vision.svg" class="absolute w-70px z-2" alt="">
-                                <div class="ps-90">
-                                    <h4 class="mb-0">Night Vision</h4>
-                                    <p>Trust us to deliver reliable solutions.</p>
-                                </div>
-                            </div>
-                        </div>
+                            // Update breadcrumb
+                            const crumb = document.querySelector('.crumb li.active');
+                            if (crumb && foundService) crumb.textContent = foundService.name;
 
-                        <div class="col-lg-4 col-md-6 mb-sm-30">
-                            <div class="relative">
-                                <img src="images/svg-color/motion-detection.svg" class="absolute w-70px z-2" alt="">
-                                <div class="ps-90">
-                                    <h4 class="mb-0">Motion Detection</h4>
-                                    <p>Trust us to deliver reliable solutions.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+                            // Update header
+                            const subtitle = document.querySelector('.subtitle.s2');
+                            if (subtitle && foundCategory) subtitle.textContent = foundCategory;
 
-            <section class="bg-dark-2">
-                <div class="container">
-                    <div class="row g-4">
-                        <div class="col-lg-6 offset-lg-3 text-center">
-                            <h2 class="wow fadeInUp" data-wow-delay=".2s">Industry Served</h2>
-                        </div>
-                    </div>
+                            const h1 = document.querySelector('h1.cam-style');
+                            if (h1 && foundService) h1.innerHTML = `${foundService.name}<span></span><span></span><span></span><span></span>`;
 
-                    <div class="row g-4">
-                        <div class="col-lg-3 col-md-6 wow fadeInRight hover" data-wow-delay="0s">
-                            <div class="bg-dark text-light h-100 overflow-hidden">
-                                <div class="relative overflow-hidden">
-                                    <img src="images/industry/1.webp" class="img-fluid hover-scale-1-1" alt="">
-                                    <div class="de-overlay-gradient-color h-50 top-50"></div>
+                            // Main service section
+                            const mainSection = document.getElementById('service-single-row');
+                            if (mainSection && foundService) {
+                                mainSection.innerHTML = `
+                    <div class="col-lg-6">
+                        <div class="relative d-flex align-items-center justify-content-center bg-dark-2 rounded-3 p-4 shadow-sm h-100">
+                            <div class="w-100 text-center">
+                                <div class="mb-3 d-flex justify-content-center align-items-center" style="height:90px;">
+                                    ${foundService.icon || ''}
                                 </div>
-
-                                <div class="p-30 text-center relative">
-                                    <h4 class="mb-0">Hotels</h4>
-                                    <div class="triangle-bottomright-dark-2-half"></div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-3 col-md-6 wow fadeInRight hover" data-wow-delay="0s">
-                            <div class="bg-dark text-light h-100 overflow-hidden">
-                                <div class="relative overflow-hidden">
-                                    <img src="images/industry/2.webp" class="img-fluid hover-scale-1-1" alt="">
-                                    <div class="de-overlay-gradient-color h-50 top-50"></div>
-                                </div>
-
-                                <div class="p-30 text-center relative">
-                                    <h4 class="mb-0">Property</h4>
-                                    <div class="triangle-bottomright-dark-2-half"></div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-3 col-md-6 wow fadeInRight hover" data-wow-delay="0s">
-                            <div class="bg-dark text-light h-100 overflow-hidden">
-                                <div class="relative overflow-hidden">
-                                    <img src="images/industry/3.webp" class="img-fluid hover-scale-1-1" alt="">
-                                    <div class="de-overlay-gradient-color h-50 top-50"></div>
-                                </div>
-
-                                <div class="p-30 text-center relative">
-                                    <h4 class="mb-0">Distribution</h4>
-                                    <div class="triangle-bottomright-dark-2-half"></div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-3 col-md-6 wow fadeInRight hover" data-wow-delay="0s">
-                            <div class="bg-dark text-light h-100 overflow-hidden">
-                                <div class="relative overflow-hidden">
-                                    <img src="images/industry/4.webp" class="img-fluid hover-scale-1-1" alt="">
-                                    <div class="de-overlay-gradient-color h-50 top-50"></div>
-                                </div>
-
-                                <div class="p-30 text-center relative">
-                                    <h4 class="mb-0">Schools</h4>
-                                    <div class="triangle-bottomright-dark-2-half"></div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </section>
-
-            <section class="text-light">
-                <div class="container">
-                    <div class="row g-4 mb-4">
-                        <div class="col-lg-6 offset-lg-3 text-center">
-                            <h2 class="wow fadeInUp" data-wow-delay=".2s">Our Happy Customers</h2>
-                        </div>
-                    </div>
-
-                    <div class="row g-4">
-                        <div class="owl-carousel owl-theme wow fadeInUp" id="testimonial-carousel">
-                            <div class="item">
-                                <div class="relative text-light text-center">
-                                    <div class="text-center">
-                                        <img class="d-inline w-80px rounded-1" alt="" src="images/testimonial/1.webp">
-                                    </div>
-                                    <div class="mt-3 fw-600">Michael S.</div>
-                                    <div class="de-rating-ext mb-3">
-                                        <span class="d-stars">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                        </span>
-                                    </div>
-                                    <p>"The system is easy to use, the image quality is crystal clear, and their
-                                        customer service has been exceptional. Highly recommend!"</p>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="relative text-light text-center">
-                                    <div class="text-center">
-                                        <img class="d-inline w-80px rounded-1" alt="" src="images/testimonial/2.webp">
-                                    </div>
-                                    <div class="mt-3 fw-600">Robert L.</div>
-                                    <div class="de-rating-ext mb-3">
-                                        <span class="d-stars">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                        </span>
-                                    </div>
-                                    <p>"The system is easy to use, the image quality is crystal clear, and their
-                                        customer service has been exceptional. Highly recommend!"</p>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="relative text-light text-center">
-                                    <div class="text-center">
-                                        <img class="d-inline w-80px rounded-1" alt="" src="images/testimonial/3.webp">
-                                    </div>
-                                    <div class="mt-3 fw-600">Jake M.</div>
-                                    <div class="de-rating-ext mb-3">
-                                        <span class="d-stars">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                        </span>
-                                    </div>
-                                    <p>"The system is easy to use, the image quality is crystal clear, and their
-                                        customer service has been exceptional. Highly recommend!"</p>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="relative text-light text-center">
-                                    <div class="text-center">
-                                        <img class="d-inline w-80px rounded-1" alt="" src="images/testimonial/4.webp">
-                                    </div>
-                                    <div class="mt-3 fw-600">Alex P.</div>
-                                    <div class="de-rating-ext mb-3">
-                                        <span class="d-stars">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                        </span>
-                                    </div>
-                                    <p>"The system is easy to use, the image quality is crystal clear, and their
-                                        customer service has been exceptional. Highly recommend!"</p>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="relative text-light text-center">
-                                    <div class="text-center">
-                                        <img class="d-inline w-80px rounded-1" alt="" src="images/testimonial/5.webp">
-                                    </div>
-                                    <div class="mt-3 fw-600">Carlos R.</div>
-                                    <div class="de-rating-ext mb-3">
-                                        <span class="d-stars">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                        </span>
-                                    </div>
-                                    <p>"The system is easy to use, the image quality is crystal clear, and their
-                                        customer service has been exceptional. Highly recommend!"</p>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="relative text-light text-center">
-                                    <div class="text-center">
-                                        <img class="d-inline w-80px rounded-1" alt="" src="images/testimonial/6.webp">
-                                    </div>
-                                    <div class="mt-3 fw-600">Edward B.</div>
-                                    <div class="de-rating-ext mb-3">
-                                        <span class="d-stars">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                        </span>
-                                    </div>
-                                    <p>"The system is easy to use, the image quality is crystal clear, and their
-                                        customer service has been exceptional. Highly recommend!"</p>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="relative text-light text-center">
-                                    <div class="text-center">
-                                        <img class="d-inline w-80px rounded-1" alt="" src="images/testimonial/7.webp">
-                                    </div>
-                                    <div class="mt-3 fw-600">Daniel H.</div>
-                                    <div class="de-rating-ext mb-3">
-                                        <span class="d-stars">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                        </span>
-                                    </div>
-                                    <p>"The system is easy to use, the image quality is crystal clear, and their
-                                        customer service has been exceptional. Highly recommend!"</p>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="relative text-light text-center">
-                                    <div class="text-center">
-                                        <img class="d-inline w-80px rounded-1" alt="" src="images/testimonial/8.webp">
-                                    </div>
-                                    <div class="mt-3 fw-600">Bryan G.</div>
-                                    <div class="de-rating-ext mb-3">
-                                        <span class="d-stars">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                        </span>
-                                    </div>
-                                    <p>"The system is easy to use, the image quality is crystal clear, and their
-                                        customer service has been exceptional. Highly recommend!"</p>
-                                </div>
+                                <h2 class="text-accent mb-2 text-wrap" style="word-break: break-word; white-space: normal;">${foundService.name}</h2>
                             </div>
                         </div>
                     </div>
-                </div>
-            </section>
+                    <div class="col-lg-6">
+                        <div class="bg-dark-2 rounded-3 p-4 shadow-sm h-100">
+                            <h4 class="mb-3 text-accent">Service Description</h4>
+                            <p class="fs-5">${foundService.description || 'No description available.'}</p>
+                            ${foundService.features && foundService.features.length ? `
+                                <h5 class="mt-4">Key Features:</h5>
+                                <ul class="ul-style-2">
+                                    ${foundService.features.map(f => `<li>${f}</li>`).join('')}
+                                </ul>
+                            ` : ''}
+                        </div>
+                    </div>
+                `;
+                            } else if (mainSection) {
+                                mainSection.innerHTML = `
+                    <div class="col-12">
+                        <div class="alert alert-danger">Service not found.</div>
+                    </div>
+                `;
+                            }
+
+                            // Optionally, you can hide or update the features/industries/testimonials sections as needed
+                        });
+                });
+            </script>
 
         </div>
         <!-- content close -->
@@ -647,6 +423,80 @@
     ================================================== -->
     <script src="js/vendors.js"></script>
     <script src="js/script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            function getQueryParam(name) {
+                const url = new URL(window.location.href);
+                return url.searchParams.get(name);
+            }
+            const serviceName = getQueryParam('service');
+            if (!serviceName) return;
+
+            fetch('Json/Service.json')
+                .then(res => res.json())
+                .then(data => {
+                    let foundService = null;
+                    let foundCategory = null;
+                    data.forEach(category => {
+                        category.services.forEach(service => {
+                            if (service.name === serviceName) {
+                                foundService = service;
+                                foundCategory = category.category;
+                            }
+                        });
+                    });
+
+                    // Update breadcrumb
+                    const crumb = document.querySelector('.crumb li.active');
+                    if (crumb && foundService) crumb.textContent = foundService.name;
+
+                    // Update header
+                    const subtitle = document.querySelector('.subtitle.s2');
+                    if (subtitle && foundCategory) subtitle.textContent = foundCategory;
+
+                    const h1 = document.querySelector('h1.cam-style');
+                    if (h1 && foundService) h1.innerHTML = `${foundService.name}<span></span><span></span><span></span><span></span>`;
+
+                    // Main service section
+                    const mainSection = document.getElementById('service-single-row');
+                    if (mainSection && foundService) {
+                        mainSection.innerHTML = `
+                    <div class="col-lg-6">
+                        <div class="relative d-flex align-items-center justify-content-center bg-dark-2 rounded-3 p-4 shadow-sm h-100">
+                            <div class="w-100 text-center">
+                                <div class="mb-3 d-flex justify-content-center align-items-center" style="height:90px;">
+                                    ${foundService.icon || ''}
+                                </div>
+                                <h2 class="text-accent mb-2">${foundService.name}</h2>
+                                <span class="badge bg-primary mb-3">${foundCategory}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="bg-dark-2 rounded-3 p-4 shadow-sm h-100">
+                            <h4 class="mb-3 text-accent">Service Description</h4>
+                            <p class="fs-5">${foundService.description || 'No description available.'}</p>
+                            ${foundService.features && foundService.features.length ? `
+                                <h5 class="mt-4">Key Features:</h5>
+                                <ul class="ul-style-2">
+                                    ${foundService.features.map(f => `<li>${f}</li>`).join('')}
+                                </ul>
+                            ` : ''}
+                        </div>
+                    </div>
+                `;
+                    } else if (mainSection) {
+                        mainSection.innerHTML = `
+                    <div class="col-12">
+                        <div class="alert alert-danger">Service not found.</div>
+                    </div>
+                `;
+                    }
+
+                    // Optionally, you can hide or update the features/industries/testimonials sections as needed
+                });
+        });
+    </script>
 
 </body>
 

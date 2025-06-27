@@ -17,7 +17,7 @@
             const category = getQueryParam('category');
             const brand = getQueryParam('brand');
             const model = getQueryParam('model');
-            fetch('./normalized_products.json')
+            fetch('./Json/normalized_products.json')
                 .then(res => res.json())
                 .then(data => {
                     const found = data.find(
@@ -374,12 +374,33 @@
 
         function formatFeatures(features) {
             if (!features) return '';
+            let items = [];
             if (Array.isArray(features)) {
-                return features.map(f => `<li>${f}</li>`).join('');
+            items = features;
             } else if (typeof features === 'object') {
-                return Object.entries(features).map(([k, v]) => `<li><b>${k}:</b> ${Array.isArray(v) ? v.join(', ') : v}</li>`).join('');
+            items = Object.entries(features).map(
+                ([k, v]) => `<b>${k}:</b> ${Array.isArray(v) ? v.join(', ') : v}`
+            );
             } else {
-                return `<li>${features}</li>`;
+            items = [features];
+            }
+
+            if (items.length <= 5) {
+            return items.map(f => `<li>${f}</li>`).join('');
+            } else {
+            // Show first 5, then a "Show all" button
+            const firstFive = items.slice(0, 5).map(f => `<li>${f}</li>`).join('');
+            const rest = items.slice(5).map(f => `<li class="extra-feature" style="display:none;">${f}</li>`).join('');
+            return `
+                ${firstFive}
+                ${rest}
+                <li>
+                <button type="button" class="btn btn-link p-0" style="text-decoration: none; color:red;" id="showAllFeaturesBtn" onclick="
+                    document.querySelectorAll('.extra-feature').forEach(e => e.style.display = 'list-item');
+                    this.style.display = 'none';
+                ">Show all features</button>
+                </li>
+            `;
             }
         }
 
@@ -388,7 +409,7 @@
             const brand = getQueryParam('brand');
             const model = getQueryParam('model');
 
-            fetch('./normalized_products.json')
+            fetch('./Json/normalized_products.json')
                 .then(res => res.json())
                 .then(data => {
                     // Find the model
@@ -450,6 +471,11 @@
                             <ul style="font-size:1.1em;">
                                 ${formatFeatures(found.features)}
                             </ul>
+                        </div>
+                        <div class="col-12 mt-4 text-start">
+                            <a href="tel:+251939902685" class="btn-main fx-slide" >
+                                <span>Get more info</span>
+                            </a>
                         </div>
                     </div>
                 </div>

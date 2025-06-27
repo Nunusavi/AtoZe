@@ -1,0 +1,50 @@
+[
+    {
+        "name": "Mujib Asmera",
+        "image": "../images/team/1.webp",
+        "text": "CEO, Director of AtoZe",
+        "socials": {
+            "facebook": "#",
+            "twitter": "#",
+            "instagram": "#",
+            "whatsapp": "#",
+            "phone": "#"
+        }
+    },
+    {
+        "name": "Amina Yemer",
+        "image": "images/team/2.webp",
+        "text": "Customer service",
+        "socials": {
+            "facebook": "#",
+            "twitter": "#",
+            "instagram": "#",
+            "whatsapp": "#",
+            "phone": "#"
+        }
+    },
+    {
+        "name": "Hanan seid",
+        "image": "images/team/3.webp",
+        "text": "Sales Director",
+        "socials": {
+            "facebook": "#",
+            "twitter": "#",
+            "instagram": "#",
+            "whatsapp": "#",
+            "phone": "#"
+        }
+    },
+    {
+        "name": "Eyerusalem asnake",
+        "image": "images/team/4.webp",
+        "text": "Site Supervisor",
+        "socials": {
+            "facebook": "#",
+            "twitter": "#",
+            "instagram": "#",
+            "whatsapp": "#",
+            "phone": "#"
+        }
+    }
+]

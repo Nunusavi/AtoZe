@@ -98,5 +98,5 @@ categories.forEach(cat => {
     });
 });
 
-fs.writeFileSync('./normalized_products.json', JSON.stringify(models, null, 2));
+fs.writeFileSync('./Json/normalized_products.json', JSON.stringify(models, null, 2));
 console.log('Normalized product data written to normalized_products.json');

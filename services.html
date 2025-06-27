@@ -126,93 +126,52 @@
 
             <section>
                 <div class="container">
-                    <div class="row g-4">
-                        <div class="col-lg-3 col-md-6 wow fadeInRight" data-wow-delay="0s">
-                            <a href="service-single.html"
-                                class="d-block hover relative bg-dark-2 p-40 pb-20 h-100 mb-sm-30">
-                                <img src="images/svg-color/cctv.svg" class="w-70px mb-3 hover-jello infinite" alt="">
-                                <h4>Installation</h4>
-                                <p>Setting up cameras in strategic locations to ensure optimal coverage.</p>
-                                <div class="triangle-bottomright-dark"></div>
-                            </a>
-                        </div>
-
-                        <div class="col-lg-3 col-md-6 wow fadeInRight" data-wow-delay=".2s">
-                            <a href="service-single.html"
-                                class="d-block hover relative bg-dark-2 p-40 pb-20 h-100 mb-sm-30">
-                                <img src="images/svg-color/networking.svg" class="w-70px mb-3 hover-jello infinite"
-                                    alt="">
-                                <h4>System Design</h4>
-                                <p>Customized security system planning to meet specific requirements.</p>
-                                <div class="triangle-bottomright-dark"></div>
-                            </a>
-                        </div>
-
-                        <div class="col-lg-3 col-md-6 wow fadeInRight" data-wow-delay=".4s">
-                            <a href="service-single.html"
-                                class="d-block hover relative bg-dark-2 p-40 pb-20 h-100 mb-sm-30">
-                                <img src="images/svg-color/setting.svg" class="w-70px mb-3 hover-jello infinite" alt="">
-                                <h4>Maintenance</h4>
-                                <p>Regular servicing and fixing of camera systems to ensure continuous functionality.
-                                </p>
-                                <div class="triangle-bottomright-dark"></div>
-                            </a>
-                        </div>
-
-                        <div class="col-lg-3 col-md-6 wow fadeInRight" data-wow-delay=".6s">
-                            <a href="service-single.html"
-                                class="d-block hover relative bg-dark-2 p-40 pb-20 h-100 mb-sm-30">
-                                <img src="images/svg-color/monitor.svg" class="w-70px mb-3 hover-jello infinite" alt="">
-                                <h4>Monitoring</h4>
-                                <p>Real-time monitoring of security cameras by professionals or automated systems.</p>
-                                <div class="triangle-bottomright-dark"></div>
-                            </a>
-                        </div>
-
-                        <div class="col-lg-3 col-md-6 wow fadeInRight" data-wow-delay=".0s">
-                            <a href="service-single.html"
-                                class="d-block hover relative bg-dark-2 p-40 pb-20 h-100 mb-sm-30">
-                                <img src="images/svg-color/storage.svg" class="w-70px mb-3 hover-jello infinite" alt="">
-                                <h4>Storage &amp; Backup</h4>
-                                <p>Offering cloud storage plans for secure, offsite storage of CCTV footage.</p>
-                                <div class="triangle-bottomright-dark"></div>
-                            </a>
-                        </div>
-
-                        <div class="col-lg-3 col-md-6 wow fadeInRight" data-wow-delay=".4s">
-                            <a href="service-single.html"
-                                class="d-block hover relative bg-dark-2 p-40 pb-20 h-100 mb-sm-30">
-                                <img src="images/svg-color/upgrade.svg" class="w-70px mb-3 hover-jello infinite" alt="">
-                                <h4>System Upgrades</h4>
-                                <p>Upgrading older analog systems to IP-based or HD analog systems.</p>
-                                <div class="triangle-bottomright-dark"></div>
-                            </a>
-                        </div>
-
-                        <div class="col-lg-3 col-md-6 wow fadeInRight" data-wow-delay=".6s">
-                            <a href="service-single.html"
-                                class="d-block hover relative bg-dark-2 p-40 pb-20 h-100 mb-sm-30">
-                                <img src="images/svg-color/chat.svg" class="w-70px mb-3 hover-jello infinite" alt="">
-                                <h4>System Consultation</h4>
-                                <p>Assessing the property to determine optimal camera placement.</p>
-                                <div class="triangle-bottomright-dark"></div>
-                            </a>
-                        </div>
-
-                        <div class="col-lg-3 col-md-6 wow fadeInRight" data-wow-delay=".8s">
-                            <a href="service-single.html"
-                                class="d-block hover relative bg-dark-2 p-40 pb-20 h-100 mb-sm-30">
-                                <img src="images/svg-color/configuration.svg" class="w-70px mb-3 hover-jello infinite"
-                                    alt="">
-                                <h4>System Configuration</h4>
-                                <p>Integration with mobile apps for remote monitoring and management.</p>
-                                <div class="triangle-bottomright-dark"></div>
-                            </a>
-                        </div>
+                    <div class="row g-4" id="services-list">
+                        <!-- Services will be injected here -->
                     </div>
                 </div>
             </section>
+            <script>
+                // Map service categories to fallback icons (if service icon is missing)
+                const categoryIcons = {
+                    "Core Services": "images/svg-color/cctv.svg",
+                    "Surveillance & CCTV Services": "images/svg-color/monitor.svg",
+                    "Maintenance & Support": "images/svg-color/setting.svg",
+                    "Additional Security Solutions": "images/svg-color/alarm.svg"
+                };
 
+                // Dynamically load services from Service.json and render cards
+                fetch('Json/Service.json')
+                    .then(res => res.json())
+                    .then(data => {
+                        const container = document.getElementById('services-list');
+                        let delay = 0;
+                        data.forEach(category => {
+                            category.services.forEach(service => {
+                                // Use inline SVG icon from JSON, or fallback to category icon
+                                let iconHTML = service.icon;
+                                if (!iconHTML) {
+                                    iconHTML = `<img src="${categoryIcons[category.category] || "images/svg-color/cctv.svg"}" class="w-70px mb-3" alt="${service.name || category.category}">`;
+                                }
+                                // Use service name or fallback to category name for display and URL
+                                const displayName = service.name || category.category;
+                                const serviceParam = encodeURIComponent(displayName);
+                                container.innerHTML += `
+                                    <div class="col-lg-3 col-md-6 wow fadeInRight" data-wow-delay="${delay}s">
+                                            <div class="mb-3 d-flex justify-content-start align-items-center" style="height:70px;">
+                                                ${iconHTML}
+                                            </div>
+                                            <h4 class="text-accent">${displayName}</h4>
+                                            <p>${service.description || ''}</p>
+                                            <div class="triangle-bottomright-dark"></div>
+                                            <span class="badge bg-primary position-absolute top-0 end-0 m-2"></span>
+                                    </div>
+                                `;
+                                delay += 0.1;
+                            });
+                        });
+                    });
+            </script>
         </div>
         <!-- content close -->
         <!-- footer begin -->

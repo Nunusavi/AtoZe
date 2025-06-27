@@ -35,7 +35,9 @@
     ],
     "image": [
       "./images/products/Hikvision/4.webp",
-      "images/hikvision/DS2CD1123G2LIU.jpg"
+      "https://hikvision-uae.com/wp-content/uploads/2024/08/%E5%8F%8C%E5%85%89%E5%8D%8A%E7%90%8361-%E5%9F%BA%E7%BA%BF-%E5%B7%A6%E4%BE%A7.jpg",
+      "https://hikvision-uae.com/wp-content/uploads/2024/08/%E5%8F%8C%E5%85%89%E5%8D%8A%E7%90%8361-%E5%9F%BA%E7%BA%BF-%E6%AD%A3%E9%9D%A2.jpg",
+      "https://hikvision-uae.com/wp-content/uploads/2024/08/%E5%8F%8C%E5%85%89%E5%8D%8A%E7%90%8361-%E5%9F%BA%E7%BA%BF-%E5%8F%B3%E4%BE%A7.jpg"
     ]
   },
   {
@@ -55,7 +57,8 @@
     ],
     "image": [
       "./images/products/Hikvision/4.webp",
-      "images/hikvision/DS2CD1123G2LIU.jpg"
+      "images/hikvision/DS2CD1123G2LIU.jpg",
+      "https://www.hikvision.com/content/dam/hikvision/products/asset/M000001009/images/DE4XXXIW-&-AE4xxxTI_1.png"
     ]
   },
   {
@@ -74,7 +77,9 @@
     ],
     "image": [
       "./images/products/Hikvision/4.webp",
-      "images/hikvision/DS2CD1123G2LIU.jpg"
+      "https://assets.hikvision.com/prd/public/all/image/sm000058875/%E7%AD%92%E6%9C%BA23-%E7%99%BD%E8%89%B2-%E5%B7%A6%E4%BE%A7.png",
+      "https://assets.hikvision.com/prd/public/all/image/sm000058875/%E7%AD%92%E6%9C%BA23-%E7%99%BD%E8%89%B2-%E6%AD%A3%E9%9D%A2.png",
+      "https://assets.hikvision.com/prd/public/all/image/sm000058875/%E7%AD%92%E6%9C%BA23-%E7%99%BD%E8%89%B2-%E5%8F%B3%E4%BE%A7.png"
     ]
   },
   {
@@ -91,7 +96,7 @@
     ],
     "image": [
       "./images/products/Dahua/5.webp",
-      "./images/dahua/DH-HAC-B1A21P.jpg"
+      "https://material.dahuasecurity.com/uploads/image/20221017/DH-HAC-B1A21P-A_thumb.png"
     ]
   },
   {
@@ -104,11 +109,55 @@
       "HD/SD switchable",
       "3.6mm fixed lens (2.8mm/6mm optional)",
       "20m Smart IR",
-      "IP67"
+      "IP67",
+      "selector-pcimg",
+      "Product Selector: Camera",
+      "Image Sensor: 2 MP CMOS",
+      "Max. Resolution: 1920 (H) × 1080 (V)",
+      "Scanning System: Progressive",
+      "Electronic Shutter Speed: PAL: 1/25 s–1/100000 s; NTSC: 1/30 s–1/100000 s",
+      "Min. Illumination: 0.02 lux@F2.0 (Color, 30 IRE); 0.002 lux@F2.0 (B/W, 30 IRE); 0 lux (Illuminator on)",
+      "S/N Ratio: >65 dB",
+      "Illumination Distance: 20 m",
+      "Illuminator On/Off Control: Auto; Manual",
+      "Illuminator Number: 2 (IR light)",
+      "Angle Adjustment: Pan: 0°–360°; Tilt: 0°–90°; Rotation: 0°–360°",
+      "Lens Type: Fixed-focal",
+      "Lens Mount: M12",
+      "Focal Length: 2.8 mm; 3.6 mm; 6 mm",
+      "Max. Aperture: F2.0",
+      "Field of View: 2.8 mm: H: 100°; V: 54°; D: 117°; 3.6 mm: H: 80°; V: 43°; D: 94°; 6 mm: H: 43°; V: 24°; D: 50°",
+      "Iris Control: Fixed",
+      "Close Focus Distance: 2.8 mm: 0.5 m (1.64 ft); 3.6 mm: 0.8 m (2.62 ft); 6 mm: 2.4 m (7.87 ft)",
+      "DORI Distance (Detect/Observe/Recognize/Identify): 2.8 mm: 44.7/17.9/8.9/4.5 m; 3.6 mm: 55.0/22.0/11.0/5.5 m; 6 mm: 102.9/41.1/20.6/10.3 m",
+      "Video Frame Rate: CVI: PAL: 1080p@25 fps, NTSC: 1080p@30 fps; AHD: PAL: 1080p@25 fps, NTSC: 1080p@30 fps; TVI: PAL: 1080p@25 fps, NTSC: 1080p@30 fps; CVBS: PAL: 960H, NTSC: 960H",
+      "Resolution: 1080p (1920 × 1080); 960H (960 × 576/960 × 480)",
+      "Day/Night: Auto(ICR)/Color/B/W",
+      "BLC: BLC; DWDR",
+      "WDR: DWDR",
+      "White Balance: Auto",
+      "Gain Control: Auto",
+      "Noise Reduction: 2D NR",
+      "Illumination Mode: Smart IR",
+      "Certifications: CE-LVD: EN 62368-1; CE-EMC: EN 55032; EN 55035",
+      "Video Output: Video output choices of CVI/TVI/AHD/CVBS by one BNC port",
+      "Power Supply: 12 VDC ± 30%",
+      "Power Consumption: Max 2.8 W (12 VDC, IR on)",
+      "Operating Temperature: –40 °C to +60 °C (–40 °F to +140 °F)",
+      "Operating Humidity: <95% (RH), non-condensing",
+      "Storage Temperature: –40 °C to +60 °C (–40 °F to +140 °F)",
+      "Storage Humidity: <95% (RH), non-condensing",
+      "Protection: IP67",
+      "Anti-corrosion Level: Basic Protection",
+      "Casing Material: Metal",
+      "Product Dimensions: 150.0 mm × 69.7 mm × 70.0 mm (5.91\" × 2.74\" × 2.76\")",
+      "Net Weight: 0.27 kg (0.60 lb)",
+      "Gross Weight: 0.33 kg (0.73 lb)",
+      "Installation: Wall mount; ceiling mount; vertical pole mount"
     ],
     "image": [
       "./images/products/Dahua/5.webp",
-      "./images/dahua/DH-HAC-T2A21P.jpg"
+      "https://materialfile.dahuasecurity.com/uploads/image/20241107/DH-HAC-T2A21P-U-A-0280B_Rendergraph_Front-logo1_thumb.png"
     ]
   },
   {
@@ -127,11 +176,43 @@
       "Audio: Two-way",
       "Power: DC 5V/1A",
       "Environment: 14°F to 113°F",
-      "Extras: Motion detection, Privacy mode, Cloud storage"
+      "Extras: Motion detection, Privacy mode, Cloud storage",
+      "Model: CS-TY2-B0-1G2WF",
+      "Image Sensor: F2.4@1/3\" Progressive Scan CMOS",
+      "Shutter Speed: Self-adaptive shutter",
+      "Lens: 4mm@ F2.4, view angle: 85° diagonal, 75° horizontal, 45° vertical",
+      "Lens Mount: M12",
+      "Day & Night: IR-cut filter with auto-switching",
+      "DNR: 3D DNR",
+      "WDR: Digital WDR",
+      "Video Bit Rate: Full HD, HD, Standard. Adaptive bit rate.",
+      "Max. Resolution: 1920 × 1080",
+      "Frame Rate: Max:15fps; Self-Adaptive during network transmission",
+      "Smart Alarm: Motion detection",
+      "Wi-Fi Pairing: AP pairing",
+      "Protocol: EZVIZ Cloud proprietary protocol",
+      "Interface Protocol: EZVIZ Cloud proprietary protocol",
+      "Storage: MicroSD card slot (Max. 256GB)",
+      "Power: Micro USB",
+      "Wired Network: RJ45 X 1 (10M/100M self-adaptive Ethernet port)",
+      "Wi-Fi Standard: IEEE802.11b/g/n",
+      "Frequency Range: 2.4 GHz ~ 2.4835 GHz",
+      "Channel Bandwidth: Supports 20MHz",
+      "Security: 64/128-bit WEP, WPA/WPA2, WPA-PSK/WPA2-PSK",
+      "Transmission Rate: 11b: 11Mbps, 11g: 54Mbps, 11n: 72Mbps",
+      "Operating Temperature: -10°C to 45°C (14°F to 113 °F)",
+      "Operating Humidity: 95% or less (non-condensing)",
+      "Power Supply: DC 5V/1A",
+      "Power Consumption: 5W max",
+      "IR Range: MAX. 10 meters (32.81 ft.)",
+      "Dimensions: 88 x 88 x 124 mm (3.46 x 3.46 x 4.88 inch)",
+      "Packaging Dimensions: 103 x 103 x 186 mm (4.06 x 4.06 x 7.32 inch)",
+      "Net Weight: 255 g (8.99 oz)"
     ],
     "image": [
       "./images/products/Wireless/EZVIZ.png   ",
-      "./images/wireless/EZVIZ_CSTY2.jpg"
+      "https://www.dynamic-cctv.com/media/catalog/product/cache/9c83996a97e3b3fb0897c2bb0f92237f/t/y/ty2-ezviz-1080p-2mp-smart-wi-fi-pan-tilt-camera-p147-1210_medium.png",
+      "https://thumb.pccomponentes.com/w-530-530/articles/33/336786/2802-ezviz-ty2-camara-de-vigilancia-ip-wifi-1080p-comprar.jpg"
     ]
   },
   {
@@ -144,11 +225,57 @@
       "Deep learning motion detection",
       "PoE",
       "HikConnect",
-      "Supports 8MP recording"
+      "Supports 8MP recording",
+      "Network Protocols",
+      "PPPoE",
+      "Product Description",
+      "H.265+/H.265/H.264+/H.264 video compression",
+      "Up to 40 Mbps incoming bandwidth, and 60 Mbps outgoing bandwidth",
+      "Up to 4-ch network camera inputs",
+      "Up to 4-ch 1080p decoding capability",
+      "HDMI and VGA simultaneous output",
+      "Product Specification",
+      "Model Name/Number: DS-7604NI-E1/4P",
+      "Storage Capacity: Up to 6TB for each disk",
+      "Interface Type: 4 independent 100 Mbps PoE network interfaces",
+      "Remote Connection: 32",
+      "Frame Rate: Main stream: 50 fps (P) / 60 fps (N), Sub-stream: 50 fps (P) / 60 fps (N)",
+      "Supported Standard: AF and AT",
+      "Incoming Bandwidth: 40Mbps",
+      "Sata: 1 SATA interface for 1 HDD",
+      "Country of Origin: Made in India",
+      "IP video input: 4-ch",
+      "Outgoing bandwidth: 80Mbps",
+      "Recording resolution: 6MP/5MP/3MP/1080P/UXGA/720P/VGA/4CIF/DCIF/2CIF/CIF/QCIF",
+      "HDMI/VGA output: 1-ch, resolution:1920 x 1080 /60Hz, 1600 x 1200 /60Hz, 1280 x 1024 /60Hz, 1280 x 720/60Hz, 1024 x 768",
+      "Capability: 4-ch@1080P",
+      "Network interface: 1 RJ-45 10/100 Mbps self-adaptive Ethernet interface",
+      "USB interface: 1 x USB 2.0 and 1 x USB 3.0",
+      "Working humidity: 10% ~ 90%",
+      "Dimensions (W x D x H): 315 x 230 x 45mm (31.5 x 23.11 x 4.572 cm)",
+      "Max. Power: 50W",
+      "Power supply: 48V DC",
+      "Product Description",
+      "Connectable to third-party network cameras like ACTI, Arecont, AXIS, Bosch, Brickcom, Canon, ONVIF, PANASONIC, Pelco, PSIA, SAMSUNG, SANYO, SONY, Vivotek, and AVIO",
+      "Up to 16 network cameras can be connected",
+      "Support live view, storage, and playback of the connected camera with up to the resolution of 6 megapixels",
+      "Simultaneous HDMI and VGA outputs at up to 1920×1080 resolution",
+      "New GUI and support starting record with one key",
+      "Holiday recording",
+      "Real-time instant playback for assigned channel during multi-channel display mode",
+      "Up to 16-ch synchronous playback at 4CIF resolution",
+      "Customization of tags, searching, and playing back by tags",
+      "Locking and unlocking record files",
+      "Support HDD quota mode (different capacity can be assigned to different channel)",
+      "1 SATA hard disk can be connected",
+      "1 self-adaptive 10M/100M/1000M network interface is provided",
+      "Support Hikvision DDNS (Dynamic Domain Name System)",
+      "Support network detection, including network delay, packet loss, etc.",
+      "Support enabling H.264+ to ensure high video quality with lowered bitrate"
     ],
     "image": [
       "./images/products/Hikvision/4.png",
-      "./images/nvr_and_dvr/DS7100_Series.jpg"
+      "https://5.imimg.com/data5/SELLER/Default/2022/9/QV/MZ/RG/3593566/hikvision-4-ch-nvr-ds-7100-series-1000x1000.png"
     ]
   },
   {
@@ -156,10 +283,41 @@
     "brand": "Hikvision",
     "model": "DS7600_Series",
     "description": "The Hikvision DS7600-Series DVR is a robust multi-channel recorder supporting analog and IP cameras with 8 MP resolution. With embedded PoE, smart analytics, remote monitoring via Hik-Connect, and scalable storage, it’s suitable for complex surveillance setups requiring reliable performance and intelligent detection.",
-    "features": [],
+    "features": [
+      "Model: DS-7608NI-K2, DS-7616NI-K2, DS-7632NI-K2",
+      "IP video input: 8-ch (DS-7608NI-K2), 16-ch (DS-7616NI-K2), 32-ch (DS-7632NI-K2)",
+      "Up to 8 MP resolution",
+      "Incoming bandwidth: 80 Mbps (8-ch), 160 Mbps (16/32-ch)",
+      "Outgoing bandwidth: 256 Mbps",
+      "HDMI output: 1-ch, 4K (4096 x 2160)/30 Hz, 4K (3840 x 2160)/30 Hz, 2K (2560 x 1440)/60 Hz, 1920 x 1080/60 Hz, 1600 x 1200/60 Hz, 1280 x 1024/60 Hz, 1280 x 720/60 Hz",
+      "VGA output: 1-ch, 1920 × 1080/60 Hz, 1280 × 1024/60 Hz, 1280 × 720/60 Hz",
+      "HDMI/VGA independent output",
+      "CVBS output: N/A",
+      "Audio output: 1-ch, RCA (Linear, 1 KΩ)",
+      "Two-way audio input: 1-ch, RCA (2.0 Vp-p, 1 KΩ, using the audio input)",
+      "Decoding format: H.265/H.265+/H.264/H.264+/MPEG4",
+      "Recording resolution: 8 MP/6 MP/5 MP/4 MP/3 MP/1080p/UXGA/720p/VGA/4CIF/DCIF/2CIF/CIF/QCIF",
+      "Synchronous playback: 8-ch (8-ch model), 16-ch (16-ch model)",
+      "Capability: 2-ch@8 MP (25 fps)/4-ch@4 MP (30 fps)/8-ch@1080p (30 fps)",
+      "Stream type: Video, Video & Audio",
+      "Audio compression: G.711ulaw/G.711alaw/G.722/G.726",
+      "Remote connection: 64-ch (8-ch model), 128-ch (16/32-ch model)",
+      "Network protocol: TCP/IP, DHCP, IPv4, IPv6, DNS, DDNS, NTP, RTSP, SADP, SMTP, SNMP, NFS, iSCSI, ISUP, UPnP™, HTTP, PPoE, HTTPS",
+      "Network interface: 1, RJ-45 10/100/1000 Mbps self-adaptive Ethernet interface",
+      "Mapped network disk connection, ONVIF protocol camera connection",
+      "SATA: 2 SATA interfaces, up to 8 TB capacity for each disk",
+      "Alarm in/out: 4/1",
+      "USB interface: Front panel: 1 × USB 2.0; Rear panel: 1 × USB 3.0",
+      "Power supply: 100 – 240V 60 Hz- 12 VDC, 3.33 A, cable ABNT 14136",
+      "Consumption (without HDD): ≤ 15 W",
+      "Working temperature: -10 °C to 55 °C (14 °F to 131 °F)",
+      "Working humidity: 10% to 90%",
+      "Dimension (W × D × H): 385 × 315 × 52 mm (15.2\" × 12.4\" × 2.0\")",
+      "Weight (without HDD): ≤ 1 kg (2.2 lb)"
+    ],
     "image": [
       "./images/products/Hikvision/4.png",
-      "./images/nvr_and_dvr/DS7600_Series.jpg"
+      "https://mediabureautique.tn/wp-content/uploads/2023/02/Hikvision-DS-7600-Series-16-Channels-Standalone-NVR-DS-7616NI-Q216P-600x600-1.jpg"
     ]
   },
   {
@@ -176,7 +334,7 @@
     ],
     "image": [
       "./images/products/Gate Opener /nice.png",
-      "./images/gate_openers/Nice_Robus_600.jpg"
+      "https://nice-products.co.uk/wp-content/uploads/2024/12/Principal_RB600BDKCE.png"
     ]
   },
   {
