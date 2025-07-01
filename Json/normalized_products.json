@@ -2,8 +2,8 @@
   {
     "category": "CCTV",
     "brand": "Hikvision",
-    "model": "DS2CD1023G2LIU / DS2CD1043G2LIU(F)",
-    "name" : "Hikvision DS-2CD1023G2LIU(F)",
+    "model": "Hybrid 2MP Outdoor Camera",
+    "name" : " DS2CD1023G2LIU / DS2CD1043G2LIU(F)",
     "description": "The Hikvision DS‑2CD1023G2LIU(F) is a smart dual-light bullet IP camera delivering 2 MP (up to 8 MP) full HD imaging with 0.005 Lux low-light sensitivity. It features intelligent human/vehicle detection to reduce false alerts and Smart Hybrid Light (IR + white LEDs) offering up to 30 m night visibility. A built-in microphone captures real-time audio, while H.265+ compression and optional 512 GB SD card support maximize recording efficiency. Ruggedly built to IP67 standards, this camera is ideal for residential or small business security, providing sharp, clear, and reliable surveillance across all conditions.",
     "features": [
       "High quality imaging with 2 MP/4 MP/8 MP resolution",
@@ -16,18 +16,18 @@
     ],
     "image": [
       "./images/products/Hikvision/4.png",
-      "https://assets.hikvision.com/prd/public/all/image/sm000042453/%E7%AD%92%E6%9C%BA39-%E7%99%BD%E5%85%89%E6%AC%BE-%E5%85%A8%E5%8A%9F%E8%83%BD-%E6%B5%B7%E5%A4%96%E6%A0%87%E9%85%8D-%E6%AD%A3%E9%9D%A2.png",
-      "https://assets.hikvision.com/prd/public/all/image/sm000042453/%E7%AD%92%E6%9C%BA39-%E7%99%BD%E5%85%89%E6%AC%BE-%E5%85%A8%E5%8A%9F%E8%83%BD-%E6%B5%B7%E5%A4%96%E6%A0%87%E9%85%8D-%E6%AD%A3%E9%9D%A2.png"
+      "./images/products/Hikvision/DS2CD1023G2LIU-DS2CD1043G2LIU.png",
+      ""
     ]
   },
   {
     "category": "CCTV",
     "brand": "Hikvision",
-    "model": "DS2CD1123G2LIU",
-    "name" : "Hikvision ",
+    "model": "Hybrid 2MP Indoor Camera",
+    "name" : "DS2CD1123G2LIU ",
     "description": "The Hikvision DS‑2CD1123G2LIU is a value-packed 2 MP bullet camera offering advanced smart detection, motorized Smart Hybrid Light, and dual audio for enhanced security. Featuring AcuSense AI for precise human/vehicle identification, 120 dB WDR for crisp daytime footage, H.265+ encoding, and up to 512 GB onboard storage. Its IK08 and IP67 rating make it vandal and weather resistant—perfect for perimeter, doorway, or commercial site monitoring.",
     "features": [
-      "High quality imaging with 2 MP/4 MP/8 MP resolution",
+      "High quality imaging with 2 MP resolution",
       "Support Human and Vehicle Detection",
       "Smart Hybrid Light with long range",
       "Built-in microphone for real-time audio security",
@@ -38,7 +38,7 @@
     ],
     "image": [
       "./images/products/Hikvision/4.webp",
-      "https://hikvision-uae.com/wp-content/uploads/2024/08/%E5%8F%8C%E5%85%89%E5%8D%8A%E7%90%8361-%E5%9F%BA%E7%BA%BF-%E5%B7%A6%E4%BE%A7.jpg",
+      "./images/products/Hikvision/DS2CD1123G2LIU.webp",
       "https://hikvision-uae.com/wp-content/uploads/2024/08/%E5%8F%8C%E5%85%89%E5%8D%8A%E7%90%8361-%E5%9F%BA%E7%BA%BF-%E6%AD%A3%E9%9D%A2.jpg",
       "https://hikvision-uae.com/wp-content/uploads/2024/08/%E5%8F%8C%E5%85%89%E5%8D%8A%E7%90%8361-%E5%9F%BA%E7%BA%BF-%E5%8F%B3%E4%BE%A7.jpg"
     ]
@@ -47,6 +47,7 @@
     "category": "CCTV",
     "brand": "Hikvision",
     "model": "DS2DE4225IWDE",
+    "name" : "",
     "description": "The Hikvision DS‑2DE4225IWDE is a feature-rich 2 MP IR speed dome camera with powerful 25× optical zoom (16× digital), built-in DarkFighter sensor for ultra-low light, and expansive 100 m IR range. With PTZ control, 300 presets, face capture (up to 5 faces), and deep-learning target classification, it’s ideal for large-area surveillance like parking lots or campuses. H.265+ video compression, 120 dB WDR, and IP66 build ensure reliability in all weather conditions.",
     "features": [
       "2 MP/4 MP/8 MP 25× Network IR Speed Dome",
@@ -67,6 +68,7 @@
     "category": "CCTV",
     "brand": "Hikvision",
     "model": "DS2CD2T43G24LI",
+    "name": "",
     "description": "The Hikvision DS‑2CD2T43G24LI AcuSense bullet camera combines 2 MP imaging with intelligent human/vehicle detection and Smart Hybrid Light in four modes for vibrant color at all hours. Dual mics enhance audio monitoring; 120 dB WDR ensures clarity in mixed lighting. H.265+ compression, IP67 & IK10 durability make it perfect for high-security outdoor locations like gated entrances or parking structures.",
     "features": [
       "2 MP/4 MP/8 MP Acusense Smart Hybrid Light Bullet Camera",
@@ -88,6 +90,7 @@
     "category": "CCTV",
     "brand": "Dahua",
     "model": "DH-HAC-B1A21P",
+    "name": "",
     "description": "The Dahua DH‑HAC‑B1A21P is a high-definition 2 MP HDCVI IR bullet camera offering 1080p at 30 fps with options for 3.6 mm, 2.8 mm, or 6 mm lenses. Featuring Smart IR up to 20 m, HD/SD switchable output, IP67-rated weatherproofing, and multi-language OSD. Ideal for cost-effective upgrades to existing coaxial CCTV systems, it delivers crisp night vision, stable performance in extreme temperatures, and easy installation.",
     "features": [
       "Max. 30fps@1080P",
@@ -105,6 +108,7 @@
     "category": "CCTV",
     "brand": "Dahua",
     "model": "DH-HAC-T2A21P",
+    "name": "",
     "description": "The Dahua DH‑HAC‑T2A21P is a versatile 2 MP HDCVI bullet camera delivering 1080p video with 20 m Smart IR and interchangeable 2.8 mm, 3.6 mm, or 6 mm lens options. HD/SD analog output and IP67 weatherproof design make it a reliable and affordable choice for residential and commercial surveillance installations needing flexibility and dependable performance in varying environmental conditions.",
     "features": [
       "Max. 30fps@1080P",
@@ -166,6 +170,7 @@
     "category": "CCTV",
     "brand": "Wireless",
     "model": "EZVIZ CSTY2",
+    "name": "",
     "description": "The EZVIZ CSTY2 is a feature-rich 1080p WiFi/Ethernet indoor pan-tilt camera offering 340° horizontal and 55° vertical rotation. With 4 mm lens, H.264 compression, 10 m night vision, dual-stream recording to microSD (256 GB), two-way audio, and built-in motion detection with privacy mode and optional cloud storage, it's perfect for home or small office monitoring.",
     "features": [
       "Resolution: 1920x1080 (2MP)",
@@ -221,6 +226,7 @@
     "category": "NVR_and_DVR",
     "brand": "Hikvision",
     "model": "DS7100_Series",
+    "name": "",
     "description": "The Hikvision DS7100-Series NVR delivers smart and scalable recording for up to 8 MP IP cameras. Featuring PoE support for streamlined setup, advanced deep-learning motion detection, smart search tools, and seamless integration with HikConnect for remote access. Ideal for small to mid-sized security systems requiring easy installation and smart features.",
     "features": [
       "Smart search",
@@ -284,6 +290,7 @@
     "category": "NVR_and_DVR",
     "brand": "Hikvision",
     "model": "DS7600_Series",
+    "name": "",
     "description": "The Hikvision DS7600-Series DVR is a robust multi-channel recorder supporting analog and IP cameras with 8 MP resolution. With embedded PoE, smart analytics, remote monitoring via Hik-Connect, and scalable storage, it’s suitable for complex surveillance setups requiring reliable performance and intelligent detection.",
     "features": [
       "Model: DS-7608NI-K2, DS-7616NI-K2, DS-7632NI-K2",
@@ -326,6 +333,7 @@
     "category": "Gate_Openers",
     "brand": "Nice",
     "model": "Nice_Robus_600",
+    "name": "",
     "description": "The Nice Robus 600 is a reliable swing gate opener featuring BlueBUS connectivity, automatic obstacle detection, and intuitive programming. Its compact IP44-rated design allows easy installation and includes manual release for emergencies—perfect for residential swing gates up to 600 kg.",
     "features": [
       "BlueBUS",
@@ -343,6 +351,7 @@
     "category": "Gate_Openers",
     "brand": "Nice",
     "model": "Nice_Robus_800",
+    "name": "",
     "description": "The Nice Robus 800 swing gate opener delivers silent, powerful performance for gates up to 800 kg. Equipped with a magnetic encoder for precise movement, it offers smooth, quiet operation and manual release in case of power loss. Ideal for high-traffic residential and commercial entrances.",
     "features": [
       "Magnetic Encoder",
@@ -359,6 +368,7 @@
     "category": "Gate_Openers",
     "brand": "Centurion",
     "model": "D5Evo",
+    "name": "",
     "description": "The Centurion D5Evo is a premium swing gate motor offering robust battery backup, anti-crushing safety, and magnetic limit switches for precise control. Designed for heavy residential or light commercial gates, it ensures reliable, uninterrupted operation.",
     "features": [
       "Battery backup",
@@ -374,6 +384,7 @@
     "category": "Gate_Openers",
     "brand": "Centurion",
     "model": "D6 SMΔRT",
+    "name": "",
     "description": "The Centurion D6 SMΔRT is an advanced swing gate opener featuring tamper detection, electric lock compatibility, and all-weather protection. Designed for residential and commercial gates requiring secure and smart access.",
     "features": [
       "Tamper detection",
@@ -389,6 +400,7 @@
     "category": "Gate_Openers",
     "brand": "Centurion",
     "model": "D10",
+    "name": "",
     "description": "The Centurion D10 is a heavy-duty swing gate motor powered by a 24V DC motor and LCD controller, with battery backup for uninterrupted operation. Engineered for large residential or commercial gates, it offers secure, smooth automation.",
     "features": [
       "24V DC motor",
@@ -404,6 +416,7 @@
     "category": "Gate_Openers",
     "brand": "Custom_Gate_Openers",
     "model": "500kg",
+    "name": "",
     "description": "This 500 kg-capacity custom gate opener features a magnetic encoder, amperometric obstacle detection, silent aluminum housing, manual release, and reliable battery backup. Engineered for smooth, dependable automation of residential or light industrial gates.",
     "features": [
       "Magnetic Encoder",
@@ -422,6 +435,7 @@
     "category": "Gate_Openers",
     "brand": "Custom_Gate_Openers",
     "model": "800kg",
+    "name": "",
     "description": "The 800 kg custom gate opener combines powerful DC drive with magnetic encoder, battery backup, amperometric safety, and quiet aluminum housing. Designed for larger residential or commercial swing gates needing heavy-duty reliability.",
     "features": [
       "Magnetic Encoder",
@@ -440,6 +454,7 @@
     "category": "Intercoms",
     "brand": "Hikvision",
     "model": "DSKH9510WTE1 / DSKH9510WTE2",
+    "name": "",
     "description": "The Hikvision DSKH9510WTE indoor video intercom features a 10” touchscreen, Android OS, WiFi/Ethernet, HikConnect support, and microSD slot (128 GB). It supports 8 alarm inputs/2 outputs and seamless integration with Hikvision access control—perfect for modern intercom installations.",
     "features": [
       "10” Touchscreen (1024x600)",
@@ -456,6 +471,7 @@
     "category": "Intercoms",
     "brand": "Hikvision",
     "model": "DSKB2411TIM / DSKH2220",
+    "name": "",
     "description": "This Hikvision intercom system includes a 1080p door station with 66° FOV, mic/speaker, plus a 7” indoor station with physical buttons. Supports expansion to 1 door + 1 indoor unit, combining robust video intercom features with compact design and reliable communication.",
     "features": [
       "Door Station: 1920x1080, 66.2° FOV, Built-in mic/speaker, 12V DC",
@@ -470,6 +486,7 @@
     "category": "Time_Attendance",
     "brand": "SFace_900",
     "model": "SFace_900",
+    "name": "",
     "description": "The SFace 900 is a cutting-edge facial recognition time & attendance terminal featuring high-speed, accurate performance. Ideal for workforce management in offices and factories, offering scalable access control integration.",
     "features": [],
     "image": [
@@ -481,6 +498,7 @@
     "category": "Time_Attendance",
     "brand": "SFace_Lite",
     "model": "SFace_Lite",
+    "name": "",
     "description": "The SFace Lite is a compact, multi-language biometric time & attendance terminal with optional WiFi and 12 V DC power. It delivers reliable employee clock-in functionality for small businesses and offices.",
     "features": [
       "WiFi optional",
@@ -495,6 +513,7 @@
     "category": "Time_Attendance",
     "brand": "SFace_7",
     "model": "SFace_7",
+    "name": "",
     "description": "The rugged SFace 7 attendance terminal features Android OS, IP65 rating, and dual 4G/WiFi connectivity. Designed for demanding environments needing secure, mobile-ready access and attendance tracking.",
     "features": [
       "Android OS",
@@ -510,6 +529,7 @@
     "category": "Time_Attendance",
     "brand": "SFace_5",
     "model": "SFace_5",
+    "name": "",
     "description": "The SFace 5 is a Linux-based time & attendance terminal offering payroll support and tamper alarms. Built for reliable workforce time tracking in offices or secure facilities.",
     "features": [
       "Linux OS",
