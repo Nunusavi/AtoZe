@@ -102,7 +102,7 @@
                                 <ul id="mainmenu">
                                     <li><a class="menu-item" href="index.html">Home</a></li>
                                     <li><a class="menu-item" href="services.html">Services</a></li>
-                                    <li><a class="menu-item" href="brands.html">Products</a></li>
+                                    <li><a class="menu-item" href="products.html">Products</a></li>
                                     <li><a class="menu-item" href="projects.html">Projects</a></li>
                                     <li><a class="menu-item" href="contact.html">Contact</a></li>
                                 </ul>
@@ -231,11 +231,19 @@
                             remote monitoring, ensuring your property is always protected. </p>
 
                         <div class="social-icons mb-sm-30">
-                            <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
-                            <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
-                            <a href="#"><i class="fa-brands fa-discord"></i></a>
-                            <a href="#"><i class="fa-brands fa-tiktok"></i></a>
-                            <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                            <a href="https://t.me/AtoZSecuritySolutions"><i class="fa-brands fa-telegram-plane"></i></a>
+                            <a
+                                href="https://www.instagram.com/a.to.zengineering?utm_source=qr&igsh=MTM0cmIxaTRrZW9rdw=="><i
+                                    class="fa-brands fa-instagram"></i></a>
+                            <a href="https://youtube.com/@a-to-zengineering?si=N4_F1YLiL9tmqHGU"><i
+                                    class="fa-brands fa-youtube"></i></a>
+                            <a href="https://www.tiktok.com/@atoz.engineering?_t=ZM-8xdkV17Zu5g&_r=1"><i
+                                    class="fa-brands fa-tiktok"></i></a>
+                            <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+                            <a href="https://x.com/asmeramujib?t=4TwsOum9mPmsje1N8IoUwg&s=09"><i
+                                    class="fa-brands fa-x-twitter"></i></a>
+                            <a href="https://www.linkedin.com/company/a-to-ze-engineering/"><i
+                                    class="fa-brands fa-linkedin"></i></a>
                         </div>
                     </div>
                     <div class="col-lg-4 col-sm-12 order-lg-1 order-sm-2">
@@ -245,10 +253,9 @@
                                     <h5>Company</h5>
                                     <ul>
                                         <li><a href="index.html">Home</a></li>
-                                        <li><a href="services">Our Services</a></li>
+                                        <li><a href="services.html">Our Services</a></li>
                                         <li><a href="projects.html">Projects</a></li>
                                         <li><a href="contact.html">Get a Free Quote</a></li>
-                                        <li><a href="blog.html">Blog</a></li>
                                         <li><a href="contact.html">Contact</a></li>
                                     </ul>
                                 </div>
@@ -295,8 +302,11 @@
                         <div class="col-md-12">
                             <div class="de-flex">
                                 <div class="de-flex-col">
-                                    Copyright 2025 - AtoZE Engineering by &nbsp; <a href="https://nate.et">Nathan
-                                        Mesfin</a>
+                                    Copyright &copy;&nbsp;<span class="current-year"></span> - AtoZE Engineering by
+                                    &nbsp;<a href="https://nate.et">Nate</a>
+                                    <script>
+                                        document.querySelector('.current-year').textContent = new Date().getFullYear();
+                                    </script>
                                 </div>
                                 <ul class="menu-simple">
                                     <li><a href="#">Terms &amp; Conditions</a></li>
@@ -376,22 +386,22 @@
             if (!features) return '';
             let items = [];
             if (Array.isArray(features)) {
-            items = features;
+                items = features;
             } else if (typeof features === 'object') {
-            items = Object.entries(features).map(
-                ([k, v]) => `<b>${k}:</b> ${Array.isArray(v) ? v.join(', ') : v}`
-            );
+                items = Object.entries(features).map(
+                    ([k, v]) => `<b>${k}:</b> ${Array.isArray(v) ? v.join(', ') : v}`
+                );
             } else {
-            items = [features];
+                items = [features];
             }
 
             if (items.length <= 5) {
-            return items.map(f => `<li>${f}</li>`).join('');
+                return items.map(f => `<li>${f}</li>`).join('');
             } else {
-            // Show first 5, then a "Show all" button
-            const firstFive = items.slice(0, 5).map(f => `<li>${f}</li>`).join('');
-            const rest = items.slice(5).map(f => `<li class="extra-feature" style="display:none;">${f}</li>`).join('');
-            return `
+                // Show first 5, then a "Show all" button
+                const firstFive = items.slice(0, 5).map(f => `<li>${f}</li>`).join('');
+                const rest = items.slice(5).map(f => `<li class="extra-feature" style="display:none;">${f}</li>`).join('');
+                return `
                 ${firstFive}
                 ${rest}
                 <li>
@@ -433,31 +443,32 @@
                                 <!-- Carousel for product images -->
                                 <div id="productImagesCarousel" class="carousel slide" data-bs-ride="carousel">
                                     <div class="carousel-inner">
-                                        ${Array.isArray(found.image) && found.image.length > 0
-                                ? found.image.map((img, idx, arr) => `
-                                                    <div class="carousel-item${idx === arr.length - 1 ? ' active' : ''}">
-                                                        <img src="${img}" class="d-block h-100 w-100" alt="${found.model} image ${idx + 1}">
-                                                    </div>
-                                                `).join('')
+                                        ${Array.isArray(found.image) && found.image.length > 1
+                                ? found.image.slice(1).map((img, idx, arr) => `
+                                                <div class="carousel-item${idx === 0 ? ' active' : ''}">
+                                                    <img src="${img}" class="d-block h-100 w-100" alt="${found.model} image ${idx + 2}">
+                                                </div>
+                                            `).join('')
                                 : `
-                                                    <div class="carousel-item active">
-                                                        <img src="images/products/6.webp" class="d-block w-100" alt="${found.model}">
-                                                    </div>
-                                                `
+                                                <div class="carousel-item active">
+                                                    <img src="images/products/6.webp" class="d-block w-100" alt="${found.model}">
+                                                </div>
+                                            `
                             }
                                     </div>
-                                    ${Array.isArray(found.image) && found.image.length > 1
+                                    ${Array.isArray(found.image) && found.image.length > 2
                                 ? `
-                                                <button class="carousel-control-prev" type="button" data-bs-target="#productImagesCarousel" data-bs-slide="prev" style="opacity:0.3;">
-                                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                                    <span class="visually-hidden">Previous</span>
-                                                </button>
-                                                <button class="carousel-control-next" type="button" data-bs-target="#productImagesCarousel" data-bs-slide="next" style="opacity:0.3;">
-                                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                                    <span class="visually-hidden">Next</span>
-                                                </button>
-                                            `
+                                            <button class="carousel-control-prev" type="button" data-bs-target="#productImagesCarousel" data-bs-slide="prev" style="opacity:0.3;">
+                                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                                <span class="visually-hidden">Previous</span>
+                                            </button>
+                                            <button class="carousel-control-next" type="button" data-bs-target="#productImagesCarousel" data-bs-slide="next" style="opacity:0.3;">
+                                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                                <span class="visually-hidden">Next</span>
+                                            </button>
+                                        `
                                 : ''
+
                             }
                                 </div>
                                 <div class="triangle-bottomright-dark"></div>

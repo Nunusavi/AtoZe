@@ -3,6 +3,7 @@
     "category": "CCTV",
     "brand": "Hikvision",
     "model": "DS2CD1023G2LIU / DS2CD1043G2LIU(F)",
+    "name" : "Hikvision DS-2CD1023G2LIU(F)",
     "description": "The Hikvision DS‑2CD1023G2LIU(F) is a smart dual-light bullet IP camera delivering 2 MP (up to 8 MP) full HD imaging with 0.005 Lux low-light sensitivity. It features intelligent human/vehicle detection to reduce false alerts and Smart Hybrid Light (IR + white LEDs) offering up to 30 m night visibility. A built-in microphone captures real-time audio, while H.265+ compression and optional 512 GB SD card support maximize recording efficiency. Ruggedly built to IP67 standards, this camera is ideal for residential or small business security, providing sharp, clear, and reliable surveillance across all conditions.",
     "features": [
       "High quality imaging with 2 MP/4 MP/8 MP resolution",
@@ -15,13 +16,15 @@
     ],
     "image": [
       "./images/products/Hikvision/4.png",
-      "./images/products/Hikvision/DS2CD1023G2LIU_DS2CD1043G2LIU.png"
+      "https://assets.hikvision.com/prd/public/all/image/sm000042453/%E7%AD%92%E6%9C%BA39-%E7%99%BD%E5%85%89%E6%AC%BE-%E5%85%A8%E5%8A%9F%E8%83%BD-%E6%B5%B7%E5%A4%96%E6%A0%87%E9%85%8D-%E6%AD%A3%E9%9D%A2.png",
+      "https://assets.hikvision.com/prd/public/all/image/sm000042453/%E7%AD%92%E6%9C%BA39-%E7%99%BD%E5%85%89%E6%AC%BE-%E5%85%A8%E5%8A%9F%E8%83%BD-%E6%B5%B7%E5%A4%96%E6%A0%87%E9%85%8D-%E6%AD%A3%E9%9D%A2.png"
     ]
   },
   {
     "category": "CCTV",
     "brand": "Hikvision",
     "model": "DS2CD1123G2LIU",
+    "name" : "Hikvision ",
     "description": "The Hikvision DS‑2CD1123G2LIU is a value-packed 2 MP bullet camera offering advanced smart detection, motorized Smart Hybrid Light, and dual audio for enhanced security. Featuring AcuSense AI for precise human/vehicle identification, 120 dB WDR for crisp daytime footage, H.265+ encoding, and up to 512 GB onboard storage. Its IK08 and IP67 rating make it vandal and weather resistant—perfect for perimeter, doorway, or commercial site monitoring.",
     "features": [
       "High quality imaging with 2 MP/4 MP/8 MP resolution",
@@ -57,7 +60,6 @@
     ],
     "image": [
       "./images/products/Hikvision/4.webp",
-      "images/hikvision/DS2CD1123G2LIU.jpg",
       "https://www.hikvision.com/content/dam/hikvision/products/asset/M000001009/images/DE4XXXIW-&-AE4xxxTI_1.png"
     ]
   },

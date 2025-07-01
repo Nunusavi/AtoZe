@@ -76,7 +76,7 @@
                                 <ul id="mainmenu">
                                     <li><a class="menu-item" href="index.html">Home</a></li>
                                     <li><a class="menu-item" href="services.html">Services</a></li>
-                                    <li><a class="menu-item" href="brands.html">Products</a></li>
+                                    <li><a class="menu-item" href="products.html">Products</a></li>
                                     <li><a class="menu-item" href="projects.html">Projects</a></li>
                                     <li><a class="menu-item" href="contact.html">Contact</a></li>
                                 </ul>
@@ -419,7 +419,11 @@
                     <div class="col-md-12">
                         <div class="de-flex">
                             <div class="de-flex-col">
-                                Copyright 2025 - AtoZE Engineering by <a href="https://nate.et">Nathan Mesfin</a>
+                                Copyright &copy;&nbsp;<span class="current-year"></span> - AtoZE Engineering by
+                                &nbsp;<a href="https://nate.et">Nate</a>
+                                <script>
+                                    document.querySelector('.current-year').textContent = new Date().getFullYear();
+                                </script>
                             </div>
                             <ul class="menu-simple">
                                 <li><a href="#">Terms &amp; Conditions</a></li>
