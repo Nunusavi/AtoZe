@@ -180,7 +180,7 @@
                 </div>
             </section>
 
-            <section class="pt-0">
+            <!-- <section class="pt-0">
                 <div class="container">
                     <div class="row g-4">
                         <div class="col-lg-4 col-md-6 mb-sm-30">
@@ -215,7 +215,7 @@
                         </div>
                     </div>
                 </div>
-            </section>
+            </section> -->
 
         </div>
         <!-- content close -->
@@ -420,7 +420,7 @@
                 }
                 const label = f.slice(0, idx).trim();
                 const value = f.slice(idx + 1).trim();
-                return `<tr><th style=\"text-align:left;white-space:nowrap;\">${label}</th><td>${value}</td></tr>`;
+                return `<tr><th style=\"text-align:left;white-space:wrap;\">${label}</th><td>${value}</td></tr>`;
             }).join('');
             return `
         <div class=\"features-table-scroll-area\">
@@ -442,6 +442,7 @@
             overflow-y: auto;
             overflow-x: auto;
             margin-bottom: 1em;
+            width: 100%;
         }
         .features-table-scroll-area::-webkit-scrollbar {
             width: 3px;
@@ -455,11 +456,17 @@
             background: #222;
             border-radius: 4px;
         }
+        .features-table-scroll-table {
+            width: 100%;
+            min-width: 350px;
+            table-layout: auto;
+        }
         .features-table-scroll-table th, .features-table-scroll-table td {
             background: transparent !important;
             border-color: #444 !important;
             vertical-align: middle;
             font-size: 0.95em !important;
+            padding: 0.5em 0.75em;
         }
         .features-table-scroll-table th {
             font-weight: 600;
@@ -467,6 +474,15 @@
         }
         .features-table-scroll-table td {
             color: #eee;
+        }
+        @media (max-width: 600px) {
+            .features-table-scroll-table th, .features-table-scroll-table td {
+                font-size: 0.85em !important;
+                padding: 0.4em 0.5em;
+            }
+            .features-table-scroll-area {
+                max-height: 220px;
+            }
         }
         `;
                 document.head.appendChild(style);
