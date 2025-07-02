@@ -414,6 +414,68 @@
             }
         }
 
+        function formatFeaturesTable(features) {
+            if (!features || !Array.isArray(features) || features.length === 0) return '';
+            let rows = features.map(f => {
+                const idx = f.indexOf(':');
+                if (idx === -1) {
+                    return `<tr><td colspan=\"2\">${f}</td></tr>`;
+                }
+                const label = f.slice(0, idx).trim();
+                const value = f.slice(idx + 1).trim();
+                return `<tr><th style=\"text-align:left;white-space:nowrap;\">${label}</th><td>${value}</td></tr>`;
+            }).join('');
+            return `
+        <div class=\"features-table-scroll-area\">
+            <table class=\"table table-bordered text-white mb-0 features-table-scroll-table small\">
+                ${rows}
+            </table>
+        </div>
+    `;
+        }
+
+        // Add the custom scrollbar and table style globally (only once)
+        (function () {
+            if (!document.getElementById('features-table-scrollbar-style')) {
+                const style = document.createElement('style');
+                style.id = 'features-table-scrollbar-style';
+                style.innerHTML = `
+        .features-table-scroll-area {
+            max-height: 340px;
+            overflow-y: auto;
+            overflow-x: auto;
+            margin-bottom: 1em;
+        }
+        .features-table-scroll-area::-webkit-scrollbar {
+            width: 3px;
+            height: 3px;
+        }
+        .features-table-scroll-area::-webkit-scrollbar-thumb {
+            background: #e53935;
+            border-radius: 4px;
+        }
+        .features-table-scroll-area::-webkit-scrollbar-track {
+            background: #222;
+            border-radius: 4px;
+        }
+        .features-table-scroll-table th, .features-table-scroll-table td {
+            background: transparent !important;
+            border-color: #444 !important;
+            vertical-align: middle;
+            font-size: 0.95em !important;
+        }
+        .features-table-scroll-table th {
+            font-weight: 600;
+            color: #fff;
+        }
+        .features-table-scroll-table td {
+            color: #eee;
+        }
+        `;
+                document.head.appendChild(style);
+            }
+        })();
+
         document.addEventListener('DOMContentLoaded', () => {
             const category = getQueryParam('category');
             const brand = getQueryParam('brand');
@@ -439,7 +501,7 @@
                 <div class="container">
                     <div class="row g-4 gx-5 align-items-center">
                         <div class="col-lg-6">
-                            <div class="relative bg-dark-2 px-5">
+                            <div class="relative bg-dark-2">
                                 <!-- Carousel for product images -->
                                 <div id="productImagesCarousel" class="carousel slide" data-bs-ride="carousel">
                                     <div class="carousel-inner">
@@ -475,13 +537,11 @@
                             </div>
                         </div>
                         <div class="col-lg-6">
-                            <h3 class="mb-2">${found.model}</h3>
+                            <h3 class="mb-2">${found.name}</h3>
                             <h5 class="text-muted mb-3">${brand}&nbsp<span class="badge bg-secondary">${category.replace(/_/g, ' ')}</span></h5>
                             ${found.description ? `<p>${found.description}</p>` : ''}
                             <h4 class="mt-4 mb-2">Key Features</h4>
-                            <ul style="font-size:1.1em;">
-                                ${formatFeatures(found.features)}
-                            </ul>
+                            ${formatFeaturesTable(found.features)}
                         </div>
                         <div class="col-12 mt-4 text-start">
                             <a href="tel:+251939902685" class="btn-main fx-slide" >

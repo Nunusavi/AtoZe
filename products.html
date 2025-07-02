@@ -335,79 +335,195 @@
                 const productCards = document.getElementById('productCards');
                 productCards.innerHTML = '';
 
-                categories.forEach(cat => {
-                    // Filter models for this category
-                    const modelsInCategory = data.filter(m => m.category === cat.key);
-                    if (modelsInCategory.length === 0) return;
-
-                    // Group by brand
+                // Helper to get brands for a category
+                function getBrands(catKey) {
+                    const modelsInCategory = data.filter(m => m.category === catKey);
                     const brands = {};
                     modelsInCategory.forEach(m => {
                         if (!brands[m.brand]) brands[m.brand] = [];
                         brands[m.brand].push(m);
                     });
+                    return brands;
+                }
 
-                    // Category Title Separator
-                    const catRow = document.createElement('div');
-                    catRow.className = 'col-12 mb-3 mt-5';
-                    catRow.innerHTML = `
-                        <h2 class="text-uppercase fw-bold border-bottom pb-2 mb-4" style="letter-spacing:1px;">
-                            ${cat.label}
-                        </h2>
-                    `;
-                    productCards.appendChild(catRow);
-
-                    Object.entries(brands).forEach(([brand, models]) => {
-                        // Get image for this brand (first model with image, first index)
-                        let brandImg = 'images/products/6.webp';
-                        for (const m of models) {
-                            if (Array.isArray(m.image) && m.image[0]) {
-                                brandImg = m.image[0];
-                                break;
-                            }
+                let i = 0;
+                while (i < categories.length) {
+                    let group = [];
+                    let totalBrands = 0;
+                    let j = i;
+                    while (j < categories.length) {
+                        const brands = getBrands(categories[j].key);
+                        const brandCount = Object.keys(brands).length;
+                        if (brandCount === 0) {
+                            j++;
+                            continue;
                         }
-                        // List of model names
-                        const modelLinks = models.map(m => `
-                            <a href="product-details.html?category=${encodeURIComponent(cat.key)}&brand=${encodeURIComponent(brand)}&model=${encodeURIComponent(m.model)}" class="d-block mb-1 text-light brand-model-link">
-                                ${m.model}
-                            </a>
-                        `).join('');
+                        if (brandCount > 3 && group.length === 0) {
+                            // This category alone takes full width
+                            group.push({ cat: categories[j], brands, fullWidth: true });
+                            j++;
+                            break;
+                        } else if (brandCount > 3) {
+                            // Stop grouping, render current group first
+                            break;
+                        } else if (totalBrands + brandCount <= 3) {
+                            group.push({ cat: categories[j], brands, fullWidth: false });
+                            totalBrands += brandCount;
+                            j++;
+                        } else {
+                            break;
+                        }
+                    }
 
-
-                        const card = document.createElement('div');
-                        card.className = 'col-lg-4 col-md-6 wow fadeInRight mb-4';
-                        card.setAttribute('data-wow-delay', '1s');
-                        card.innerHTML = `
-                            <div class="relative hover overflow-hidden">
-                                <div class="absolute w-100 h-100 p-40 bg-dark-2 hover-op-1 hover-mt-40">
-                                    <h4 style="font-weight: bold;">${brand}</h4>
-                                    <p style="font-size: 14px;">
-                                        ${modelLinks}
-                                    </p>
-                                    <style>
-                                        .brand-model-link {
-                                            transition: color 0.9s cubic-bezier(0.4,0,0.2,1), background 0.1s cubic-bezier(0.4,0,0.2,1);
-                                        }
-                                        .brand-model-link:hover {
-                                            color: #fff !important;
-                                            background: #e53935;
-                                            border-radius: 4px;
-                                            padding-left: 8px;
-                                            padding-right: 8px;
-                                            box-shadow: 0 2px 12px 0 rgba(229,57,53,0.15);
-                                            transition: color 0.9s cubic-bezier(0.4,0,0.2,1), background 0.1s cubic-bezier(0.4,0,0.2,1), box-shadow 0.3s cubic-bezier(0.4,0,0.2,1);
-                                        }
-                                    </style>
-                                </div>
-                                <div class="text-center py-3">
-                                    <img src="${brandImg}" class="w-80" alt="${brand}">
-                                    <h4>${brand}</h4>
-                                </div>
-                            </div>
+                    // Render the group
+                    if (group.length === 1 && group[0].fullWidth) {
+                        // Full width row for a single category with >3 brands
+                        const row = document.createElement('div');
+                        row.className = 'row g-4';
+                        const { cat, brands } = group[0];
+                        // Category Title Separator
+                        const catCol = document.createElement('div');
+                        catCol.className = 'col-12 mb-3 mt-5';
+                        catCol.innerHTML = `
+                            <h2 class="text-uppercase fw-bold border-bottom pb-2 mb-4" style="letter-spacing:1px;">
+                                ${cat.label}
+                            </h2>
                         `;
-                        productCards.appendChild(card);
-                    });
-                });
+                        row.appendChild(catCol);
+                        Object.entries(brands).forEach(([brand, models]) => {
+                            let brandImg = 'images/products/6.webp';
+                            for (const m of models) {
+                                if (Array.isArray(m.image) && m.image[0]) {
+                                    brandImg = m.image[0];
+                                    break;
+                                }
+                            }
+                            const modelLinks = models.map(m => `
+                                <a href="product-details.html?category=${encodeURIComponent(cat.key)}&brand=${encodeURIComponent(brand)}&model=${encodeURIComponent(m.model)}" class="d-block mb-1 text-light brand-model-link">
+                                    ${m.name}
+                                </a>
+                            `).join('');
+                            const card = document.createElement('div');
+                            card.className = 'col-lg-4 col-md-6 wow fadeInRight mb-4';
+                            card.setAttribute('data-wow-delay', '1s');
+                            card.innerHTML = `
+                                <div class="relative hover overflow-hidden">
+                                    <div class="absolute w-100 h-100 p-40 bg-dark-2 hover-op-1 hover-mt-40">
+                                        <h4 style="font-weight: bold;">${brand}</h4>
+                                        <div style="font-size: 14px; max-height: 180px; overflow-y: auto; margin-bottom: 10px; scrollbar-width: thin; scrollbar-color: #e53935 #222;">
+                                            ${modelLinks}
+                                        </div>
+                                        <style>
+                                            .brand-model-link {
+                                                transition: color 0.9s cubic-bezier(0.4,0,0.2,1), background 0.1s cubic-bezier(0.4,0,0.2,1);
+                                            }
+                                            .brand-model-link:hover {
+                                                color: #fff !important;
+                                                background: #e53935;
+                                                border-radius: 4px;
+                                                padding-left: 8px;
+                                                padding-right: 8px;
+                                                box-shadow: 0 2px 12px 0 rgba(229,57,53,0.15);
+                                                transition: color 0.9s cubic-bezier(0.4,0,0.2,1), background 0.1s cubic-bezier(0.4,0,0.2,1), box-shadow 0.3s cubic-bezier(0.4,0,0.2,1);
+                                            }
+                                            /* Custom red scrollbar for Webkit browsers */
+                                            .relative .overflow-hidden > div[style*="overflow-y: auto"]::-webkit-scrollbar {
+                                                width: 8px;
+                                            }
+                                            .relative .overflow-hidden > div[style*="overflow-y: auto"]::-webkit-scrollbar-thumb {
+                                                background: #e53935;
+                                                border-radius: 4px;
+                                            }
+                                            .relative .overflow-hidden > div[style*="overflow-y: auto"]::-webkit-scrollbar-track {
+                                                background: #222;
+                                                border-radius: 4px;
+                                            }
+                                        </style>
+                                    </div>
+                                    <div class="text-center py-3">
+                                        <img src="${brandImg}" class="w-80" alt="${brand}">
+                                        <h4>${brand}</h4>
+                                    </div>
+                                </div>
+                            `;
+                            row.appendChild(card);
+                        });
+                        productCards.appendChild(row);
+                    } else if (group.length > 0) {
+                        // Shared row for multiple categories (each with <=3 brands, total <=3 brands)
+                        const row = document.createElement('div');
+                        row.className = 'row g-4';
+                        group.forEach(({ cat, brands }) => {
+                            const catCol = document.createElement('div');
+                            catCol.className = 'col-12 mb-3 mt-5';
+                            catCol.innerHTML = `
+                                <h2 class="text-uppercase fw-bold border-bottom pb-2 mb-4" style="letter-spacing:1px;">
+                                    ${cat.label}
+                                </h2>
+                            `;
+                            row.appendChild(catCol);
+                            Object.entries(brands).forEach(([brand, models]) => {
+                                let brandImg = 'images/products/6.webp';
+                                for (const m of models) {
+                                    if (Array.isArray(m.image) && m.image[0]) {
+                                        brandImg = m.image[0];
+                                        break;
+                                    }
+                                }
+                                const modelLinks = models.map(m => `
+                                    <a href="product-details.html?category=${encodeURIComponent(cat.key)}&brand=${encodeURIComponent(brand)}&model=${encodeURIComponent(m.model)}" class="d-block mb-1 text-light brand-model-link">
+                                        ${m.name}
+                                    </a>
+                                `).join('');
+                                const card = document.createElement('div');
+                                card.className = 'col-lg-4 col-md-6 wow fadeInRight mb-4';
+                                card.setAttribute('data-wow-delay', '1s');
+                                card.innerHTML = `
+                                    <div class="relative hover overflow-hidden">
+                                        <div class="absolute w-100 h-100 p-40 bg-dark-2 hover-op-1 hover-mt-40">
+                                            <h4 style="font-weight: bold;">${brand}</h4>
+                                            <div style="font-size: 14px; max-height: 180px; overflow-y: auto; margin-bottom: 10px; scrollbar-width: thin; scrollbar-color: #e53935 #222;">
+                                                ${modelLinks}
+                                            </div>
+                                            <style>
+                                                .brand-model-link {
+                                                    transition: color 0.9s cubic-bezier(0.4,0,0.2,1), background 0.1s cubic-bezier(0.4,0,0.2,1);
+                                                }
+                                                .brand-model-link:hover {
+                                                    color: #fff !important;
+                                                    background: #e53935;
+                                                    border-radius: 4px;
+                                                    padding-left: 8px;
+                                                    padding-right: 8px;
+                                                    box-shadow: 0 2px 12px 0 rgba(229,57,53,0.15);
+                                                    transition: color 0.9s cubic-bezier(0.4,0,0.2,1), background 0.1s cubic-bezier(0.4,0,0.2,1), box-shadow 0.3s cubic-bezier(0.4,0,0.2,1);
+                                                }
+                                                .relative .overflow-hidden > div[style*="overflow-y: auto"]::-webkit-scrollbar {
+                                                    width: 8px;
+                                                }
+                                                .relative .overflow-hidden > div[style*="overflow-y: auto"]::-webkit-scrollbar-thumb {
+                                                    background: #e53935;
+                                                    border-radius: 4px;
+                                                }
+                                                .relative .overflow-hidden > div[style*="overflow-y: auto"]::-webkit-scrollbar-track {
+                                                    background: #222;
+                                                    border-radius: 4px;
+                                                }
+                                            </style>
+                                        </div>
+                                        <div class="text-center py-3">
+                                            <img src="${brandImg}" class="w-80" alt="${brand}">
+                                            <h4>${brand}</h4>
+                                        </div>
+                                    </div>
+                                `;
+                                row.appendChild(card);
+                            });
+                        });
+                        productCards.appendChild(row);
+                    }
+                    i = j;
+                }
             });
     </script>
 </body>
