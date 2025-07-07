@@ -1,0 +1,52 @@
+[
+    {
+        "background": "images/background/3.webp",
+        "title": "A To Ze Security",
+        "headline": "CCTV Systems",
+        "image": "images/products/3.webp",
+        "learnMoreText": "Learn More",
+        "learnMoreLink": "contact.html",
+        "callText": "Call us",
+        "callLink": "contact.html"
+    },
+    {
+        "background": "images/background/3.webp",
+        "title": "A To Ze Security",
+        "headline": "Employee Time Management System",
+        "image": "images/products/Time_attendance_2.png",
+        "learnMoreText": "Learn More",
+        "learnMoreLink": "contact.html",
+        "callText": "Call us now",
+        "callLink": "contact.html"
+    },
+    {
+        "background": "images/background/3.webp",
+        "title": "A To Ze Security",
+        "headline": "Modern door control",
+        "image": "images/products/Gate_opener.png",
+        "learnMoreText": "Learn More",
+        "learnMoreLink": "contact.html",
+        "callText": "Call us now",
+        "callLink": "contact.html"
+    },
+    {
+        "background": "images/background/3.webp",
+        "title": "A To Ze Security",
+        "headline": "Intercom Systems",
+        "image": "../images/products/Intercom.png",
+        "learnMoreText": "Learn More",
+        "learnMoreLink": "contact.html",
+        "callText": "Call us now",
+        "callLink": "contact.html"
+    },
+    {
+        "background": "images/background/3.webp",
+        "title": "A To Ze Security",
+        "headline": "Smart door locks",
+        "image": "../images/products/Smart-door-main.png",
+        "learnMoreText": "Learn More",
+        "learnMoreLink": "contact.html",
+        "callText": "Call us now",
+        "callLink": "contact.html"
+    }
+]
