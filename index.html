@@ -31,8 +31,7 @@
 <body>
     <div id="wrapper">
         <div class="call-now-wrapper">
-            <span class="call-text">CALL US</span>
-            <a href="tel:1234567890" class="call-button">
+            <a href="tel:+251939902685" class="call-button">
                 <i class="fas fa-phone"></i>
             </a>
         </div>
@@ -111,7 +110,7 @@
 
             <div id="top"></div>
 
-            <section class="text-light no-top no-bottom position-relative overflow-hidden z-1000">
+            <section class="text-light no-top no-bottom position-relative overflow-hidden z-1000" id="slider">
                 <div class="v-center">
                     <div class="swiper">
                         <!-- Additional required wrapper -->
@@ -131,6 +130,7 @@
                             .then(res => res.json())
                             .then(slides => {
                                 const wrapper = document.getElementById('dynamic-swiper-wrapper');
+                                wrapper.innerHTML = ""; // Clear any existing slides
                                 slides.forEach(slide => {
                                     wrapper.innerHTML += `
                                     <div class="swiper-slide">
@@ -160,15 +160,22 @@
                                     </div>
                                     `;
                                 });
-                                // If Swiper is initialized after DOMContentLoaded, re-initialize here if needed
+                                // Initialize Swiper AFTER slides are injected
                                 if (window.Swiper) {
                                     new Swiper('.swiper', {
-                                        pagination: { el: '.swiper-pagination' },
-                                        navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' }
+                                        pagination: {
+                                            el: '.swiper-pagination',
+                                            clickable: true
+                                        },
+                                        navigation: {
+                                            nextEl: '.swiper-button-next',
+                                            prevEl: '.swiper-button-prev'
+                                        }
                                     });
                                 }
                             });
                     </script>
+
                 </div>
             </section>
 
@@ -212,36 +219,44 @@
                     <div class="row bo g-4">
                         <div class="col-lg-3 col-md-6 wow fadeInRight" data-wow-delay="0s">
                             <div class="relative bg-grey p-40 h-100">
-                                <img src="images/products/Hikvision/DS-2CD1123G2-LIU.png" class="w-200px mb-3" alt="Hikvision Dome Camera">
+                                <img src="images/products/Hikvision/DS-2CD1123G2-LIU.png" class="w-200px mb-3"
+                                    alt="Hikvision Dome Camera">
                                 <h4>CCTV Installation</h4>
-                                <p>High-definition dome camera ideal for indoor and outdoor surveillance, offering clear video and robust protection for your premises.</p>
+                                <p>High-definition dome camera ideal for indoor and outdoor surveillance, offering clear
+                                    video and robust protection for your premises.</p>
                                 <div class="triangle-bottomright-white"></div>
                             </div>
                         </div>
 
                         <div class="col-lg-3 col-md-6 wow fadeInRight" data-wow-delay=".2s">
                             <div class="relative bg-grey p-40 h-100">
-                                <img src="images/products/Time_attendance_2.png" class="w-200px mb-3" alt="Time Attendance Device">
+                                <img src="images/products/Time_attendance_2.png" class="w-200px mb-3"
+                                    alt="Time Attendance Device">
                                 <h4>Time Attendance Device</h4>
-                                <p>Biometric time attendance system for accurate employee tracking and efficient workforce management.</p>
+                                <p>Biometric time attendance system for accurate employee tracking and efficient
+                                    workforce management.</p>
                                 <div class="triangle-bottomright-white"></div>
                             </div>
                         </div>
 
                         <div class="col-lg-3 col-md-6 wow fadeInRight" data-wow-delay=".4s">
                             <div class="relative bg-grey p-40 h-100">
-                                <img src="images/products/Gate Opener /Nice robus 600.png" class="w-200px mb-3" alt="Automatic Gate Opener">
+                                <img src="images/products/Gate Opener /Nice robus 600.png" class="w-200px mb-3"
+                                    alt="Automatic Gate Opener">
                                 <h4>Automatic Gate Opener</h4>
-                                <p>Secure and convenient gate automation solution for residential and commercial properties.</p>
+                                <p>Secure and convenient gate automation solution for residential and commercial
+                                    properties.</p>
                                 <div class="triangle-bottomright-white"></div>
                             </div>
                         </div>
 
                         <div class="col-lg-3 col-md-6 wow fadeInRight" data-wow-delay=".6s">
                             <div class="relative bg-grey p-40 h-100">
-                                <img src="images/products/Intercom.png" class="w-200px mb-3" alt="Video Intercom System">
+                                <img src="images/products/intercom-3.png" class="w-200px mb-3"
+                                    alt="Video Intercom System">
                                 <h4>Video Intercom System</h4>
-                                <p>Two-way video and audio communication system for enhanced entry control and visitor management.</p>
+                                <p>Two-way video and audio communication system for enhanced entry control and visitor
+                                    management.</p>
                                 <div class="triangle-bottomright-white"></div>
                             </div>
                         </div>
@@ -255,7 +270,8 @@
                 <div class="container">
                     <div class="row justify-content-center align-items-center g-4 gx-5 relative z-index-1000">
                         <div class="col-lg-2 d-none d-lg-block text-center">
-                            <img src="images/products/Hikvision/DS-2CD1023G0E-I.png" alt="Security Left" class="img-fluid rounded shadow">
+                            <img src="images/products/Hikvision/DS-2CD1023G0E-I.png" alt="Security Left"
+                                class="img-fluid rounded shadow">
                         </div>
                         <div class="col-lg-8 text-center">
                             <div class="subtitle wow fadeInUp mb-3">
@@ -269,7 +285,8 @@
                             <a class="btn-main btn-line fx-slide" href="tel:+251939902685"><span>Call us</span></a>
                         </div>
                         <div class="col-lg-2 d-none d-lg-block text-center">
-                            <img src="images/products/Hikvision/DS-2CD1143G2-LIU2.png" alt="Security Right" class="img-fluid rounded shadow">
+                            <img src="images/products/Hikvision/DS-2CD1143G2-LIU2.png" alt="Security Right"
+                                class="img-fluid rounded shadow">
                         </div>
                     </div>
                 </div>
@@ -325,7 +342,7 @@
                                 </div>
                                 <div class="col-lg-6 wow fadeInRight" data-wow-delay=".3s">
                                     <div class="relative">
-                                        <img src="images/products/Intercom-2.png" class="w-100" alt="">
+                                        <img src="images/products/intercom-5.png" class="w-100" alt="">
                                         <div class="triangle-bottomright-white z-2"></div>
                                     </div>
                                 </div>

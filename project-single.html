@@ -242,7 +242,7 @@
                             const client = getQueryParam('client');
                             if (!client) return;
 
-                            fetch('./Json/project.json')
+                            fetch('./Json/projects.json')
                                 .then(res => res.json())
                                 .then(data => {
                                     const found = data.clients.find(

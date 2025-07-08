@@ -9456,10 +9456,9 @@ p.slider-teaser {
 .swiper-pagination {
   width: 100px;
   font-size: 20px;
-  text-align: right;
+  text-align: left;
   position: absolute;
-  left: auto;
-  right: 40px;
+  padding-left: 7px;
   bottom: 40px;
   font-weight: 400;
 }
@@ -13902,6 +13901,10 @@ img {
 
 @media only screen and (max-width: 767px) {
 
+  #slider {
+  height: 90vh;
+}
+
   header .logo-main {
     display: none;
   }
@@ -14303,6 +14306,10 @@ img {
 
   header a.btn-main i {
     display: inline-block;
+  }
+
+  .main-slider{
+    max-height: min-content;
   }
 
 }
