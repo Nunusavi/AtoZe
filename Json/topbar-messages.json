@@ -1,0 +1,17 @@
+[
+    {
+        "icon": "images/svg-white/bell.svg",
+        "text": "Get Estimation for your Security Needs",
+        "link": "#"
+    },
+    {
+        "icon": "images/svg-white/phone.svg",
+        "text": "Call us: +251-939-902-685",
+        "link": "tel:+251939902685"
+    },
+    {
+        "icon": "images/svg-white/envelope.svg",
+        "text": "Message us: contact@atozeengineering.com",
+        "link": "mailto:contact@atozeengineering.com"
+    }
+]

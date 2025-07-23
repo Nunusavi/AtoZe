@@ -38,7 +38,8 @@
       "./images/products/Hikvision/4.png",
       "./images/products/Hikvision/DS-2CE76D0T-EXIPF.png",
       "./images/products/Hikvision/DS-2CE76D0T-EXIPF2.png"
-    ]
+    ],
+    "summary": "A versatile 2MP analog dome camera with DWDR, BLC, and 2D DNR for enhanced image quality. Features IR range up to 20m and durable plastic housing for extreme conditions."
   },
   {
     "category": "CCTV",
@@ -47,7 +48,6 @@
     "name": "Analog 2mp Bullet",
     "description": "The Hikvision DS-2CD1023GOE-1 is a 2MP bullet camera equipped with a 1/2.7\" progressive scan CMOS sensor, delivering a maximum resolution of 1920 × 1080. It features a fixed lens (2.8mm or 4mm) with wide field of view options, IR cut filter for day/night functionality, and up to 30m IR supplement light range for clear images in low light. The camera supports H.265/H.264 video compression, digital wide dynamic range (DWDR), and advanced image enhancements such as BLC and 3D DNR. With robust network protocol support, motion detection, and IP67-rated weatherproof protection, it is suitable for various surveillance environments.",
     "features": [
-      "Camera",
       "Image Sensor: 1/2.7\" Progressive Scan CMOS",
       "Max. Resolution: 1920 × 1080",
       "Min. Illumination: Color: 0.01 Lux @(F2.0, AGC ON), B/W: 0 Lux with IR",
@@ -97,21 +97,15 @@
       "Weight: Approx. 270 g (0.6 lb.)",
       "With Package Weight: Approx. 490 g (1.1 lb.)",
       "Storage Conditions: -30 °C to 60 °C (-22 °F to 140 °F). Humidity: 95% or less (non-condensing)",
-      "Startup and Operating Conditions: -30 °C to 60 °C (-22 °F to 140 °F). Humidity: 95% or less (non-condensing)",
-      "Language: English, Ukrainian",
-      "General Function: Anti-flicker, heartbeat, mirror, password protection, privacy mask, watermark, IP address filter",
-      "Approval",
-      "EMC: FCC SDoC (47 CFR Part 15, Subpart B); CE-EMC (EN 55032: 2015, EN 61000-3-2: 2014, EN 61000-3-3: 2013, EN 50130-4: 2011 +A1: 2014); RCM (AS/NZS CISPR 32: 2015); IC VoC (ICES-003: Issue 6, 2016); KC (KN 32: 2015, KN 35: 2015)",
-      "Safety: UL (UL 60950-1); CB (IEC 60950-1:2005 + Am 1:2009 + Am 2:2013, IEC 62368-1:2014); CE-LVD (EN 60950-1:2005 + Am 1:2009 + Am 2:2013, IEC 62368-1:2014); BIS (IS 13252(Part 1):2010+A1:2013+A2:2015)",
-      "Environment: CE-RoHS (2011/65/EU); WEEE (2012/19/EU); Reach (Regulation (EC) No 1907/2006)",
-      "Protection: IP67 (IEC 60529-2013)"
+      "Startup and Operating Conditions: -30 °C to 60 °C (-22 °F to 140 °F). Humidity: 95% or less (non-condensing)"
     ],
     "image": [
       "./images/products/Hikvision/4.png",
       "./images/products/Hikvision/DS-2CD1023G0E-I.png",
       "./images/products/Hikvision/DS-2CD1023G0E-I2.png",
       "./images/products/Hikvision/DS-2CD1023G0E-I3.png"
-    ]
+    ],
+    "summary": "A 2MP bullet camera with IR range up to 30m, DWDR, and 3D DNR for clear images. Features robust network protocols and IP67 weatherproof protection."
   },
   {
     "category": "CCTV",
@@ -184,8 +178,8 @@
       "Package Dimension: 216 mm × 121 mm × 118 mm (8.5\" × 4.8\" × 4.6\")",
       "Weight: Approx. 265 g (0.6 lb.)",
       "With Package Weight: Approx. 495 g (1.1 lb.)",
-      "Storage Conditions: -30 °C to 60 °C (-22 °F to 140 °F). Humidity 95% or less (non-condensing)",
-      "Startup and Operating Conditions: -30 °C to 60 °C (-22 °F to 140 °F). Humidity 95% or less (non-condensing)",
+      "Storage Conditions: -30 °C to 60 °C (-22 °F to 140 °F). Humidity: 95% or less (non-condensing)",
+      "Startup and Operating Conditions: -30 °C to 60 °C (-22 °F to 140 °F). Humidity: 95% or less (non-condensing)",
       "Language: English, Ukrainian",
       "General Function: Heartbeat, anti-banding, mirror, password protection, password reset via email",
       "Approval",
@@ -199,7 +193,8 @@
       "./images/products/Hikvision/DS-2CD1023G2-LIU.png",
       "./images/products/Hikvision/DS-2CD1023G2-LIU2.png",
       "./images/products/Hikvision/DS-2CD1023G2-LIU3.png"
-    ]
+    ],
+    "summary": "A 2MP hybrid bullet camera with IR and white light supplement up to 30m. Features DWDR, BLC, HLC, 3D DNR, and audio support."
   },
   {
     "category": "CCTV",
@@ -237,46 +232,53 @@
       "Audio Sampling Rate: 8 kHz/16 kHz",
       "Audio Compression: G.711ulaw/G.711alaw/G.722.1/G.726/MP2L2/PCM/AAC-LC",
       "Audio Bit Rate: 64 Kbps (G.711 ulaw)/64 Kbps (G.711 alaw)/16 Kbps (G.722.1)/16 Kbps (G.726)/32 to 160 Kbps (MP2L2)/16 to 64 Kbps (AAC-LC)",
+      "Network",
       "Security: Password protection, complicated password, watermark, basic and digest authentication for HTTP, WSSE and digest authentication for Open Network Video Interface, security audit log, host authentication (MAC address)",
       "Simultaneous Live View: Up to 6 channels",
       "API: Open Network Video Interface (Profile S, Profile T, Profile G (only -F model supports)), ISAPI, SDK",
-      "Protocols: TCP/IP, ICMP, DHCP, DNS, HTTP, RTP, RTSP, RTCP, NTP, IGMP, IPv4, IPv6, UDP, QoS, FTP, SMTP",
-      "User/Host: Up to 32 users; 3 user levels: administrator, operator, and user",
+      "Protocols: TCP/IP, ICMP, DHCP, DNS, HTTP, RTP, RTSP, RTCP, NTP, IGMP, IPv6, UDP, QoS, FTP, SMTP",
+      "User/Host: Up to 32 users. 3 user levels: administrator, operator, and user",
       "Client: iVMS-4200, Hik-Connect",
       "Web Browser: Plug-in required live view: IE 10, IE 11; Local service: Chrome 57.0+, Firefox 52.0+",
+      "Image",
       "Wide Dynamic Range (WDR): Digital WDR",
       "SNR: ≥ 52 dB",
       "Day/Night Switch: Day, Night, Auto, Schedule",
       "Image Enhancement: BLC, HLC, 3D DNR",
       "Image Settings: Rotate mode, saturation, brightness, contrast, sharpness, gain, white balance, adjustable by client software or web browser",
       "Privacy Mask: 4 programmable polygon privacy masks",
+      "Interface",
       "Ethernet Interface: 1 RJ45 10 M/100 M self-adaptive Ethernet port",
       "On-Board Storage: -F: Built-in memory card slot, support microSD/microSDHC/microSDXC card, up to 512 GB",
       "Built-in Microphone: Yes",
       "Reset Key: -F: Yes",
+      "Event",
       "Basic Event: Motion detection (support alarm triggering by specified target types (human and vehicle)), video tampering alarm, exception",
       "Linkage: Upload to FTP/memory card (-F), send email, notify surveillance center, trigger recording (-F), trigger capture",
-      "Power: 12 VDC ± 25%, 0.5 A, max. 6 W, Ø5.5 mm coaxial power plug, reverse polarity protection; PoE: IEEE 802.3af, Class 3, max. 7.5 W",
+      "General",
+      "Power: 12 VDC ± 25%, 0.4 A, max. 5 W, Ø5.5 mm coaxial power plug, reverse polarity protection; PoE: IEEE 802.3af, Class 3, max: 6.5 W",
       "Material: Metal & Plastic",
-      "Dimension: Ø121.4 mm × 97.7 mm (Ø4.8\" × 3.8\")",
-      "Package Dimension: 150 mm × 150 mm × 141 mm (5.9\" × 5.9\" × 5.6\")",
-      "Weight: Approx. 550 g (1.2 lb.)",
-      "With Package Weight: Approx. 800 g (1.8 lb.)",
-      "Storage Conditions: -30 °C to 60 °C (-22 °F to 140 °F). Humidity 95% or less (non-condensing)",
-      "Startup and Operating Conditions: -30 °C to 60 °C (-22 °F to 140 °F). Humidity 95% or less (non-condensing)",
+      "Dimension: 170.8 mm × 66 mm × 69.1 mm (6.7\" × 2.6\" × 2.7\")",
+      "Package Dimension: 216 mm × 121 mm × 118 mm (8.5\" × 4.8\" × 4.6\")",
+      "Weight: Approx. 265 g (0.6 lb.)",
+      "With Package Weight: Approx. 495 g (1.1 lb.)",
+      "Storage Conditions: -30 °C to 60 °C (-22 °F to 140 °F). Humidity: 95% or less (non-condensing)",
+      "Startup and Operating Conditions: -30 °C to 60 °C (-22 °F to 140 °F). Humidity: 95% or less (non-condensing)",
       "Language: English, Ukrainian",
       "General Function: Heartbeat, anti-banding, mirror, password protection, password reset via email",
-      "Approval: EMC: FCC: 47 CFR Part 15, Subpart B; CE-EMC: EN 55032: 2015, EN 61000-3-2:2019, EN 61000-3-3: 2013+A1:2019, EN 50130-4: 2011 +A1: 2014; RCM: AS/NZS CISPR 32: 2015; IC: ICES-003: Issue 7",
+      "Approval",
+      "EMC: FCC: 47 CFR Part 15, Subpart B; CE-EMC: EN 55032: 2015, EN 61000-3-2:2019, EN 61000-3-3: 2013+A1:2019, EN 50130-4: 2011 +A1: 2014; RCM: AS/NZS CISPR 32: 2015; IC: ICES-003: Issue 7",
       "Safety: UL: UL 62368-1; CB: IEC 62368-1: 2014+A11; CE-LVD: EN 62368-1: 2014/A11: 2017; BIS: IS 13252 (Part 1): 2010/IEC 60950-1: 2005",
       "Environment: CE-RoHS: 2011/65/EU; WEEE: 2012/19/EU; Reach: Regulation (EC) No 1907/2006",
-      "Protection: IP67: IEC 60529-2013, IK08: IEC 62262:2002"
+      "Protection: IP67: IEC 60529-2013"
     ],
     "image": [
       "./images/products/Hikvision/4.png",
       "./images/products/Hikvision/DS-2CD1123G2-LIU.png",
       "./images/products/Hikvision/DS-2CD1123G2-LIU2.png",
       "./images/products/Hikvision/DS-2CD1123G2-LIU3.png"
-    ]
+    ],
+    "summary": "A 2MP hybrid dome camera with IR and white light supplement up to 30m. Features DWDR, BLC, HLC, 3D DNR, and audio support."
   },
   {
     "category": "CCTV",
@@ -299,7 +301,6 @@
       "Iris Type: Fixed",
       "Aperture: F1.6",
       "DORI: 2.8 mm, D: 63 m, O: 25 m, R: 12 m, I: 6 m; 4 mm, D: 78 m, O: 31 m, R: 15 m, I: 7 m",
-      "Illuminator",
       "Supplement Light Type: IR, White Light",
       "Supplement Light Range: Up to 30 m",
       "Smart Supplement Light: Yes",
@@ -323,12 +324,12 @@
       "Security: Password protection, complicated password, watermark, basic and digest authentication for HTTP, WSSE and digest authentication for Open Network Video Interface, security audit log, host authentication (MAC address)",
       "Simultaneous Live View: Up to 6 channels",
       "API: Open Network Video Interface (Profile S, Profile T, Profile G (only -F model supports)), ISAPI, SDK",
-      "Protocols: TCP/IP, ICMP, DHCP, DNS, HTTP, RTP, RTSP, NTP, IGMP, IPv6, UDP, QoS, FTP, SMTP",
+      "Protocols: TCP/IP, ICMP, DHCP, DNS, HTTP, RTP, RTSP, RTCP, NTP, IGMP, IPv6, UDP, QoS, FTP, SMTP",
       "User/Host: Up to 32 users. 3 user levels: administrator, operator, and user",
       "Client: iVMS-4200, Hik-Connect",
       "Web Browser: Plug-in required live view: IE 10, IE 11; Local service: Chrome 57.0+, Firefox 52.0+",
       "Image",
-      "Wide Dynamic Range (WDR): 120 dB",
+      "Wide Dynamic Range (WDR): Digital WDR",
       "SNR: ≥ 52 dB",
       "Day/Night Switch: Day, Night, Auto, Schedule",
       "Image Enhancement: BLC, HLC, 3D DNR",
@@ -343,14 +344,14 @@
       "Basic Event: Motion detection (support alarm triggering by specified target types (human and vehicle)), video tampering alarm, exception",
       "Linkage: Upload to FTP/memory card (-F), send email, notify surveillance center, trigger recording (-F), trigger capture",
       "General",
-      "Power: 12 VDC ± 25%, 0.5 A, max. 6 W, Ø5.5 mm coaxial power plug, reverse polarity protection; PoE: IEEE 802.3af, Class 3, max. 7.5 W",
+      "Power: 12 VDC ± 25%, 0.4 A, max. 5 W, Ø5.5 mm coaxial power plug, reverse polarity protection; PoE: IEEE 802.3af, Class 3, max. 7.5 W",
       "Material: Metal & Plastic",
-      "Dimension: Ø121.4 mm × 97.7 mm (Ø4.8\" × 3.8\")",
-      "Package Dimension: 150 mm × 150 mm × 141 mm (5.9\" × 5.9\" × 5.6\")",
-      "Weight: Approx. 550 g (1.2 lb.)",
-      "With Package Weight: Approx. 800 g (1.8 lb.)",
-      "Storage Conditions: -30 °C to 60 °C (-22 °F to 140 °F). Humidity 95% or less (non-condensing)",
-      "Startup and Operating Conditions: -30 °C to 60 °C (-22 °F to 140 °F). Humidity 95% or less (non-condensing)",
+      "Dimension: 170.8 mm × 66 mm × 69.1 mm (6.7\" × 2.6\" × 2.7\")",
+      "Package Dimension: 216 mm × 121 mm × 118 mm (8.5\" × 4.8\" × 4.6\")",
+      "Weight: Approx. 265 g (0.6 lb.)",
+      "With Package Weight: Approx. 495 g (1.1 lb.)",
+      "Storage Conditions: -30 °C to 60 °C (-22 °F to 140 °F). Humidity: 95% or less (non-condensing)",
+      "Startup and Operating Conditions: -30 °C to 60 °C (-22 °F to 140 °F). Humidity: 95% or less (non-condensing)",
       "Language: English, Ukrainian",
       "General Function: Heartbeat, anti-banding, mirror, password protection, password reset via email",
       "Approval",
@@ -364,7 +365,8 @@
       "./images/products/Hikvision/DS-2CD1143G2-LIU.png",
       "./images/products/Hikvision/DS-2CD1143G2-LIU2.png",
       "./images/products/Hikvision/DS-2CD1143G2-LIU3.png"
-    ]
+    ],
+    "summary": "A 4MP hybrid dome camera with IR and white light supplement up to 30m. Features advanced video compression, DWDR, BLC, HLC, 3D DNR, and audio support."
   },
   {
     "category": "CCTV",
@@ -387,7 +389,6 @@
       "Iris Type: Fixed",
       "Aperture: F1.6",
       "DORI: 2.8 mm, D: 63 m, O: 25 m, R: 12 m, I: 6 m; 4 mm, D: 78 m, O: 31 m, R: 15 m, I: 7 m",
-      "Illuminator",
       "Supplement Light Type: IR, White Light",
       "Supplement Light Range: Up to 30 m",
       "Smart Supplement Light: Yes",
@@ -411,12 +412,12 @@
       "Security: Password protection, complicated password, watermark, basic and digest authentication for HTTP, WSSE and digest authentication for Open Network Video Interface, security audit log, host authentication (MAC address)",
       "Simultaneous Live View: Up to 6 channels",
       "API: Open Network Video Interface (Profile S, Profile T, Profile G (only -F model supports)), ISAPI, SDK",
-      "Protocols: TCP/IP, ICMP, DHCP, DNS, HTTP, RTP, RTSP, NTP, IGMP, IPv6, UDP, QoS, FTP, SMTP",
+      "Protocols: TCP/IP, ICMP, DHCP, DNS, HTTP, RTP, RTSP, RTCP, NTP, IGMP, IPv6, UDP, QoS, FTP, SMTP",
       "User/Host: Up to 32 users. 3 user levels: administrator, operator, and user",
       "Client: iVMS-4200, Hik-Connect",
       "Web Browser: Plug-in required live view: IE 10, IE 11; Local service: Chrome 57.0+, Firefox 52.0+",
       "Image",
-      "Wide Dynamic Range (WDR): 120 dB",
+      "Wide Dynamic Range (WDR): Digital WDR",
       "SNR: ≥ 52 dB",
       "Day/Night Switch: Day, Night, Auto, Schedule",
       "Image Enhancement: BLC, HLC, 3D DNR",
@@ -431,28 +432,29 @@
       "Basic Event: Motion detection (support alarm triggering by specified target types (human and vehicle)), video tampering alarm, exception",
       "Linkage: Upload to FTP/memory card (-F), send email, notify surveillance center, trigger recording (-F), trigger capture",
       "General",
-      "Power: 12 VDC ± 25%, 0.4 A, max. 5 W, Ø5.5 mm coaxial power plug, reverse polarity protection; PoE: IEEE 802.3af, Class 3, max. 6.5 W",
+      "Power: 12 VDC ± 25%, 0.4 A, max. 5 W, Ø5.5 mm coaxial power plug, reverse polarity protection; PoE: IEEE 802.3af, Class 3, max. 7.5 W",
       "Material: Metal & Plastic",
       "Dimension: 170.8 mm × 66 mm × 69.1 mm (6.7\" × 2.6\" × 2.7\")",
       "Package Dimension: 216 mm × 121 mm × 118 mm (8.5\" × 4.8\" × 4.6\")",
-      "Weight: Approx. 270 g (0.6 lb.)",
-      "With Package Weight: Approx. 481 g (1.1 lb.)",
-      "Storage Conditions: -30 °C to 60 °C (-22 °F to 140 °F). Humidity 95% or less (non-condensing)",
-      "Startup and Operating Conditions: -30 °C to 60 °C (-22 °F to 140 °F). Humidity 95% or less (non-condensing)",
+      "Weight: Approx. 265 g (0.6 lb.)",
+      "With Package Weight: Approx. 495 g (1.1 lb.)",
+      "Storage Conditions: -30 °C to 60 °C (-22 °F to 140 °F). Humidity: 95% or less (non-condensing)",
+      "Startup and Operating Conditions: -30 °C to 60 °C (-22 °F to 140 °F). Humidity: 95% or less (non-condensing)",
       "Language: English, Ukrainian",
       "General Function: Heartbeat, anti-banding, mirror, password protection, password reset via email",
       "Approval",
       "EMC: FCC: 47 CFR Part 15, Subpart B; CE-EMC: EN 55032: 2015, EN 61000-3-2:2019, EN 61000-3-3: 2013+A1:2019, EN 50130-4: 2011 +A1: 2014; RCM: AS/NZS CISPR 32: 2015; IC: ICES-003: Issue 7",
       "Safety: UL: UL 62368-1; CB: IEC 62368-1: 2014+A11; CE-LVD: EN 62368-1: 2014/A11: 2017; BIS: IS 13252 (Part 1): 2010/IEC 60950-1: 2005",
       "Environment: CE-RoHS: 2011/65/EU; WEEE: 2012/19/EU; Reach: Regulation (EC) No 1907/2006",
-      "Protection: IP67: IEC 60529-2013"
+      "Protection: IP67: IEC 60529-2013, IK08: IEC 62262:2002"
     ],
     "image": [
       "./images/products/Hikvision/4.png",
       "./images/products/Hikvision/DS-2CD1043G2-LIU.png",
       "./images/products/Hikvision/DS-2CD1043G2-LIU2.png",
       "./images/products/Hikvision/DS-2CD1043G2-LIU3.png"
-    ]
+    ],
+    "summary": "A 4MP hybrid bullet camera with IR and white light supplement up to 30m. Features advanced video compression, DWDR, BLC, HLC, 3D DNR, and audio support."
   },
   {
     "category": "NVR_and_DVR",
@@ -507,7 +509,8 @@
     "image": [
       "./images/products/Hikvision/4.png",
       "./images/products/Hikvision/DS-7604NXI-K1-4P.png"
-    ]
+    ],
+    "summary": "A 4-channel NVR with AI analytics for facial recognition and perimeter protection. Supports up to 4 IP cameras, 4K HDMI output, and multiple recording resolutions."
   },
   {
     "category": "NVR_and_DVR",
@@ -560,7 +563,8 @@
     "image": [
       "./images/products/Hikvision/4.png",
       "./images/products/Hikvision/DS-7608NI-K2-8P.png"
-    ]
+    ],
+    "summary": "An 8-channel NVR with 4K HDMI output and advanced video decoding. Supports up to 8 IP cameras and multiple recording resolutions."
   },
   {
     "category": "NVR_and_DVR",
@@ -614,8 +618,9 @@
     ],
     "image": [
       "./images/products/Hikvision/4.png",
-      "./images/products/Hikvision/DS-7616NI-K2-16P.png"
-    ]
+      "./images/products/Hikvision/DS-7616NI-K2-6P.png"
+    ],
+    "summary": "A 16-channel NVR with 4K HDMI output and high-performance video decoding. Supports up to 16 IP cameras and multiple recording resolutions."
   },
   {
     "category": "NVR_and_DVR",
@@ -677,7 +682,8 @@
     "image": [
       "./images/products/Hikvision/4.png",
       "./images/products/Hikvision/DS-9632NI-18.png"
-    ]
+    ],
+    "summary": "A 32-channel NVR with up to 12 MP resolution and advanced RAID support. Features high bandwidth, dual HDMI/VGA outputs, and intelligent analytics."
   },
   {
     "category": "NVR_and_DVR",
@@ -732,7 +738,8 @@
     "image": [
       "./images/products/Hikvision/4.png",
       "./images/products/Hikvision/DS-7104HGHI-M1.png"
-    ]
+    ],
+    "summary": "A 4-channel DVR with deep learning motion detection 2.0. Supports up to 5 IP cameras, 4 analog cameras, and multiple video formats."
   },
   {
     "category": "NVR_and_DVR",
@@ -787,7 +794,8 @@
     "image": [
       "./images/products/Hikvision/4.png",
       "./images/products/Hikvision/DS-7108HGHI-k1.png"
-    ]
+    ],
+    "summary": "An 8-channel DVR with deep learning motion detection 2.0. Supports up to 10 IP cameras, 8 analog cameras, and multiple video formats."
   },
   {
     "category": "NVR_and_DVR",
@@ -825,7 +833,7 @@
       "Network",
       "Total Bandwidth: 96 Mbps",
       "Remote Connection: 128",
-      "Network Protocol: TCP/IP, PPPoE, DHCP, Hik-Connect, DNS, DDNS, NTP, SADP, UPnP™, HTTPS, ONVIF",
+      "Network Protocol: TCP/IP, PPPoE, DHCP, Hik-Connect, DNS, DDNS, NTP, RTSP, SADP, UPnP™, HTTPS, ONVIF",
       "Network Interface: 1, RJ45 10M/100M self-adaptive Ethernet interface",
       "Auxiliary Interface",
       "SATA: 1, SATA interface",
@@ -844,7 +852,8 @@
       "./images/products/Hikvision/DS-7116HGHI-M1.png",
       "./images/products/Hikvision/DS-7116HGHI-M12.png",
       "./images/products/Hikvision/DS-7116HGHI-M13.png"
-    ]
+    ],
+    "summary": "A 16-channel DVR with deep learning motion detection 2.0. Supports up to 18 IP cameras, 16 analog cameras, and multiple video formats."
   },
   {
     "category": "Gate_Openers",
@@ -856,7 +865,8 @@
     "image": [
       "./images/products/Gate Opener /nice.png",
       "./images/products/Gate Opener /Nice robus 600.png"
-    ]
+    ],
+    "summary": "A sliding gate motor suitable for gates up to 600kg. Features obstacle detection and temperature-adaptive motor force."
   },
   {
     "category": "Gate_Openers",
@@ -876,8 +886,9 @@
     ],
     "image": [
       "./images/products/Gate Opener /Centurion/CENTURION-logo.png",
-      "./images/products/Gate Opener /Centurion/D5evo.png"
-    ]
+      "./images/products/Gate Opener /Centurion/D5evo-2.png"
+    ],
+    "summary": "A powerful gate motor with battery backup and intelligent LCD controller. Suitable for domestic and light-industrial sliding gates up to 500kg."
   },
   {
     "category": "Gate_Openers",
@@ -889,7 +900,8 @@
     "image": [
       "./images/products/Gate_opener.png",
       "./images/products/Gate_opener.png"
-    ]
+    ],
+    "summary": "A gate opener suitable for gates up to 500kg. Features and specifications may vary."
   },
   {
     "category": "Intercoms",
@@ -923,7 +935,8 @@
       "./images/products/Hikvision/DS-KB2411T-IM.png",
       "./images/products/Hikvision/DS-KB2411T-IM2.png",
       "./images/products/Hikvision/DS-KB2411T-IM3.png"
-    ]
+    ],
+    "summary": "An analog intercom door station with 1080p resolution and wide field of view. Features two-way audio and relay output for door control."
   },
   {
     "category": "Time_Attendance",
@@ -954,6 +967,7 @@
     "image": [
       "./images/products/ZTK/ZKT ECO.png",
       "./images/products/ZTK/Sface_Lite.png"
-    ]
+    ],
+    "summary": "A biometric time attendance and access control device with face, fingerprint, and ID card recognition. Features fast verification and multiple communication options."
   }
 ]

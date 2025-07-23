@@ -1,0 +1,126 @@
+{
+  "d6f35796-5734-43e9-8e9c-0143fc3d19d9": {
+    "username": "admin",
+    "role": "admin",
+    "expires": 1753289249941
+  },
+  "17a5335f-46d1-42c3-aa14-ab970c80c3dc": {
+    "username": "admin",
+    "role": "admin",
+    "expires": 1753290073452
+  },
+  "ea893aef-2feb-4dbd-9e9c-8f13802b850d": {
+    "username": "admin",
+    "role": "admin",
+    "expires": 1753290115546
+  },
+  "e645395a-71f4-446b-9f6c-289467ad4dee": {
+    "username": "admin",
+    "role": "admin",
+    "expires": 1753290137479
+  },
+  "cf03003a-d31e-425f-a4ce-4f521f2ace50": {
+    "username": "admin",
+    "role": "admin",
+    "expires": 1753290246362
+  },
+  "889ee909-3546-463d-bdcf-9068ceddbb74": {
+    "username": "admin",
+    "role": "admin",
+    "expires": 1753290365985
+  },
+  "c0b0d27d-44c2-4f2c-b1db-80c82d011896": {
+    "username": "admin",
+    "role": "admin",
+    "expires": 1753290477765
+  },
+  "8c2d190f-ceb6-428f-9029-2969d78c7817": {
+    "username": "admin",
+    "role": "admin",
+    "expires": 1753290532159
+  },
+  "5e286bf8-8d06-41bf-9912-ccf7fdc83ad9": {
+    "username": "admin",
+    "role": "admin",
+    "expires": 1753290897778
+  },
+  "97df5b51-de91-4fb6-9934-b00055dc7a47": {
+    "username": "viewer",
+    "role": "viewer",
+    "expires": 1753291788058
+  },
+  "ab6444fa-5c61-4222-9e69-b33ef37ed17f": {
+    "username": "admin",
+    "role": "admin",
+    "expires": 1753291803187
+  },
+  "9df5fff6-8c2f-49d3-8770-098d27095160": {
+    "username": "admin",
+    "role": "admin",
+    "createdAt": "2025-07-23T11:30:55.238Z",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36",
+    "ip": "::1",
+    "expires": 1753273855238
+  },
+  "9476165d-eb92-49e4-9df9-25a28c1a7434": {
+    "username": "admin",
+    "role": "admin",
+    "createdAt": "2025-07-23T11:35:05.154Z",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36",
+    "ip": "::1",
+    "expires": 1753274105154
+  },
+  "1549598a-076c-47b5-828d-ad4fdbf0a4c2": {
+    "username": "admin",
+    "role": "admin",
+    "createdAt": "2025-07-23T11:35:39.211Z",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36",
+    "ip": "::1",
+    "expires": 1753274139211
+  },
+  "3d5461a4-9159-42e3-80f1-05dc74fe82bd": {
+    "username": "admin",
+    "role": "admin",
+    "createdAt": "2025-07-23T12:32:00.868Z",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36",
+    "ip": "::1",
+    "expires": 1753277520869
+  },
+  "c1dbfe21-78ad-4704-a89a-ea9ee23c02b8": {
+    "username": "admin",
+    "role": "admin",
+    "createdAt": "2025-07-23T13:57:47.028Z",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36",
+    "ip": "::1",
+    "expires": 1753282667029
+  },
+  "8463502e-1076-499a-8c9e-53359d6080ee": {
+    "username": "admin",
+    "role": "admin",
+    "createdAt": "2025-07-23T14:24:04.313Z",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36",
+    "ip": "::1",
+    "expires": 1753284244314
+  },
+  "e185caa3-a483-4973-a7e2-b35e08bff04b": {
+    "username": "admin",
+    "role": "admin",
+    "createdAt": "2025-07-23T15:24:38.513Z",
+    "userAgent": "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Mobile Safari/537.36",
+    "ip": "::1",
+    "expires": 1753287878513
+  },
+  "69d5d395-68cd-42be-b586-b43d86c12835": {
+    "username": "admin",
+    "role": "admin",
+    "createdAt": "2025-07-23T16:35:14.279Z",
+    "userAgent": "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Mobile Safari/537.36",
+    "ip": "::1",
+    "expires": 1753292114280
+  },
+  "005dfd24-faea-4205-976c-a2c16f8c0353": {
+    "username": "admin",
+    "role": "admin",
+    "expires": 1753314246539
+  }
+}

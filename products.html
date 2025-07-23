@@ -18,13 +18,12 @@
     <link href="css/coloring.css" rel="stylesheet" type="text/css">
     <!-- color scheme -->
     <link id="colors" href="css/colors/scheme-01.css" rel="stylesheet" type="text/css">
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
 </head>
 
 <body class="dark-scheme">
     <div id="wrapper">
         <div class="call-now-wrapper">
-            <span class="call-text">CALL US</span>
             <a href="tel:1234567890" class="call-button">
                 <i class="fas fa-phone"></i>
             </a>
@@ -45,7 +44,6 @@
                                 <div class="d-flex">
                                     <div class="topbar-widget"><a href="#"><img src="images/svg-white/bell.svg" class=""
                                                 alt="">Get Estimation for your Security Needs</a></div>
-
                                 </div>
                                 <div class="d-flex">
                                     <div class="topbar-widget me-5"><a href="#"><img src="images/svg-white/phone.svg"
@@ -80,6 +78,7 @@
                                     <li><a class="menu-item" href="services.html">Services</a></li>
                                     <li><a class="menu-item" href="products.html">Products</a></li>
                                     <li><a class="menu-item" href="projects.html">Projects</a></li>
+                                    <li><a class="menu-item" href="fqa.html">FQA</a></li>
                                     <li><a class="menu-item" href="contact.html">Contact</a></li>
                                 </ul>
                             </div>
@@ -104,27 +103,73 @@
         <div id="content" class="no-top no-bottom">
             <div id="top"></div>
             <!-- section begin -->
-            <section id="subheader" class="relative jarallax text-light">
+            <section class="text-light no-top no-bottom position-relative overflow-hidden z-1000" id="slider">
                 <div class="de-gradient-edge-top"></div>
-                <img src="images/background/7.webp" class="jarallax-img" alt="">
-                <div class="container relative z-2">
-                    <div class="row justify-content-center">
-                        <div class="col-lg-6 text-center">
-                            <div class="subtitle s2 text-light wow fadeInUp mb-2">Our Products</div>
-                            <div class="clearfix"></div>
-                            <h1 class="cam-style">Products<span></span><span></span><span></span><span></span></h1>
-                        </div>
+                <div class="swiper">
+                    <div class="swiper-wrapper" id="dynamic-swiper-wrapper">
+                        <!-- Slides will be injected here -->
                     </div>
+                    <!-- If we need pagination -->
+                    <div class="swiper-pagination"></div>
+                    <!-- If we need navigation buttons -->
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
                 </div>
-                <div class="crumb-wrapper">
-                    <ul class="crumb">
-                        <li><a href="index.html">Home</a></li>
-                        <li class="active">Products</li>
-                    </ul>
-                </div>
-                <div class="triangle-bottomright-dark-2 z-2"></div>
-                <div class="sw-overlay op-8"></div>
+                <script>
+                    // Dynamically load Swiper slides from products JSON
+                    fetch('Json/normalized_products.json')
+                        .then(res => res.json())
+                        .then(slides => {
+                            const wrapper = document.getElementById('dynamic-swiper-wrapper');
+                            wrapper.innerHTML = ""; // Clear any existing slides
+                            slides.forEach(slide => {
+                                wrapper.innerHTML += `
+                                    <div class="swiper-slide">
+                                            <div style="position:absolute; inset:0; background-image:inherit; background-size:cover; background-position:center; filter:blur(5px); z-index:0;"></div>
+                                            <div class="sw-caption">
+                                                <div class="container relative z-2" data-0="opacity:1" data-300="opacity:0">
+                                                    <div class="row align-items-center g-4" style="margin-top: 150px;">
+                                                        <div class="col-lg-6">
+                                                            <div class="slider-content z-2">
+                                                                <h3 class="subtitle s2 mb-3 wow fadeInUp" data-wow-delay=".0s">${slide.brand}</h3>
+                                                                <h1 class="mb-3 cam-style">${slide.name}<span></span><span></span><span></span><span></span></h1>
+                                                                <p class="accordion">${slide.summary}</p>
+                                                                <div>
+                                                                    <a class="btn-main btn-line fx-slide mb10 mb-3" href='product-details.html?category=${encodeURIComponent(slide.category)}&brand=${encodeURIComponent(slide.brand)}&model=${encodeURIComponent(slide.model)}'><span>Learn More</span></a>&nbsp;&nbsp;
+                                                                    <a class="btn-main fx-slide mb10 mb-3" href="tel:+251939902685"><span>Call Us</span></a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-6">
+                                                            <div class="relative">
+                                                                <div style="display: flex; justify-content: center; align-items: center; height: 100%;">
+                                                                    <img src="${slide.image[1]}" class="w-60 relative z-2" alt="">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                    </div>
+                                    `;
+                            });
+                            // Initialize Swiper AFTER slides are injected
+                            if (window.Swiper) {
+                                new Swiper('.swiper', {
+                                    pagination: {
+                                        el: '.swiper-pagination',
+                                        clickable: true
+                                    },
+                                    navigation: {
+                                        nextEl: '.swiper-button-next',
+                                        prevEl: '.swiper-button-prev'
+                                    }
+                                });
+                            }
+                        });
+                </script>
             </section>
+
             <!-- section close -->
 
             <!-- <section class="bg-dark-2">
@@ -156,8 +201,7 @@
                 <div class="container">
                     <div class="row g-4" id="productCards"></div>
                 </div>
-                <div class="col-lg-4 col-md-6 wow fadeInRight" data-wow-delay="0.3s">
-
+                <div class="col-lg-4 col-md-6 wow fadeInRight" data-wow-delay="0.2s">
             </section>
 
         </div>
@@ -169,7 +213,8 @@
                     <div class="col-lg-4 col-sm-6">
                         <img src="images/logo.webp" class="w-150px" alt="">
                         <div class="spacer-20"></div>
-                        <p>Keep your home or business safe with CCTV systems designed to provide 24/7 surveillance and
+                        <p>Keep your home or business safe with CCTV systems designed to provide 24/7 surveillance
+                            and
                             peace of mind. Our expert team offers tailored security solutions, from installation to
                             remote monitoring, ensuring your property is always protected. </p>
 
@@ -196,7 +241,7 @@
                                     <h5>Company</h5>
                                     <ul>
                                         <li><a href="index.html">Home</a></li>
-                                        <li><a href="services.html">Our Services</a></li>
+                                        <li><a href="services">Our Services</a></li>
                                         <li><a href="projects.html">Projects</a></li>
                                         <li><a href="contact.html">Get a Free Quote</a></li>
                                         <li><a href="contact.html">Contact</a></li>
@@ -220,7 +265,8 @@
                     </div>
                     <div class="col-lg-4 col-sm-6 order-lg-2 order-sm-1">
                         <div class="widget">
-                            <div class="fw-bold text-white"><i class="icofont-clock-time me-2 id-color"></i>We're Open
+                            <div class="fw-bold text-white"><i class="icofont-clock-time me-2 id-color"></i>We're
+                                Open
                             </div>
                             Monday - Saturday 08.00 - 18.00
 
@@ -232,7 +278,8 @@
 
                             <div class="spacer-20"></div>
 
-                            <div class="fw-bold text-white"><i class="icofont-envelope me-2 id-color"></i>Send a Message
+                            <div class="fw-bold text-white"><i class="icofont-envelope me-2 id-color"></i>Send a
+                                Message
                             </div>
                             contact@atozeengineering.com
                         </div>
@@ -251,7 +298,6 @@
                                         document.querySelector('.current-year').textContent = new Date().getFullYear();
                                     </script>
                                 </div>
-
                             </div>
                         </div>
                     </div>
@@ -315,6 +361,7 @@
     ================================================== -->
     <script src="js/vendors.js"></script>
     <script src="js/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
 
     <script>
         // filepath: /home/nunu/Desktop/AtoZe/Website 1/AtoZe/products.html
@@ -322,207 +369,85 @@
         fetch('./Json/normalized_products.json')
             .then(res => res.json())
             .then(data => {
-                const categories = [
-                    { key: 'CCTV', label: 'CCTV' },
-                    { key: 'NVR_and_DVR', label: 'NVR & DVR' },
-                    { key: 'Gate_Openers', label: 'Gate Openers' },
-                    { key: 'Intercoms', label: 'Intercoms' },
-                    { key: 'Time_Attendance', label: 'Time Attendance' }
-                ];
+                const categories = {};
+                data.forEach(product => {
+                    if (!categories[product.category]) categories[product.category] = [];
+                    categories[product.category].push(product);
+                });
+
                 const productCards = document.getElementById('productCards');
                 productCards.innerHTML = '';
 
-                // Helper to get brands for a category
-                function getBrands(catKey) {
-                    const modelsInCategory = data.filter(m => m.category === catKey);
-                    const brands = {};
-                    modelsInCategory.forEach(m => {
-                        if (!brands[m.brand]) brands[m.brand] = [];
-                        brands[m.brand].push(m);
-                    });
-                    return brands;
-                }
+                Object.entries(categories).forEach(([catKey, products]) => {
+                    // Category Title
+                    const catTitle = document.createElement('div');
+                    catTitle.className = 'col-12 mb-4 mt-5';
+                    catTitle.innerHTML = `<h2 class="text-uppercase fw-bold border-bottom pb-2 mb-4" style="letter-spacing:1px;">${catKey.replace(/_/g, ' ')}</h2>`;
+                    productCards.appendChild(catTitle);
 
-                let i = 0;
-                while (i < categories.length) {
-                    let group = [];
-                    let totalBrands = 0;
-                    let j = i;
-                    while (j < categories.length) {
-                        const brands = getBrands(categories[j].key);
-                        const brandCount = Object.keys(brands).length;
-                        if (brandCount === 0) {
-                            j++;
-                            continue;
-                        }
-                        if (brandCount > 3 && group.length === 0) {
-                            // This category alone takes full width
-                            group.push({ cat: categories[j], brands, fullWidth: true });
-                            j++;
-                            break;
-                        } else if (brandCount > 3) {
-                            // Stop grouping, render current group first
-                            break;
-                        } else if (totalBrands + brandCount <= 3) {
-                            group.push({ cat: categories[j], brands, fullWidth: false });
-                            totalBrands += brandCount;
-                            j++;
-                        } else {
-                            break;
-                        }
-                    }
-
-                    // Render the group
-                    if (group.length === 1 && group[0].fullWidth) {
-                        // Full width row for a single category with >3 brands
-                        const row = document.createElement('div');
-                        row.className = 'row g-4';
-                        const { cat, brands } = group[0];
-                        // Category Title Separator
-                        const catCol = document.createElement('div');
-                        catCol.className = 'col-12 mb-3 mt-5';
-                        catCol.innerHTML = `
-                            <h2 class="text-uppercase fw-bold border-bottom pb-2 mb-4" style="letter-spacing:1px;">
-                                ${cat.label}
-                            </h2>
-                        `;
-                        row.appendChild(catCol);
-                        Object.entries(brands).forEach(([brand, models]) => {
-                            let brandImg = 'images/products/6.webp';
-                            for (const m of models) {
-                                if (Array.isArray(m.image) && m.image[0]) {
-                                    brandImg = m.image[0];
-                                    break;
-                                }
-                            }
-                            const modelLinks = models.map(m => `
-                                <a href="product-details.html?category=${encodeURIComponent(cat.key)}&brand=${encodeURIComponent(brand)}&model=${encodeURIComponent(m.model)}" class="d-block mb-1 text-light brand-model-link">
-                                    ${m.name}
-                                </a>
-                            `).join('');
-                            const card = document.createElement('div');
-                            card.className = 'col-lg-4 col-md-6 wow fadeInRight mb-4';
-                            card.setAttribute('data-wow-delay', '1s');
-                            card.innerHTML = `
-                                <div class="relative hover overflow-hidden">
-                                    <div class="absolute w-100 h-100 p-40 bg-dark-2 hover-op-1 hover-mt-40">
-                                        <h4 style="font-weight: bold;">${brand}</h4>
-                                        <div style="font-size: 14px; max-height: 180px; overflow-y: auto; margin-bottom: 10px; scrollbar-width: thin; scrollbar-color: #e53935 #222;">
-                                            ${modelLinks}
-                                        </div>
-                                        <style>
-                                            .brand-model-link {
-                                                transition: color 0.9s cubic-bezier(0.4,0,0.2,1), background 0.1s cubic-bezier(0.4,0,0.2,1);
-                                            }
-                                            .brand-model-link:hover {
-                                                color: #fff !important;
-                                                background: #e53935;
-                                                border-radius: 4px;
-                                                padding-left: 8px;
-                                                padding-right: 8px;
-                                                box-shadow: 0 2px 12px 0 rgba(229,57,53,0.15);
-                                                transition: color 0.9s cubic-bezier(0.4,0,0.2,1), background 0.1s cubic-bezier(0.4,0,0.2,1), box-shadow 0.3s cubic-bezier(0.4,0,0.2,1);
-                                            }
-                                            /* Custom red scrollbar for Webkit browsers */
-                                            .relative .overflow-hidden > div[style*="overflow-y: auto"]::-webkit-scrollbar {
-                                                width: 8px;
-                                            }
-                                            .relative .overflow-hidden > div[style*="overflow-y: auto"]::-webkit-scrollbar-thumb {
-                                                background: #e53935;
-                                                border-radius: 4px;
-                                            }
-                                            .relative .overflow-hidden > div[style*="overflow-y: auto"]::-webkit-scrollbar-track {
-                                                background: #222;
-                                                border-radius: 4px;
-                                            }
-                                        </style>
-                                    </div>
-                                    <div class="text-center py-3">
-                                        <img src="${brandImg}" class="w-80" alt="${brand}">
-                                        <h4>${brand}</h4>
-                                    </div>
+                    products.forEach(product => {
+                        const card = document.createElement('div');
+                        card.className = 'col-lg-4 col-md-6 mb-4';
+                        card.innerHTML = `
+                            <div class="de-product-card card h-100 bg-gradient border-0 shadow-lg rounded-4 overflow-hidden position-relative product-card-link" 
+                                style="background: linear-gradient(135deg, #232526 0%, #414345 100%); transition: box-shadow 0.3s; cursor:pointer;"
+                                onclick="window.location.href='product-details.html?category=${encodeURIComponent(product.category)}&brand=${encodeURIComponent(product.brand)}&model=${encodeURIComponent(product.model)}'">
+                                <div class="de-product-img-wrapper position-relative overflow-hidden" style="height:160px; max-height:160px;">
+                                   <img src="${product.image && product.image[1] ? product.image[1] : (product.image && product.image[0] ? product.image[0] : 'images/products/6.webp')}" 
+                                       class="card-img-top rounded-top-4 w-100 h-100" 
+                                       alt="${product.name}" 
+                                       style="object-fit:contain; filter: brightness(0.92) saturate(1.1); transition: transform 0.4s cubic-bezier(.4,2,.3,1); background:#232526;">
+                                   <span class="badge position-absolute top-0 start-0 m-3 px-3 py-2 rounded-pill fs-6 shadow text-white"
+                                        style="background: rgba(40, 60, 80, 0.85); font-weight: 600; letter-spacing:0.5px;">
+                                      ${product.brand ? product.brand : ''}
+                                   </span>
+                                   <span class="badge position-absolute top-0 end-0 m-3 px-2 py-1 rounded-circle shadow"
+                                        style="background: #fff2; backdrop-filter: blur(2px);">
+                                      <i class="fa-solid fa-shield-halved text-main"></i>
+                                   </span>
+                                   <div class="position-absolute bottom-0 start-0 w-100 px-3 pb-2 d-flex justify-content-between align-items-end" style="pointer-events:none;">
+                                      <span class="badge bg-main text-white text-uppercase fs-7 px-2 py-1 rounded-pill shadow-sm" style="backdrop-filter: blur(2px);">${product.category.replace(/_/g, ' ')}</span>
+                                   </div>
                                 </div>
-                            `;
-                            row.appendChild(card);
-                        });
-                        productCards.appendChild(row);
-                    } else if (group.length > 0) {
-                        // Shared row for multiple categories (each with <=3 brands, total <=3 brands)
-                        const row = document.createElement('div');
-                        row.className = 'row g-4';
-                        group.forEach(({ cat, brands }) => {
-                            const catCol = document.createElement('div');
-                            catCol.className = 'col-12 mb-3 mt-5';
-                            catCol.innerHTML = `
-                                <h2 class="text-uppercase fw-bold border-bottom pb-2 mb-4" style="letter-spacing:1px;">
-                                    ${cat.label}
-                                </h2>
-                            `;
-                            row.appendChild(catCol);
-                            Object.entries(brands).forEach(([brand, models]) => {
-                                let brandImg = 'images/products/6.webp';
-                                for (const m of models) {
-                                    if (Array.isArray(m.image) && m.image[0]) {
-                                        brandImg = m.image[0];
-                                        break;
-                                    }
-                                }
-                                const modelLinks = models.map(m => `
-                                    <a href="product-details.html?category=${encodeURIComponent(cat.key)}&brand=${encodeURIComponent(brand)}&model=${encodeURIComponent(m.model)}" class="d-block mb-1 text-light brand-model-link">
-                                        ${m.name}
-                                    </a>
-                                `).join('');
-                                const card = document.createElement('div');
-                                card.className = 'col-lg-4 col-md-6 wow fadeInRight mb-4';
-                                card.setAttribute('data-wow-delay', '1s');
-                                card.innerHTML = `
-                                    <div class="relative hover overflow-hidden">
-                                        <div class="absolute w-100 h-100 p-40 bg-dark-2 hover-op-1 hover-mt-40">
-                                            <h4 style="font-weight: bold;">${brand}</h4>
-                                            <div style="font-size: 14px; max-height: 180px; overflow-y: auto; margin-bottom: 10px; scrollbar-width: thin; scrollbar-color: #e53935 #222;">
-                                                ${modelLinks}
-                                            </div>
-                                            <style>
-                                                .brand-model-link {
-                                                    transition: color 0.9s cubic-bezier(0.4,0,0.2,1), background 0.1s cubic-bezier(0.4,0,0.2,1);
-                                                }
-                                                .brand-model-link:hover {
-                                                    color: #fff !important;
-                                                    background: #e53935;
-                                                    border-radius: 4px;
-                                                    padding-left: 8px;
-                                                    padding-right: 8px;
-                                                    box-shadow: 0 2px 12px 0 rgba(229,57,53,0.15);
-                                                    transition: color 0.9s cubic-bezier(0.4,0,0.2,1), background 0.1s cubic-bezier(0.4,0,0.2,1), box-shadow 0.3s cubic-bezier(0.4,0,0.2,1);
-                                                }
-                                                .relative .overflow-hidden > div[style*="overflow-y: auto"]::-webkit-scrollbar {
-                                                    width: 8px;
-                                                }
-                                                .relative .overflow-hidden > div[style*="overflow-y: auto"]::-webkit-scrollbar-thumb {
-                                                    background: #e53935;
-                                                    border-radius: 4px;
-                                                }
-                                                .relative .overflow-hidden > div[style*="overflow-y: auto"]::-webkit-scrollbar-track {
-                                                    background: #222;
-                                                    border-radius: 4px;
-                                                }
-                                            </style>
-                                        </div>
-                                        <div class="text-center py-3">
-                                            <img src="${brandImg}" class="w-80" alt="${brand}">
-                                            <h4>${brand}</h4>
-                                        </div>
-                                    </div>
-                                `;
-                                row.appendChild(card);
-                            });
-                        });
-                        productCards.appendChild(row);
-                    }
-                    i = j;
-                }
+                                <div class="card-body d-flex flex-column justify-content-between px-4 py-3" style="background:rgba(30,34,40,0.97);">
+                                   <h5 class="card-title fw-bold mb-2 text-main" style="letter-spacing:0.5px; font-size:1.18rem;">
+                                      <i class="fa-solid fa-circle-dot me-2 text-main"></i>${product.name}
+                                   </h5>
+                                   <div class="small text-muted mb-3 text-truncate" style="max-width:100%; min-height:2.5em; font-size:0.98em; overflow:hidden; white-space:nowrap; text-overflow:ellipsis;">
+                                      ${product.description ? product.description : ''}
+                                   </div>
+                                   <div class="d-flex align-items-center gap-2 mt-auto">
+                                      <span class="badge bg-dark-3 text-white px-2 py-1 rounded-pill shadow-sm" style="font-size:0.92em;">
+                                         <i class="fa-solid fa-barcode me-1"></i> ${product.model ? product.model : 'Model'}
+                                      </span>
+                                   </div>
+                                </div>
+                            </div>
+                        `;
+                        productCards.appendChild(card);
+                    });
+                });
             });
     </script>
+    <style>
+        /* Add this at the end of your file or in your CSS */
+        @media (max-width: 991px) {
+            .swiper-slide .flex-grow-1 {
+                max-width: 100vw !important;
+                min-width: 0 !important;
+            }
+
+            .swiper-slide img {
+                max-width: 90vw !important;
+            }
+
+            .swiper-container.product-swiper {
+                min-height: 420px !important;
+            }
+        }
+    </style>
+    <script src="/js/analytics.js" defer></script>
+
 </body>
 
 </html>

@@ -78,6 +78,7 @@
                                     <li><a class="menu-item" href="services.html">Services</a></li>
                                     <li><a class="menu-item" href="products.html">Products</a></li>
                                     <li><a class="menu-item" href="projects.html">Projects</a></li>
+                                    <li><a class="menu-item" href="fqa.html">FQA</a></li>
                                     <li><a class="menu-item" href="contact.html">Contact</a></li>
                                 </ul>
                             </div>
@@ -132,44 +133,36 @@
                 </div>
             </section>
             <script>
-                // Map service categories to fallback icons (if service icon is missing)
-                const categoryIcons = {
-                    "Core Services": "images/svg-color/cctv.svg",
-                    "Surveillance & CCTV Services": "images/svg-color/monitor.svg",
-                    "Maintenance & Support": "images/svg-color/setting.svg",
-                    "Additional Security Solutions": "images/svg-color/alarm.svg"
-                };
-
                 // Dynamically load services from Service.json and render cards
                 fetch('Json/Service.json')
                     .then(res => res.json())
                     .then(data => {
                         const container = document.getElementById('services-list');
                         let delay = 0;
-                        data.forEach(category => {
-                            category.services.forEach(service => {
-                                // Use inline SVG icon from JSON, or fallback to category icon
-                                let iconHTML = service.icon;
-                                if (!iconHTML) {
-                                    iconHTML = `<img src="${categoryIcons[category.category] || "images/svg-color/cctv.svg"}" class="w-70px mb-3" alt="${service.name || category.category}">`;
-                                }
-                                // Use service name or fallback to category name for display and URL
-                                const displayName = service.name || category.category;
-                                const serviceParam = encodeURIComponent(displayName);
-                                container.innerHTML += `
-                                    <div class="col-lg-3 col-md-6 wow fadeInRight" data-wow-delay="${delay}s">
-                                            <div class="mb-3 d-flex justify-content-start align-items-center" style="height:70px;">
-                                                ${iconHTML}
-                                            </div>
-                                            <h4 class="text-accent">${displayName}</h4>
-                                            <p>${service.description || ''}</p>
-                                            <div class="triangle-bottomright-dark"></div>
-                                            <span class="badge bg-primary position-absolute top-0 end-0 m-2"></span>
+
+                        data.forEach(service => {
+                            // Use inline SVG icon from JSON
+                            const iconHTML = service.icon || `<img src="images/svg-color/cctv.svg" class="w-70px mb-3" alt="${service.name}">`;
+
+                            // Render service card
+                            container.innerHTML += `
+                                <div class="col-lg-3 col-md-6 wow fadeInRight" data-wow-delay="${delay}s">
+                                    <div class="mb-3 d-flex justify-content-start align-items-center" style="height:70px;">
+                                        ${iconHTML}
                                     </div>
-                                `;
-                                delay += 0.1;
-                            });
+                                    <h4 class="text-accent">${service.name}</h4>
+                                    <p>${service.description || ''}</p>
+                                    <div class="triangle-bottomright-dark"></div>
+                                    <span class="badge bg-primary position-absolute top-0 end-0 m-2"></span>
+                                </div>
+                            `;
+                            delay += 0.1;
                         });
+                    })
+                    .catch(error => {
+                        console.error("Error loading services:", error);
+                        const container = document.getElementById('services-list');
+                        container.innerHTML = `<p class="text-danger">Failed to load services. Please try again later.</p>`;
                     });
             </script>
         </div>
@@ -327,6 +320,7 @@
     ================================================== -->
     <script src="js/vendors.js"></script>
     <script src="js/script.js"></script>
+<script src="/js/analytics.js" defer></script>
 
 </body>
 

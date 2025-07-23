@@ -505,8 +505,8 @@ header .header-col.mid .social-icons {
 
 .crumb-wrapper {
   position: absolute;
-  padding: 0 20px;
-  padding-bottom: 5px;
+  padding: 0 10px;
+  padding-bottom: 1px;
   bottom: 0;
   z-index: 1;
   text-align: center;
@@ -522,8 +522,8 @@ header .header-col.mid .social-icons {
 
 .crumb {
   display: inline-block;
-  padding: 3px 10px;
-  margin-top: 20px;
+  padding: 3px 5px;
+  margin-top: 10px;
   line-height: 1.2em;
   border-radius: 30px;
   -moz-border-radius: 30px;
@@ -1153,7 +1153,7 @@ header.header-mobile.header-center #logo-center {
 /* ================================================== */
 
 section {
-  padding: 100px 0 100px 0;
+  padding: 50px 0 100px 0;
 }
 
 #content.zebra section:nth-child(even) {
@@ -3137,9 +3137,9 @@ a.btn-sc {
   padding: 6px;
   font-size: 14px;
   color: #222;
-  border-radius: 30px;
   -moz-border-radius: 30px;
   -webkit-border-radius: 30px;
+  border-radius: 30px;
   background: #f2f2f2;
 }
 
@@ -3881,7 +3881,7 @@ footer h6 {
 
 h1,
 .h1 {
-  font-size: 52px;
+  font-size: 42px;
   margin-bottom: 20px;
   line-height: 1.35em;
   word-wrap: break-word;
@@ -9406,6 +9406,12 @@ footer .tiny-border span {
   position: relative;
 }
 
+.slider-content {
+  display: flex;
+  flex-direction: column;
+  
+}
+
 .slider-title .underline:before {
   content: "";
   position: absolute;
@@ -9615,8 +9621,8 @@ p.slider-teaser {
   font-weight: bold;
   background: var(--primary-color);
   padding: 2px 10px;
-  border-radius: 30px;
   -moz-border-radius: 30px;
+  border-radius: 30px;
   -webkit-border-radius: 30px;
 }
 

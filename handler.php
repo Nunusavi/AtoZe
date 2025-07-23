@@ -22,6 +22,6 @@ $validator->field('Message')->maxLength(6000);
 $pp->requireReCaptcha();
 $pp->getReCaptcha()->initSecretKey('6LdW03QgAAAAADVT9qY1gFgKKXY9KBeGG_5X7wbm');
    
-$pp->sendEmailTo(''); // ← Your email here
+$pp->sendEmailTo('nathanmesfin919@gmail.com'); // ← Your email here
 
 echo $pp->process($_POST);

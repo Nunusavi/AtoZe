@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Login</title>
+    <script defer src="./js/auth.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+
+<body class="max-h-screen bg-gray-900 text-gray-100">
+
+    <div class="min-h-screen bg-gray-900 py-30">
+        <div class="flex bg-gray-800 rounded-lg shadow-2xl overflow-hidden mx-auto max-w-sm lg:max-w-4xl">
+            <div class="hidden lg:block lg:w-1/2 bg-cover bg-gray-900">
+                <img src="./image/Logo-11.svg" alt="Login Background" class="w-full h-full object-cover bg-gray-900">
+            </div>
+            <div class="w-full p-8 lg:w-1/2">
+                <h2 class="text-xl text-gray-100 text-center">Welcome back!</h2>
+                <div class="mt-4 flex items-center justify-between">
+                    <span class="border-b border-gray-700 w-1/5 lg:w-1/4"></span>
+                    <a href="#" class="text-xs text-center text-gray-400 uppercase">login with username</a>
+                    <span class="border-b border-gray-700 w-1/5 lg:w-1/4"></span>
+                </div>
+                <form id="login-form" class="mt-4 space-y-4">
+                    <div>
+                        <label for="username" class="block text-gray-300 text-sm font-bold mb-2">Username</label>
+                        <input type="text" id="username" required
+                            class="bg-gray-700 text-gray-100 focus:outline-none focus:shadow-outline border border-gray-600 rounded py-2 px-4 block w-full appearance-none" />
+                    </div>
+                    <div>
+                        <label for="password" class="block text-gray-300 text-sm font-bold mb-2">Password</label>
+                        <input type="password" id="password" required
+                            class="bg-gray-700 text-gray-100 focus:outline-none focus:shadow-outline border border-gray-600 rounded py-2 px-4 block w-full appearance-none" />
+                    </div>
+                    <button type="submit"
+                        class="bg-blue-600 text-white font-bold py-2 px-4 w-full rounded hover:bg-blue-500">Login</button>
+                </form>
+                <!-- Toast Notification -->
+                <div id="toast"
+                    class="fixed top-6 right-6 z-50 flex items-center max-w-xs w-full px-4 py-3 rounded shadow-lg hidden"
+                    role="alert">
+                    <svg id="toast-icon" class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M18.364 5.636l-1.414-1.414A9 9 0 105.636 18.364l1.414 1.414A9 9 0 1018.364 5.636z">
+                        </path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01">
+                        </path>
+                    </svg>
+                    <span id="toast-message"></span>
+                </div>
+
+                <script>
+                    function showToast(message, type) {
+                        const toast = document.getElementById('toast');
+                        const toastMessage = document.getElementById('toast-message');
+                        const toastIcon = document.getElementById('toast-icon');
+
+                        toastMessage.textContent = message;
+
+                        if (type === 'success') {
+                            toast.className = 'fixed top-6 right-6 z-50 flex items-center max-w-xs w-full bg-green-900 border border-green-700 text-green-200 px-4 py-3 rounded shadow-lg';
+                            toastIcon.className = 'w-5 h-5 mr-2 text-green-400';
+                        } else {
+                            toast.className = 'fixed top-6 right-6 z-50 flex items-center max-w-xs w-full bg-red-900 border border-red-700 text-red-200 px-4 py-3 rounded shadow-lg';
+                            toastIcon.className = 'w-5 h-5 mr-2 text-red-400';
+                        }
+
+                        toast.classList.remove('hidden');
+                        setTimeout(() => {
+                            toast.classList.add('hidden');
+                        }, 3000);
+                    }
+                </script>
+            </div>
+        </div>
+    </div>
+    </div>
+</body>
+
+</html>

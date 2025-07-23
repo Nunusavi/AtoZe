@@ -1,0 +1,97 @@
+[
+    {
+        "timestamp": "2025-07-23T09:00:00.000Z",
+        "url": "/services.html",
+        "referrer": "https://google.com",
+        "utm_source": "google",
+        "utm_medium": "cpc",
+        "page_load_time": 750,
+        "anonymous_id": "_fd83js",
+        "user_id": null,
+        "session_duration": 42,
+        "scroll_depth": {
+            "25": true,
+            "50": true,
+            "75": false,
+            "90": false
+        },
+        "click_events": [
+            {
+                "tag": "button",
+                "id": "cta-button",
+                "text": "Get Quote"
+            }
+        ]
+    },
+    {
+        "timestamp": "2025-07-23T10:15:00.000Z",
+        "url": "/about.html",
+        "referrer": "https://bing.com",
+        "utm_source": "bing",
+        "utm_medium": "organic",
+        "page_load_time": 620,
+        "anonymous_id": "_ab12cd",
+        "user_id": null,
+        "session_duration": 35,
+        "scroll_depth": {
+            "25": true,
+            "50": true,
+            "75": true,
+            "90": false
+        },
+        "click_events": [
+            {
+                "tag": "a",
+                "id": "team-link",
+                "text": "Meet the Team"
+            }
+        ]
+    },
+    {
+        "timestamp": "2025-07-23T11:30:00.000Z",
+        "url": "/contact.html",
+        "referrer": "https://facebook.com",
+        "utm_source": "facebook",
+        "utm_medium": "social",
+        "page_load_time": 800,
+        "anonymous_id": "_xy34ef",
+        "user_id": "user_123",
+        "session_duration": 58,
+        "scroll_depth": {
+            "25": true,
+            "50": true,
+            "75": true,
+            "90": true
+        },
+        "click_events": [
+            {
+                "tag": "input",
+                "id": "email-field",
+                "text": ""
+            },
+            {
+                "tag": "button",
+                "id": "submit-contact",
+                "text": "Send"
+            }
+        ]
+    },
+    {
+        "timestamp": "2025-07-23T12:05:00.000Z",
+        "url": "/index.html",
+        "referrer": "",
+        "utm_source": "",
+        "utm_medium": "",
+        "page_load_time": 500,
+        "anonymous_id": "_gh56ij",
+        "user_id": null,
+        "session_duration": 20,
+        "scroll_depth": {
+            "25": true,
+            "50": false,
+            "75": false,
+            "90": false
+        },
+        "click_events": []
+    }
+]

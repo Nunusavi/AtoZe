@@ -47,18 +47,8 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-12">
-                            <div class="d-flex justify-content-between xs-hide">
-                                <div class="d-flex">
-                                    <div class="topbar-widget"><a href="#"><img src="images/svg-white/bell.svg" class=""
-                                                alt="">Get Estimation for your Security Needs</a></div>
-
-                                </div>
-                                <div class="d-flex">
-                                    <div class="topbar-widget me-5"><a href="#"><img src="images/svg-white/phone.svg"
-                                                class="" alt="">Call us: +251-939-902-685</a></div>
-                                    <div class="topbar-widget"><a href="#"><img src="images/svg-white/envelope.svg"
-                                                class="" alt="">Message us: contact@atozeengineering.com</a></div>
-                                </div>
+                            <div class="d-flex justify-content-between xs-hide" id="topbar-messages">
+                                <!-- Dynamic messages will be injected here -->
                             </div>
                         </div>
                     </div>
@@ -86,6 +76,7 @@
                                     <li><a class="menu-item" href="services.html">Services</a></li>
                                     <li><a class="menu-item" href="products.html">Products</a></li>
                                     <li><a class="menu-item" href="projects.html">Projects</a></li>
+                                    <li><a class="menu-item" href="fqa.html">FQA</a></li>
                                     <li><a class="menu-item" href="contact.html">Contact</a></li>
                                 </ul>
                             </div>
@@ -442,14 +433,25 @@
                                                 </div>
                                                 <div class="mt-3 fw-600">${testimonial.name}</div>
                                                 <div class="de-rating-ext mb-3">
-                                                    ${testimonial.socials ? `
-                                                        <span class="social-icons">
-                                                            ${testimonial.socials.facebook ? `<a href="${testimonial.socials.facebook}"><i class="fa-brands fa-facebook-f"></i></a>` : ''}
-                                                            ${testimonial.socials.instagram ? `<a href="${testimonial.socials.instagram}"><i class="fa-brands fa-instagram"></i></a>` : ''}
-                                                            ${testimonial.socials.whatsapp ? `<a href="${testimonial.socials.whatsapp}"><i class="fa-brands fa-whatsapp"></i></a>` : ''}
-                                                            ${testimonial.socials.phone ? `<a href="${testimonial.socials.phone}"><i class="fa-solid fa-phone"></i></a>` : ''}
+                                                    ${Array.isArray(testimonial.socials) && testimonial.socials.length > 0 ? (() => {
+                                                        // Parse the socials array into an object
+                                                        let socialsObj = {};
+                                                        try {
+                                                            // Join the array into a string and parse as JSON
+                                                            socialsObj = JSON.parse(testimonial.socials.join('\n'));
+                                                        } catch (e) {
+                                                            socialsObj = {};
+                                                        }
+                                                        return `
+                                                        <span class="social-icons" style="gap: 0.1  rem; display: inline-flex; align-items: center;">
+                                                            ${socialsObj.facebook ? `<a href="${socialsObj.facebook}"><i class="fa-brands fa-facebook-f"></i></a>` : ''}
+                                                            ${socialsObj.twitter ? `<a href="${socialsObj.twitter}"><i class="fa-brands fa-x-twitter"></i></a>` : ''}
+                                                            ${socialsObj.instagram ? `<a href="${socialsObj.instagram}"><i class="fa-brands fa-instagram"></i></a>` : ''}
+                                                            ${socialsObj.whatsapp ? `<a href="${socialsObj.whatsapp}"><i class="fa-brands fa-whatsapp"></i></a>` : ''}
+                                                            ${socialsObj.phone ? `<a href="${socialsObj.phone}"><i class="fa-solid fa-phone"></i></a>` : ''}
                                                         </span>
-                                                    ` : `
+                                                        `;
+                                                    })() : `
                                                         <span class="d-stars">
                                                             ${'<i class="fa fa-star"></i>'.repeat(testimonial.stars || 5)}
                                                         </span>
@@ -466,7 +468,7 @@
             </div>
         </section>
 
-        <section>
+        <section id="fqa">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-6 offset-lg-3 text-center">
@@ -777,6 +779,23 @@
     <script src="js/swiper.js"></script>
     <script src="js/custom-marquee.js"></script>
     <script src="js/custom-swiper-1.js"></script>
+    <script>
+        // Dynamically load topbar messages from JSON and display them all (no rotation)
+        fetch('Json/topbar-messages.json')
+            .then(res => res.json())
+            .then(messages => {
+                const container = document.getElementById('topbar-messages');
+                container.innerHTML = messages.map(msg => `
+                <div class="topbar-widget me-5">
+                <a href="${msg.link}">
+                    <img src="${msg.icon}" alt="">
+                    ${msg.text}
+                </a>
+                </div>
+            `).join('');
+            });
+    </script>
+    <script src="/js/analytics.js" defer></script>
 
 </body>
 
