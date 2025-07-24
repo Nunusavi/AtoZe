@@ -130,5 +130,18 @@ app.use((req, res) => {
 
 // Start server
 app.listen(PORT, () => {
-    console.log(`✅ Server running at http://localhost:${PORT}`);
+    const interfaces = os.networkInterfaces();
+    const addresses = [];
+    for (const name of Object.keys(interfaces)) {
+        for (const iface of interfaces[name]) {
+            if (iface.family === "IPv4" && !iface.internal) {
+                addresses.push(iface.address);
+            }
+        }
+    }
+    console.log(`✅ Server running at:`);
+    addresses.forEach(addr => {
+        console.log(`   http://${addr}:${PORT}`);
+    });
+    console.log(`   http://localhost:${PORT}`);
 });
