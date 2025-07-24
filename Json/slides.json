@@ -5,9 +5,9 @@
         "headline": "CCTV Systems",
         "image": "images/products/3.webp",
         "learnMoreText": "Learn More",
-        "learnMoreLink": "contact.html",
+        "learnMoreLink": "products.html",
         "callText": "Call us",
-        "callLink": "contact.html"
+        "callLink": "tel:0939392685"
     },
     {
         "background": "images/background/3.webp",
@@ -15,9 +15,9 @@
         "headline": "Employee Attendance System",
         "image": "images/products/Time_attendance_2.png",
         "learnMoreText": "Learn More",
-        "learnMoreLink": "contact.html",
+        "learnMoreLink": "products.html",
         "callText": "Call us now",
-        "callLink": "contact.html"
+        "callLink": "tel:0939392685"
     },
     {
         "background": "images/background/3.webp",
@@ -25,9 +25,9 @@
         "headline": "Modern door control",
         "image": "images/products/Gate_opener.png",
         "learnMoreText": "Learn More",
-        "learnMoreLink": "contact.html",
+        "learnMoreLink": "products.html",
         "callText": "Call us now",
-        "callLink": "contact.html"
+        "callLink": "tel:0939392685"
     },
     {
         "background": "images/background/3.webp",
@@ -35,9 +35,9 @@
         "headline": "Intercom Systems",
         "image": "images/products/Intercom.png",
         "learnMoreText": "Learn More",
-        "learnMoreLink": "contact.html",
+        "learnMoreLink": "products.html",
         "callText": "Call us now",
-        "callLink": "contact.html"
+        "callLink": "tel:0939392685"
     },
     {
         "background": "images/background/3.webp",
@@ -45,8 +45,8 @@
         "headline": "Smart door locks",
         "image": "images/products/Smart-door-main.png",
         "learnMoreText": "Learn More",
-        "learnMoreLink": "contact.html",
+        "learnMoreLink": "products.html",
         "callText": "Call us now",
-        "callLink": "contact.html"
+        "callLink": "tel:0939392685"
     }
 ]
