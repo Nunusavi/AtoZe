@@ -1,59 +1,4 @@
 {
-  "d6f35796-5734-43e9-8e9c-0143fc3d19d9": {
-    "username": "admin",
-    "role": "admin",
-    "expires": 1753289249941
-  },
-  "17a5335f-46d1-42c3-aa14-ab970c80c3dc": {
-    "username": "admin",
-    "role": "admin",
-    "expires": 1753290073452
-  },
-  "ea893aef-2feb-4dbd-9e9c-8f13802b850d": {
-    "username": "admin",
-    "role": "admin",
-    "expires": 1753290115546
-  },
-  "e645395a-71f4-446b-9f6c-289467ad4dee": {
-    "username": "admin",
-    "role": "admin",
-    "expires": 1753290137479
-  },
-  "cf03003a-d31e-425f-a4ce-4f521f2ace50": {
-    "username": "admin",
-    "role": "admin",
-    "expires": 1753290246362
-  },
-  "889ee909-3546-463d-bdcf-9068ceddbb74": {
-    "username": "admin",
-    "role": "admin",
-    "expires": 1753290365985
-  },
-  "c0b0d27d-44c2-4f2c-b1db-80c82d011896": {
-    "username": "admin",
-    "role": "admin",
-    "expires": 1753290477765
-  },
-  "8c2d190f-ceb6-428f-9029-2969d78c7817": {
-    "username": "admin",
-    "role": "admin",
-    "expires": 1753290532159
-  },
-  "5e286bf8-8d06-41bf-9912-ccf7fdc83ad9": {
-    "username": "admin",
-    "role": "admin",
-    "expires": 1753290897778
-  },
-  "97df5b51-de91-4fb6-9934-b00055dc7a47": {
-    "username": "viewer",
-    "role": "viewer",
-    "expires": 1753291788058
-  },
-  "ab6444fa-5c61-4222-9e69-b33ef37ed17f": {
-    "username": "admin",
-    "role": "admin",
-    "expires": 1753291803187
-  },
   "9df5fff6-8c2f-49d3-8770-098d27095160": {
     "username": "admin",
     "role": "admin",
@@ -118,9 +63,17 @@
     "ip": "::1",
     "expires": 1753292114280
   },
-  "005dfd24-faea-4205-976c-a2c16f8c0353": {
+  "10dae940-c4bc-45b1-9a81-25cf5eea3fdc": {
     "username": "admin",
     "role": "admin",
-    "expires": 1753314246539
+    "expires": 1753363248123
+  },
+  "1109a5e9-e3b2-4707-9f5a-c835a5806e2c": {
+    "username": "admin",
+    "role": "admin",
+    "createdAt": 1753341701422,
+    "ip": "::1",
+    "userAgent": "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Mobile Safari/537.36",
+    "expires": 1753363301422
   }
 }

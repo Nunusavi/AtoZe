@@ -230,9 +230,32 @@
                 </div>
             </section>
 
+            <!-- Session Table Section -->
+            <section id="sessionSection" class="hidden">
+                <h1 class="text-2xl font-bold mb-6">🕒 Session Data</h1>
+                <div class="bg-gray-800 p-5 rounded-xl shadow">
+                    <h2 class="text-lg font-semibold mb-3">User Sessions</h2>
+                    <table class="w-full text-left text-sm text-gray-300">
+                        <thead class="bg-gray-700 text-gray-400">
+                            <tr>
+                                <th class="px-4 py-2">Username</th>
+                                <th class="px-4 py-2">Last Login</th>
+                                <th class="px-4 py-2">IP Address</th>
+                                <th class="px-4 py-2">Role</th>
+                                <th class="px-4 py-2">User Agent</th>
+                            </tr>
+                        </thead>
+                        <tbody id="sessionTableBody" class="bg-gray-800">
+                            <!-- Session data will be dynamically inserted here -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+
             <!-- Chart.js CDN (add in <head> or before </body>) -->
             <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-                <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
 
         </main>
     </div>

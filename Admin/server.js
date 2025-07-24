@@ -32,6 +32,12 @@ app.get("/Admin", (_, res) => {
     res.sendFile(path.join(ADMIN_DIR, "login.html"));
 });
 
+// Serve website static content (root)
+app.use("/", express.static(path.join(__dirname, ".."))); // This serves index.html etc
+
+app.get("*", (req, res) => {
+    res.status(404).send("Page not found");
+});
 // Session Validation
 app.post("/Admin/api/session", async (req, res) => {
     try {
@@ -61,6 +67,9 @@ app.post("/Admin/api/login", async (req, res) => {
         sessions[token] = {
             username,
             role: user.role,
+            createdAt: Date.now(),
+            ip: req.ip,
+            userAgent: req.headers['user-agent'] || "",
             expires: Date.now() + 6 * 60 * 60 * 1000 // 6 hours
         };
 
@@ -70,6 +79,15 @@ app.post("/Admin/api/login", async (req, res) => {
         res.status(500).end();
     }
 });
+// Session fetch data 
+// app.get("/Admin/api/sessions", async (req, res) => {
+//     try {
+//         const sessions = JSON.parse(await fsPromises.readFile(SESSION_FILE, "utf-8"));
+//         res.json(sessions);
+//     } catch {
+//         res.status(500).end();
+//     }
+// });
 
 // GET JSON file content
 app.get("/Admin/api/json", async (req, res) => {

@@ -29,6 +29,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const logoutBtn = document.getElementById("logout-btn");
     const cmsSection = document.getElementById("cmsSection");
     const analyticsSection = document.getElementById("analyticsSection");
+    const sessionSection = document.getElementById("sessionSection");
+    const sessionTableBody = document.getElementById("sessionTableBody");
     const cmsBtn = document.getElementById("cmsBtn");
     const analyticsBtn = document.getElementById("analyticsBtn");
 
@@ -111,12 +113,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
         data.forEach((entry, index) => {
             const card = document.createElement('div');
-            card.className = 'bg-blue-900 shadow-md rounded-lg p-4 flex flex-col justify-between';
+            card.className = 'bg-blue-900 shadow-md rounded-lg p-4 flex flex-col justify-between overflow-hidden transition-transform transform hover:scale-100 mb-4';
 
             let imagesHTML = '';
             if (entry.image) {
                 if (Array.isArray(entry.image)) {
-                    imagesHTML = entry.image.map(src => `<img src="${getImagePath(src)}" class="w-full h-40 object-cover mb-2 rounded">`).join('');
+                    imagesHTML = `
+                        <div class="grid grid-cols-2 gap-2 mb-2">
+                            ${entry.image.map(src => `<img src="${getImagePath(src)}" class="w-full h-full object-cover rounded">`).join('')}
+                        </div>
+                    `;
                 } else {
                     imagesHTML = `<img src="${getImagePath(entry.image)}" class="w-full h-40 object-cover mb-2 rounded">`;
                 }
@@ -141,9 +147,27 @@ document.addEventListener("DOMContentLoaded", () => {
                 ${iconHTML}
                 ${imagesHTML}
                 <div class="flex-1 space-y-2 text-sm">${body}</div>
-                <div class="flex justify-end gap-4 mt-4">
-                    <button class="text-blue-500" onclick="openModal(${index})">Edit</button>
-                    <button class="text-red-500" onclick="deleteEntry(${index})">Delete</button>
+                <div class="flex flex-col sm:flex-row justify-end gap-2 sm:gap-4">
+                    <button 
+                        class="flex items-center gap-2 px-4 py-2 rounded-lg bg-blue-700 hover:bg-blue-800 text-white font-semibold shadow transition-colors duration-150 focus:outline-none focus:ring-2 focus:ring-blue-400 w-full sm:w-auto"
+                        onclick="openModal(${index})"
+                        title="Edit Entry"
+                    >
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15.232 5.232l3.536 3.536M9 13l6.586-6.586a2 2 0 112.828 2.828L11.828 15.828a2 2 0 01-2.828 0L9 13zm-6 6h6"/>
+                        </svg>
+                        <span class="hidden xs:inline">Edit</span>
+                    </button>
+                    <button 
+                        class="flex items-center gap-2 px-4 py-2 rounded-lg bg-red-600 hover:bg-red-700 text-white font-semibold shadow transition-colors duration-150 focus:outline-none focus:ring-2 focus:ring-red-400 w-full sm:w-auto"
+                        onclick="deleteEntry(${index})"
+                        title="Delete Entry"
+                    >
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+                        </svg>
+                        <span class="hidden xs:inline">Delete</span>
+                    </button>
                 </div>
             `;
 
@@ -550,33 +574,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    function createAnalyticsTabs() {
-        const section = document.getElementById("analyticsSection");
-        const tabContainer = document.createElement("div");
-        tabContainer.className = "flex gap-4 mb-6 border-b border-gray-600 text-sm font-semibold";
-        tabContainer.innerHTML = `
-            <button class="tab-btn py-2 px-4 text-gray-300 border-b-2 border-transparent hover:text-white hover:border-blue-500" data-tab="traffic">🚦 Traffic</button>
-            <button class="tab-btn py-2 px-4 text-gray-300 border-b-2 border-transparent hover:text-white hover:border-blue-500" data-tab="engagement">📈 Engagement</button>
-            <button class="tab-btn py-2 px-4 text-gray-300 border-b-2 border-transparent hover:text-white hover:border-blue-500" data-tab="health">🛠 Performance</button>
-        `;
-        section.prepend(tabContainer);
-
-        const allTabs = document.querySelectorAll(".analytics-tab");
-        const tabBtns = document.querySelectorAll(".tab-btn");
-
-        tabBtns.forEach(btn => {
-            btn.addEventListener("click", () => {
-                const tab = btn.getAttribute("data-tab");
-                tabBtns.forEach(b => b.classList.remove("border-blue-500", "text-white"));
-                btn.classList.add("border-blue-500", "text-white");
-                allTabs.forEach(el => el.classList.add("hidden"));
-                document.getElementById(`tab-${tab}`).classList.remove("hidden");
-            });
-        });
-
-        tabBtns[0].click(); // Default to first tab
-    }
-
     function createDateFilterControls() {
         const section = document.getElementById("analyticsSection");
         const filterBox = document.createElement("div");
@@ -638,16 +635,110 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function renderAnalytics(data) {
-        // reuse your chart update logic, e.g. drawTraffic(data), drawDonut(data), etc.
-        // For now just update a number as a basic example
-        const visitorsToday = data.filter(d => new Date(d.timestamp).toDateString() === new Date().toDateString()).length;
-        document.getElementById("visitorsToday").textContent = visitorsToday;
+        document.getElementById("visitorsToday").textContent =
+            data.filter(d => new Date(d.timestamp).toDateString() === new Date().toDateString()).length;
+
+        drawDonutChart(data, "trafficSourcesDonut");
+        drawBarChart(data, "topPagesBar");
+        drawSparkline(data, "sparklineChart");
+        updateScrollDepth(data);
+    }
+
+    function drawDonutChart(data, containerId) {
+        const container = document.getElementById(containerId);
+        container.innerHTML = "";
+        const sourceCounts = {};
+        data.forEach(d => {
+            const src = d.utm_source || d.referrer_domain || "direct";
+            sourceCounts[src] = (sourceCounts[src] || 0) + 1;
+        });
+        const total = Object.values(sourceCounts).reduce((a, b) => a + b, 0);
+        const colors = ["#38bdf8", "#4ade80", "#facc15", "#f472b6", "#c084fc", "#f87171"];
+        let i = 0;
+        const chart = document.createElement("div");
+        chart.className = "relative w-40 h-40 rounded-full mx-auto";
+        chart.style.background = "conic-gradient(" +
+            Object.entries(sourceCounts).map(([key, count]) => {
+                const angle = (count / total) * 360;
+                const color = colors[i++ % colors.length];
+                return `${color} 0 ${angle}deg`;
+            }).join(", ") +
+            ")";
+
+        const legend = document.createElement("div");
+        legend.className = "mt-4 text-sm space-y-1 text-gray-300";
+        i = 0;
+        for (const [key, count] of Object.entries(sourceCounts)) {
+            const color = colors[i++ % colors.length];
+            const row = document.createElement("div");
+            row.innerHTML = `<span style="background:${color}" class="inline-block w-3 h-3 mr-2 rounded-full"></span>${key} (${count})`;
+            legend.appendChild(row);
+        }
+
+        container.appendChild(chart);
+        container.appendChild(legend);
+    }
+
+    function drawBarChart(data, containerId) {
+        const container = document.getElementById(containerId);
+        container.innerHTML = "";
+        const pageViews = {};
+        data.forEach(d => {
+            const page = d.page || "/";
+            pageViews[page] = (pageViews[page] || 0) + 1;
+        });
+        const topPages = Object.entries(pageViews)
+            .sort((a, b) => b[1] - a[1])
+            .slice(0, 5);
+        const maxCount = topPages[0]?.[1] || 1;
+
+        topPages.forEach(([page, count]) => {
+            const row = document.createElement("div");
+            row.className = "mb-3";
+            row.innerHTML = `
+                <div class="text-sm text-gray-300 mb-1">${page} (${count})</div>
+                <div class="w-full bg-gray-700 rounded h-4">
+                    <div class="h-4 rounded bg-blue-500" style="width:${(count / maxCount) * 100}%"></div>
+                </div>
+            `;
+            container.appendChild(row);
+        });
+    }
+
+    function drawSparkline(data, containerId) {
+        const container = document.getElementById(containerId);
+        container.innerHTML = "";
+        const hours = Array(24).fill(0);
+        data.forEach(d => {
+            const h = new Date(d.timestamp).getHours();
+            hours[h]++;
+        });
+        const max = Math.max(...hours);
+        const wrapper = document.createElement("div");
+        wrapper.className = "flex items-end h-full gap-[2px]";
+        hours.forEach(v => {
+            const bar = document.createElement("div");
+            bar.className = "bg-green-400 w-[3%] rounded";
+            bar.style.height = `${(v / max) * 100 || 5}%`;
+            wrapper.appendChild(bar);
+        });
+        container.appendChild(wrapper);
+    }
+
+    function updateScrollDepth(data) {
+        const scrolls = data.map(d => parseFloat(d.scroll_depth || 0)).filter(Boolean);
+        const avg = scrolls.length ? (scrolls.reduce((a, b) => a + b) / scrolls.length) : 0;
+        const progressBar = document.getElementById("scrollProgress");
+        progressBar.style.width = `${avg}%`;
+        progressBar.textContent = `${Math.round(avg)}%`;
     }
 
     // INIT
     if (document.getElementById("analyticsSection")) {
-        createAnalyticsTabs();
         createDateFilterControls();
+        fetch("/Admin/api/json?file=analytics.json")
+            .then(res => res.json())
+            .then(data => renderAnalytics(data));
     }
 
     loadAnalytics();
@@ -658,6 +749,38 @@ document.addEventListener("DOMContentLoaded", () => {
         loadAnalytics();
     };
 
+    const sessionBtn = document.createElement("button");
+
+    // // Add a button to navigate to the session section
+    // sessionBtn.textContent = "🕒 Sessions";
+    // sessionBtn.className = "flex items-center gap-3 text-left w-full px-3 py-3 rounded-lg transition bg-blue-950 hover:bg-blue-700 focus:bg-blue-800 font-medium";
+    // sessionBtn.onclick = () => {
+    //     cmsSection.classList.add("hidden");
+    //     analyticsSection.classList.add("hidden");
+    //     sessionSection.classList.remove("hidden");
+    //     loadSessionData();
+    // };
+    // document.querySelector("nav").appendChild(sessionBtn);
+
+    // // async function loadSessionData() {
+    // //     try {
+    // //         const res = await fetch("/Admin/api/sessions");
+    // //         const sessions = await res.json();
+
+    // //         sessionTableBody.innerHTML = Object.entries(sessions).map(([id, session]) => `
+    // //             <tr class="border-b border-gray-700">
+    // //                 <td class="px-4 py-2">${session.username}</td>
+    // //                 <td class="px-4 py-2">${new Date(session.createdAt).toLocaleString()}</td>
+    // //                 <td class="px-4 py-2">${session.ip}</td>
+    // //                 <td class="px-4 py-2">${session.role}</td>
+    // //                 <td class="px-4 py-2">${session.userAgent}</td>
+    // //             </tr>
+    // //         `).join("");
+    // //     } catch (error) {
+    // //         console.error("Error loading session data:", error);
+    // //         sessionTableBody.innerHTML = `<tr><td colspan="5" class="px-4 py-2 text-red-500">Failed to load session data</td></tr>`;
+    // //     }
+    // // }
 });
 
 
