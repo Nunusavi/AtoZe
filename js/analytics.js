@@ -1,5 +1,5 @@
 (function () {
-    const ANALYTICS_ENDPOINT = "/Admin/api/track";
+    const ANALYTICS_ENDPOINT = "http://localhost:10000/Admin/api/track";
     const getCookie = (name) => document.cookie.split('; ').find(row => row.startsWith(name + '='))?.split('=')[1];
     const setCookie = (name, value, days = 365) => {
         const expires = new Date(Date.now() + days * 864e5).toUTCString();
