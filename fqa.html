@@ -421,6 +421,42 @@
             });
     </script>
     <script src="/js/analytics.js" defer></script>
+    <script>
+        fetch('Json/faq.json')
+            .then(response => response.json())
+            .then(data => {
+                const accordionContainer = document.querySelector('.accordion-section');
+                accordionContainer.innerHTML = '';
+
+                data.forEach((faq, index) => {
+                    const sectionTitle = document.createElement('div');
+                    sectionTitle.className = 'accordion-section-title';
+                    sectionTitle.setAttribute('data-tab', `#accordion-a${index + 1}`);
+                    sectionTitle.textContent = faq.question;
+
+                    const sectionContent = document.createElement('div');
+                    sectionContent.className = 'accordion-section-content';
+                    sectionContent.id = `accordion-a${index + 1}`;
+                    sectionContent.style.display = 'none';
+                    sectionContent.innerHTML = `
+        <p>${faq.answer}</p>
+        <div style="background: #fff3cd; border-left: 4px solid #ffc107; padding: 1rem; border-radius: 6px; margin-bottom: 1rem; margin-top: 5px;">
+          <span style="color: #e63946;">${faq.cta.text}</span>
+          <br>
+          <a href="${faq.cta.link}" style="color: #e63946; font-weight: bold; text-decoration: underline;">${faq.cta.linkText}</a>
+        </div>
+      `;
+
+                    sectionTitle.addEventListener('click', () => {
+                        const isVisible = sectionContent.style.display === 'block';
+                        sectionContent.style.display = isVisible ? 'none' : 'block';
+                    });
+
+                    accordionContainer.appendChild(sectionTitle);
+                    accordionContainer.appendChild(sectionContent);
+                });
+            });
+    </script>
 
 </body>
 
