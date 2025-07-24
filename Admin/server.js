@@ -32,7 +32,7 @@ const upload = multer({ dest: IMAGE_DIR });
 // ========== ROUTES ==========
 
 // Admin login page
-app.get("/Admin/login", (req, res) => {
+app.get("/Admin/", (req, res) => {
     res.sendFile(path.join(ADMIN_DIR, "login.html"));
 });
 
