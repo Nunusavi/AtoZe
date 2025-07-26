@@ -1,10 +1,7 @@
-{
-    "admin": {
-        "role": "admin",
-        "password": "$argon2id$v=19$m=65536,t=3,p=4$sYltQh04QqocjWig/VaVRQ$AArhZdm3L4crkkdHnp3kQtwC0Bblk7kD+ygzOXB1hDA"
-        },
-    "viewer": {
-        "role": "viewer",
-        "password": "$argon2id$v=19$m=65536,t=3,p=4$8dBfmbRVLqWI+/Ax9LyDzw$zIawpTlqlvcSMwacxODM/j1a0buwoReCyfkhrb4mG0M"
+[
+    {
+        "username": "admin",
+        "password": "$2y$10$XIywD2TwjgQ/Gq/WzzUXPO6QWWMKohHzEYVsKu8APuD5V.viPzRiO",
+        "role": "admin"
     }
-}
+]
