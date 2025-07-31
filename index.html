@@ -21,9 +21,11 @@
     <link href="css/swiper.css" rel="stylesheet" type="text/css">
     <link href="css/style.css" rel="stylesheet" type="text/css">
     <link href="css/coloring.css" rel="stylesheet" type="text/css">
+
     <!-- color scheme -->
     <link id="colors" href="css/colors/scheme-01.css" rel="stylesheet" type="text/css">
     <!-- Tailwind CSS -->
+
 
 
 </head>
@@ -283,6 +285,98 @@
                 </div>
             </section>
 
+            <section class="bg-light">
+                <div class="\">
+                    <div class="mb-10 text-center">
+                        <div class="subtitle s2 mb-2 wow fadeInUp">Featured Products</div>
+                        <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">Explore Our Top Picks</h2>
+                        <p class="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">Discover our most popular security
+                            and utility products, handpicked for quality and innovation.</p>
+                    </div>
+                    <!-- Swiper container for featured products -->
+                    <!-- ...existing code... -->
+                    <div id="featured-products-carousel">
+                        <div id="featured-products-wrapper">
+                            <!-- Product cards will be injected here as custom slides -->
+                        </div>
+                        <!-- Custom Pagination and Navigation -->
+                        <button id="fp-prev">&#8592;</button>
+                        <button id="fp-next">&#8594;</button>
+                        <div id="fp-pagination"></div>
+                    </div>
+                    <script>
+                        const CARD_WIDTH = 340; // px
+                        const GAP = 32; // px
+                        const VISIBLE = window.innerWidth >= 1024 ? 3 : window.innerWidth >= 768 ? 2 : 1;
+                        let fpCurrent = 0, fpTotal = 0, fpVisible = VISIBLE;
+
+                        function renderFeaturedProducts(products) {
+                            const wrapper = document.getElementById('featured-products-wrapper');
+                            wrapper.innerHTML = '';
+                            products.forEach((product, idx) => {
+                                wrapper.innerHTML += `
+        <div class="featured-product-card">
+            <div class="fp-image-wrap">
+                <img src="${product.image[1]?.replace('./', '') || product.image[0]?.replace('./', '')}" alt="${product.name || product.model}">
+                <span class="fp-badge">Featured</span>
+            </div>
+            <div class="fp-content">
+                <h5>${product.name || product.model}</h5>
+                <div class="fp-meta">${product.brand ? product.brand + ' — ' : ''}${product.category || ''}</div>
+                <p class="line-clamp-3">${product.summary || (product.description?.slice(0, 120) + '...') || ''}</p>
+                <a onclick="window.location.href='product-details.html?category=${encodeURIComponent(product.category)}&brand=${encodeURIComponent(product.brand)}&model=${encodeURIComponent(product.model)}'" class="fp-link">View Details</a>
+            </div>
+        </div>
+        `;
+                            });
+                            fpTotal = products.length;
+                            updateFpPagination();
+                            updateFpPosition();
+                        }
+
+                        function updateFpPagination() {
+                            const pag = document.getElementById('fp-pagination');
+                            pag.innerHTML = '';
+                            const pageCount = Math.ceil(fpTotal / fpVisible);
+                            for (let i = 0; i < pageCount; i++) {
+                                pag.innerHTML += `<span data-idx="${i}" class="${i === fpCurrent ? 'active' : ''}"></span>`;
+                            }
+                            Array.from(pag.children).forEach(el => {
+                                el.onclick = () => { fpCurrent = +el.dataset.idx; updateFpPosition(); };
+                            });
+                        }
+
+                        function updateFpPosition() {
+                            const wrapper = document.getElementById('featured-products-wrapper');
+                            const pageCount = Math.ceil(fpTotal / fpVisible);
+                            if (fpCurrent < 0) fpCurrent = 0;
+                            if (fpCurrent > pageCount - 1) fpCurrent = pageCount - 1;
+                            wrapper.style.transform = `translateX(-${fpCurrent * (CARD_WIDTH + GAP) * fpVisible}px)`;
+                            // Update pagination
+                            const pag = document.getElementById('fp-pagination');
+                            Array.from(pag.children).forEach((el, i) => {
+                                el.classList.toggle('active', i === fpCurrent);
+                            });
+                        }
+
+                        document.getElementById('fp-prev').onclick = () => { fpCurrent--; updateFpPosition(); };
+                        document.getElementById('fp-next').onclick = () => { fpCurrent++; updateFpPosition(); };
+
+                        window.addEventListener('resize', () => {
+                            fpVisible = window.innerWidth >= 1024 ? 3 : window.innerWidth >= 768 ? 2 : 1;
+                            updateFpPagination();
+                            updateFpPosition();
+                        });
+
+                        fetch('Json/normalized_products.json')
+                            .then(res => res.json())
+                            .then(products => {
+                                const featured = products.filter(p => Array.isArray(p.image) && p.image.length > 0).slice(0, 19);
+                                renderFeaturedProducts(featured);
+                            });
+                    </script>
+                    <!-- ...existing code... -->
+            </section>
             <section class="bg-color pt60 pb60">
                 <div class="container">
                     <div class="row g-4">
@@ -703,6 +797,8 @@
                 });
             });
     </script>
+<img src="/analytics/tracker.php" style="display:none;" width="1" height="1" alt="">
+<script src="/analytics/public/analytics.js"></script>
 
 </body>
 

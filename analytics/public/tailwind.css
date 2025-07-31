@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom color palette */
+:root {
+    --color-light-1: #E8E8E8;
+    --color-light-2: #F4F4F4;
+    --color-dark-1: #010A1A;
+    --color-dark-2: #1A2331;
+    --color-dark-3: #283243;
+}
+
+[data-theme="dark"] {
+    --bg-main: var(--color-dark-1);
+    --bg-card: var(--color-dark-2);
+    --text-main: #fff;
+    --border-main: #283243;
+}
+
+[data-theme="light"] {
+    --bg-main: var(--color-light-1);
+    --bg-card: var(--color-light-2);
+    --text-main: #1A2331;
+    --border-main: #E8E8E8;
+}
