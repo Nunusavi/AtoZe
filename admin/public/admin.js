@@ -1,5 +1,5 @@
 (function () {
-  const endpoint = '/analytics/events.php';
+  const endpoint = '/admin/events.php';
 
   function sendEvent(type, data = {}) {
     fetch(endpoint, {
@@ -11,7 +11,7 @@
         event_type: type,
         event_data: data
       })
-    }).catch(() => {});
+    }).catch(() => { });
   }
 
   // Example: track clicks on elements with data-track attribute

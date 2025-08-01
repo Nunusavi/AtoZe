@@ -8,7 +8,7 @@ use Analytics\Aggregator;
 $auth = new Auth(__DIR__ . '/config/users.json');
 
 if (!$auth->isLoggedIn()) {
-    header('Location: /login.php');
+    header('Location: admin/login.php');
     exit;
 }
 
