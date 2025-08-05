@@ -222,12 +222,13 @@ header.autoshow.scrollOff {
 }
 
 header div#logo {
-  color: white;
+  color: rgb(255, 255, 255);
   -webkit-transition: all 0.3s;
   -moz-transition: all 0.3s;
   -ms-transition: all 0.3s;
   -o-transition: all 0.3s;
   transition: all 0.3s;
+  
 }
 
 header .logo-2 {
@@ -12858,18 +12859,12 @@ img {
 #featured-products-carousel {
   border-radius: 18px;
   background-color: var(--bg-light);
-  padding: 40px 32px;
-  margin-bottom: 2rem;
+  padding: 10px 30px;   
   position: relative;
   overflow: hidden;
 }
 
-#featured-products-wrapper {
-  display: flex;
-  gap: 32px;
-  padding: 0 32px;
-  transition: transform 0.5s cubic-bezier(.4,0,.2,1);
-}
+
 
 .featured-product-card {
   min-width: 340px;
@@ -13032,7 +13027,7 @@ img {
 @media (max-width: 767px) {
   #featured-products-wrapper {
     gap: 16px;
-    padding: 0 8px;
+    padding: 0px;
   }
   .featured-product-card {
     min-width: 90vw;

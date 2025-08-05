@@ -135,6 +135,75 @@ class Aggregator {
 
     return $stats;
 }
+public static function getAggregatedStats($fromDate = null, $toDate = null)
+{
+    $stats = [
+        'pages' => [],
+        'referrers' => [],
+        'countries' => [],
+        'browsers' => [],
+        'os' => [],
+        'devices' => [],
+    ];
 
+    $files = glob(__DIR__ . './../logs/*.json');
+
+    foreach ($files as $file) {
+        $date = basename($file, '.json');
+
+        // Filter by date range if specified
+        if ($fromDate && $date < $fromDate) continue;
+        if ($toDate && $date > $toDate) continue;
+
+        $data = json_decode(file_get_contents($file), true);
+        if (!$data) continue;
+
+        foreach ($data as $entry) {
+            $page = $entry['url'] ?? null;
+            $ref = $entry['referrer'] ?? null;
+            $country = $entry['country'] ?? 'Unknown';
+            $browser = $entry['browser'] ?? 'Unknown';
+            $os = $entry['os'] ?? 'Unknown';
+            $device = $entry['device'] ?? 'Unknown';
+
+            // Only count meaningful public pages (not tracker.php or admin)
+            if ($page && !str_contains($page, 'tracker.php') && !str_contains($page, '/admin/')) {
+                $stats['pages'][$page] = ($stats['pages'][$page] ?? 0) + 1;
+            }
+
+            // Only count external referrers, ignore null, empty, self-referring, admin, or tracker.php
+            if ($ref && $ref !== 'direct' && !str_contains($ref, 'tracker.php') && !str_contains($ref, '/admin/')) {
+                $stats['referrers'][$ref] = ($stats['referrers'][$ref] ?? 0) + 1;
+            }
+
+            // Count countries
+            if ($country) {
+                $stats['countries'][$country] = ($stats['countries'][$country] ?? 0) + 1;
+            }
+
+            // Count browsers
+            if ($browser) {
+                $stats['browsers'][$browser] = ($stats['browsers'][$browser] ?? 0) + 1;
+            }
+
+            // Count operating systems
+            if ($os) {
+                $stats['os'][$os] = ($stats['os'][$os] ?? 0) + 1;
+            }
+
+            // Count devices
+            if ($device) {
+                $stats['devices'][$device] = ($stats['devices'][$device] ?? 0) + 1;
+            }
+        }
+    }
+
+    // Sort each stat array in descending order
+    foreach ($stats as &$stat) {
+        arsort($stat);
+    }
+
+    return $stats;
+}
 
 }

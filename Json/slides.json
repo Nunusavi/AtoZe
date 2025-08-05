@@ -2,12 +2,12 @@
     {
         "background": "images/background/3.webp",
         "title": "A To Ze Security",
-        "headline": "CCTV Systems",
+        "headline": "CCTV Security Systems",
         "image": "images/products/3.webp",
         "learnMoreText": "Learn More",
         "learnMoreLink": "products.html",
         "callText": "Call us",
-        "callLink": "tel:0939392685"
+        "callLink": "tel:+251913332323"
     },
     {
         "background": "images/background/3.webp",
@@ -17,7 +17,7 @@
         "learnMoreText": "Learn More",
         "learnMoreLink": "products.html",
         "callText": "Call us now",
-        "callLink": "tel:0939392685"
+        "callLink": "tel:+251913332323"
     },
     {
         "background": "images/background/3.webp",
@@ -27,7 +27,7 @@
         "learnMoreText": "Learn More",
         "learnMoreLink": "products.html",
         "callText": "Call us now",
-        "callLink": "tel:0939392685"
+        "callLink": "tel:+251913332323"
     },
     {
         "background": "images/background/3.webp",
@@ -37,7 +37,7 @@
         "learnMoreText": "Learn More",
         "learnMoreLink": "products.html",
         "callText": "Call us now",
-        "callLink": "tel:0939392685"
+        "callLink": "tel:+251913332323"
     },
     {
         "background": "images/background/3.webp",
@@ -47,6 +47,6 @@
         "learnMoreText": "Learn More",
         "learnMoreLink": "products.html",
         "callText": "Call us now",
-        "callLink": "tel:0939392685"
+        "callLink": "tel:+251913332323"
     }
 ]
