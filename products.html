@@ -131,12 +131,12 @@
                                             <div style="position:absolute; inset:0; background-image:inherit; background-size:cover; background-position:center; filter:blur(5px); z-index:0;"></div>
                                             <div class="sw-caption">
                                                 <div class="container relative z-2" data-0="opacity:1" data-300="opacity:0">
-                                                    <div class="row align-items-center g-4" style="margin-top: 150px;">
+                                                    <div class="row align-items-center g-4" style="margin-top: 125px;">
                                                         <div class="col-lg-6">
                                                             <div class="slider-content z-2">
                                                                 <h3 class="subtitle s2 mb-3 wow fadeInUp" data-wow-delay=".0s">${slide.brand}</h3>
                                                                 <h1 class="mb-3 cam-style">${slide.name}<span></span><span></span><span></span><span></span></h1>
-                                                                <p class="accordion">${slide.summary}</p>
+                                                                <p class="accordion">${slide.summary ? slide.summary.slice(0, 150) + (slide.summary.length > 50 ? '...' : '') : ''}</p>
                                                                 <div>
                                                                     <a class="btn-main btn-line fx-slide mb10 mb-3" href='product-details.html?category=${encodeURIComponent(slide.category)}&brand=${encodeURIComponent(slide.brand)}&model=${encodeURIComponent(slide.model)}'><span>Learn More</span></a>&nbsp;&nbsp;
                                                                     <a class="btn-main fx-slide mb10 mb-3" href="tel:+251913332323"><span>Call Us</span></a>

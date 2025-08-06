@@ -27,16 +27,15 @@ class RequestLogger {
 
 
     private function getClientIp(): string {
-        $headers = [
-            'HTTP_CLIENT_IP',
-            'HTTP_X_FORWARDED_FOR',
-            'REMOTE_ADDR'
-        ];
-        foreach ($headers as $key) {
-            if (!empty($_SERVER[$key])) {
-                return explode(',', $_SERVER[$key])[0];
-            }
+        if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
+            // IP from shared internet
+            $ip = $_SERVER['HTTP_CLIENT_IP'];
+        } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+            // IP passed from proxy
+            $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+        } else {
+            $ip = $_SERVER['REMOTE_ADDR'] ?? 'unknown';
         }
-        return 'unknown';
-    }
+        return $ip;
+    }   
 }

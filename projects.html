@@ -135,41 +135,40 @@
                     </div>
                 </div>
             </section>
-            <script>
-                // Dynamically load projects from projects.json and render cards
-                fetch('./Json/projects.json')
-                    .then(res => res.json())
-                    .then(data => {
-                        const projects = data.clients;
-                        const container = document.getElementById('projects-list');
-                        projects.forEach((project, idx) => {
-                            // Use a default image or rotate through available images
-                            const imgNum = (idx % 6) + 1;
-                            const imgSrc = `images/projects/${imgNum}.jpg`;
-                            // Encode client name for URL
-                            const clientParam = encodeURIComponent(project.company_name);
-                            container.innerHTML += `
-                            <div class="col-lg-4 text-center">
-                                <a href="project-single.html?client=${clientParam}" class="d-block hover">
-                                    <div class="relative overflow-hidden">
-                                        <div class="absolute start-0 w-100 abs-middle fs-36 text-white text-center">
-                                            <i class="icofont-plus hover-scale-in-3"></i>
-                                        </div>
-                                        <!-- <img src="${imgSrc}" class="img-fluid hover-scale-1-2" alt=""> -->
-                                    </div>
-                                </a>
-                                <a href="project-single.html?client=${clientParam}">
-                                <div class="relative p-4 bg-dark-2">
-                                   <h4 class="mt-3 mb-0">${project.company_name}</h4>
-                                    <p class="mb-2">${project.location}</p>
-                                    <div class="triangle-bottomright-dark"></div>
-                                </div>
-                                </a>
-                            </div>
-                            `;
-                        });
-                    });
-            </script>
+           <script>
+// Dynamically load projects from projects.json and render cards
+fetch('./Json/projects.json')
+    .then(res => res.json())
+    .then(projects => {
+        const container = document.getElementById('projects-list');
+        if (!Array.isArray(projects) || projects.length === 0) {
+            container.innerHTML = `<div class="col-12 text-center text-warning">No projects found.</div>`;
+            return;
+        }
+        projects.forEach((project, idx) => {
+            // Use project.image if available, otherwise fallback to rotating images
+            const imgSrc = project.image ? project.image : `images/projects/${(idx % 6) + 1}.jpg`;
+            const clientParam = encodeURIComponent(project.company_name);
+            container.innerHTML += `
+            <div class="col-lg-4 text-center">
+                <a href="project-single.html?client=${clientParam}" class="d-block hover">
+                    
+                    <div class="relative p-4 bg-dark-2 ">
+                        <h4 class="mt-3 mb-0">${project.company_name}</h4>
+                        <p class="mb-2">${project.location}</p>
+                        <div class="triangle-bottomright-dark"></div>
+                    </div>
+                </a>
+            </div>
+            `;
+        });
+    })
+    .catch(err => {
+        const container = document.getElementById('projects-list');
+        container.innerHTML = `<div class="col-12 text-center text-danger">Failed to load projects. Please try again later.</div>`;
+        console.error('Error loading projects:', err);
+    });
+</script>
         </div>
         <!-- content close -->
         <!-- footer begin -->

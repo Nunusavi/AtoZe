@@ -26,7 +26,6 @@
     <img src="/admin/tracker.php" style="display:none;" width="1" height="1" alt="">
     <script src="/admin/public/admin.js"></script>
     <div class="call-now-wrapper">
-        <span class="call-text">CALL US</span>
         <a href="tel:+251913332323" class="call-button">
             <i class="fas fa-phone"></i>
         </a>
@@ -107,36 +106,36 @@
         <section id="subheader" class="relative jarallax text-light">
             <div class="de-gradient-edge-top"></div>
             <img src="images/background/1.webp" class="jarallax-img" alt="">
-            <div class="container-fluid relative z-2">
-                <div class="row justify-content-center">
-                    <div class="col-lg-8 text-center">
-                        <div class="clearfix"></div>
-                        <h1 class="cam-style">Enhancing Security at Sony Manufacturing
-                            Facility<span></span><span></span><span></span><span></span></h1>
+                <div class="container-fluid relative z-2">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-8 text-center">
+                            <div class="clearfix"></div>
+                            <h1 class="cam-style" id="project-headline">Project Details<span></span><span></span><span></span><span></span></h1>
+                        </div>
                     </div>
-                </div>
 
-                <div class="spacer-single"></div>
+                    <div class="spacer-single"></div>
 
-                <div class="row g-4" id="project-info-row">
-                    <div class="col-lg-3 col-sm-6 text-center">
-                        <div class="fw-bold">Client</div>
-                        <span id="project-client">Loading...</span>
+                    <div class="row g-4" id="project-info-row">
+                        <div class="col-lg-3 col-sm-6 text-center">
+                            <div class="fw-bold">Client</div>
+                            <span id="project-client">Loading...</span>
+                        </div>
+                        <div class="col-lg-3 col-sm-6 text-center">
+                            <div class="fw-bold">Industry</div>
+                            <span id="project-industry">N/A</span>
+                        </div>
+                        <div class="col-lg-3 col-sm-6 text-center">
+                            <div class="fw-bold">Location</div>
+                            <span id="project-location">Loading...</span>
+                        </div>
+                        <div class="col-lg-3 col-sm-6 text-center">
+                            <div class="fw-bold">Year</div>
+                            <span id="project-year">N/A</span>
+                        </div>
                     </div>
-                    <div class="col-lg-3 col-sm-6 text-center">
-                        <div class="fw-bold">Industry</div>
-                        <span id="project-industry">N/A</span>
-                    </div>
-                    <div class="col-lg-3 col-sm-6 text-center">
-                        <div class="fw-bold">Location</div>
-                        <span id="project-location">Loading...</span>
-                    </div>
-                    <div class="col-lg-3 col-sm-6 text-center">
-                        <div class="fw-bold">Year</div>
-                        <span id="project-year">N/A</span>
-                    </div>
-                </div>
-                <script>
+                    <script>
+                    // Populate project info row with project data
                     document.addEventListener('DOMContentLoaded', () => {
                         function getQueryParam(name) {
                             const url = new URL(window.location.href);
@@ -145,32 +144,129 @@
                         const client = getQueryParam('client');
                         if (!client) return;
 
-                        fetch('./Json/project.json')
+                        fetch('./Json/projects.json')
                             .then(res => res.json())
-                            .then(data => {
-                                const found = data.clients.find(
-                                    p => p.company_name && p.company_name === client
-                                );
-                                // Info row elements
+                            .then(projects => {
+                                // Try both array and {clients:[]} structure
+                                let found;
+                                if (Array.isArray(projects)) {
+                                    found = projects.find(
+                                        p => p.company_name && p.company_name === decodeURIComponent(client)
+                                    );
+                                } else if (projects.clients) {
+                                    found = projects.clients.find(
+                                        p => p.company_name && p.company_name === decodeURIComponent(client)
+                                    );
+                                }
+                                // Elements
+                                const headline = document.getElementById('project-headline');
                                 const clientEl = document.getElementById('project-client');
                                 const industryEl = document.getElementById('project-industry');
                                 const locationEl = document.getElementById('project-location');
                                 const yearEl = document.getElementById('project-year');
+
                                 if (found) {
-                                    clientEl.textContent = found.company_name || 'N/A';
-                                    // If you have industry/year in your data, use them, else leave as N/A
-                                    industryEl.textContent = found.industry || 'N/A';
-                                    locationEl.textContent = found.location || 'N/A';
-                                    yearEl.textContent = found.year || 'N/A';
+                                    // Headline
+                                    if (headline) {
+                                        headline.textContent = found.headline || found.company_name || "Project Details";
+                                    }
+                                    // Client
+                                    if (clientEl) clientEl.textContent = found.company_name || "N/A";
+                                    // Industry
+                                    if (industryEl) industryEl.textContent = found.industry || "N/A";
+                                    // Location
+                                    if (locationEl) locationEl.textContent = found.location || "N/A";
+                                    // Year
+                                    if (yearEl) yearEl.textContent = found.year || "N/A";
                                 } else {
-                                    clientEl.textContent = 'Not found';
-                                    industryEl.textContent = 'N/A';
-                                    locationEl.textContent = 'N/A';
-                                    yearEl.textContent = 'N/A';
+                                    if (headline) headline.textContent = "Project Not Found";
+                                    if (clientEl) clientEl.textContent = "N/A";
+                                    if (industryEl) industryEl.textContent = "N/A";
+                                    if (locationEl) locationEl.textContent = "N/A";
+                                    if (yearEl) yearEl.textContent = "N/A";
                                 }
                             });
                     });
-                </script>
+                    </script>
+                <script>
+// Dynamically load project details based on client name in URL
+document.addEventListener('DOMContentLoaded', () => {
+    function getQueryParam(name) {
+        const url = new URL(window.location.href);
+        return url.searchParams.get(name);
+    }
+    const client = getQueryParam('client');
+    if (!client) return;
+
+    fetch('./Json/projects.json')
+        .then(res => res.json())
+        .then(projects => {
+            // Find project by company_name (decodeURIComponent for safety)
+            const found = projects.find(
+                p => p.company_name && p.company_name === decodeURIComponent(client)
+            );
+            // Elements
+            const overview = document.getElementById('project-overview');
+            const title = document.getElementById('project-title');
+            const meta = document.getElementById('project-meta');
+            const price = document.getElementById('project-price');
+            const items = document.getElementById('project-items');
+            const img = document.getElementById('project-img');
+
+            if (found) {
+                // Set title
+                title.textContent = found.company_name;
+                // Set meta info
+                meta.innerHTML = `
+                    <div><i class="icofont-location-pin text-accent"></i> <strong>Location:</strong> ${found.location || 'N/A'}</div>
+                    <div><i class="icofont-list text-accent"></i> <strong>Items:</strong></div>
+                    <ul class="list-group list-group-flush mb-0">
+                                                ${found.items && found.items.length ? found.items.map(item => `
+                                                    <li class="bg-dark-2 text-light border-0 d-flex align-items-center py-2" style="font-size:1.08rem;">
+                                                        <span class="badge bg-success me-2" style="width:22px;height:22px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;">
+                                                            <i class="fa fa-check text-white" style="font-size:0.9em;"></i>
+                                                        </span>
+                                                        <span>${item}</span>
+                                                    </li>
+                                                `).join('') : `
+                                                    <li class="list-group-item bg-dark-2 text-light border-0 ps-4">N/A</li>
+                                                `}
+                                            </ul>
+                `;
+                // Set price
+                //price.textContent = found.total_price ? `Total Price: ${found.total_price} ETB` : '';
+                // Set description
+                overview.innerHTML = `<p>${found.description || 'No description available.'}</p>`;
+                // Set items as a list if available
+                if (found.items && found.items.length) {
+                    items.innerHTML = `
+                        <h5 class="mb-2">Supplied Items</h5>
+                       <ul class="list-group list-group-flush mb-0">
+                                                ${found.items.map(item => `
+                                                    <li class="g-dark-2 text-light border-0 d-flex align-items-center py-2" style="font-size:1.08rem;">
+                                                        <span>${item}</span>
+                                                    </li>
+                                                `).join('')}
+                                            </ul>
+                    `;
+                } else {
+                    items.innerHTML = '';
+                }
+                // Set project image if available
+                    if (img && found.image) img.src = found.image;
+                    // Optionally update the page <title>
+                    document.title = `Project: ${found.company_name} — AtoZE Engineering`;
+            } else {
+                overview.innerHTML = `<p class="text-danger">Project not found.</p>`;
+                title.textContent = "Project Not Found";
+                meta.innerHTML = "";
+                price.textContent = "";
+                items.innerHTML = "";
+                if (img) img.src = "images/projects/1.jpg";
+            }
+        });
+});
+</script>
             </div>
             <div class="crumb-wrapper">
                 <ul class="crumb">
@@ -267,7 +363,16 @@
                                             <div><i class="icofont-location-pin text-accent"></i> <strong>Location:</strong> ${found.location || 'N/A'}</div>
                                             <div><i class="icofont-list text-accent"></i> <strong>Items:</strong></div>
                                             <ul class="list-group list-group-flush mb-0">
-                                                ${found.items && found.items.length ? found.items.map(item => `<li class="list-group-item bg-dark-2 text-light border-0 ps-4">${item}</li>`).join('') : '<li class="list-group-item bg-dark-2 text-light border-0 ps-4">N/A</li>'}
+                                                ${found.items && found.items.length ? found.items.map(item => `
+                                                    <li class="bg-dark-2 text-light border-0 d-flex align-items-center py-2" style="font-size:1.08rem;">
+                                                        <span class="badge bg-success me-2" style="width:22px;height:22px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;">
+                                                            <i class="fa fa-check text-white" style="font-size:0.9em;"></i>
+                                                        </span>
+                                                        <span>${item}</span>
+                                                    </li>
+                                                `).join('') : `
+                                                    <li class="list-group-item bg-dark-2 text-light border-0 ps-4">N/A</li>
+                                                `}
                                             </ul>
                                         `;
                                     // Set price
@@ -277,11 +382,18 @@
                                     // Set items as a list if available
                                     if (found.items && found.items.length) {
                                         items.innerHTML = `
-                                                <h5 class="mb-2">Supplied Items</h5>
-                                                <ul class="list-group list-group-flush mb-0">
-                                                    ${found.items.map(item => `<li class="list-group-item bg-dark-2 text-light border-0">${item}</li>`).join('')}
-                                                </ul>
-                                            `;
+                                            <h5 class="mb-3 text-accent"><i class="icofont-check-circled me-2 text-success"></i>Supplied Items</h5>
+                                            <ul class="list-group list-group-flush mb-0">
+                                                ${found.items.map(item => `
+                                                    <li class="list-group-item bg-dark-2 text-light border-0 d-flex align-items-center py-2" style="font-size:1.08rem;">
+                                                        <span class="badge bg-success me-2" style="width:22px;height:22px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;">
+                                                            <i class="fa fa-check text-white" style="font-size:0.9em;"></i>
+                                                        </span>
+                                                        <span>${item}</span>
+                                                    </li>
+                                                `).join('')}
+                                            </ul>
+                                        `;
                                     } else {
                                         items.innerHTML = '';
                                     }

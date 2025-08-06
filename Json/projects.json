@@ -14,13 +14,13 @@
         "total_price": "2,461,000",
         "location": "Addis Ababa, Ethiopia",
         "description": "A comprehensive security and automation project featuring multi-zone fire detection, smart parking, and gate automation. The inclusion of network cabling suggests integration with existing IT infrastructure, making it a large-scale installation for a high-security facility.",
-        "image": "images/aticom_investment_group.jpg"
+        "image": "images/aticom_investment_group.png"
     },
     {
         "company_name": "Bmy General contractor",
         "items": [
             "Slide gate automation system",
-            "Fire Alarm panel bored 16 zone",
+            "Fire Alarm panel bord 16 zone",
             "Smoke detector",
             "Gas detector"
         ],
@@ -37,7 +37,7 @@
         "total_price": "944,000",
         "location": "Addis Ababa, Ethiopia",
         "description": "A high-value CCTV installation, possibly covering a large area or featuring advanced cameras (e.g., night vision, PTZ) for monitoring humanitarian facilities.",
-        "image": "images/ethiopian_red_cross.jpg"
+        "image": "images/ethiopian_red_cross.png"
     },
     {
         "company_name": "Bahyilu dadi Bedane General contractor",

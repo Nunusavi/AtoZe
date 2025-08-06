@@ -295,153 +295,154 @@
                 </div>
             </section>
 
-        <section class="bg-light">
-    <div class="mb-10 text-center">
-        <div class="subtitle s2 mb-2 wow fadeInUp">Featured Products</div>
-        <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">Explore Our Top Picks</h2>
-        <p class="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">Discover our most popular security
-            and utility products, handpicked for quality and innovation.</p>
-    </div>
-    
-    <div class="carousel-container">
-        <div class="carousel">
-            <div class="carousel-wrapper" id="featured-products-wrapper">
-                <!-- Product cards will be injected here -->
-            </div>
-        </div>
-        
-        <button class="carousel-arrow carousel-arrow-prev" onclick="scrollCarousel(-1)">&#8592;</button>
-        <button class="carousel-arrow carousel-arrow-next" onclick="scrollCarousel(1)">&#8594;</button>
-        
-        <div class="carousel-pagination" id="fp-pagination"></div>
-    </div>
-</section>
+            <section class="bg-light">
+                <div class="mb-10 text-center">
+                    <div class="subtitle s2 mb-2 wow fadeInUp">Featured Products</div>
+                    <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">Explore Our Top Picks</h2>
+                    <p class="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">Discover our most popular security
+                        and utility products, handpicked for quality and innovation.</p>
+                </div>
 
-<style>
-    .carousel-container {
-        position: relative;
-        max-width: 100%;
-        margin: 0 auto;
-        padding: 0 0 0 40px;
-    }
-    .carousel {
-        overflow-x: auto;
-        scroll-snap-type: x mandatory;
-        scroll-behavior: smooth;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: none;
-    }
-    
-    .carousel::-webkit-scrollbar {
-        display: none;
-    }
+                <div class="carousel-container">
+                    <div class="carousel">
+                        <div class="carousel-wrapper" id="featured-products-wrapper">
+                            <!-- Product cards will be injected here -->
+                        </div>
+                    </div>
 
-    .carousel-wrapper {
-        display: flex;
-        gap: 10px;
-        padding: 10px 0;
-    }
+                    <button class="carousel-arrow carousel-arrow-prev" onclick="scrollCarousel(-1)">&#8592;</button>
+                    <button class="carousel-arrow carousel-arrow-next" onclick="scrollCarousel(1)">&#8594;</button>
 
+                    <div class="carousel-pagination" id="fp-pagination"></div>
+                </div>
+            </section>
+
+            <style>
+                .carousel-container {
+                    position: relative;
+                    max-width: 100%;
+                    margin: 0 auto;
+                    padding: 0 0 0 40px;
+                }
+
+                .carousel {
+                    overflow-x: auto;
+                    scroll-snap-type: x mandatory;
+                    scroll-behavior: smooth;
+                    -webkit-overflow-scrolling: touch;
+                    scrollbar-width: none;
+                }
+
+                .carousel::-webkit-scrollbar {
+                    display: none;
+                }
+
+                .carousel-wrapper {
+                    display: flex;
+                    gap: 25px;
+                    padding: 10px 0;
+                }
+
+                .featured-product-card {
+                    scroll-snap-align: center;
+                    flex: 0 0 240px;
+                    min-width: 340px;
+                }
+
+                .carousel-arrow {
+                    position: absolute;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    z-index: 10;
+                    background: rgba(0, 0, 0, 0.6);
+                    color: white;
+                    border: none;
+                    border-radius: 50%;
+                    width: 40px;
+                    height: 40px;
+                    font-size: 1.2rem;
+                    cursor: pointer;
+                    transition: all 0.2s ease;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+
+                .carousel-arrow:hover {
+                    background: rgba(0, 0, 0, 0.8);
+                }
+
+                .carousel-arrow-prev {
+                    left: 0;
+                }
+
+                .carousel-arrow-next {
+                    right: 0;
+                }
+
+                .carousel-pagination {
+                    display: flex;
+                    justify-content: center;
+                    margin-top: 20px;
+                    gap: 8px;
+                }
+
+                .carousel-pagination span {
+                    display: block;
+                    width: 10px;
+                    height: 10px;
+                    border-radius: 50%;
+                    background: #ccc;
+                    cursor: pointer;
+                    transition: background 0.3s ease;
+                }
+
+                .carousel-pagination span.active {
+                    background: #333;
+                }
+
+                @media (max-width: 768px) {
+                    .carousel-container {
+                        padding: 0 10px;
+                    }
+
+                    .carousel-arrow {
+                        display: none;
+                    }
+
+                    .featured-product-card {
+                        scroll-snap-align: start;
+                        flex: 0 0 calc(100% - 40px);
+                        min-width: calc(100% - 40px);
+                    }
+                }
+
+                /* Your existing product card styles
     .featured-product-card {
-        scroll-snap-align: center;
-        flex: 0 0 240px;
-        min-width: 340px;
-    }
 
-    .carousel-arrow {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        z-index: 10;
-        background: rgba(0, 0, 0, 0.6);
-        color: white;
-        border: none;
-        border-radius: 50%;
-        width: 40px;
-        height: 40px;
-        font-size: 1.2rem;
-        cursor: pointer;
-        transition: all 0.2s ease;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
+    } */
+            </style>
 
-    .carousel-arrow:hover {
-        background: rgba(0, 0, 0, 0.8);
-    }
+            <script>
+                // Minimal JavaScript for pagination only
+                document.addEventListener('DOMContentLoaded', function () {
+                    fetch('Json/normalized_products.json')
+                        .then(res => res.json())
+                        .then(products => {
+                            const filteredProducts = products
+                                .filter(p => Array.isArray(p.image) && p.image.length > 0)
+                                .slice(0, 19);
 
-    .carousel-arrow-prev {
-        left: 0;
-    }
+                            renderProducts(filteredProducts);
+                            setupPagination(filteredProducts.length);
+                        });
 
-    .carousel-arrow-next {
-        right: 0;
-    }
+                    function renderProducts(products) {
+                        const wrapper = document.getElementById('featured-products-wrapper');
+                        wrapper.innerHTML = '';
 
-    .carousel-pagination {
-        display: flex;
-        justify-content: center;
-        margin-top: 20px;
-        gap: 8px;
-    }
-
-    .carousel-pagination span {
-        display: block;
-        width: 10px;
-        height: 10px;
-        border-radius: 50%;
-        background: #ccc;
-        cursor: pointer;
-        transition: background 0.3s ease;
-    }
-
-    .carousel-pagination span.active {
-        background: #333;
-    }
-
-    @media (max-width: 768px) {
-        .carousel-container {
-            padding: 0 10px;
-        }
-        
-        .carousel-arrow {
-            display: none;
-        }
-
-        .featured-product-card {
-            scroll-snap-align: start;
-            flex: 0 0 calc(100% - 40px);
-            min-width: calc(100% - 40px);
-        }
-    }
-
-    /* Your existing product card styles */
-    .featured-product-card {
-
-    }
-</style>
-
-<script>
-// Minimal JavaScript for pagination only
-document.addEventListener('DOMContentLoaded', function() {
-    fetch('Json/normalized_products.json')
-        .then(res => res.json())
-        .then(products => {
-            const filteredProducts = products
-                .filter(p => Array.isArray(p.image) && p.image.length > 0)
-                .slice(0, 19);
-            
-            renderProducts(filteredProducts);
-            setupPagination(filteredProducts.length);
-        });
-
-    function renderProducts(products) {
-        const wrapper = document.getElementById('featured-products-wrapper');
-        wrapper.innerHTML = '';
-        
-        products.forEach(product => {
-            wrapper.innerHTML += `
+                        products.forEach(product => {
+                            wrapper.innerHTML += `
                 <div class="featured-product-card">
                     <div class="fp-image-wrap">
                         <img src="${product.image[1]?.replace('./', '') || product.image[0]?.replace('./', '')}" 
@@ -457,158 +458,159 @@ document.addEventListener('DOMContentLoaded', function() {
                     </div>
                 </div>
             `;
-        });
-    }
+                        });
+                    }
 
-    function setupPagination(count) {
-        const pagination = document.getElementById('fp-pagination');
-        pagination.innerHTML = '';
-        
-        for (let i = 0; i < count; i++) {
-            const dot = document.createElement('span');
-            dot.addEventListener('click', () => scrollToIndex(i));
-            pagination.appendChild(dot);
-        }
-        
-        // Observe scroll position to update active dot
-        const carousel = document.querySelector('.carousel');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const index = Array.from(document.querySelectorAll('.featured-product-card')).indexOf(entry.target);
-                    updateActiveDot(index);
+                    function setupPagination(count) {
+                        const pagination = document.getElementById('fp-pagination');
+                        pagination.innerHTML = '';
+
+                        for (let i = 0; i < count; i++) {
+                            const dot = document.createElement('span');
+                            dot.addEventListener('click', () => scrollToIndex(i));
+                            pagination.appendChild(dot);
+                        }
+
+                        // Observe scroll position to update active dot
+                        const carousel = document.querySelector('.carousel');
+                        const observer = new IntersectionObserver((entries) => {
+                            entries.forEach(entry => {
+                                if (entry.isIntersecting) {
+                                    const index = Array.from(document.querySelectorAll('.featured-product-card')).indexOf(entry.target);
+                                    updateActiveDot(index);
+                                }
+                            });
+                        }, {
+                            root: carousel,
+                            threshold: 0.5
+                        });
+
+                        document.querySelectorAll('.featured-product-card').forEach(card => {
+                            observer.observe(card);
+                        });
+                    }
+
+                    function updateActiveDot(index) {
+                        document.querySelectorAll('#fp-pagination span').forEach((dot, i) => {
+                            dot.classList.toggle('active', i === index);
+                        });
+                    }
+                });
+
+                // Simple scroll functions
+                function scrollCarousel(direction) {
+                    const carousel = document.querySelector('.carousel');
+                    const cardWidth = 340 + 10; // width + gap
+                    carousel.scrollBy({
+                        left: direction * cardWidth,
+                        behavior: 'smooth'
+                    });
                 }
-            });
-        }, {
-            root: carousel,
-            threshold: 0.5
-        });
-        
-        document.querySelectorAll('.featured-product-card').forEach(card => {
-            observer.observe(card);
-        });
-    }
 
-    function updateActiveDot(index) {
-        document.querySelectorAll('#fp-pagination span').forEach((dot, i) => {
-            dot.classList.toggle('active', i === index);
-        });
-    }
-});
-
-// Simple scroll functions
-function scrollCarousel(direction) {
-    const carousel = document.querySelector('.carousel');
-    const cardWidth = 340 + 10; // width + gap
-    carousel.scrollBy({
-        left: direction * cardWidth,
-        behavior: 'smooth'
-    });
-}
-
-function scrollToIndex(index) {
-    const carousel = document.querySelector('.carousel');
-    const cards = document.querySelectorAll('.featured-product-card');
-    if (index >= 0 && index < cards.length) {
-        cards[index].scrollIntoView({
-            behavior: 'smooth',
-            block: 'nearest',
-            inline: 'center'
-        });
-    }
-}
-</script>
-        <section class="bg-color pt60 pb60">
-            <div class="container">
-                <div class="row g-4">
-                    <div class="col-lg-4 col-md-6 wow fadeInRight" data-wow-delay=".2s">
-                        <a href="contact.html" class="d-block relative bg-dark-2 text-light p-4 rounded-1">
-                            <i class="id-color p-3 rounded-1 fs-56 icofont-phone-circle"></i>
-                            <div class="absolute abs-middle ms-90px">
-                                <span>Emergency Service</span>
-                                <h4>Call +251-91-333-2323</h4>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-lg-4 col-md-6 wow fadeInRight" data-wow-delay=".4s">
-                        <a href="contact.html" class="d-block relative bg-dark-2 text-white p-4 rounded-1">
-                            <i class="id-color p-3 rounded-1 fs-56 icofont-calculator"></i>
-                            <div class="absolute abs-middle ms-90px">
-                                <span>Request For</span>
-                                <h4>Free Estimation</h4>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-lg-4 col-md-6 wow fadeInRight" data-wow-delay=".6s">
-                        <a href="projects.html" class="d-block relative bg-dark-2 text-white p-4 rounded-1">
-                            <i class="id-color p-3 rounded-1 fs-56 icofont-image"></i>
-                            <div class="absolute abs-middle ms-90px">
-                                <span>Discover</span>
-                                <h4>Latest Projects</h4>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section>
-            <div class="container">
-                <div class="row g-4 align-items-center">
-
-                    <div class="col-lg-6">
-                        <div class="row g-4">
-                            <div class="col-lg-6 wow fadeInRight">
-                                <div class="relative">
-                                    <img src="images/products/Time Attendance/zt_flag.webp" class="w-100 h-100" alt="">
-                                    <div class="triangle-bottomright-white z-2"></div>
-
+                function scrollToIndex(index) {
+                    const carousel = document.querySelector('.carousel');
+                    const cards = document.querySelectorAll('.featured-product-card');
+                    if (index >= 0 && index < cards.length) {
+                        cards[index].scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'nearest',
+                            inline: 'center'
+                        });
+                    }
+                }
+            </script>
+            <section class="bg-color pt60 pb60">
+                <div class="container">
+                    <div class="row g-4">
+                        <div class="col-lg-4 col-md-6 wow fadeInRight" data-wow-delay=".2s">
+                            <a href="contact.html" class="d-block relative bg-dark-2 text-light p-4 rounded-1">
+                                <i class="id-color p-3 rounded-1 fs-56 icofont-phone-circle"></i>
+                                <div class="absolute abs-middle ms-90px">
+                                    <span>Emergency Service</span>
+                                    <h4>Call +251-91-333-2323</h4>
                                 </div>
-                            </div>
-                            <div class="col-lg-6 wow fadeInRight" data-wow-delay=".3s">
-                                <div class="relative">
-                                    <img src="images/products/intercom-5.png" class="w-100" alt="">
-                                    <div class="triangle-bottomright-white z-2"></div>
+                            </a>
+                        </div>
+                        <div class="col-lg-4 col-md-6 wow fadeInRight" data-wow-delay=".4s">
+                            <a href="contact.html" class="d-block relative bg-dark-2 text-white p-4 rounded-1">
+                                <i class="id-color p-3 rounded-1 fs-56 icofont-calculator"></i>
+                                <div class="absolute abs-middle ms-90px">
+                                    <span>Request For</span>
+                                    <h4>Free Estimation</h4>
                                 </div>
-                            </div>
+                            </a>
+                        </div>
+                        <div class="col-lg-4 col-md-6 wow fadeInRight" data-wow-delay=".6s">
+                            <a href="projects.html" class="d-block relative bg-dark-2 text-white p-4 rounded-1">
+                                <i class="id-color p-3 rounded-1 fs-56 icofont-image"></i>
+                                <div class="absolute abs-middle ms-90px">
+                                    <span>Discover</span>
+                                    <h4>Latest Projects</h4>
+                                </div>
+                            </a>
                         </div>
                     </div>
+                </div>
+            </section>
 
-                    <div class="col-lg-6">
-                        <div class="ms-lg-4">
-                            <div class="subtitle s2 mb-3 wow fadeInUp" data-wow-delay=".0s">Our Products</div>
-                            <h2 class="wow fadeInUp" data-wow-delay=".2s">Advanced Security & Utility Products</h2>
+            <section>
+                <div class="container">
+                    <div class="row g-4 align-items-center">
 
-                            <p class="wow fadeIn" data-wow-delay=".4s">
-                                Explore our wide range of security and utility products designed to meet the needs
-                                of homes, businesses, and industries across Ethiopia. We offer high-quality CCTV
-                                cameras, alarm systems, access control solutions, time attendance devices, and
-                                networking equipment from leading global brands.
-                            </p>
-
+                        <div class="col-lg-6">
                             <div class="row g-4">
-                                <div class="col-lg-8 col-md-12 col-sm-6">
-                                    <ul class="ul-style-2 fw-600 mb-4 wow fadeInUp" data-wow-delay=".6s">
-                                        <li>IP & Analog CCTV Cameras</li>
-                                        <li>Intruder & Fire Alarm Systems</li>
-                                        <li>Biometric Time Attendance & Access Control</li>
-                                        <li>Network Switches & Cabling Solutions</li>
-                                        <li>Video Door Phones & Intercoms</li>
-                                    </ul>
+                                <div class="col-lg-6 wow fadeInRight">
+                                    <div class="relative">
+                                        <img src="images/products/Time Attendance/zt_flag.webp" class="w-100 h-100"
+                                            alt="">
+                                        <div class="triangle-bottomright-white z-2"></div>
+
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 wow fadeInRight" data-wow-delay=".3s">
+                                    <div class="relative">
+                                        <img src="images/products/intercom-5.png" class="w-100" alt="">
+                                        <div class="triangle-bottomright-white z-2"></div>
+                                    </div>
                                 </div>
                             </div>
+                        </div>
 
-                            <a class="btn-main fx-slide mb10 mb-3 wow fadeIn" href="products.html"><span>View All
-                                    Products</span></a>
+                        <div class="col-lg-6">
+                            <div class="ms-lg-4">
+                                <div class="subtitle s2 mb-3 wow fadeInUp" data-wow-delay=".0s">Our Products</div>
+                                <h2 class="wow fadeInUp" data-wow-delay=".2s">Advanced Security & Utility Products</h2>
+
+                                <p class="wow fadeIn" data-wow-delay=".4s">
+                                    Explore our wide range of security and utility products designed to meet the needs
+                                    of homes, businesses, and industries across Ethiopia. We offer high-quality CCTV
+                                    cameras, alarm systems, access control solutions, time attendance devices, and
+                                    networking equipment from leading global brands.
+                                </p>
+
+                                <div class="row g-4">
+                                    <div class="col-lg-8 col-md-12 col-sm-6">
+                                        <ul class="ul-style-2 fw-600 mb-4 wow fadeInUp" data-wow-delay=".6s">
+                                            <li>IP & Analog CCTV Cameras</li>
+                                            <li>Intruder & Fire Alarm Systems</li>
+                                            <li>Biometric Time Attendance & Access Control</li>
+                                            <li>Network Switches & Cabling Solutions</li>
+                                            <li>Video Door Phones & Intercoms</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <a class="btn-main fx-slide mb10 mb-3 wow fadeIn" href="products.html"><span>View All
+                                        Products</span></a>
+                            </div>
                         </div>
                     </div>
+
                 </div>
 
-            </div>
+                <div class="spacer-single"></div>
 
-            <div class="spacer-single"></div>
-
-            <!-- <div class="row g-4">
+                <!-- <div class="row g-4">
                         <div class="col-md-3 col-sm-6 mb-sm-30">
                             <div class="de_count text-center fs-15 wow fadeInRight" data-wow-delay=".0s">
                                 <h3 class="fs-48 mb-1"><span class="timer" data-to="8240" data-speed="3000">0</span>
@@ -635,197 +637,173 @@ function scrollToIndex(index) {
                             </div>
                         </div>
                     </div> -->
-    </div>
-    </section>
+        </div>
+        </section>
 
-    <section class="bg-dark text-light">
-        <div class="container">
-            <div class="row g-4 mb-4">
-                <div class="col-lg-6 offset-lg-3 text-center">
-                    <div class="subtitle wow fadeInUp mb-3">Our Team</div>
-                    <h2 class="wow fadeInUp" data-wow-delay=".2s">Meet our experienced and trustworthy team</h2>
+        <section class="bg-dark text-light">
+            <div class="container">
+                <div class="row g-4 mb-4">
+                    <div class="col-lg-6 offset-lg-3 text-center">
+                        <div class="subtitle wow fadeInUp mb-3">Our Team</div>
+                        <h2 class="wow fadeInUp" data-wow-delay=".2s">Meet our experienced and trustworthy team</h2>
+                    </div>
                 </div>
-            </div>
 
-            <div class="row g-4">
-                <div class="owl-carousel owl-theme wow fadeInUp" id="testimonial-carousel">
-                    <!-- Testimonials will be injected here -->
+                <div class="row g-4">
+                    <div class="owl-carousel owl-theme wow fadeInUp" id="testimonial-carousel">
+                        <!-- Testimonials will be injected here -->
+                    </div>
                 </div>
-            </div>
-            <script>
-                // Fetch testimonials from JSON and render dynamically
-                fetch('Json/team.json')
-                    .then(res => res.json())
-                    .then(data => {
-                        const container = document.getElementById('testimonial-carousel');
-                        data.forEach((testimonial, idx) => {
-                            container.innerHTML += `
+                <script>
+                    // Fetch testimonials from JSON and render dynamically
+                    fetch('Json/team.json')
+                        .then(res => res.json())
+                        .then(data => {
+                            const container = document.getElementById('testimonial-carousel');
+                            data.forEach((testimonial, idx) => {
+                                container.innerHTML += `
                                         <div class="item">
                                             <div class="bg-dark-2 p-40 relative text-light text-center">
                                                 <div class="text-center">
                                                     <img class="d-inline w-80 rounded-1" alt="" src="${testimonial.image}">
                                                 </div>
                                                 <div class="mt-3 fw-600">${testimonial.name}</div>
-                                                <div class="de-rating-ext mb-3">
-                                                    ${Array.isArray(testimonial.socials) && testimonial.socials.length > 0 ? (() => {
-                                    // Parse the socials array into an object
-                                    let socialsObj = {};
-                                    try {
-                                        // Join the array into a string and parse as JSON
-                                        socialsObj = JSON.parse(testimonial.socials.join(''));
-                                    } catch (e) {
-                                        socialsObj = {};
-                                    }
-                                    return `
-                                                        <span class="social-icons" style="gap: 0.1  rem; display: inline-flex; align-items: center;">
-                                                            ${socialsObj.facebook ? `<a href="${socialsObj.facebook}"><i class="fa-brands fa-facebook-f"></i></a>` : ''}
-                                                            ${socialsObj.twitter ? `<a href="${socialsObj.twitter}"><i class="fa-brands fa-x-twitter"></i></a>` : ''}
-                                                            ${socialsObj.instagram ? `<a href="${socialsObj.instagram}"><i class="fa-brands fa-instagram"></i></a>` : ''}
-                                                            ${socialsObj.whatsapp ? `<a href="${socialsObj.whatsapp}"><i class="fa-brands fa-whatsapp"></i></a>` : ''}
-                                                            ${socialsObj.phone ? `<a href="${socialsObj.phone}"><i class="fa-solid fa-phone"></i></a>` : ''}
-                                                        </span>
-                                                        `;
-                                })() : `
-                                                        <span class="d-stars">
-                                                            ${'<i class="fa fa-star"></i>'.repeat(testimonial.stars || 5)}
-                                                        </span>
-                                                    `}
+                                                    <p class="mb-0" style="text-transform:uppercase; font-weight: bolder; color:white;">${testimonial.text}</p>
+                                                    <div class="triangle-bottomright-dark"></div>
                                                 </div>
-                                                <p class="mb-0" style="text-transform:uppercase; color:white;">${testimonial.text}</p>
-                                                <div class="triangle-bottomright-dark"></div>
                                             </div>
-                                        </div>
                                     `;
+                            });
                         });
-                    });
-            </script>
-        </div>
-    </section>
-
-    <section id="fqa">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6 offset-lg-3 text-center">
-                    <div class="subtitle wow fadeInUp mb-3">AtoZe Engineering Answers Your Most Asked Questions
-                    </div>
-                    <h2 class="wow fadeInUp" data-wow-delay=".2s">Everything You Need to Know About CCTV
-                        Installation in Ethiopia</h2>
-                </div>
+                </script>
             </div>
+        </section>
 
-            <div class="row g-4 align-items-center">
-
-                <div class="col-lg-12">
-                    <div class="accordion s2 wow fadeInUp">
-                        <div class="accordion-section">
-                            <!-- Content dynamically rendered from faq.json -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-
-    <!-- footer begin -->
-    <footer>
-        <div class="container">
-            <div class="row gx-5">
-                <div class="col-lg-4 col-sm-6">
-                    <img src="images/logo.webp" class="w-150px" alt="">
-                    <div class="spacer-20"></div>
-                    <p>Keep your home or business safe with CCTV systems designed to provide 24/7 surveillance
-                        and
-                        peace of mind. Our expert team offers tailored security solutions, from installation to
-                        remote monitoring, ensuring your property is always protected. </p>
-
-                    <div class="social-icons mb-sm-30">
-                        <a href="https://t.me/AtoZSecuritySolutions"><i class="fa-brands fa-telegram-plane"></i></a>
-                        <a href="https://www.instagram.com/a.to.zengineering?utm_source=qr&igsh=MTM0cmIxaTRrZW9rdw=="><i
-                                class="fa-brands fa-instagram"></i></a>
-                        <a href="https://youtube.com/@a-to-zengineering?si=N4_F1YLiL9tmqHGU"><i
-                                class="fa-brands fa-youtube"></i></a>
-                        <a href="https://www.tiktok.com/@atoz.engineering?_t=ZM-8xdkV17Zu5g&_r=1"><i
-                                class="fa-brands fa-tiktok"></i></a>
-                        <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
-                        <a href="https://x.com/asmeramujib?t=4TwsOum9mPmsje1N8IoUwg&s=09"><i
-                                class="fa-brands fa-x-twitter"></i></a>
-                        <a href="https://www.linkedin.com/company/a-to-ze-engineering/"><i
-                                class="fa-brands fa-linkedin"></i></a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-sm-12 order-lg-1 order-sm-2">
-                    <div class="row">
-                        <div class="col-lg-6 col-sm-6">
-                            <div class="widget">
-                                <h5>Company</h5>
-                                <ul>
-                                    <li><a href="index.html">Home</a></li>
-                                    <li><a href="services">Our Services</a></li>
-                                    <li><a href="projects.html">Projects</a></li>
-                                    <li><a href="contact.html">Get a Free Quote</a></li>
-                                    <li><a href="contact.html">Contact</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-sm-6">
-                            <div class="widget">
-                                <h5>Our Services</h5>
-                                <ul>
-                                    <li><a href="services.html">System Consultation</a></li>
-                                    <li><a href="services.html">Installation Services</a></li>
-                                    <li><a href="services.html">System Configuration</a></li>
-
-                                    <li><a href="services.html">Maintenance</a></li>
-                                    <li><a href="services.html">Storage and Backup</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-sm-6 order-lg-2 order-sm-1">
-                    <div class="widget">
-                        <div class="fw-bold text-white"><i class="icofont-clock-time me-2 id-color"></i>We're
-                            Open
-                        </div>
-                        Monday - Saturday 08:00 - 18:00
-
-                        <div class="spacer-20"></div>
-
-                        <div class="fw-bold text-white"><i class="icofont-location-pin me-2 id-color"></i>Workshop
-                            Location</div>
-                        Addis Ababa. Ethiopia
-
-                        <div class="spacer-20"></div>
-
-                        <div class="fw-bold text-white"><i class="icofont-envelope me-2 id-color"></i>Send a
-                            Message
-                        </div>
-                        contact@atozeengineering.com
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="subfooter">
+        <section id="fqa">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-12">
-                        <div class="de-flex">
-                            <div class="de-flex-col">
-                                Copyright &copy;&nbsp;<span class="current-year"></span> - AtoZE Engineering by
-                                &nbsp;<a href="https://nate.et">Nate</a>
-                                <script>
-                                    document.querySelector('.current-year').textContent = new Date().getFullYear();
-                                </script>
+                    <div class="col-lg-6 offset-lg-3 text-center">
+                        <div class="subtitle wow fadeInUp mb-3">AtoZe Engineering Answers Your Most Asked Questions
+                        </div>
+                        <h2 class="wow fadeInUp" data-wow-delay=".2s">Everything You Need to Know About CCTV
+                            Installation in Ethiopia</h2>
+                    </div>
+                </div>
+
+                <div class="row g-4 align-items-center">
+
+                    <div class="col-lg-12">
+                        <div class="accordion s2 wow fadeInUp">
+                            <div class="accordion-section">
+                                <!-- Content dynamically rendered from faq.json -->
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </footer>
-    <!-- footer close -->
+        </section>
+
+
+
+        <!-- footer begin -->
+        <footer>
+            <div class="container">
+                <div class="row gx-5">
+                    <div class="col-lg-4 col-sm-6">
+                        <img src="images/logo.webp" class="w-150px" alt="">
+                        <div class="spacer-20"></div>
+                        <p>Keep your home or business safe with CCTV systems designed to provide 24/7 surveillance
+                            and
+                            peace of mind. Our expert team offers tailored security solutions, from installation to
+                            remote monitoring, ensuring your property is always protected. </p>
+
+                        <div class="social-icons mb-sm-30">
+                            <a href="https://t.me/AtoZSecuritySolutions"><i class="fa-brands fa-telegram-plane"></i></a>
+                            <a
+                                href="https://www.instagram.com/a.to.zengineering?utm_source=qr&igsh=MTM0cmIxaTRrZW9rdw=="><i
+                                    class="fa-brands fa-instagram"></i></a>
+                            <a href="https://youtube.com/@a-to-zengineering?si=N4_F1YLiL9tmqHGU"><i
+                                    class="fa-brands fa-youtube"></i></a>
+                            <a href="https://www.tiktok.com/@atoz.engineering?_t=ZM-8xdkV17Zu5g&_r=1"><i
+                                    class="fa-brands fa-tiktok"></i></a>
+                            <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+                            <a href="https://x.com/asmeramujib?t=4TwsOum9mPmsje1N8IoUwg&s=09"><i
+                                    class="fa-brands fa-x-twitter"></i></a>
+                            <a href="https://www.linkedin.com/company/a-to-ze-engineering/"><i
+                                    class="fa-brands fa-linkedin"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-12 order-lg-1 order-sm-2">
+                        <div class="row">
+                            <div class="col-lg-6 col-sm-6">
+                                <div class="widget">
+                                    <h5>Company</h5>
+                                    <ul>
+                                        <li><a href="index.html">Home</a></li>
+                                        <li><a href="services">Our Services</a></li>
+                                        <li><a href="projects.html">Projects</a></li>
+                                        <li><a href="contact.html">Get a Free Quote</a></li>
+                                        <li><a href="contact.html">Contact</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-sm-6">
+                                <div class="widget">
+                                    <h5>Our Services</h5>
+                                    <ul>
+                                        <li><a href="services.html">System Consultation</a></li>
+                                        <li><a href="services.html">Installation Services</a></li>
+                                        <li><a href="services.html">System Configuration</a></li>
+
+                                        <li><a href="services.html">Maintenance</a></li>
+                                        <li><a href="services.html">Storage and Backup</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-6 order-lg-2 order-sm-1">
+                        <div class="widget">
+                            <div class="fw-bold text-white"><i class="icofont-clock-time me-2 id-color"></i>We're
+                                Open
+                            </div>
+                            Monday - Saturday 08:00 - 18:00
+
+                            <div class="spacer-20"></div>
+
+                            <div class="fw-bold text-white"><i class="icofont-location-pin me-2 id-color"></i>Workshop
+                                Location</div>
+                            Addis Ababa. Ethiopia
+
+                            <div class="spacer-20"></div>
+
+                            <div class="fw-bold text-white"><i class="icofont-envelope me-2 id-color"></i>Send a
+                                Message
+                            </div>
+                            contact@atozeengineering.com
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="subfooter">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="de-flex">
+                                <div class="de-flex-col">
+                                    Copyright &copy;&nbsp;<span class="current-year"></span> - AtoZE Engineering by
+                                    &nbsp;<a href="https://nate.et">Nate</a>
+                                    <script>
+                                        document.querySelector('.current-year').textContent = new Date().getFullYear();
+                                    </script>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- footer close -->
     </div>
 
     <!-- overlay content begin -->
@@ -861,16 +839,27 @@ function scrollToIndex(index) {
 
             <div class="spacer-30-line"></div>
 
-            <h5>About Us</h5>
-            <p>Keep your home or business safe with CCTV systems designed to provide 24/7 surveillance and peace of
-                mind. Our expert team offers tailored security solutions, from installation to remote monitoring,
-                ensuring your property is always protected.</p>
 
-            <div class="social-icons">
-                <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
-                <a href="#"><i class="fa-brands fa-instagram"></i></a>
-                <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
-            </div>
+                <h5>About Us</h5>
+                <p>Keep your home or business safe with CCTV systems designed to provide 24/7 surveillance and peace of
+                    mind. Our expert team offers tailored security solutions, from installation to remote monitoring,
+                    ensuring your property is always protected.</p>
+
+                <div class="social-icons">
+                     <a href="https://t.me/AtoZSecuritySolutions"><i class="fa-brands fa-telegram-plane"></i></a>
+                            <a
+                                href="https://www.instagram.com/a.to.zengineering?utm_source=qr&igsh=MTM0cmIxaTRrZW9rdw=="><i
+                                    class="fa-brands fa-instagram"></i></a>
+                            <a href="https://youtube.com/@a-to-zengineering?si=N4_F1YLiL9tmqHGU"><i
+                                    class="fa-brands fa-youtube"></i></a>
+                            <a href="https://www.tiktok.com/@atoz.engineering?_t=ZM-8xdkV17Zu5g&_r=1"><i
+                                    class="fa-brands fa-tiktok"></i></a>
+                            <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+                            <a href="https://x.com/asmeramujib?t=4TwsOum9mPmsje1N8IoUwg&s=09"><i
+                                    class="fa-brands fa-x-twitter"></i></a>
+                            <a href="https://www.linkedin.com/company/a-to-ze-engineering/"><i
+                                    class="fa-brands fa-linkedin"></i></a>
+                </div>
         </div>
     </div>
     <!-- overlay content end -->
@@ -904,31 +893,48 @@ function scrollToIndex(index) {
         fetch('Json/faq.json')
             .then(response => response.json())
             .then(data => {
-                const accordionContainer = document.querySelector('.accordion-section');
-                accordionContainer.innerHTML = '';
+            const accordionContainer = document.querySelector('.accordion-section');
+            accordionContainer.innerHTML = '';
 
-                data.forEach((faq, index) => {
-                    const sectionTitle = document.createElement('div');
-                    sectionTitle.className = 'accordion-section-title';
-                    sectionTitle.setAttribute('data-tab', `#accordion-a${index + 1}`);
-                    sectionTitle.textContent = faq.question;
+            data.forEach((faq, index) => {
+                const sectionTitle = document.createElement('div');
+                sectionTitle.className = 'accordion-section-title';
+                sectionTitle.setAttribute('data-tab', `#accordion-a${index + 1}`);
+                sectionTitle.textContent = faq.question;
 
-                    const sectionContent = document.createElement('div');
-                    sectionContent.className = 'accordion-section-content';
-                    sectionContent.id = `accordion-a${index + 1}`;
-                    sectionContent.style.display = 'none';
-                    sectionContent.innerHTML = `
-                <p>${faq.answer}</p>
+                const sectionContent = document.createElement('div');
+                sectionContent.className = 'accordion-section-content';
+                sectionContent.id = `accordion-a${index + 1}`;
+                sectionContent.style.display = 'none';
+                sectionContent.style.overflow = 'hidden';
+                sectionContent.style.maxHeight = '0';
+                sectionContent.style.transition = 'max-height 0.6s cubic-bezier(.4,0,.2,1), opacity 0.4s cubic-bezier(.4,0,.2,1)';
+                sectionContent.style.opacity = '0';
+                sectionContent.innerHTML = `
+                <p style="padding:20px">${faq.answer}</p>
                 <div style="background: #fff3cd; border-left: 4px solid #ffc107; padding: 1rem; border-radius: 6px; margin-bottom: 1rem; margin-top: 5px;">
-                  <span style="color: #e63946;">${faq.cta.text}</span>
-                  <br>
-                  <a href="${faq.cta.link}" style="color: #e63946; font-weight: bold; text-decoration: underline;">${faq.cta.linkText}</a>
-                </div>
-              `;
+                          <span style="color: #e63946;">${faq.cta.text}</span>
+                          <br>
+                          <a href="${faq.cta.link}" style="color: #e63946; font-weight: bold; text-decoration: underline;">${faq.cta.linkText}</a>
+                        </div>
+                    `;
 
                     sectionTitle.addEventListener('click', () => {
-                        const isVisible = sectionContent.style.display === 'block';
-                        sectionContent.style.display = isVisible ? 'none' : 'block';
+                        const isVisible = sectionContent.style.display === 'block' || sectionContent.style.maxHeight !== '0px';
+                        if (isVisible) {
+                            sectionContent.style.maxHeight = '0';
+                            sectionContent.style.opacity = '0';
+                            setTimeout(() => {
+                                sectionContent.style.display = 'none';
+                            }, 400);
+                        } else {
+                            sectionContent.style.display = 'block';
+                            // Wait for display:block to apply before animating
+                            setTimeout(() => {
+                                sectionContent.style.maxHeight = sectionContent.scrollHeight + 'px';
+                                sectionContent.style.opacity = '1';
+                            }, 10);
+                        }
                     });
 
                     accordionContainer.appendChild(sectionTitle);

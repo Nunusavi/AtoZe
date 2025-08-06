@@ -146,7 +146,7 @@ public static function getAggregatedStats($fromDate = null, $toDate = null)
         'devices' => [],
     ];
 
-    $files = glob(__DIR__ . './../logs/*.json');
+    $files = glob(__DIR__ . '/../logs/*.json');
 
     foreach ($files as $file) {
         $date = basename($file, '.json');
@@ -166,13 +166,13 @@ public static function getAggregatedStats($fromDate = null, $toDate = null)
             $os = $entry['os'] ?? 'Unknown';
             $device = $entry['device'] ?? 'Unknown';
 
-            // Only count meaningful public pages (not tracker.php or admin)
-            if ($page && !str_contains($page, 'tracker.php') && !str_contains($page, '/admin/')) {
+            // ✅ Only count meaningful public pages
+            if ($page && !str_contains($page, 'tracker.php')) {
                 $stats['pages'][$page] = ($stats['pages'][$page] ?? 0) + 1;
             }
 
-            // Only count external referrers, ignore null, empty, self-referring, admin, or tracker.php
-            if ($ref && $ref !== 'direct' && !str_contains($ref, 'tracker.php') && !str_contains($ref, '/admin/')) {
+            // ✅ Only count external referrers, ignore null, empty, or self-referring domains
+            if ($ref && $ref !== '-' && !str_contains($ref, '/admin/') && !str_contains($ref, 'tracker.php')) {
                 $stats['referrers'][$ref] = ($stats['referrers'][$ref] ?? 0) + 1;
             }
 
