@@ -38,41 +38,36 @@
         <!-- page preloader close -->
 
         <header class="transparent">
-            <div id="topbar">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="d-flex justify-content-between xs-hide">
-                                <div class="d-flex">
-                                    <div class="topbar-widget"><a href="#"><img src="images/svg-white/bell.svg" class=""
-                                                alt="">Get Estimation for your Security Needs</a></div>
-
-                                </div>
-                                <div class="d-flex">
-                                    <div class="topbar-widget me-5"><a href="#"><img src="images/svg-white/phone.svg"
-                                                class="" alt="">Call us: +251-939-902-685</a></div>
-                                    <div class="topbar-widget"><a href="#"><img src="images/svg-white/envelope.svg"
-                                                class="" alt="">Message us: contact@atozeengineering.com</a></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="clearfix"></div>
-                </div>
-            </div>
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="de-flex sm-pt10">
                             <div class="de-flex-col">
+                                <svg width="0" height="0">
+                                    <filter id="customColor">
+                                        <feFlood flood-color="#FBD600" result="flood" />
+                                        <feComposite in="flood" in2="SourceGraphic" operator="in" />
+                                    </filter>
+                                </svg>
                                 <!-- logo begin -->
+                                <svg width="0" height="0">
+                                    <filter id="customColor">
+                                        <feFlood flood-color="#FBD600" result="flood" />
+                                        <feComposite in="flood" in2="SourceGraphic" operator="in" />
+                                    </filter>
+                                </svg>
                                 <div id="logo">
                                     <a href="index.html">
-                                        <img class="logo-main" src="images/logo.webp" alt="">
-                                        <img class="logo-scroll" src="images/logo.webp" alt="">
-                                        <img class="logo-mobile" src="images/logo.webp" alt="">
+                                        <img class="logo-main logo-glow" src="images/logo.webp" alt="">
+                                        <img class="logo-scroll logo-glow" src="images/logo.webp" alt="">
+                                        <img class="logo-mobile logo-glow" src="images/logo.webp" alt="">
                                     </a>
                                 </div>
+                                <style>
+                                    div#logo>a>img {
+                                        filter: url(#customColor);
+                                    }
+                                </style>
                                 <!-- logo close -->
                             </div>
                             <div class="de-flex-col header-col-mid">
@@ -128,9 +123,9 @@
             </section>
             <!-- section close -->
 
-            <section>
+            <section class="bg-light text-dark text-dark">
                 <div class="container">
-                    <div class="row g-4" id="services-list">
+                    <div class="row g-4 text-dark" id="services-list">
                         <!-- Services will be injected here -->
                     </div>
                 </div>
@@ -155,9 +150,9 @@
                                         <div class="mb-3 d-flex justify-content-start align-items-center" style="height:70px;">
                                             ${iconHTML}
                                         </div>
-                                        <h4 class="text-accent">${service.name}</h4>
-                                        <p>${service.description || ''}</p>
-                                        <div class="triangle-bottomright-dark"></div>
+                                        <h4 class="text-dark">${service.name}</h4>
+                                        <p class="text-dark">${service.description || ''}</p>
+                                        <div class="triangle-bottomright-light"></div>
                                         <span class="badge bg-primary position-absolute top-0 end-0 m-2"></span>
                                         </a>
                                     </div>
@@ -179,7 +174,7 @@
             <div class="container">
                 <div class="row gx-5">
                     <div class="col-lg-4 col-sm-6">
-                        <img src="images/logo.webp" class="w-150px" alt="">
+                        <img src="images/logo.webp" style="filter: url(#customColor)" class="w-150px" alt="">
                         <div class="spacer-20"></div>
                         <p>Keep your home or business safe with CCTV systems designed to provide 24/7 surveillance and
                             peace of mind. Our expert team offers tailored security solutions, from installation to
@@ -240,7 +235,7 @@
 
                             <div class="fw-bold text-white"><i class="icofont-location-pin me-2 id-color"></i>Workshop
                                 Location</div>
-                            Addis Ababa. Ethiopia
+                            Addis Ababa , Jemo 1, Nola Bldg 5th Floor
 
                             <div class="spacer-20"></div>
 
@@ -281,7 +276,7 @@
         </div>
 
         <div id="extra-content">
-            <img src="images/logo.webp" class="w-150px" alt="">
+            <img src="images/logo.webp" class="w-150px" style="filter: url(#customColor);" alt="">
 
             <div class="spacer-30-line"></div>
 
@@ -301,7 +296,7 @@
 
             <h5>Contact Us</h5>
             <div><i class="icofont-clock-time me-2"></i>Monday - Saturday 08.00 - 18.00</div>
-            <div><i class="icofont-location-pin me-2"></i>Addis Ababa, Ethiopia </div>
+            <div><i class="icofont-location-pin me-2"></i>Addis Ababa , Jemo 1, Nola Bldg 5th floor </div>
             <div><i class="icofont-envelope me-2"></i>contact@atozeengineering.com</div>
 
             <div class="spacer-30-line"></div>

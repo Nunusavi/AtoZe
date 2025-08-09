@@ -38,34 +38,19 @@
         <!-- page preloader close -->
 
         <header class="transparent">
-            <div id="topbar">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="d-flex justify-content-between xs-hide">
-                                <div class="d-flex">
-                                    <div class="topbar-widget"><a href="#"><img src="images/svg-white/bell.svg" class=""
-                                                alt="">Get Estimation for your Security Needs</a></div>
 
-                                </div>
-                                <div class="d-flex">
-                                    <div class="topbar-widget me-5"><a href="#"><img src="images/svg-white/phone.svg"
-                                                class="" alt="">Call us: +251-939-902-685</a></div>
-                                    <div class="topbar-widget"><a href="#"><img src="images/svg-white/envelope.svg"
-                                                class="" alt="">Message us: contact@atozeengineering.com</a></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="clearfix"></div>
-                </div>
-            </div>
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="de-flex sm-pt10">
                             <div class="de-flex-col">
                                 <!-- logo begin -->
+                                <svg width="0" height="0">
+                                    <filter id="customColor">
+                                        <feFlood flood-color="#FBD600" result="flood" />
+                                        <feComposite in="flood" in2="SourceGraphic" operator="in" />
+                                    </filter>
+                                </svg>
                                 <div id="logo">
                                     <a href="index.html">
                                         <img class="logo-main" src="images/logo.webp" alt="">
@@ -128,47 +113,47 @@
             </section>
             <!-- section close -->
 
-            <section>
+            <section class="bg-gradient">
                 <div class="container">
                     <div class="row g-4" id="projects-list">
                         <!-- Projects will be injected here -->
                     </div>
                 </div>
             </section>
-           <script>
-// Dynamically load projects from projects.json and render cards
-fetch('./Json/projects.json')
-    .then(res => res.json())
-    .then(projects => {
-        const container = document.getElementById('projects-list');
-        if (!Array.isArray(projects) || projects.length === 0) {
-            container.innerHTML = `<div class="col-12 text-center text-warning">No projects found.</div>`;
-            return;
-        }
-        projects.forEach((project, idx) => {
-            // Use project.image if available, otherwise fallback to rotating images
-            const imgSrc = project.image ? project.image : `images/projects/${(idx % 6) + 1}.jpg`;
-            const clientParam = encodeURIComponent(project.company_name);
-            container.innerHTML += `
+            <script>
+                // Dynamically load projects from projects.json and render cards
+                fetch('./Json/projects.json')
+                    .then(res => res.json())
+                    .then(projects => {
+                        const container = document.getElementById('projects-list');
+                        if (!Array.isArray(projects) || projects.length === 0) {
+                            container.innerHTML = `<div class="col-12 text-center text-warning">No projects found.</div>`;
+                            return;
+                        }
+                        projects.forEach((project, idx) => {
+                            // Use project.image if available, otherwise fallback to rotating images
+                            const imgSrc = project.image ? project.image : `images/projects/${(idx % 6) + 1}.jpg`;
+                            const clientParam = encodeURIComponent(project.company_name);
+                            container.innerHTML += `
             <div class="col-lg-4 text-center">
                 <a href="project-single.html?client=${clientParam}" class="d-block hover">
                     
                     <div class="relative p-4 bg-dark-2 ">
                         <h4 class="mt-3 mb-0">${project.company_name}</h4>
                         <p class="mb-2">${project.location}</p>
-                        <div class="triangle-bottomright-dark"></div>
+                        <div class="triangle-bottomright-color"></div>
                     </div>
                 </a>
             </div>
             `;
-        });
-    })
-    .catch(err => {
-        const container = document.getElementById('projects-list');
-        container.innerHTML = `<div class="col-12 text-center text-danger">Failed to load projects. Please try again later.</div>`;
-        console.error('Error loading projects:', err);
-    });
-</script>
+                        });
+                    })
+                    .catch(err => {
+                        const container = document.getElementById('projects-list');
+                        container.innerHTML = `<div class="col-12 text-center text-danger">Failed to load projects. Please try again later.</div>`;
+                        console.error('Error loading projects:', err);
+                    });
+            </script>
         </div>
         <!-- content close -->
         <!-- footer begin -->
@@ -176,7 +161,7 @@ fetch('./Json/projects.json')
             <div class="container">
                 <div class="row gx-5">
                     <div class="col-lg-4 col-sm-6">
-                        <img src="images/logo.webp" class="w-150px" alt="">
+                        <img src="images/logo.webp" style="filter: url(#customColor)" class="w-150px" alt="">
                         <div class="spacer-20"></div>
                         <p>Keep your home or business safe with CCTV systems designed to provide 24/7 surveillance and
                             peace of mind. Our expert team offers tailored security solutions, from installation to
@@ -237,7 +222,7 @@ fetch('./Json/projects.json')
 
                             <div class="fw-bold text-white"><i class="icofont-location-pin me-2 id-color"></i>Workshop
                                 Location</div>
-                            Addis Ababa. Ethiopia
+                            Addis Ababa , Jemo 1, Nola Bldg 5th Floor
 
                             <div class="spacer-20"></div>
 
@@ -278,7 +263,7 @@ fetch('./Json/projects.json')
         </div>
 
         <div id="extra-content">
-            <img src="images/logo.webp" class="w-150px" alt="">
+            <img src="images/logo.webp" style="filter: url(#customColor)" class="w-150px" alt="">
 
             <div class="spacer-30-line"></div>
 
@@ -298,7 +283,7 @@ fetch('./Json/projects.json')
 
             <h5>Contact Us</h5>
             <div><i class="icofont-clock-time me-2"></i>Monday - Saturday 08.00 - 18.00</div>
-            <div><i class="icofont-location-pin me-2"></i>Addis Ababa, Ethiopia </div>
+            <div><i class="icofont-location-pin me-2"></i>Addis Ababa , Jemo 1, Nola Bldg 5th floor </div>
             <div><i class="icofont-envelope me-2"></i>contact@atozeengineering.com</div>
 
             <div class="spacer-30-line"></div>

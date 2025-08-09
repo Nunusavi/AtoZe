@@ -26,8 +26,9 @@
     <link id="colors" href="css/colors/scheme-01.css" rel="stylesheet" type="text/css">
     <!-- Tailwind CSS -->
 
+    <style>
 
-
+    </style>
 </head>
 
 <body>
@@ -45,18 +46,7 @@
 
         <!-- header begin -->
         <header class="transparent">
-            <div id="topbar">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="d-flex justify-content-between xs-hide" id="topbar-messages">
-                                <!-- Dynamic messages will be injected here -->
-                            </div>
-                        </div>
-                    </div>
-                    <div class="clearfix"></div>
-                </div>
-            </div>
+
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
@@ -76,17 +66,19 @@
                                         <img class="logo-mobile logo-glow" src="images/logo.webp" alt="">
                                     </a>
                                 </div>
-                                <!-- <style>
-                                    div#logo>a>img {
-                                        filter: url(#customColor);
-                                    }
-                                </style> -->
                                 <!-- logo close -->
                             </div>
                             <div class="de-flex-col header-col-mid">
                                 <ul id="mainmenu">
                                     <li><a class="menu-item" href="index.html">Home</a></li>
-                                    <li><a class="menu-item" href="services.html">Services</a></li>
+                                    <li class="menu-item-has-children">
+                                        <a class="menu-item" href="about-us.html">About Us</a>
+                                        <ul>
+                                            <li><a class="menu-item" href="about-us.html">Company Profile</a></li>
+                                            <li><a class="menu-item" href="services.html">Services</a></li>
+                                            <li><a class="menu-item" href="contact.html">Projects</a></li>
+                                        </ul>
+                                    </li>
                                     <li><a class="menu-item" href="products.html">Products</a></li>
                                     <li><a class="menu-item" href="projects.html">Projects</a></li>
                                     <li><a class="menu-item" href="fqa.html">FQA</a></li>
@@ -114,7 +106,7 @@
 
             <div id="top"></div>
 
-            <section class="text-light no-top no-bottom position-relative overflow-hidden z-1000" id="slider">
+            <section class="no-top no-bottom position-relative overflow-hidden z-1000" id="slider">
                 <div class="v-center">
                     <div class="swiper">
                         <!-- Additional required wrapper -->
@@ -128,62 +120,10 @@
                         <div class="swiper-button-prev"></div>
                         <div class="swiper-button-next"></div>
                     </div>
-                    <script>
-                        // Dynamically load Swiper slides from JSON
-                        fetch('Json/slides.json')
-                            .then(res => res.json())
-                            .then(slides => {
-                                const wrapper = document.getElementById('dynamic-swiper-wrapper');
-                                wrapper.innerHTML = ""; // Clear any existing slides
-                                slides.forEach(slide => {
-                                    wrapper.innerHTML += `
-                                    <div class="swiper-slide">
-                                        <div class="swiper-inner" data-bgimage="url(${slide.background})">
-                                            <div style="position:absolute; inset:0; background-image:inherit; background-size:cover; background-position:center; filter:blur(5px); z-index:0;"></div>
-                                            <div class="sw-caption">
-                                                <div class="container relative z-2" data-0="opacity:1" data-300="opacity:0">
-                                                    <div class="row align-items-center g-4">
-                                                        <div class="col-lg-6">
-                                                            <div class="relative z-2">
-                                                                <h3 class="subtitle s2 mb-3 wow fadeInUp" data-wow-delay=".0s">${slide.title}</h3>
-                                                                <h1 class="mb-3 cam-style">${slide.headline}<span></span><span></span><span></span><span></span></h1>
-                                                                <a class="btn-main btn-line fx-slide mb10 mb-3" href="${slide.learnMoreLink}"><span>${slide.learnMoreText}</span></a>&nbsp;&nbsp;
-                                                                <a class="btn-main fx-slide mb10 mb-3" href="${slide.callLink}"><span>${slide.callText}</span></a>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-6">
-                                                            <div class="relative">
-                                                                <img src="${slide.image}" class="w-100 relative z-2" alt="">
-                                                                <div class="abs w-70 h-70 abs-centered"></div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    `;
-                                });
-                                // Initialize Swiper AFTER slides are injected
-                                if (window.Swiper) {
-                                    new Swiper('.swiper', {
-                                        pagination: {
-                                            el: '.swiper-pagination',
-                                            clickable: true
-                                        },
-                                        navigation: {
-                                            nextEl: '.swiper-button-next',
-                                            prevEl: '.swiper-button-prev'
-                                        }
-                                    });
-                                }
-                            });
-                    </script>
-
                 </div>
             </section>
 
-            <section class="pt-40 pb-40  mt90 bg-dark">
+            <!-- <section class="pt-40 pb-40  mt90 bg-dark">
                 <div class="wow fadeInRight d-flex">
                     <div class="de-marquee-list relative wow">
                         <img src="images/logo-brands/1.webp" class="w-300px" alt="">
@@ -193,6 +133,23 @@
                         <img src="images/logo-brands/5.webp" class="w-300px" alt="">
                         <img src="images/logo-brands/6.webp" class="w-300px" alt="">
                     </div>
+                </div>
+            </section> -->
+            <section class="bg-color-even">
+                <div class="mb-10 text-center">
+                    <div class="subtitle s2 mb-2 wow fadeInUp">Featured Products</div>
+                    <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">Explore Our Top Picks</h2>
+                    <p class="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+                        Discover our most popular security and utility products, handpicked for quality and innovation.
+                    </p>
+                </div>
+
+                <div class="featured-products-grid-container">
+                    <div class="featured-products-grid" id="featured-products-wrapper">
+                        <!-- Product cards will be injected here -->
+
+                    </div>
+                    <a id="fp-view-more-btn" class="fp-view-more-btn" href="products.html">View More</a>
                 </div>
             </section>
 
@@ -222,7 +179,7 @@
 
                     <div class="row bo g-4">
                         <div class="col-lg-3 col-md-6 wow fadeInRight" data-wow-delay="0s">
-                            <div class="relative bg-grey p-40 h-100">
+                            <div class="relative bg-color-even p-40 h-100">
                                 <img src="images/products/Hikvision/DS-2CD1123G2-LIU.png" class="w-200px mb-3"
                                     alt="Hikvision Dome Camera">
                                 <h4>CCTV Installation</h4>
@@ -233,7 +190,7 @@
                         </div>
 
                         <div class="col-lg-3 col-md-6 wow fadeInRight" data-wow-delay=".2s">
-                            <div class="relative bg-grey p-40 h-100">
+                            <div class="relative bg-color-even p-40 h-100">
                                 <img src="images/products/Time_attendance_2.png" class="w-200px mb-3"
                                     alt="Time Attendance Device">
                                 <h4>Time Attendance Device</h4>
@@ -244,7 +201,7 @@
                         </div>
 
                         <div class="col-lg-3 col-md-6 wow fadeInRight" data-wow-delay=".4s">
-                            <div class="relative bg-grey p-40 h-100">
+                            <div class="relative bg-color-even p-40 h-100">
                                 <img src="images/products/Gate Opener /Nice robus 600.png" class="w-200px mb-3"
                                     alt="Automatic Gate Opener">
                                 <h4>Automatic Gate Opener</h4>
@@ -255,7 +212,7 @@
                         </div>
 
                         <div class="col-lg-3 col-md-6 wow fadeInRight" data-wow-delay=".6s">
-                            <div class="relative bg-grey p-40 h-100">
+                            <div class="relative bg-color-even p-40 h-100">
                                 <img src="images/products/intercom-3.png" class="w-200px mb-3"
                                     alt="Video Intercom System">
                                 <h4>Video Intercom System</h4>
@@ -269,12 +226,12 @@
                 </div>
             </section>
 
-            <section class="bg-dark text-light">
+            <section class="bg-light text-dark">
                 <div class="container">
                     <div class="row justify-content-center align-items-center g-4 gx-5 relative z-index-1000">
                         <div class="col-lg-2 d-none d-lg-block text-center">
                             <img src="images/products/Hikvision/DS-2CD1023G0E-I.png" alt="Security Left"
-                                class="img-fluid rounded shadow">
+                                class="img-fluid rounded ">
                         </div>
                         <div class="col-lg-8 text-center">
                             <div class="subtitle wow fadeInUp mb-3">
@@ -284,249 +241,26 @@
                                 solutions that protect what matters most — your people, property, and peace of mind.
                             </div>
                             <h2 class="mb20 wow fadeInUp" data-wow-delay=".2s">Your Safety, Our Mission</h2>
-                            <a class="btn-main btn-line fx-slide" href="contact.html"><span>Get a Free Quote</span></a>
-                            <a class="btn-main btn-line fx-slide" href="tel:+251913332323"><span>Call us</span></a>
+                            <a class="btn-main  fx-slide" href="contact.html"><span>Get a Free Quote</span></a>
+                            <a class="btn-main  fx-slide" href="tel:+251913332323"><span>Call us</span></a>
                         </div>
                         <div class="col-lg-2 d-none d-lg-block text-center">
                             <img src="images/products/Hikvision/DS-2CD1143G2-LIU2.png" alt="Security Right"
-                                class="img-fluid rounded shadow">
+                                class="img-fluid rounded ">
                         </div>
                     </div>
                 </div>
             </section>
 
-            <section class="bg-light">
-                <div class="mb-10 text-center">
-                    <div class="subtitle s2 mb-2 wow fadeInUp">Featured Products</div>
-                    <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">Explore Our Top Picks</h2>
-                    <p class="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">Discover our most popular security
-                        and utility products, handpicked for quality and innovation.</p>
-                </div>
 
-                <div class="carousel-container">
-                    <div class="carousel">
-                        <div class="carousel-wrapper" id="featured-products-wrapper">
-                            <!-- Product cards will be injected here -->
-                        </div>
-                    </div>
-
-                    <button class="carousel-arrow carousel-arrow-prev" onclick="scrollCarousel(-1)">&#8592;</button>
-                    <button class="carousel-arrow carousel-arrow-next" onclick="scrollCarousel(1)">&#8594;</button>
-
-                    <div class="carousel-pagination" id="fp-pagination"></div>
-                </div>
-            </section>
-
-            <style>
-                .carousel-container {
-                    position: relative;
-                    max-width: 100%;
-                    margin: 0 auto;
-                    padding: 0 0 0 40px;
-                }
-
-                .carousel {
-                    overflow-x: auto;
-                    scroll-snap-type: x mandatory;
-                    scroll-behavior: smooth;
-                    -webkit-overflow-scrolling: touch;
-                    scrollbar-width: none;
-                }
-
-                .carousel::-webkit-scrollbar {
-                    display: none;
-                }
-
-                .carousel-wrapper {
-                    display: flex;
-                    gap: 25px;
-                    padding: 10px 0;
-                }
-
-                .featured-product-card {
-                    scroll-snap-align: center;
-                    flex: 0 0 240px;
-                    min-width: 340px;
-                }
-
-                .carousel-arrow {
-                    position: absolute;
-                    top: 50%;
-                    transform: translateY(-50%);
-                    z-index: 10;
-                    background: rgba(0, 0, 0, 0.6);
-                    color: white;
-                    border: none;
-                    border-radius: 50%;
-                    width: 40px;
-                    height: 40px;
-                    font-size: 1.2rem;
-                    cursor: pointer;
-                    transition: all 0.2s ease;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                }
-
-                .carousel-arrow:hover {
-                    background: rgba(0, 0, 0, 0.8);
-                }
-
-                .carousel-arrow-prev {
-                    left: 0;
-                }
-
-                .carousel-arrow-next {
-                    right: 0;
-                }
-
-                .carousel-pagination {
-                    display: flex;
-                    justify-content: center;
-                    margin-top: 20px;
-                    gap: 8px;
-                }
-
-                .carousel-pagination span {
-                    display: block;
-                    width: 10px;
-                    height: 10px;
-                    border-radius: 50%;
-                    background: #ccc;
-                    cursor: pointer;
-                    transition: background 0.3s ease;
-                }
-
-                .carousel-pagination span.active {
-                    background: #333;
-                }
-
-                @media (max-width: 768px) {
-                    .carousel-container {
-                        padding: 0 10px;
-                    }
-
-                    .carousel-arrow {
-                        display: none;
-                    }
-
-                    .featured-product-card {
-                        scroll-snap-align: start;
-                        flex: 0 0 calc(100% - 40px);
-                        min-width: calc(100% - 40px);
-                    }
-                }
-
-                /* Your existing product card styles
-    .featured-product-card {
-
-    } */
-            </style>
-
-            <script>
-                // Minimal JavaScript for pagination only
-                document.addEventListener('DOMContentLoaded', function () {
-                    fetch('Json/normalized_products.json')
-                        .then(res => res.json())
-                        .then(products => {
-                            const filteredProducts = products
-                                .filter(p => Array.isArray(p.image) && p.image.length > 0)
-                                .slice(0, 19);
-
-                            renderProducts(filteredProducts);
-                            setupPagination(filteredProducts.length);
-                        });
-
-                    function renderProducts(products) {
-                        const wrapper = document.getElementById('featured-products-wrapper');
-                        wrapper.innerHTML = '';
-
-                        products.forEach(product => {
-                            wrapper.innerHTML += `
-                <div class="featured-product-card">
-                    <div class="fp-image-wrap">
-                        <img src="${product.image[1]?.replace('./', '') || product.image[0]?.replace('./', '')}" 
-                             alt="${product.name || product.model}">
-                        <span class="fp-badge">Featured</span>
-                    </div>
-                    <div class="fp-content">
-                        <h5>${product.name || product.model}</h5>
-                        <div class="fp-meta">${product.brand ? product.brand + ' — ' : ''}${product.category || ''}</div>
-                        <p class="line-clamp-3">${product.summary || (product.description?.slice(0, 120) + '...') || ''}</p>
-                        <a onclick="window.location.href='product-details.html?category=${encodeURIComponent(product.category)}&brand=${encodeURIComponent(product.brand)}&model=${encodeURIComponent(product.model)}'" 
-                           class="fp-link">View Details</a>
-                    </div>
-                </div>
-            `;
-                        });
-                    }
-
-                    function setupPagination(count) {
-                        const pagination = document.getElementById('fp-pagination');
-                        pagination.innerHTML = '';
-
-                        for (let i = 0; i < count; i++) {
-                            const dot = document.createElement('span');
-                            dot.addEventListener('click', () => scrollToIndex(i));
-                            pagination.appendChild(dot);
-                        }
-
-                        // Observe scroll position to update active dot
-                        const carousel = document.querySelector('.carousel');
-                        const observer = new IntersectionObserver((entries) => {
-                            entries.forEach(entry => {
-                                if (entry.isIntersecting) {
-                                    const index = Array.from(document.querySelectorAll('.featured-product-card')).indexOf(entry.target);
-                                    updateActiveDot(index);
-                                }
-                            });
-                        }, {
-                            root: carousel,
-                            threshold: 0.5
-                        });
-
-                        document.querySelectorAll('.featured-product-card').forEach(card => {
-                            observer.observe(card);
-                        });
-                    }
-
-                    function updateActiveDot(index) {
-                        document.querySelectorAll('#fp-pagination span').forEach((dot, i) => {
-                            dot.classList.toggle('active', i === index);
-                        });
-                    }
-                });
-
-                // Simple scroll functions
-                function scrollCarousel(direction) {
-                    const carousel = document.querySelector('.carousel');
-                    const cardWidth = 340 + 10; // width + gap
-                    carousel.scrollBy({
-                        left: direction * cardWidth,
-                        behavior: 'smooth'
-                    });
-                }
-
-                function scrollToIndex(index) {
-                    const carousel = document.querySelector('.carousel');
-                    const cards = document.querySelectorAll('.featured-product-card');
-                    if (index >= 0 && index < cards.length) {
-                        cards[index].scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'nearest',
-                            inline: 'center'
-                        });
-                    }
-                }
-            </script>
-            <section class="bg-color pt60 pb60">
+            <!-- <section class="bg-color pt60 pb60">
                 <div class="container">
                     <div class="row g-4">
                         <div class="col-lg-4 col-md-6 wow fadeInRight" data-wow-delay=".2s">
                             <a href="contact.html" class="d-block relative bg-dark-2 text-light p-4 rounded-1">
                                 <i class="id-color p-3 rounded-1 fs-56 icofont-phone-circle"></i>
                                 <div class="absolute abs-middle ms-90px">
-                                    <span>Emergency Service</span>
+                                    <span>For Our Service Call Us</span>
                                     <h4>Call +251-91-333-2323</h4>
                                 </div>
                             </a>
@@ -551,9 +285,9 @@
                         </div>
                     </div>
                 </div>
-            </section>
+            </section> -->
 
-            <section>
+            <section class="bg-light">
                 <div class="container">
                     <div class="row g-4 align-items-center">
 
@@ -640,7 +374,7 @@
         </div>
         </section>
 
-        <section class="bg-dark text-light">
+        <section class="bg-light text-dark">
             <div class="container">
                 <div class="row g-4 mb-4">
                     <div class="col-lg-6 offset-lg-3 text-center">
@@ -663,13 +397,13 @@
                             data.forEach((testimonial, idx) => {
                                 container.innerHTML += `
                                         <div class="item">
-                                            <div class="bg-dark-2 p-40 relative text-light text-center">
+                                            <div class="bg-color-even p-40 relative text-dark text-center">
                                                 <div class="text-center">
                                                     <img class="d-inline w-80 rounded-1" alt="" src="${testimonial.image}">
                                                 </div>
                                                 <div class="mt-3 fw-600">${testimonial.name}</div>
-                                                    <p class="mb-0" style="text-transform:uppercase; font-weight: bolder; color:white;">${testimonial.text}</p>
-                                                    <div class="triangle-bottomright-dark"></div>
+                                                    <p class="mb-0" style="text-transform:uppercase; font-weight: bolder;">${testimonial.text}</p>
+                                                    <div class="triangle-bottomright-white"></div>
                                                 </div>
                                             </div>
                                     `;
@@ -710,7 +444,7 @@
             <div class="container">
                 <div class="row gx-5">
                     <div class="col-lg-4 col-sm-6">
-                        <img src="images/logo.webp" class="w-150px" alt="">
+                        <img src="images/logo.webp" style="filter: url(#customColor)" class="w-150px" alt="">
                         <div class="spacer-20"></div>
                         <p>Keep your home or business safe with CCTV systems designed to provide 24/7 surveillance
                             and
@@ -773,7 +507,7 @@
 
                             <div class="fw-bold text-white"><i class="icofont-location-pin me-2 id-color"></i>Workshop
                                 Location</div>
-                            Addis Ababa. Ethiopia
+                            Addis Ababa , Jemo 1, Nola Bldg 5th Floor
 
                             <div class="spacer-20"></div>
 
@@ -814,7 +548,7 @@
         </div>
 
         <div id="extra-content">
-            <img src="images/logo.webp" class="w-150px" alt="">
+            <img src="images/logo.webp" style="filter: url(#customColor)" class="w-150px" alt="">
 
             <div class="spacer-30-line"></div>
 
@@ -834,32 +568,30 @@
 
             <h5>Contact Us</h5>
             <div><i class="icofont-clock-time me-2"></i>Monday - Saturday 08.00 - 18.00</div>
-            <div><i class="icofont-location-pin me-2"></i>Addis Ababa, Ethiopia </div>
+            <div><i class="icofont-location-pin me-2"></i>Addis Ababa , Jemo 1, Nola Bldg 5th floor </div>
             <div><i class="icofont-envelope me-2"></i>contact@atozeengineering.com</div>
 
             <div class="spacer-30-line"></div>
 
+            <h5>About Us</h5>
+            <p>Keep your home or business safe with CCTV systems designed to provide 24/7 surveillance and peace of
+                mind. Our expert team offers tailored security solutions, from installation to remote monitoring,
+                ensuring your property is always protected.</p>
 
-                <h5>About Us</h5>
-                <p>Keep your home or business safe with CCTV systems designed to provide 24/7 surveillance and peace of
-                    mind. Our expert team offers tailored security solutions, from installation to remote monitoring,
-                    ensuring your property is always protected.</p>
-
-                <div class="social-icons">
-                     <a href="https://t.me/AtoZSecuritySolutions"><i class="fa-brands fa-telegram-plane"></i></a>
-                            <a
-                                href="https://www.instagram.com/a.to.zengineering?utm_source=qr&igsh=MTM0cmIxaTRrZW9rdw=="><i
-                                    class="fa-brands fa-instagram"></i></a>
-                            <a href="https://youtube.com/@a-to-zengineering?si=N4_F1YLiL9tmqHGU"><i
-                                    class="fa-brands fa-youtube"></i></a>
-                            <a href="https://www.tiktok.com/@atoz.engineering?_t=ZM-8xdkV17Zu5g&_r=1"><i
-                                    class="fa-brands fa-tiktok"></i></a>
-                            <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
-                            <a href="https://x.com/asmeramujib?t=4TwsOum9mPmsje1N8IoUwg&s=09"><i
-                                    class="fa-brands fa-x-twitter"></i></a>
-                            <a href="https://www.linkedin.com/company/a-to-ze-engineering/"><i
-                                    class="fa-brands fa-linkedin"></i></a>
-                </div>
+            <div class="social-icons">
+                <a href="https://t.me/AtoZSecuritySolutions"><i class="fa-brands fa-telegram-plane"></i></a>
+                <a href="https://www.instagram.com/a.to.zengineering?utm_source=qr&igsh=MTM0cmIxaTRrZW9rdw=="><i
+                        class="fa-brands fa-instagram"></i></a>
+                <a href="https://youtube.com/@a-to-zengineering?si=N4_F1YLiL9tmqHGU"><i
+                        class="fa-brands fa-youtube"></i></a>
+                <a href="https://www.tiktok.com/@atoz.engineering?_t=ZM-8xdkV17Zu5g&_r=1"><i
+                        class="fa-brands fa-tiktok"></i></a>
+                <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+                <a href="https://x.com/asmeramujib?t=4TwsOum9mPmsje1N8IoUwg&s=09"><i
+                        class="fa-brands fa-x-twitter"></i></a>
+                <a href="https://www.linkedin.com/company/a-to-ze-engineering/"><i
+                        class="fa-brands fa-linkedin"></i></a>
+            </div>
         </div>
     </div>
     <!-- overlay content end -->
@@ -872,79 +604,8 @@
     <script src="js/swiper.js"></script>
     <script src="js/custom-marquee.js"></script>
     <script src="js/custom-swiper-1.js"></script>
-    <script>
-        // Dynamically load topbar messages from JSON and display them all (no rotation)
-        fetch('Json/topbar-messages.json')
-            .then(res => res.json())
-            .then(messages => {
-                const container = document.getElementById('topbar-messages');
-                container.innerHTML = messages.map(msg => `
-                <div class="topbar-widget me-5">
-                <a href="${msg.link}">
-                    <img src="${msg.icon}" alt="">
-                    ${msg.text}
-                </a>
-                </div>
-            `).join('');
-            });
-    </script>
-    <script src="/js/admin.js" defer></script>
-    <script>
-        fetch('Json/faq.json')
-            .then(response => response.json())
-            .then(data => {
-            const accordionContainer = document.querySelector('.accordion-section');
-            accordionContainer.innerHTML = '';
-
-            data.forEach((faq, index) => {
-                const sectionTitle = document.createElement('div');
-                sectionTitle.className = 'accordion-section-title';
-                sectionTitle.setAttribute('data-tab', `#accordion-a${index + 1}`);
-                sectionTitle.textContent = faq.question;
-
-                const sectionContent = document.createElement('div');
-                sectionContent.className = 'accordion-section-content';
-                sectionContent.id = `accordion-a${index + 1}`;
-                sectionContent.style.display = 'none';
-                sectionContent.style.overflow = 'hidden';
-                sectionContent.style.maxHeight = '0';
-                sectionContent.style.transition = 'max-height 0.6s cubic-bezier(.4,0,.2,1), opacity 0.4s cubic-bezier(.4,0,.2,1)';
-                sectionContent.style.opacity = '0';
-                sectionContent.innerHTML = `
-                <p style="padding:20px">${faq.answer}</p>
-                <div style="background: #fff3cd; border-left: 4px solid #ffc107; padding: 1rem; border-radius: 6px; margin-bottom: 1rem; margin-top: 5px;">
-                          <span style="color: #e63946;">${faq.cta.text}</span>
-                          <br>
-                          <a href="${faq.cta.link}" style="color: #e63946; font-weight: bold; text-decoration: underline;">${faq.cta.linkText}</a>
-                        </div>
-                    `;
-
-                    sectionTitle.addEventListener('click', () => {
-                        const isVisible = sectionContent.style.display === 'block' || sectionContent.style.maxHeight !== '0px';
-                        if (isVisible) {
-                            sectionContent.style.maxHeight = '0';
-                            sectionContent.style.opacity = '0';
-                            setTimeout(() => {
-                                sectionContent.style.display = 'none';
-                            }, 400);
-                        } else {
-                            sectionContent.style.display = 'block';
-                            // Wait for display:block to apply before animating
-                            setTimeout(() => {
-                                sectionContent.style.maxHeight = sectionContent.scrollHeight + 'px';
-                                sectionContent.style.opacity = '1';
-                            }, 10);
-                        }
-                    });
-
-                    accordionContainer.appendChild(sectionTitle);
-                    accordionContainer.appendChild(sectionContent);
-                });
-            });
-    </script>
     <img src="/admin/tracker.php" style="display:none;" width="1" height="1" alt="">
-    <script src="/admin/public/admin.js"></script>
-
+    <script src="./js/json-load.js"></script>
 </body>
 
 </html>
