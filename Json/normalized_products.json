@@ -508,7 +508,8 @@
     ],
     "image": [
       "./images/products/Hikvision/4.png",
-      "./images/products/Hikvision/DS-7604NXI-K1-4P.png"
+      "./images/products/Hikvision/DS-7604NXI-K1-4P.png",
+      "./images/products/Hikvision/DS-7604NXI-K1_4P-2.png"
     ],
     "summary": "A 4-channel NVR with AI analytics for facial recognition and perimeter protection. Supports up to 4 IP cameras, 4K HDMI output, and multiple recording resolutions."
   },
@@ -562,7 +563,8 @@
     ],
     "image": [
       "./images/products/Hikvision/4.png",
-      "./images/products/Hikvision/DS-7608NI-K2-8P.png"
+      "./images/products/Hikvision/DS-7608NI-K2-8P.png",
+      "./images/products/Hikvision/DS-7608NI-K2_8P-2.png"
     ],
     "summary": "An 8-channel NVR with 4K HDMI output and advanced video decoding. Supports up to 8 IP cameras and multiple recording resolutions."
   },
@@ -864,7 +866,8 @@
     "features": [],
     "image": [
       "./images/products/Gate Opener /nice.png",
-      "./images/products/Gate Opener /Nice robus 600.png"
+      "./images/products/Gate Opener /Nice robus 600.png",
+      "./images/products/Gate Opener /Nice robus 600 2.png"
     ],
     "summary": "A sliding gate motor suitable for gates up to 600kg. Features obstacle detection and temperature-adaptive motor force."
   },
@@ -966,7 +969,8 @@
     ],
     "image": [
       "./images/products/ZTK/ZKT ECO.png",
-      "./images/products/ZTK/Sface_Lite.png"
+      "./images/products/ZTK/Sface_Lite.png",
+      "./images/products/ZTK/zt_flag2.png"
     ],
     "summary": "A biometric time attendance and access control device with face, fingerprint, and ID card recognition. Features fast verification and multiple communication options."
   }

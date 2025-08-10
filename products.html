@@ -63,9 +63,15 @@
                             <div class="de-flex-col header-col-mid">
                                 <ul id="mainmenu">
                                     <li><a class="menu-item" href="index.html">Home</a></li>
-                                    <li><a class="menu-item" href="services.html">Services</a></li>
+                                    <li class="menu-item-has-children">
+                                        <a class="menu-item" href="">About Us</a>
+                                        <ul>
+                                            <li><a class="menu-item" href="about-us.html">Company</a></li>
+                                            <li><a class="menu-item" href="services.html">Services</a></li>
+                                            <li><a class="menu-item" href="contact.html">Projects</a></li>
+                                        </ul>
+                                    </li>
                                     <li><a class="menu-item" href="products.html">Products</a></li>
-                                    <li><a class="menu-item" href="projects.html">Projects</a></li>
                                     <li><a class="menu-item" href="fqa.html">FQA</a></li>
                                     <li><a class="menu-item" href="contact.html">Contact</a></li>
                                 </ul>
@@ -92,7 +98,7 @@
             <div id="top"></div>
             <!-- section begin -->
             <section class="text-light no-top no-bottom position-relative overflow-hidden z-1000 bg-light" id="slider">
-                <div class="de-gradient-edge-top"></div>
+                <div class="de-gradient-edge-top.light"></div>
                 <div class="swiper">
                     <div class="swiper-wrapper" id="dynamic-swiper-wrapper">
                         <!-- Slides will be injected here -->
@@ -116,11 +122,11 @@
                                             <div style="position:absolute; inset:0; background-image:inherit; background-size:cover; background-position:center; filter:blur(5px); z-index:0;"></div>
                                             <div class="sw-caption">
                                                 <div class="container relative z-2" data-0="opacity:1" data-300="opacity:0">
-                                                    <div class="row align-items-center g-4" style="margin-top: 125px;">
+                                                    <div class="row align-items-center g-4" style="margin-top: 20px;">
                                                         <div class="col-lg-6">
                                                             <div class="slider-content z-2">
                                                                 <h3 class="subtitle s2 mb-3 wow fadeInUp" data-wow-delay=".0s" style="color: #fff;">${slide.brand}</h3>
-                                                                <h1 class="mb-3 cam-style">${slide.name}<span></span><span></span><span></span><span></span></h1>
+                                                                <h1 class="mb-3 h1">${slide.name}<span></span><span></span><span></span><span></span></h1>
                                                                 <p class="accordion">${slide.summary ? slide.summary.slice(0, 150) + (slide.summary.length > 150 ? '...' : '') : ''}</p>
                                                                 <div>
                                                                     <a class="btn-main btn-line fx-slide mb10 mb-3" href='product-details.html?category=${encodeURIComponent(slide.category)}&brand=${encodeURIComponent(slide.brand)}&model=${encodeURIComponent(slide.model)}'><span>Learn More</span></a>&nbsp;&nbsp;
@@ -357,7 +363,7 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
 
     <!-- Slider dynamic load script (kept) -->
-    <script>
+    <!-- <script>
         // Dynamically load Swiper slides from products JSON
         fetch('Json/normalized_products.json')
             .then(res => res.json())
@@ -400,7 +406,7 @@
                     });
                 }
             });
-    </script>
+    </script> -->
 
     <!-- Products page listing script using featured product styles -->
     <script>

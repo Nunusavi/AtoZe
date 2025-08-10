@@ -153,7 +153,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                                             <div class="relative z-2">
                                                                 <div class="slide-title">
                                                                     <h3 class="subtitle s2 mb-3 wow fadeInUp" data-wow-delay=".0s">${slide.title}</h3>
-                                                                    <h1 class="mb-3 cam-style" style="color: #223035">${slide.headline}</h1>
+                                                                    <h1 class="mb-3 cam-style" style="color: #223035; margin-left:-10px; text-align: left;">${slide.headline}</h1>
                                                                 </div>
                                                                 <a class="btn-main fx-slide mb10 mb-3" href="${slide.learnMoreLink}"><span>${slide.learnMoreText}</span></a>&nbsp;&nbsp;
                                                                 <a class="btn-main fx-slide mb10 mb-3" href="${slide.callLink}"><span>${slide.callText}</span></a>

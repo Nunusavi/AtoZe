@@ -74,13 +74,12 @@
                                     <li class="menu-item-has-children">
                                         <a class="menu-item" href="about-us.html">About Us</a>
                                         <ul>
-                                            <li><a class="menu-item" href="about-us.html">Company Profile</a></li>
+                                            <li><a class="menu-item" href="about-us.html">Company</a></li>
                                             <li><a class="menu-item" href="services.html">Services</a></li>
                                             <li><a class="menu-item" href="contact.html">Projects</a></li>
                                         </ul>
                                     </li>
                                     <li><a class="menu-item" href="products.html">Products</a></li>
-                                    <li><a class="menu-item" href="projects.html">Projects</a></li>
                                     <li><a class="menu-item" href="fqa.html">FQA</a></li>
                                     <li><a class="menu-item" href="contact.html">Contact</a></li>
                                 </ul>
@@ -226,66 +225,8 @@
                 </div>
             </section>
 
-            <section class="bg-light text-dark">
-                <div class="container">
-                    <div class="row justify-content-center align-items-center g-4 gx-5 relative z-index-1000">
-                        <div class="col-lg-2 d-none d-lg-block text-center">
-                            <img src="images/products/Hikvision/DS-2CD1023G0E-I.png" alt="Security Left"
-                                class="img-fluid rounded ">
-                        </div>
-                        <div class="col-lg-8 text-center">
-                            <div class="subtitle wow fadeInUp mb-3">
-                                AtoZe Engineering is not just another security company. We specialize in crafting custom
-                                security strategies that are both effective and scalable. Whether it's CCTV camera
-                                installation, alarm system integration, or access control systems, our experts design
-                                solutions that protect what matters most — your people, property, and peace of mind.
-                            </div>
-                            <h2 class="mb20 wow fadeInUp" data-wow-delay=".2s">Your Safety, Our Mission</h2>
-                            <a class="btn-main  fx-slide" href="contact.html"><span>Get a Free Quote</span></a>
-                            <a class="btn-main  fx-slide" href="tel:+251913332323"><span>Call us</span></a>
-                        </div>
-                        <div class="col-lg-2 d-none d-lg-block text-center">
-                            <img src="images/products/Hikvision/DS-2CD1143G2-LIU2.png" alt="Security Right"
-                                class="img-fluid rounded ">
-                        </div>
-                    </div>
-                </div>
-            </section>
 
 
-            <!-- <section class="bg-color pt60 pb60">
-                <div class="container">
-                    <div class="row g-4">
-                        <div class="col-lg-4 col-md-6 wow fadeInRight" data-wow-delay=".2s">
-                            <a href="contact.html" class="d-block relative bg-dark-2 text-light p-4 rounded-1">
-                                <i class="id-color p-3 rounded-1 fs-56 icofont-phone-circle"></i>
-                                <div class="absolute abs-middle ms-90px">
-                                    <span>For Our Service Call Us</span>
-                                    <h4>Call +251-91-333-2323</h4>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-lg-4 col-md-6 wow fadeInRight" data-wow-delay=".4s">
-                            <a href="contact.html" class="d-block relative bg-dark-2 text-white p-4 rounded-1">
-                                <i class="id-color p-3 rounded-1 fs-56 icofont-calculator"></i>
-                                <div class="absolute abs-middle ms-90px">
-                                    <span>Request For</span>
-                                    <h4>Free Estimation</h4>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-lg-4 col-md-6 wow fadeInRight" data-wow-delay=".6s">
-                            <a href="projects.html" class="d-block relative bg-dark-2 text-white p-4 rounded-1">
-                                <i class="id-color p-3 rounded-1 fs-56 icofont-image"></i>
-                                <div class="absolute abs-middle ms-90px">
-                                    <span>Discover</span>
-                                    <h4>Latest Projects</h4>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </section> -->
 
             <section class="bg-light">
                 <div class="container">
@@ -374,44 +315,7 @@
         </div>
         </section>
 
-        <section class="bg-light text-dark">
-            <div class="container">
-                <div class="row g-4 mb-4">
-                    <div class="col-lg-6 offset-lg-3 text-center">
-                        <div class="subtitle wow fadeInUp mb-3">Our Team</div>
-                        <h2 class="wow fadeInUp" data-wow-delay=".2s">Meet our experienced and trustworthy team</h2>
-                    </div>
-                </div>
 
-                <div class="row g-4">
-                    <div class="owl-carousel owl-theme wow fadeInUp" id="testimonial-carousel">
-                        <!-- Testimonials will be injected here -->
-                    </div>
-                </div>
-                <script>
-                    // Fetch testimonials from JSON and render dynamically
-                    fetch('Json/team.json')
-                        .then(res => res.json())
-                        .then(data => {
-                            const container = document.getElementById('testimonial-carousel');
-                            data.forEach((testimonial, idx) => {
-                                container.innerHTML += `
-                                        <div class="item">
-                                            <div class="bg-color-even p-40 relative text-dark text-center">
-                                                <div class="text-center">
-                                                    <img class="d-inline w-80 rounded-1" alt="" src="${testimonial.image}">
-                                                </div>
-                                                <div class="mt-3 fw-600">${testimonial.name}</div>
-                                                    <p class="mb-0" style="text-transform:uppercase; font-weight: bolder;">${testimonial.text}</p>
-                                                    <div class="triangle-bottomright-white"></div>
-                                                </div>
-                                            </div>
-                                    `;
-                            });
-                        });
-                </script>
-            </div>
-        </section>
 
         <section id="fqa">
             <div class="container">
