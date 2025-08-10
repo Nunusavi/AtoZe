@@ -74,7 +74,7 @@
                                         <ul>
                                             <li><a class="menu-item" href="about-us.html">Company</a></li>
                                             <li><a class="menu-item" href="services.html">Services</a></li>
-                                            <li><a class="menu-item" href="contact.html">Projects</a></li>
+                                            <li><a class="menu-item" href="projects.html">Projects</a></li>
                                         </ul>
                                     </li>
                                     <li><a class="menu-item" href="products.html">Products</a></li>
@@ -199,7 +199,7 @@
                                 <div class="col-lg-6 wow fadeInRight">
                                     <div class="relative">
                                         <img src="images/about-us/about-us2.jpg" class="w-100 h-100" alt="">
-                                        <div class="triangle-bottomright-dark z-2"></div>
+                                        <div class="triangle-bottomright-white z-2"></div>
                                     </div>
                                 </div>
                                 <div class="col-lg-6 wow fadeInRight" data-wow-delay=".3s">
@@ -211,13 +211,13 @@
                                 <div class="col-lg-6 wow fadeInRight" data-wow-delay=".3s">
                                     <div class="relative">
                                         <img src="images/about-us/about-us4.jpg" class="w-100" alt="">
-                                        <div class="triangle-bottomright-dark-2 z-2"></div>
+                                        <div class="triangle-bottomright-white z-2"></div>
                                     </div>
                                 </div>
                                 <div class="col-lg-6 wow fadeInRight" data-wow-delay=".3s">
                                     <div class="relative">
                                         <img src="images/about-us/fence.png" class="w-100" alt="">
-                                        <div class="triangle-bottomright-dark-2 z-2"></div>
+                                        <div class="triangle-bottomright-white z-2"></div>
                                     </div>
                                 </div>
                             </div>
@@ -286,29 +286,77 @@
                 </div>
         </div>
         </section>
-        <!-- Teams Section  -->
-        <section class="bg-light text-dark">
+        <section class="bg-light">
             <div class="container">
-                <div class="row g-4 mb-4">
-                    <div class="col-lg-6 offset-lg-3 text-center">
-                        <div class="subtitle wow fadeInUp mb-3">Our Team</div>
-                        <h2 class="wow fadeInUp" data-wow-delay=".2s">Meet our experienced and trustworthy team</h2>
-                    </div>
-                </div>
+                <div class="row g-4 align-items-center">
 
-                <div class="row g-4">
-                    <div class="owl-carousel owl-theme wow fadeInUp" id="testimonial-carousel">
-                        <!-- Testimonials will be injected here -->
+                    <div class="col-lg-6">
+                        <div class="row g-4">
+                            <div class="col-lg-6 wow fadeInRight" data-wow-delay=".3s">
+                                <div class="relative">
+                                    <img src="images/about-us/about-us-4.jpg" class="w-100" alt="">
+                                    <div class="triangle-bottomright-white z-2"></div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 wow fadeInRight" data-wow-delay=".3s">
+                                <div class="relative">
+                                    <img src="images/about-us/about-us-5.jpg" class="w-100" alt="">
+                                    <div class="triangle-bottomright-white z-2"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <div class="ms-lg-4">
+                            <!-- <div class="subtitle s2 mb-3 wow fadeInUp" data-wow-delay=".0s">Our Products</div> -->
+                            <h2 class="wow fadeInUp" data-wow-delay=".2s">Our Mission</h2>
+
+                            <p class="wow fadeIn" data-wow-delay=".4s">
+                                
+                                Our mission is to be the leading provider of CCTV in Ethiopia and electronic security
+                                systems. We are committed to offering these top-tier solutions at competitive prices,
+                                backed by exceptional service that actively reduces our clients' operational costs and
+                                security risks. We strive to build an unwavering reputation for quality, high standards,
+                                and reliability across the industry.
+                            </p>
+
+                            <h2 class="wow fadeInUp" data-wow-delay=".2s">Our Vision</h2>
+                            <p class="wow fadeIn" data-wow-delay=".4s">
+                                Our vision is to achieve 100% customer satisfaction by delivering superior products and
+                                services at affordable costs. We aim to become the leading entity in technology-based
+                                corporate solutions in Ethiopia, continually improving and growing to set new benchmarks
+                                for success in the security sector.
+                            </p>
+                        </div>
                     </div>
                 </div>
-                <script>
-                    // Fetch testimonials from JSON and render dynamically
-                    fetch('Json/team.json')
-                        .then(res => res.json())
-                        .then(data => {
-                            const container = document.getElementById('testimonial-carousel');
-                            data.forEach((testimonial, idx) => {
-                                container.innerHTML += `
+            </div>
+    </div>
+    </section>
+    <!-- Teams Section  -->
+    <section class="bg-light text-dark">
+        <div class="container">
+            <div class="row g-4 mb-4">
+                <div class="col-lg-6 offset-lg-3 text-center">
+                    <div class="subtitle wow fadeInUp mb-3">Our Team</div>
+                    <h2 class="wow fadeInUp" data-wow-delay=".2s">Meet our experienced and trustworthy team</h2>
+                </div>
+            </div>
+
+            <div class="row g-4">
+                <div class="owl-carousel owl-theme wow fadeInUp" id="testimonial-carousel">
+                    <!-- Testimonials will be injected here -->
+                </div>
+            </div>
+            <script>
+                // Fetch testimonials from JSON and render dynamically
+                fetch('Json/team.json')
+                    .then(res => res.json())
+                    .then(data => {
+                        const container = document.getElementById('testimonial-carousel');
+                        data.forEach((testimonial, idx) => {
+                            container.innerHTML += `
                                         <div class="item">
                                             <div class="bg-color-even p-40 relative text-dark text-center">
                                                 <div class="text-center">
@@ -320,146 +368,145 @@
                                                 </div>
                                             </div>
                                     `;
-                            });
                         });
-                </script>
-            </div>
-        </section>
-        <!-- section starts -->
-        <section class="bg-color pt60 pb60">
-            <div class="container">
-                <div class="row g-4">
-                    <div class="col-lg-4 col-md-6 wow fadeInRight" data-wow-delay=".2s">
-                        <a href="contact.html" class="d-block relative bg-dark-2 text-light p-4 rounded-1">
-                            <i class="id-color p-3 rounded-1 fs-56 icofont-phone-circle"></i>
-                            <div class="absolute abs-middle ms-90px">
-                                <span>For Our Service Call Us</span>
-                                <h4>Call +251-91-333-2323</h4>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-lg-4 col-md-6 wow fadeInRight" data-wow-delay=".4s">
-                        <a href="contact.html" class="d-block relative bg-dark-2 text-white p-4 rounded-1">
-                            <i class="id-color p-3 rounded-1 fs-56 icofont-calculator"></i>
-                            <div class="absolute abs-middle ms-90px">
-                                <span>Request For</span>
-                                <h4>Free Estimation</h4>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-lg-4 col-md-6 wow fadeInRight" data-wow-delay=".6s">
-                        <a href="projects.html" class="d-block relative bg-dark-2 text-white p-4 rounded-1">
-                            <i class="id-color p-3 rounded-1 fs-56 icofont-image"></i>
-                            <div class="absolute abs-middle ms-90px">
-                                <span>Discover</span>
-                                <h4>Latest Projects</h4>
-                            </div>
-                        </a>
-                    </div>
+                    });
+            </script>
+        </div>
+    </section>
+    <!-- section starts -->
+    <section class="bg-color pt60 pb60">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6 wow fadeInRight" data-wow-delay=".2s">
+                    <a href="contact.html" class="d-block relative bg-dark-2 text-light p-4 rounded-1">
+                        <i class="id-color p-3 rounded-1 fs-56 icofont-phone-circle"></i>
+                        <div class="absolute abs-middle ms-90px">
+                            <span>For Our Service Call Us</span>
+                            <h4>Call +251-91-333-2323</h4>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInRight" data-wow-delay=".4s">
+                    <a href="contact.html" class="d-block relative bg-dark-2 text-white p-4 rounded-1">
+                        <i class="id-color p-3 rounded-1 fs-56 icofont-calculator"></i>
+                        <div class="absolute abs-middle ms-90px">
+                            <span>Request For</span>
+                            <h4>Free Estimation</h4>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInRight" data-wow-delay=".6s">
+                    <a href="projects.html" class="d-block relative bg-dark-2 text-white p-4 rounded-1">
+                        <i class="id-color p-3 rounded-1 fs-56 icofont-image"></i>
+                        <div class="absolute abs-middle ms-90px">
+                            <span>Discover</span>
+                            <h4>Latest Projects</h4>
+                        </div>
+                    </a>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- footer begin -->
-        <footer>
-            <div class="container">
-                <div class="row gx-5">
-                    <div class="col-lg-4 col-sm-6">
-                        <img src="images/logo.webp" style="filter: url(#customColor)" class="w-150px" alt="">
-                        <div class="spacer-20"></div>
-                        <p>Keep your home or business safe with CCTV systems designed to provide 24/7 surveillance
-                            and
-                            peace of mind. Our expert team offers tailored security solutions, from installation to
-                            remote monitoring, ensuring your property is always protected. </p>
+    <!-- footer begin -->
+    <footer>
+        <div class="container">
+            <div class="row gx-5">
+                <div class="col-lg-4 col-sm-6">
+                    <img src="images/logo.webp" style="filter: url(#customColor)" class="w-150px" alt="">
+                    <div class="spacer-20"></div>
+                    <p>Keep your home or business safe with CCTV systems designed to provide 24/7 surveillance
+                        and
+                        peace of mind. Our expert team offers tailored security solutions, from installation to
+                        remote monitoring, ensuring your property is always protected. </p>
 
-                        <div class="social-icons mb-sm-30">
-                            <a href="https://t.me/AtoZSecuritySolutions"><i class="fa-brands fa-telegram-plane"></i></a>
-                            <a
-                                href="https://www.instagram.com/a.to.zengineering?utm_source=qr&igsh=MTM0cmIxaTRrZW9rdw=="><i
-                                    class="fa-brands fa-instagram"></i></a>
-                            <a href="https://youtube.com/@a-to-zengineering?si=N4_F1YLiL9tmqHGU"><i
-                                    class="fa-brands fa-youtube"></i></a>
-                            <a href="https://www.tiktok.com/@atoz.engineering?_t=ZM-8xdkV17Zu5g&_r=1"><i
-                                    class="fa-brands fa-tiktok"></i></a>
-                            <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
-                            <a href="https://x.com/asmeramujib?t=4TwsOum9mPmsje1N8IoUwg&s=09"><i
-                                    class="fa-brands fa-x-twitter"></i></a>
-                            <a href="https://www.linkedin.com/company/a-to-ze-engineering/"><i
-                                    class="fa-brands fa-linkedin"></i></a>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-sm-12 order-lg-1 order-sm-2">
-                        <div class="row">
-                            <div class="col-lg-6 col-sm-6">
-                                <div class="widget">
-                                    <h5>Company</h5>
-                                    <ul>
-                                        <li><a href="index.html">Home</a></li>
-                                        <li><a href="services.html">Our Services</a></li>
-                                        <li><a href="projects.html">Projects</a></li>
-                                        <li><a href="contact.html">Get a Free Quote</a></li>
-                                        <li><a href="contact.html">Contact</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-sm-6">
-                                <div class="widget">
-                                    <h5>Our Services</h5>
-                                    <ul>
-                                        <li><a href="services.html">System Consultation</a></li>
-                                        <li><a href="services.html">Installation Services</a></li>
-                                        <li><a href="services.html">System Configuration</a></li>
-
-                                        <li><a href="services.html">Maintenance</a></li>
-                                        <li><a href="services.html">Storage and Backup</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-sm-6 order-lg-2 order-sm-1">
-                        <div class="widget">
-                            <div class="fw-bold text-white"><i class="icofont-clock-time me-2 id-color"></i>We're
-                                Open
-                            </div>
-                            Monday - Saturday 08.00 - 18.00
-
-                            <div class="spacer-20"></div>
-
-                            <div class="fw-bold text-white"><i class="icofont-location-pin me-2 id-color"></i>Workshop
-                                Location</div>
-                            Addis Ababa , Jemo 1, Nola Bldg 5th Floor
-
-                            <div class="spacer-20"></div>
-
-                            <div class="fw-bold text-white"><i class="icofont-envelope me-2 id-color"></i>Send a
-                                Message
-                            </div>
-                            contact@atozeengineering.com
-                        </div>
+                    <div class="social-icons mb-sm-30">
+                        <a href="https://t.me/AtoZSecuritySolutions"><i class="fa-brands fa-telegram-plane"></i></a>
+                        <a href="https://www.instagram.com/a.to.zengineering?utm_source=qr&igsh=MTM0cmIxaTRrZW9rdw=="><i
+                                class="fa-brands fa-instagram"></i></a>
+                        <a href="https://youtube.com/@a-to-zengineering?si=N4_F1YLiL9tmqHGU"><i
+                                class="fa-brands fa-youtube"></i></a>
+                        <a href="https://www.tiktok.com/@atoz.engineering?_t=ZM-8xdkV17Zu5g&_r=1"><i
+                                class="fa-brands fa-tiktok"></i></a>
+                        <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+                        <a href="https://x.com/asmeramujib?t=4TwsOum9mPmsje1N8IoUwg&s=09"><i
+                                class="fa-brands fa-x-twitter"></i></a>
+                        <a href="https://www.linkedin.com/company/a-to-ze-engineering/"><i
+                                class="fa-brands fa-linkedin"></i></a>
                     </div>
                 </div>
-            </div>
-            <div class="subfooter">
-                <div class="container">
+                <div class="col-lg-4 col-sm-12 order-lg-1 order-sm-2">
                     <div class="row">
-                        <div class="col-md-12">
-                            <div class="de-flex">
-                                <div class="de-flex-col">
-                                    Copyright &copy;&nbsp;<span class="current-year"></span> - AtoZE Engineering by
-                                    &nbsp;<a href="https://nate.et">Nate</a>
-                                    <script>
-                                        document.querySelector('.current-year').textContent = new Date().getFullYear();
-                                    </script>
-                                </div>
+                        <div class="col-lg-6 col-sm-6">
+                            <div class="widget">
+                                <h5>Company</h5>
+                                <ul>
+                                    <li><a href="index.html">Home</a></li>
+                                    <li><a href="services.html">Our Services</a></li>
+                                    <li><a href="projects.html">Projects</a></li>
+                                    <li><a href="contact.html">Get a Free Quote</a></li>
+                                    <li><a href="contact.html">Contact</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-sm-6">
+                            <div class="widget">
+                                <h5>Our Services</h5>
+                                <ul>
+                                    <li><a href="services.html">System Consultation</a></li>
+                                    <li><a href="services.html">Installation Services</a></li>
+                                    <li><a href="services.html">System Configuration</a></li>
 
+                                    <li><a href="services.html">Maintenance</a></li>
+                                    <li><a href="services.html">Storage and Backup</a></li>
+                                </ul>
                             </div>
                         </div>
                     </div>
                 </div>
+                <div class="col-lg-4 col-sm-6 order-lg-2 order-sm-1">
+                    <div class="widget">
+                        <div class="fw-bold text-white"><i class="icofont-clock-time me-2 id-color"></i>We're
+                            Open
+                        </div>
+                        Monday - Saturday 08.00 - 18.00
+
+                        <div class="spacer-20"></div>
+
+                        <div class="fw-bold text-white"><i class="icofont-location-pin me-2 id-color"></i>Workshop
+                            Location</div>
+                        Addis Ababa , Jemo 1, Nola Bldg 5th Floor
+
+                        <div class="spacer-20"></div>
+
+                        <div class="fw-bold text-white"><i class="icofont-envelope me-2 id-color"></i>Send a
+                            Message
+                        </div>
+                        contact@atozeengineering.com
+                    </div>
+                </div>
             </div>
-        </footer>
-        <!-- footer close -->
+        </div>
+        <div class="subfooter">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="de-flex">
+                            <div class="de-flex-col">
+                                Copyright &copy;&nbsp;<span class="current-year"></span> - AtoZE Engineering by
+                                &nbsp;<a href="https://nate.et">Nate</a>
+                                <script>
+                                    document.querySelector('.current-year').textContent = new Date().getFullYear();
+                                </script>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- footer close -->
     </div>
 
     <!-- overlay content begin -->
