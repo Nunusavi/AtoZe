@@ -620,7 +620,8 @@
     ],
     "image": [
       "./images/products/Hikvision/4.png",
-      "./images/products/Hikvision/DS-7616NI-K2-6P.png"
+      "./images/products/Hikvision/DS-7616NI-K2-6P.png",
+      "./images/products/Hikvision/DS-7616NI-K2_16P-2.png"
     ],
     "summary": "A 16-channel NVR with 4K HDMI output and high-performance video decoding. Supports up to 16 IP cameras and multiple recording resolutions."
   },
@@ -683,7 +684,8 @@
     ],
     "image": [
       "./images/products/Hikvision/4.png",
-      "./images/products/Hikvision/DS-9632NI-18.png"
+      "./images/products/Hikvision/DS-9632NI-18.png",
+      "./images/products/Hikvision/DS-9632NI-18-2.png"
     ],
     "summary": "A 32-channel NVR with up to 12 MP resolution and advanced RAID support. Features high bandwidth, dual HDMI/VGA outputs, and intelligent analytics."
   },
@@ -739,7 +741,8 @@
     ],
     "image": [
       "./images/products/Hikvision/4.png",
-      "./images/products/Hikvision/DS-7104HGHI-M1.png"
+      "./images/products/Hikvision/DS-7104HGHI-M1.png",
+      "./images/products/Hikvision/DS-7104HGHI-M1-2.png"
     ],
     "summary": "A 4-channel DVR with deep learning motion detection 2.0. Supports up to 5 IP cameras, 4 analog cameras, and multiple video formats."
   },
@@ -795,7 +798,8 @@
     ],
     "image": [
       "./images/products/Hikvision/4.png",
-      "./images/products/Hikvision/DS-7108HGHI-k1.png"
+      "./images/products/Hikvision/DS-7108HGHI-k1.png",
+      "./images/products/Hikvision/DS-7108HGHI-k1-2.png"
     ],
     "summary": "An 8-channel DVR with deep learning motion detection 2.0. Supports up to 10 IP cameras, 8 analog cameras, and multiple video formats."
   },
@@ -852,8 +856,7 @@
     "image": [
       "./images/products/Hikvision/4.png",
       "./images/products/Hikvision/DS-7116HGHI-M1.png",
-      "./images/products/Hikvision/DS-7116HGHI-M12.png",
-      "./images/products/Hikvision/DS-7116HGHI-M13.png"
+      "./images/products/Hikvision/DS-7116HGHI-M1-2.png"
     ],
     "summary": "A 16-channel DVR with deep learning motion detection 2.0. Supports up to 18 IP cameras, 16 analog cameras, and multiple video formats."
   },
@@ -889,7 +892,9 @@
     ],
     "image": [
       "./images/products/Gate Opener /Centurion/CENTURION-logo.png",
+      "./images/products/Gate Opener /Centurion/D5evo.png",
       "./images/products/Gate Opener /Centurion/D5evo-2.png"
+      
     ],
     "summary": "A powerful gate motor with battery backup and intelligent LCD controller. Suitable for domestic and light-industrial sliding gates up to 500kg."
   },
