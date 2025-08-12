@@ -3,7 +3,17 @@
         "background": "images/background/3.webp",
         "title": "A To Ze Security",
         "headline": "CCTV Security Systems",
-        "image": "images/products/3.webp",
+        "image": "images/products/hikvision-products-1024x443.png",
+        "learnMoreText": "Learn More",
+        "learnMoreLink": "products.html",
+        "callText": "Call us",
+        "callLink": "tel:+251913332323"
+    },
+    {
+        "background": "images/background/3.webp",
+        "title": "A To Ze Security",
+        "headline": "Inverters and Low Voltage Battery For your home power backup",
+        "image": "images/Alpsolarr.png",
         "learnMoreText": "Learn More",
         "learnMoreLink": "products.html",
         "callText": "Call us",

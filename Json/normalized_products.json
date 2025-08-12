@@ -508,7 +508,8 @@
     ],
     "image": [
       "./images/products/Hikvision/4.png",
-      "./images/products/Hikvision/DS-7604NXI-K1-4P.png"
+      "./images/products/Hikvision/DS-7604NXI-K1-4P.png",
+      "./images/products/Hikvision/DS-7604NXI-K1_4P-2.png"
     ],
     "summary": "A 4-channel NVR with AI analytics for facial recognition and perimeter protection. Supports up to 4 IP cameras, 4K HDMI output, and multiple recording resolutions."
   },
@@ -562,7 +563,8 @@
     ],
     "image": [
       "./images/products/Hikvision/4.png",
-      "./images/products/Hikvision/DS-7608NI-K2-8P.png"
+      "./images/products/Hikvision/DS-7608NI-K2-8P.png",
+      "./images/products/Hikvision/DS-7608NI-K2_8P-2.png"
     ],
     "summary": "An 8-channel NVR with 4K HDMI output and advanced video decoding. Supports up to 8 IP cameras and multiple recording resolutions."
   },
@@ -618,7 +620,8 @@
     ],
     "image": [
       "./images/products/Hikvision/4.png",
-      "./images/products/Hikvision/DS-7616NI-K2-6P.png"
+      "./images/products/Hikvision/DS-7616NI-K2-6P.png",
+      "./images/products/Hikvision/DS-7616NI-K2_16P-2.png"
     ],
     "summary": "A 16-channel NVR with 4K HDMI output and high-performance video decoding. Supports up to 16 IP cameras and multiple recording resolutions."
   },
@@ -681,7 +684,8 @@
     ],
     "image": [
       "./images/products/Hikvision/4.png",
-      "./images/products/Hikvision/DS-9632NI-18.png"
+      "./images/products/Hikvision/DS-9632NI-18.png",
+      "./images/products/Hikvision/DS-9632NI-18-2.png"
     ],
     "summary": "A 32-channel NVR with up to 12 MP resolution and advanced RAID support. Features high bandwidth, dual HDMI/VGA outputs, and intelligent analytics."
   },
@@ -737,7 +741,8 @@
     ],
     "image": [
       "./images/products/Hikvision/4.png",
-      "./images/products/Hikvision/DS-7104HGHI-M1.png"
+      "./images/products/Hikvision/DS-7104HGHI-M1.png",
+      "./images/products/Hikvision/DS-7104HGHI-M1-2.png"
     ],
     "summary": "A 4-channel DVR with deep learning motion detection 2.0. Supports up to 5 IP cameras, 4 analog cameras, and multiple video formats."
   },
@@ -793,7 +798,8 @@
     ],
     "image": [
       "./images/products/Hikvision/4.png",
-      "./images/products/Hikvision/DS-7108HGHI-k1.png"
+      "./images/products/Hikvision/DS-7108HGHI-k1.png",
+      "./images/products/Hikvision/DS-7108HGHI-k1-2.png"
     ],
     "summary": "An 8-channel DVR with deep learning motion detection 2.0. Supports up to 10 IP cameras, 8 analog cameras, and multiple video formats."
   },
@@ -850,8 +856,7 @@
     "image": [
       "./images/products/Hikvision/4.png",
       "./images/products/Hikvision/DS-7116HGHI-M1.png",
-      "./images/products/Hikvision/DS-7116HGHI-M12.png",
-      "./images/products/Hikvision/DS-7116HGHI-M13.png"
+      "./images/products/Hikvision/DS-7116HGHI-M1-2.png"
     ],
     "summary": "A 16-channel DVR with deep learning motion detection 2.0. Supports up to 18 IP cameras, 16 analog cameras, and multiple video formats."
   },
@@ -864,7 +869,8 @@
     "features": [],
     "image": [
       "./images/products/Gate Opener /nice.png",
-      "./images/products/Gate Opener /Nice robus 600.png"
+      "./images/products/Gate Opener /Nice robus 600.png",
+      "./images/products/Gate Opener /Nice robus 600 2.png"
     ],
     "summary": "A sliding gate motor suitable for gates up to 600kg. Features obstacle detection and temperature-adaptive motor force."
   },
@@ -886,7 +892,9 @@
     ],
     "image": [
       "./images/products/Gate Opener /Centurion/CENTURION-logo.png",
+      "./images/products/Gate Opener /Centurion/D5evo.png",
       "./images/products/Gate Opener /Centurion/D5evo-2.png"
+      
     ],
     "summary": "A powerful gate motor with battery backup and intelligent LCD controller. Suitable for domestic and light-industrial sliding gates up to 500kg."
   },
@@ -966,8 +974,71 @@
     ],
     "image": [
       "./images/products/ZTK/ZKT ECO.png",
-      "./images/products/ZTK/Sface_Lite.png"
+      "./images/products/ZTK/Sface_Lite.png",
+      "./images/products/ZTK/zt_flag2.png"
     ],
     "summary": "A biometric time attendance and access control device with face, fingerprint, and ID card recognition. Features fast verification and multiple communication options."
+  },
+  {
+    "category": "Low Voltage Battery System",
+    "brand": "AlpSolarr",
+    "model": "LIVO",
+    "name": "LIVO Low Voltage Battery System",
+    "description": "The LIVO is a modular, wall-mountable low voltage battery system offering 5.12 kWh capacity at 48 V with 100 A charge/discharge capability and over 6,000 cycles. It features neural-network-optimized charge/discharge, dual monitoring via LED and app, and V2G support in an IP65-rated enclosure.",
+    "features": [
+      "5.12 kWh capacity (1P16S, 51.2 V nominal)",
+      "48 V, 100 A max continuous charge/discharge",
+      "Neural network optimized SOX algorithm for efficient energy management",
+      "Modular, wall-mount design with front wiring and expansion support",
+      "Real-time monitoring via LED and smart app",
+      "Robust IP65 protection, RoHS and UN 38.3 compliance",
+      "Over 6,000 charge/discharge cycles"
+    ],
+    "image": [
+      "./images/products/Alpsolarr/logo.png",
+      "./images/products/Alpsolarr/LIVO.png",
+      "./images/products/Alpsolarr/LIVO-2.png"
+    ],
+    "summary": "Efficient and scalable low-voltage energy storage with smart monitoring, high durability, and easy installation."
+  },
+  {
+    "category": "Off-Grid Inverter",
+    "brand": "AlpSolarr",
+    "model": "Pulse S2",
+    "name": "Pulse S2 Off-Grid Inverter",
+    "description": "The Pulse S2 is an off-grid inverter with 8 kW or 11 kW output, offering dual MPPT tracking for increased solar input flexibility, seamless 10 ms transfer to backup power, and natural cooling for efficient operation in standard climates.",
+    "features": [
+      "8 kW or 11 kW output options",
+      "Dual MPPT tracking minimizes shading impact and optimizes rooftop solar input",
+      "Seamless 10 ms transfer for uninterrupted power during outages",
+      "Natural cooling design reduces energy consumption",
+      "Compatible with lead-acid and lithium-ion battery types"
+    ],
+    "image": [
+      "./images/products/Alpsolarr/logo.png",
+      "./images/products/Alpsolarr/PULSE S2.png",
+      "./images/products/Alpsolarr/PULSE S2-2.png"
+    ],
+    "summary": "Reliable dual-MPPT off-grid inverter for resilient, uninterrupted solar power in homes and small shops."
+  },
+  {
+    "category": "Off-Grid Inverter",
+    "brand": "AlpSolarr",
+    "model": "Pulse S3",
+    "name": "Pulse S3 Off-Grid Inverter",
+    "description": "The Pulse S3 is a robust off-grid inverter available in 4 kW or 6 kW output versions, featuring SiC-based MPPT for up to double PV oversizing, IP66-rated protection for harsh environments, and smart cooling to sustain full load operation at 45 °C.",
+    "features": [
+      "4 kW or 6 kW output models",
+      "Silicon-carbide (SiC) MPPT enables 2× PV oversizing for more solar input",
+      "IP66-rated housing for extreme dust and moisture resistance",
+      "Smart cooling maintains performance at high ambient temperatures (up to 45 °C)",
+      "Ideal for off-grid and micro-grid deployments"
+    ],
+    "image": [
+      "./images/products/Alpsolarr/logo.png",
+      "./images/products/Alpsolarr/PULSE S3.png",
+      "./images/products/Alpsolarr/PULSE S3-2.png"
+    ],
+    "summary": "High-durability off-grid inverter built for extreme environments, offering enhanced solar input flexibility and reliable performance."
   }
 ]

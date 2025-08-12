@@ -22,12 +22,12 @@
 </head>
 
 
-<body class="dark-scheme">
+<body class="light-scheme">
     <img src="/admin/tracker.php" style="display:none;" width="1" height="1" alt="">
     <script src="/admin/public/admin.js"></script>
     <div id="wrapper">
         <div class="call-now-wrapper">
-            <span class="call-text">CALL US</span>
+
             <a href="tel:+2519133323231234567890" class="call-button">
                 <i class="fas fa-phone"></i>
             </a>
@@ -38,49 +38,50 @@
         <!-- page preloader close -->
 
         <header class="transparent">
-            <div id="topbar">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="d-flex justify-content-between xs-hide">
-                                <div class="d-flex">
-                                    <div class="topbar-widget"><a href="#"><img src="images/svg-white/bell.svg" class=""
-                                                alt="">Get Estimation for your Security Needs</a></div>
-
-                                </div>
-                                <div class="d-flex">
-                                    <div class="topbar-widget me-5"><a href="#"><img src="images/svg-white/phone.svg"
-                                                class="" alt="">Call us: +251-939-902-685</a></div>
-                                    <div class="topbar-widget"><a href="#"><img src="images/svg-white/envelope.svg"
-                                                class="" alt="">Message us: contact@atozeengineering.com</a></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="clearfix"></div>
-                </div>
-            </div>
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="de-flex sm-pt10">
                             <div class="de-flex-col">
+                                <svg width="0" height="0">
+                                    <filter id="customColor">
+                                        <feFlood flood-color="#FBD600" result="flood" />
+                                        <feComposite in="flood" in2="SourceGraphic" operator="in" />
+                                    </filter>
+                                </svg>
                                 <!-- logo begin -->
+                                <svg width="0" height="0">
+                                    <filter id="customColor">
+                                        <feFlood flood-color="#FBD600" result="flood" />
+                                        <feComposite in="flood" in2="SourceGraphic" operator="in" />
+                                    </filter>
+                                </svg>
                                 <div id="logo">
                                     <a href="index.html">
-                                        <img class="logo-main" src="images/logo.webp" alt="">
-                                        <img class="logo-scroll" src="images/logo.webp" alt="">
-                                        <img class="logo-mobile" src="images/logo.webp" alt="">
+                                        <img class="logo-main logo-glow" src="images/logo.webp" alt="">
+                                        <img class="logo-scroll logo-glow" src="images/logo.webp" alt="">
+                                        <img class="logo-mobile logo-glow" src="images/logo.webp" alt="">
                                     </a>
                                 </div>
+                                <style>
+                                    div#logo>a>img {
+                                        filter: url(#customColor);
+                                    }
+                                </style>
                                 <!-- logo close -->
                             </div>
                             <div class="de-flex-col header-col-mid">
                                 <ul id="mainmenu">
                                     <li><a class="menu-item" href="index.html">Home</a></li>
-                                    <li><a class="menu-item" href="services.html">Services</a></li>
+                                    <li class="menu-item-has-children">
+                                        <a class="menu-item" href="about-us.html">About Us</a>
+                                        <ul>
+                                            <li><a class="menu-item" href="about-us.html">Company</a></li>
+                                            <li><a class="menu-item" href="services.html">Services</a></li>
+                                            <li><a class="menu-item" href="projects.html">Projects</a></li>
+                                        </ul>
+                                    </li>
                                     <li><a class="menu-item" href="products.html">Products</a></li>
-                                    <li><a class="menu-item" href="projects.html">Projects</a></li>
                                     <li><a class="menu-item" href="fqa.html">FQA</a></li>
                                     <li><a class="menu-item" href="contact.html">Contact</a></li>
                                 </ul>
@@ -152,15 +153,15 @@
                                     <div class="relative mb-4">
                                         <i class="abs fs-32 p-3 bg-dark-2 icofont-location-pin id-color-2"></i>
                                         <div class="ms-80px">
-                                            <div class="fw-bold text-white">Office Location</div>
-                                            Addis Ababa. Ethiopia
+                                            <div class="fw-bold text-dark">Office Location</div>
+                                            Addis Ababa , Jemo 1, Nola Bldg 5th Floor
                                         </div>
                                     </div>
 
                                     <div class="relative mb-4">
                                         <i class="abs fs-32 p-3 bg-dark-2 icofont-envelope id-color-2"></i>
                                         <div class="ms-80px">
-                                            <div class="fw-bold text-white">Send a Message</div>
+                                            <div class="fw-bold text-dark">Send a Message</div>
                                             contact@atozeengineering.com
                                         </div>
                                     </div>
@@ -168,8 +169,8 @@
                                     <div class="relative mb-4">
                                         <i class="abs fs-32 p-3 bg-dark-2 icofont-phone id-color-2"></i>
                                         <div class="ms-80px">
-                                            <div class="fw-bold text-white">Call Us Directly</div>
-                                            +251-939-902-685
+                                            <div class="fw-bold text-dark">Call Us Directly</div>
+                                            +251-913-332-323
                                         </div>
                                     </div>
 
@@ -179,8 +180,8 @@
                         </div>
 
                         <div class="col-lg-6">
-                            <div class="bg-dark-2 p-60 relative">
-                                <div class="triangle-bottomright-dark"></div>
+                            <div class="bg-grey p-60 relative">
+                                <div class="triangle-bottomright-light"></div>
                                 <form name="contactForm" id="contact_form" method="post" action="#">
                                     <div class="row g-4">
                                         <div class="col-lg-12">
@@ -236,7 +237,7 @@
             <div class="container">
                 <div class="row gx-5">
                     <div class="col-lg-4 col-sm-6">
-                        <img src="images/logo.webp" class="w-150px" alt="">
+                        <img src="images/logo.webp" style="filter: url(#customColor)" class="w-150px" alt="">
                         <div class="spacer-20"></div>
                         <p>Keep your home or business safe with CCTV systems designed to provide 24/7 surveillance and
                             peace of mind. Our expert team offers tailored security solutions, from installation to
@@ -297,7 +298,7 @@
 
                             <div class="fw-bold text-white"><i class="icofont-location-pin me-2 id-color"></i>Workshop
                                 Location</div>
-                            Addis Ababa. Ethiopia
+                            Addis Ababa , Jemo 1, Nola Bldg 5th Floor
 
                             <div class="spacer-20"></div>
 
@@ -338,7 +339,7 @@
         </div>
 
         <div id="extra-content">
-            <img src="images/logo.webp" class="w-150px" alt="">
+            <img src="images/logo.webp" style="filter: url(#customColor)" class="w-150px" alt="">
 
             <div class="spacer-30-line"></div>
 
@@ -358,7 +359,7 @@
 
             <h5>Contact Us</h5>
             <div><i class="icofont-clock-time me-2"></i>Monday - Saturday 08.00 - 18.00</div>
-            <div><i class="icofont-location-pin me-2"></i>Addis Ababa, Ethiopia </div>
+            <div><i class="icofont-location-pin me-2"></i>Addis Ababa , Jemo 1, Nola Bldg 5th floor </div>
             <div><i class="icofont-envelope me-2"></i>contact@atozeengineering.com</div>
 
             <div class="spacer-30-line"></div>

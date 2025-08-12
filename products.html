@@ -22,7 +22,7 @@
 </head>
 
 
-<body class="dark-scheme">
+<body class="light-scheme">
     <img src="/admin/tracker.php" style="display:none;" width="1" height="1" alt="">
     <script src="/admin/public/admin.js"></script>
     <div id="wrapper">
@@ -39,33 +39,18 @@
 
 
         <header class="transparent">
-            <div id="topbar">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="d-flex justify-content-between xs-hide">
-                                <div class="d-flex">
-                                    <div class="topbar-widget"><a href="#"><img src="images/svg-white/bell.svg" class=""
-                                                alt="">Get Estimation for your Security Needs</a></div>
-                                </div>
-                                <div class="d-flex">
-                                    <div class="topbar-widget me-5"><a href="#"><img src="images/svg-white/phone.svg"
-                                                class="" alt="">Call us: +251-939-902-685</a></div>
-                                    <div class="topbar-widget"><a href="#"><img src="images/svg-white/envelope.svg"
-                                                class="" alt="">Message us: contact@atozeengineering.com</a></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="clearfix"></div>
-                </div>
-            </div>
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="de-flex sm-pt10">
                             <div class="de-flex-col">
                                 <!-- logo begin -->
+                                <svg width="0" height="0">
+                                    <filter id="customColor">
+                                        <feFlood flood-color="#FBD600" result="flood" />
+                                        <feComposite in="flood" in2="SourceGraphic" operator="in" />
+                                    </filter>
+                                </svg>
                                 <div id="logo">
                                     <a href="index.html">
                                         <img class="logo-main" src="images/logo.webp" alt="">
@@ -78,9 +63,15 @@
                             <div class="de-flex-col header-col-mid">
                                 <ul id="mainmenu">
                                     <li><a class="menu-item" href="index.html">Home</a></li>
-                                    <li><a class="menu-item" href="services.html">Services</a></li>
+                                    <li class="menu-item-has-children">
+                                        <a class="menu-item" href="">About Us</a>
+                                        <ul>
+                                            <li><a class="menu-item" href="about-us.html">Company</a></li>
+                                            <li><a class="menu-item" href="services.html">Services</a></li>
+                                            <li><a class="menu-item" href="projects.html">Projects</a></li>
+                                        </ul>
+                                    </li>
                                     <li><a class="menu-item" href="products.html">Products</a></li>
-                                    <li><a class="menu-item" href="projects.html">Projects</a></li>
                                     <li><a class="menu-item" href="fqa.html">FQA</a></li>
                                     <li><a class="menu-item" href="contact.html">Contact</a></li>
                                 </ul>
@@ -106,8 +97,8 @@
         <div id="content" class="no-top no-bottom">
             <div id="top"></div>
             <!-- section begin -->
-            <section class="text-light no-top no-bottom position-relative overflow-hidden z-1000" id="slider">
-                <div class="de-gradient-edge-top"></div>
+            <section class="text-light no-top no-bottom position-relative overflow-hidden z-1000 bg-light" id="slider">
+                <div class="de-gradient-edge-top.light"></div>
                 <div class="swiper">
                     <div class="swiper-wrapper" id="dynamic-swiper-wrapper">
                         <!-- Slides will be injected here -->
@@ -131,12 +122,14 @@
                                             <div style="position:absolute; inset:0; background-image:inherit; background-size:cover; background-position:center; filter:blur(5px); z-index:0;"></div>
                                             <div class="sw-caption">
                                                 <div class="container relative z-2" data-0="opacity:1" data-300="opacity:0">
-                                                    <div class="row align-items-center g-4" style="margin-top: 125px;">
+                                                    <div class="row align-items-center g-4" style="margin-top: 20px;">
                                                         <div class="col-lg-6">
                                                             <div class="slider-content z-2">
-                                                                <h3 class="subtitle s2 mb-3 wow fadeInUp" data-wow-delay=".0s">${slide.brand}</h3>
-                                                                <h1 class="mb-3 cam-style">${slide.name}<span></span><span></span><span></span><span></span></h1>
-                                                                <p class="accordion">${slide.summary ? slide.summary.slice(0, 150) + (slide.summary.length > 50 ? '...' : '') : ''}</p>
+                                                                <a href='product-details.html?category=${encodeURIComponent(slide.category)}&brand=${encodeURIComponent(slide.brand)}&model=${encodeURIComponent(slide.model)}'>
+                                                                    <h3 class="subtitle s2 mb-3 wow fadeInUp" data-wow-delay=".0s" style="color: #fff;">${slide.brand}</h3>
+                                                                    <h1 class="mb-3 h1">${slide.name}<span></span><span></span><span></span><span></span></h1>
+                                                                    <p class="accordion">${slide.summary ? slide.summary.slice(0, 150) + (slide.summary.length > 150 ? '...' : '') : ''}</p>
+                                                                </a>
                                                                 <div>
                                                                     <a class="btn-main btn-line fx-slide mb10 mb-3" href='product-details.html?category=${encodeURIComponent(slide.category)}&brand=${encodeURIComponent(slide.brand)}&model=${encodeURIComponent(slide.model)}'><span>Learn More</span></a>&nbsp;&nbsp;
                                                                     <a class="btn-main fx-slide mb10 mb-3" href="tel:+251913332323"><span>Call Us</span></a>
@@ -144,11 +137,11 @@
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-6">
-                                                            <div class="relative">
-                                                                <div style="display: flex; justify-content: center; align-items: center; height: 100%;">
-                                                                    <img src="${slide.image[1]}" class="w-60 relative z-2" alt="">
-                                                                </div>
+                                                            <a href='product-details.html?category=${encodeURIComponent(slide.category)}&brand=${encodeURIComponent(slide.brand)}&model=${encodeURIComponent(slide.model)}'>
+                                                            <div class="relative" style="display:flex;justify-content:center;align-items:center;">
+                                                                <img src="${slide.image[1]}" class="w-60 relative z-2" alt="${slide.name}">
                                                             </div>
+                                                        </a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -200,13 +193,13 @@
                 </div>
             </section> -->
 
+            <!-- Products Listing Using Featured Styles -->
             <section>
                 <div class="container">
-                    <div class="row g-4" id="productCards"></div>
+                    <h1 class="mb-4 text-uppercase fw-bold" style="letter-spacing:1px;">All Products</h1>
+                    <div id="all-products-wrapper" class="featured-products-grid-container"></div>
                 </div>
-                <div class="col-lg-4 col-md-6 wow fadeInRight" data-wow-delay="0.2s">
             </section>
-
         </div>
         <!-- content close -->
         <!-- footer begin -->
@@ -214,7 +207,7 @@
             <div class="container">
                 <div class="row gx-5">
                     <div class="col-lg-4 col-sm-6">
-                        <img src="images/logo.webp" class="w-150px" alt="">
+                        <img src="images/logo.webp" style="filter: url(#customColor)" class="w-150px" alt="">
                         <div class="spacer-20"></div>
                         <p>Keep your home or business safe with CCTV systems designed to provide 24/7 surveillance
                             and
@@ -277,7 +270,7 @@
 
                             <div class="fw-bold text-white"><i class="icofont-location-pin me-2 id-color"></i>Workshop
                                 Location</div>
-                            Addis Ababa. Ethiopia
+                            Addis Ababa , Jemo 1, Nola Bldg 5th Floor
 
                             <div class="spacer-20"></div>
 
@@ -318,7 +311,7 @@
         </div>
 
         <div id="extra-content">
-            <img src="images/logo.webp" class="w-150px" alt="">
+            <img src="images/logo.webp" style="filter: url(#customColor)" class="w-150px" alt="">
 
             <div class="spacer-30-line"></div>
 
@@ -338,7 +331,7 @@
 
             <h5>Contact Us</h5>
             <div><i class="icofont-clock-time me-2"></i>Monday - Saturday 08.00 - 18.00</div>
-            <div><i class="icofont-location-pin me-2"></i>Addis Ababa, Ethiopia </div>
+            <div><i class="icofont-location-pin me-2"></i>Addis Ababa , Jemo 1, Nola Bldg 5th floor </div>
             <div><i class="icofont-envelope me-2"></i>contact@atozeengineering.com</div>
 
             <div class="spacer-30-line"></div>
@@ -373,87 +366,100 @@
     <script src="js/script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
 
-    <script>
-        // filepath: /home/nunu/Desktop/AtoZe/Website 1/AtoZe/products.html
-
-        fetch('./Json/normalized_products.json')
+    <!-- Slider dynamic load script (kept) -->
+    <!-- <script>
+        // Dynamically load Swiper slides from products JSON
+        fetch('Json/normalized_products.json')
             .then(res => res.json())
-            .then(data => {
-                const categories = {};
-                data.forEach(product => {
-                    if (!categories[product.category]) categories[product.category] = [];
-                    categories[product.category].push(product);
-                });
-
-                const productCards = document.getElementById('productCards');
-                productCards.innerHTML = '';
-
-                Object.entries(categories).forEach(([catKey, products]) => {
-                    // Category Title
-                    const catTitle = document.createElement('div');
-                    catTitle.className = 'col-12 mb-4 mt-5';
-                    catTitle.innerHTML = `<h2 class="text-uppercase fw-bold border-bottom pb-2 mb-4" style="letter-spacing:1px;">${catKey.replace(/_/g, ' ')}</h2>`;
-                    productCards.appendChild(catTitle);
-
-                    products.forEach(product => {
-                        const card = document.createElement('div');
-                        card.className = 'col-lg-4 col-md-6 mb-4';
-                        card.innerHTML = `
-                            <div class="de-product-card card h-100 bg-gradient border-0 shadow-lg rounded-4 overflow-hidden position-relative product-card-link" 
-                                style="background: linear-gradient(135deg, #232526 0%, #414345 100%); transition: box-shadow 0.3s; cursor:pointer;"
-                                onclick="window.location.href='product-details.html?category=${encodeURIComponent(product.category)}&brand=${encodeURIComponent(product.brand)}&model=${encodeURIComponent(product.model)}'">
-                                <div class="de-product-img-wrapper position-relative overflow-hidden" style="height:160px; max-height:160px;">
-                                   <img src="${product.image && product.image[1] ? product.image[1] : (product.image && product.image[0] ? product.image[0] : 'images/products/6.webp')}" 
-                                       class="card-img-top rounded-top-4 w-100 h-100" 
-                                       alt="${product.name}" 
-                                       style="object-fit:contain; filter: brightness(0.92) saturate(1.1); transition: transform 0.4s cubic-bezier(.4,2,.3,1); background:#232526;">
-                                   <span class="badge position-absolute top-0 start-0 m-3 px-3 py-2 rounded-pill fs-6 shadow text-white"
-                                        style="background: rgba(40, 60, 80, 0.85); font-weight: 600; letter-spacing:0.5px;">
-                                      ${product.brand ? product.brand : ''}
-                                   </span>
-                                   <span class="badge position-absolute top-0 end-0 m-3 px-2 py-1 rounded-circle shadow"
-                                        style="background: #fff2; backdrop-filter: blur(2px);">
-                                      <i class="fa-solid fa-shield-halved text-main"></i>
-                                   </span>
-                                   <div class="position-absolute bottom-0 start-0 w-100 px-3 pb-2 d-flex justify-content-between align-items-end" style="pointer-events:none;">
-                                      <span class="badge bg-main text-white text-uppercase fs-7 px-2 py-1 rounded-pill shadow-sm" style="backdrop-filter: blur(2px);">${product.category.replace(/_/g, ' ')}</span>
-                                   </div>
-                                </div>
-                                <div class="card-body d-flex flex-column justify-content-between px-4 py-3" style="background:rgba(30,34,40,0.97);">
-                                   <h5 class="card-title fw-bold mb-2 text-main" style="letter-spacing:0.5px; font-size:1.18rem;">
-                                      <i class="fa-solid fa-circle-dot me-2 text-main"></i>${product.name}
-                                   </h5>
-                                   <div class="small text-muted mb-3 text-truncate" style="max-width:100%; min-height:2.5em; font-size:0.98em; overflow:hidden; white-space:nowrap; text-overflow:ellipsis;">
-                                      ${product.description ? product.description : ''}
-                                   </div>
-                                   <div class="d-flex align-items-center gap-2 mt-auto">
-                                      <span class="badge bg-dark-3 text-white px-2 py-1 rounded-pill shadow-sm" style="font-size:0.92em;">
-                                         <i class="fa-solid fa-barcode me-1"></i> ${product.model ? product.model : 'Model'}
-                                      </span>
-                                   </div>
+            .then(slides => {
+                const wrapper = document.getElementById('dynamic-swiper-wrapper');
+                if (!wrapper) return;
+                wrapper.innerHTML = "";
+                slides.forEach(slide => {
+                    wrapper.innerHTML += `
+                        <div class="swiper-slide">
+                            <div style="position:absolute; inset:0; background-image:inherit; background-size:cover; background-position:center; filter:blur(5px); z-index:0;"></div>
+                            <div class="sw-caption">
+                                <div class="container relative z-2" data-0="opacity:1" data-300="opacity:0">
+                                    <div class="row align-items-center g-4" style="margin-top: 125px;">
+                                        <div class="col-lg-6">
+                                            <div class="slider-content z-2">
+                                                <h3 class="subtitle s2 mb-3 wow fadeInUp" data-wow-delay=".0s">${slide.brand}</h3>
+                                                <h1 class="mb-3 cam-style">${slide.name}<span></span><span></span><span></span><span></span></h1>
+                                                <p class="accordion">${slide.summary ? slide.summary.slice(0, 150) + (slide.summary.length > 150 ? '...' : '') : ''}</p>
+                                                <div>
+                                                    <a class="btn-main btn-line fx-slide mb10 mb-3" href='product-details.html?category=${encodeURIComponent(slide.category)}&brand=${encodeURIComponent(slide.brand)}&model=${encodeURIComponent(slide.model)}'><span>Learn More</span></a>&nbsp;&nbsp;
+                                                    <a class="btn-main fx-slide mb10 mb-3" href="tel:+251913332323"><span>Call Us</span></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="relative" style="display:flex;justify-content:center;align-items:center;">
+                                                <img src="${slide.image[1]}" class="w-60 relative z-2" alt="${slide.name}">
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        `;
-                        productCards.appendChild(card);
+                        </div>`;
+                });
+                if (window.Swiper) {
+                    new Swiper('.swiper', {
+                        pagination: { el: '.swiper-pagination', clickable: true },
+                        navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' }
                     });
+                }
+            });
+    </script> -->
+
+    <!-- Products page listing script using featured product styles -->
+    <script>
+        function esc(t) { return (t || '').replace(/[&<>"']/g, m => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[m])); }
+        fetch('Json/normalized_products.json')
+            .then(r => r.json())
+            .then(data => {
+                const byCat = {};
+                data.forEach(p => {
+                    const c = p.category || 'Other';
+                    (byCat[c] = byCat[c] || []).push(p);
+                });
+                const wrap = document.getElementById('all-products-wrapper');
+                wrap.innerHTML = '';
+                Object.entries(byCat).forEach(([cat, products]) => {
+                    const section = document.createElement('div');
+                    section.className = 'fp-category-block';
+                    section.innerHTML = `<h2 class=" mb-3 fw-bold text-uppercase " style="letter-spacing:1px;">${esc(cat.replace(/_/g, ' '))}</h2>`;
+                    const grid = document.createElement('div');
+                    grid.className = 'featured-products-grid';
+                    products.forEach(p => {
+                        const mainImg = (p.image && (p.image[1] || p.image[0])) ? (p.image[1] || p.image[0]).replace('./', '') : 'images/products/placeholder.webp';
+                        const altImg = p.image && p.image[2] ? p.image[2].replace('./', '') : '';
+                        const card = document.createElement('div');
+                        card.className = 'featured-product-card';
+                        card.innerHTML = `
+                            <div class="fp-image-wrap" onclick="window.location.href='product-details.html?category=${encodeURIComponent(p.category)}&brand=${encodeURIComponent(p.brand)}&model=${encodeURIComponent(p.model)}'">
+                                <img src="${mainImg}" alt="${esc(p.name)}" class="fp-img main" loading="lazy">
+                                ${altImg ? `<img src="${altImg}" alt="${esc(p.name)} alternate view" class="fp-img alt" loading="lazy">` : ''}
+                                ${p.brand ? `<span class="fp-badge">${esc(p.brand)}</span>` : ''}
+                            </div>
+                            <div class="fp-content">
+                                <h5>${esc(p.name || p.model)}</h5>
+                                <div class="fp-meta">${p.brand ? esc(p.brand) + ' — ' : ''}${esc(p.model || '')}</div>
+                                <p>${esc(p.summary || (p.description ? p.description.slice(0, 160) + (p.description.length > 160 ? '...' : '') : ''))}</p>
+                                <a class="fp-link" href='product-details.html?category=${encodeURIComponent(p.category)}&brand=${encodeURIComponent(p.brand)}&model=${encodeURIComponent(p.model)}'>View Details</a>
+                            </div>`;
+                        grid.appendChild(card);
+                    });
+                    section.appendChild(grid);
+                    wrap.appendChild(section);
                 });
             });
     </script>
+
     <style>
-        /* Add this at the end of your file or in your CSS */
-        @media (max-width: 991px) {
-            .swiper-slide .flex-grow-1 {
-                max-width: 100vw !important;
-                min-width: 0 !important;
-            }
-
-            .swiper-slide img {
-                max-width: 90vw !important;
-            }
-
-            .swiper-container.product-swiper {
-                min-height: 420px !important;
-            }
+        /* minor tweak for category spacing */
+        .fp-category-block+.fp-category-block {
+            margin-top: 40px;
         }
     </style>
     <script src="/js/admin.js" defer></script>
