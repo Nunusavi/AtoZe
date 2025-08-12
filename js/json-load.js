@@ -152,8 +152,10 @@ document.addEventListener('DOMContentLoaded', function () {
                                                         <div class="col-lg-6">
                                                             <div class="relative z-2">
                                                                 <div class="slide-title">
-                                                                    <h3 class="subtitle s2 mb-3 wow fadeInUp" data-wow-delay=".0s">${slide.title}</h3>
-                                                                    <h1 class="mb-3 cam-style" style="color: #223035; margin-left:-10px; text-align: left;">${slide.headline}</h1>
+                                                                    <a href="products.html">
+                                                                        <h3 class="subtitle s2 mb-3 wow fadeInUp" data-wow-delay=".0s">${slide.title}</h3>
+                                                                        <h1 class="mb-3 cam-style" style="color: #223035; margin-left:-10px; text-align: left;">${slide.headline}</h1>
+                                                                    </a>
                                                                 </div>
                                                                 <a class="btn-main fx-slide mb10 mb-3" href="${slide.learnMoreLink}"><span>${slide.learnMoreText}</span></a>&nbsp;&nbsp;
                                                                 <a class="btn-main fx-slide mb10 mb-3" href="${slide.callLink}"><span>${slide.callText}</span></a>
@@ -161,7 +163,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                                         </div>
                                                         <div class="col-lg-6">
                                                             <div class="relative">
-                                                                <img src="${slide.image}" class="w-100 h-50 relative z-2" alt="">
+                                                                <a href="product.html"><img src="${slide.image}" class="w-100 h-50 relative z-2" alt=""></a>
                                                                 <div class="abs w-70 h-70 abs-centered"></div>
                                                             </div>
                                                         </div>

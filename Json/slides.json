@@ -12,6 +12,16 @@
     {
         "background": "images/background/3.webp",
         "title": "A To Ze Security",
+        "headline": "Inverters and Low Voltage Battery For your home power backup",
+        "image": "images/Alpsolarr.png",
+        "learnMoreText": "Learn More",
+        "learnMoreLink": "products.html",
+        "callText": "Call us",
+        "callLink": "tel:+251913332323"
+    },
+    {
+        "background": "images/background/3.webp",
+        "title": "A To Ze Security",
         "headline": "Employee Attendance System",
         "image": "images/products/Time_attendance_2.png",
         "learnMoreText": "Learn More",

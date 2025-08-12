@@ -125,9 +125,11 @@
                                                     <div class="row align-items-center g-4" style="margin-top: 20px;">
                                                         <div class="col-lg-6">
                                                             <div class="slider-content z-2">
-                                                                <h3 class="subtitle s2 mb-3 wow fadeInUp" data-wow-delay=".0s" style="color: #fff;">${slide.brand}</h3>
-                                                                <h1 class="mb-3 h1">${slide.name}<span></span><span></span><span></span><span></span></h1>
-                                                                <p class="accordion">${slide.summary ? slide.summary.slice(0, 150) + (slide.summary.length > 150 ? '...' : '') : ''}</p>
+                                                                <a href='product-details.html?category=${encodeURIComponent(slide.category)}&brand=${encodeURIComponent(slide.brand)}&model=${encodeURIComponent(slide.model)}'>
+                                                                    <h3 class="subtitle s2 mb-3 wow fadeInUp" data-wow-delay=".0s" style="color: #fff;">${slide.brand}</h3>
+                                                                    <h1 class="mb-3 h1">${slide.name}<span></span><span></span><span></span><span></span></h1>
+                                                                    <p class="accordion">${slide.summary ? slide.summary.slice(0, 150) + (slide.summary.length > 150 ? '...' : '') : ''}</p>
+                                                                </a>
                                                                 <div>
                                                                     <a class="btn-main btn-line fx-slide mb10 mb-3" href='product-details.html?category=${encodeURIComponent(slide.category)}&brand=${encodeURIComponent(slide.brand)}&model=${encodeURIComponent(slide.model)}'><span>Learn More</span></a>&nbsp;&nbsp;
                                                                     <a class="btn-main fx-slide mb10 mb-3" href="tel:+251913332323"><span>Call Us</span></a>
@@ -135,9 +137,11 @@
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-6">
+                                                            <a href='product-details.html?category=${encodeURIComponent(slide.category)}&brand=${encodeURIComponent(slide.brand)}&model=${encodeURIComponent(slide.model)}'>
                                                             <div class="relative" style="display:flex;justify-content:center;align-items:center;">
                                                                 <img src="${slide.image[1]}" class="w-60 relative z-2" alt="${slide.name}">
                                                             </div>
+                                                        </a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -192,7 +196,7 @@
             <!-- Products Listing Using Featured Styles -->
             <section>
                 <div class="container">
-                    <h1 class="mb-4 mt-5 text-uppercase fw-bold" style="letter-spacing:1px;">All Products</h1>
+                    <h1 class="mb-4 text-uppercase fw-bold" style="letter-spacing:1px;">All Products</h1>
                     <div id="all-products-wrapper" class="featured-products-grid-container"></div>
                 </div>
             </section>
@@ -424,7 +428,7 @@
                 Object.entries(byCat).forEach(([cat, products]) => {
                     const section = document.createElement('div');
                     section.className = 'fp-category-block';
-                    section.innerHTML = `<h2 class="mt-5 mb-3 fw-bold text-uppercase" style="letter-spacing:1px;">${esc(cat.replace(/_/g, ' '))}</h2>`;
+                    section.innerHTML = `<h2 class=" mb-3 fw-bold text-uppercase " style="letter-spacing:1px;">${esc(cat.replace(/_/g, ' '))}</h2>`;
                     const grid = document.createElement('div');
                     grid.className = 'featured-products-grid';
                     products.forEach(p => {

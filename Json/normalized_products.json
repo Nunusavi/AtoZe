@@ -978,5 +978,67 @@
       "./images/products/ZTK/zt_flag2.png"
     ],
     "summary": "A biometric time attendance and access control device with face, fingerprint, and ID card recognition. Features fast verification and multiple communication options."
+  },
+  {
+    "category": "Low Voltage Battery System",
+    "brand": "AlpSolarr",
+    "model": "LIVO",
+    "name": "LIVO Low Voltage Battery System",
+    "description": "The LIVO is a modular, wall-mountable low voltage battery system offering 5.12 kWh capacity at 48 V with 100 A charge/discharge capability and over 6,000 cycles. It features neural-network-optimized charge/discharge, dual monitoring via LED and app, and V2G support in an IP65-rated enclosure.",
+    "features": [
+      "5.12 kWh capacity (1P16S, 51.2 V nominal)",
+      "48 V, 100 A max continuous charge/discharge",
+      "Neural network optimized SOX algorithm for efficient energy management",
+      "Modular, wall-mount design with front wiring and expansion support",
+      "Real-time monitoring via LED and smart app",
+      "Robust IP65 protection, RoHS and UN 38.3 compliance",
+      "Over 6,000 charge/discharge cycles"
+    ],
+    "image": [
+      "./images/products/Alpsolarr/logo.png",
+      "./images/products/Alpsolarr/LIVO.png",
+      "./images/products/Alpsolarr/LIVO-2.png"
+    ],
+    "summary": "Efficient and scalable low-voltage energy storage with smart monitoring, high durability, and easy installation."
+  },
+  {
+    "category": "Off-Grid Inverter",
+    "brand": "AlpSolarr",
+    "model": "Pulse S2",
+    "name": "Pulse S2 Off-Grid Inverter",
+    "description": "The Pulse S2 is an off-grid inverter with 8 kW or 11 kW output, offering dual MPPT tracking for increased solar input flexibility, seamless 10 ms transfer to backup power, and natural cooling for efficient operation in standard climates.",
+    "features": [
+      "8 kW or 11 kW output options",
+      "Dual MPPT tracking minimizes shading impact and optimizes rooftop solar input",
+      "Seamless 10 ms transfer for uninterrupted power during outages",
+      "Natural cooling design reduces energy consumption",
+      "Compatible with lead-acid and lithium-ion battery types"
+    ],
+    "image": [
+      "./images/products/Alpsolarr/logo.png",
+      "./images/products/Alpsolarr/PULSE S2.png",
+      "./images/products/Alpsolarr/PULSE S2-2.png"
+    ],
+    "summary": "Reliable dual-MPPT off-grid inverter for resilient, uninterrupted solar power in homes and small shops."
+  },
+  {
+    "category": "Off-Grid Inverter",
+    "brand": "AlpSolarr",
+    "model": "Pulse S3",
+    "name": "Pulse S3 Off-Grid Inverter",
+    "description": "The Pulse S3 is a robust off-grid inverter available in 4 kW or 6 kW output versions, featuring SiC-based MPPT for up to double PV oversizing, IP66-rated protection for harsh environments, and smart cooling to sustain full load operation at 45 °C.",
+    "features": [
+      "4 kW or 6 kW output models",
+      "Silicon-carbide (SiC) MPPT enables 2× PV oversizing for more solar input",
+      "IP66-rated housing for extreme dust and moisture resistance",
+      "Smart cooling maintains performance at high ambient temperatures (up to 45 °C)",
+      "Ideal for off-grid and micro-grid deployments"
+    ],
+    "image": [
+      "./images/products/Alpsolarr/logo.png",
+      "./images/products/Alpsolarr/PULSE S3.png",
+      "./images/products/Alpsolarr/PULSE S3-2.png"
+    ],
+    "summary": "High-durability off-grid inverter built for extreme environments, offering enhanced solar input flexibility and reliable performance."
   }
 ]

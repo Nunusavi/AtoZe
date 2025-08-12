@@ -1333,7 +1333,7 @@ header.header-mobile {
 }
 
 header.header-mobile .container {
-  max-width: 100% !important;
+  max-width: 120% !important;
   padding-left: 20px;
   padding-right: 20px;
 }
@@ -12889,8 +12889,8 @@ img {
 
 .featured-product-card {
   min-width: 340px;
-  max-width: 340px;
-  flex: 0 0 340px;
+  max-width: 440px;
+  flex: 0 0 440px;
   background: #fff;
   border-radius: 16px;
   box-shadow: 0 10px 12px rgba(34, 48, 53, 0.06);
@@ -14625,15 +14625,23 @@ img {
 .featured-products-grid-container {
   max-width: 100%;
   margin: auto;
-  padding: 0 20px 20px;
 }
 
 .featured-products-grid {
   display: flex;
   flex-wrap: wrap;
-  gap: 25px;
-  justify-content: space-between;
+  column-gap : 70px;
+  row-gap: 30px;
+  justify-content: start;
   align-items: center;
+}
+.featured-products-grid-home {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap : px;
+  row-gap: 30px;
+  justify-content: space-evenly;
+  align-items: start;
 }
 
 /* Responsive flex item widths */

@@ -135,14 +135,36 @@
                         <div class="col-lg-6 text-center">
                             <div class="subtitle s2 text-light wow fadeInUp mb-2">Product Details</div>
                             <div class="clearfix"></div>
-                            <img src="images/logo-brands/4.webp" class="w-80" alt="">
+                            <img src="images/logo-brands/4.webp" class="w-50 company-logo" alt="">
+                            <script>
+                                document.addEventListener('DOMContentLoaded', () => {
+                                    const category = new URLSearchParams(window.location.search).get('category');
+                                    const brand = new URLSearchParams(window.location.search).get('brand');
+                                    const model = new URLSearchParams(window.location.search).get('model');
+                                    if (category && brand && model) {
+                                        document.querySelector('.subtitle.s2').textContent = `${brand} ${model} - ${category.replace(/_/g, ' ')}`;
+                                        document.querySelector('.active').textContent = `${brand} ${model}`; 
+                                    }
+                                });
+                            </script>
                         </div>
                     </div>
                 </div>
                 <div class="crumb-wrapper">
                     <ul class="crumb">
                         <li><a href="index.html">Home</a></li>
+                        <li><a href="products.html">Products</a></li>
                         <li class="active">Products</li>
+                        <!-- <script>
+                            document.addEventListener('DOMContentLoaded', () => {
+                                const category = new URLSearchParams(window.location.search).get('category');
+                                const brand = new URLSearchParams(window.location.search).get('brand');
+                                const model = new URLSearchParams(window.location.search).get('model');
+                                if (category && brand && model) {
+                                    document.querySelector('.active').textContent = `${brand} ${model}`;
+                                }
+                            });
+                        </script> -->
                     </ul>
                 </div>
                 <div class="triangle-bottomright-dark z-2"></div>
@@ -504,6 +526,7 @@
                             m.brand === brand &&
                             m.model === model
                     );
+                     document.querySelector('.company-logo').src = `${found?.image?.[0] || 'images/products/3.webp'}`;
 
                     // Select the section to update
                     const section = document.querySelector('section > .container > .row.g-4.gx-5.align-items-center')?.parentNode;
