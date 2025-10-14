@@ -2,41 +2,41 @@
 // This script fetches the products from a JSON file, groups them by category,
 // and displays the first product from each category in a card format.
 document.addEventListener('DOMContentLoaded', function () {
-                    fetch('Json/normalized_products.json')
-                        .then(res => res.json())
-                        .then(products => {
-                            // Group products by category and pick only the first product from each
-                            const grouped = {};
-                            products.forEach(p => {
-                                if (Array.isArray(p.image) && p.image.length > 0) {
-                                    const cat = p.category || 'Other';
-                                    if (!grouped[cat]) grouped[cat] = p;
-                                }
-                            });
+    fetch('Json/normalized_products.json')
+        .then(res => res.json())
+        .then(products => {
+            // Group products by category and pick only the first product from each
+            const grouped = {};
+            products.forEach(p => {
+                if (Array.isArray(p.image) && p.image.length > 0) {
+                    const cat = p.category || 'Other';
+                    if (!grouped[cat]) grouped[cat] = p;
+                }
+            });
 
-                            renderProducts(grouped);
-                        });
+            renderProducts(grouped);
+        });
 
-                    function escapeHtml(txt) {
-                        return (txt || '').replace(/[&<>"']/g, m => ({
-                            '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
-                        }[m]));
-                    }
+    function escapeHtml(txt) {
+        return (txt || '').replace(/[&<>"']/g, m => ({
+            '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+        }[m]));
+    }
 
-                    function renderProducts(grouped) {
-                        const wrapper = document.getElementById('featured-products-wrapper');
-                        wrapper.innerHTML = '';
+    function renderProducts(grouped) {
+        const wrapper = document.getElementById('featured-products-wrapper');
+        wrapper.innerHTML = '';
 
-                        Object.entries(grouped).forEach(([category, product]) => {
-                            // Create product card for each category
-                            const card = document.createElement('div');
-                            card.className = 'featured-product-card';
+        Object.entries(grouped).forEach(([category, product]) => {
+            // Create product card for each category
+            const card = document.createElement('div');
+            card.className = 'featured-product-card';
 
-                            const mainImg = product.image[1]?.replace('./', '');
-                            const altImg = product.image[2]?.replace('./', '');
-                            const hasAlt = !!altImg;
+            const mainImg = product.image[1]?.replace('./', '');
+            const altImg = product.image[2]?.replace('./', '');
+            const hasAlt = !!altImg;
 
-                            card.innerHTML = `
+            card.innerHTML = `
                 <div class="fp-image-wrap">
                     <img 
                         src="${mainImg}" 
@@ -61,33 +61,33 @@ document.addEventListener('DOMContentLoaded', function () {
                     class="fp-link">View Details</a>
                 </div>
             `;
-                            wrapper.appendChild(card);
-                        });
+            wrapper.appendChild(card);
+        });
 
-                    }
-                });
+    }
+});
 // Loading the FQA section 
- fetch('Json/faq.json')
-            .then(response => response.json())
-            .then(data => {
-                const accordionContainer = document.querySelector('.accordion-section');
-                accordionContainer.innerHTML = '';
+fetch('Json/faq.json')
+    .then(response => response.json())
+    .then(data => {
+        const accordionContainer = document.querySelector('.accordion-section');
+        accordionContainer.innerHTML = '';
 
-                data.forEach((faq, index) => {
-                    const sectionTitle = document.createElement('div');
-                    sectionTitle.className = 'accordion-section-title';
-                    sectionTitle.setAttribute('data-tab', `#accordion-a${index + 1}`);
-                    sectionTitle.textContent = faq.question;
+        data.forEach((faq, index) => {
+            const sectionTitle = document.createElement('div');
+            sectionTitle.className = 'accordion-section-title';
+            sectionTitle.setAttribute('data-tab', `#accordion-a${index + 1}`);
+            sectionTitle.textContent = faq.question;
 
-                    const sectionContent = document.createElement('div');
-                    sectionContent.className = 'accordion-section-content';
-                    sectionContent.id = `accordion-a${index + 1}`;
-                    sectionContent.style.display = 'none';
-                    sectionContent.style.overflow = 'hidden';
-                    sectionContent.style.maxHeight = '0';
-                    sectionContent.style.transition = 'max-height 0.6s cubic-bezier(.4,0,.2,1), opacity 0.4s cubic-bezier(.4,0,.2,1)';
-                    sectionContent.style.opacity = '0';
-                    sectionContent.innerHTML = `
+            const sectionContent = document.createElement('div');
+            sectionContent.className = 'accordion-section-content';
+            sectionContent.id = `accordion-a${index + 1}`;
+            sectionContent.style.display = 'none';
+            sectionContent.style.overflow = 'hidden';
+            sectionContent.style.maxHeight = '0';
+            sectionContent.style.transition = 'max-height 0.6s cubic-bezier(.4,0,.2,1), opacity 0.4s cubic-bezier(.4,0,.2,1)';
+            sectionContent.style.opacity = '0';
+            sectionContent.innerHTML = `
                 <p style="padding:20px">${faq.answer}</p>
                 <div style="background: #fff3cd; border-left: 4px solid #ffc107; padding: 1rem; border-radius: 6px; margin-bottom: 1rem; margin-top: 5px;">
                           <span style="color: #e63946;">${faq.cta.text}</span>
@@ -96,36 +96,36 @@ document.addEventListener('DOMContentLoaded', function () {
                         </div>
                     `;
 
-                    sectionTitle.addEventListener('click', () => {
-                        const isVisible = sectionContent.style.display === 'block' || sectionContent.style.maxHeight !== '0px';
-                        if (isVisible) {
-                            sectionContent.style.maxHeight = '0';
-                            sectionContent.style.opacity = '0';
-                            setTimeout(() => {
-                                sectionContent.style.display = 'none';
-                            }, 400);
-                        } else {
-                            sectionContent.style.display = 'block';
-                            // Wait for display:block to apply before animating
-                            setTimeout(() => {
-                                sectionContent.style.maxHeight = sectionContent.scrollHeight + 'px';
-                                sectionContent.style.opacity = '1';
-                            }, 10);
-                        }
-                    }); 
-
-                    accordionContainer.appendChild(sectionTitle);
-                    accordionContainer.appendChild(sectionContent);
-                });
+            sectionTitle.addEventListener('click', () => {
+                const isVisible = sectionContent.style.display === 'block' || sectionContent.style.maxHeight !== '0px';
+                if (isVisible) {
+                    sectionContent.style.maxHeight = '0';
+                    sectionContent.style.opacity = '0';
+                    setTimeout(() => {
+                        sectionContent.style.display = 'none';
+                    }, 400);
+                } else {
+                    sectionContent.style.display = 'block';
+                    // Wait for display:block to apply before animating
+                    setTimeout(() => {
+                        sectionContent.style.maxHeight = sectionContent.scrollHeight + 'px';
+                        sectionContent.style.opacity = '1';
+                    }, 10);
+                }
             });
 
+            accordionContainer.appendChild(sectionTitle);
+            accordionContainer.appendChild(sectionContent);
+        });
+    });
+
 // Top bar message json load
-        // Dynamically load topbar messages from JSON and display them all (no rotation)
-        fetch('Json/topbar-messages.json')
-            .then(res => res.json())
-            .then(messages => {
-                const container = document.getElementById('topbar-messages');
-                container.innerHTML = messages.map(msg => `
+// Dynamically load topbar messages from JSON and display them all (no rotation)
+fetch('Json/topbar-messages.json')
+    .then(res => res.json())
+    .then(messages => {
+        const container = document.getElementById('topbar-messages');
+        container.innerHTML = messages.map(msg => `
                 <div class="topbar-widget me-5">
                 <a href="${msg.link}">
                     <img src="${msg.icon}" alt="">
@@ -133,16 +133,16 @@ document.addEventListener('DOMContentLoaded', function () {
                 </a>
                 </div>
             `).join('');
-            });
+    });
 
-  // Dynamically load Swiper slides from JSON
-                        fetch('Json/slides.json')
-                            .then(res => res.json())
-                            .then(slides => {
-                                const wrapper = document.getElementById('dynamic-swiper-wrapper');
-                                wrapper.innerHTML = ""; // Clear any existing slides
-                                slides.forEach(slide => {
-                                    wrapper.innerHTML += `
+// Dynamically load Swiper slides from JSON
+fetch('Json/slides.json')
+    .then(res => res.json())
+    .then(slides => {
+        const wrapper = document.getElementById('dynamic-swiper-wrapper');
+        wrapper.innerHTML = ""; // Clear any existing slides
+        slides.forEach(slide => {
+            wrapper.innerHTML += `
                                     <div class="swiper-slide">
                                         <div class="swiper-inner" >
                                             <div class="slider-img"></div>
@@ -163,7 +163,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                                         </div>
                                                         <div class="col-lg-6">
                                                             <div class="relative">
-                                                                <a href="product.html"><img src="${slide.image}" class="w-100 h-50 relative z-2" alt=""></a>
+                                                                <a href="products.html"><img src="${slide.image}" class="w-100 h-50 relative z-2" alt=""></a>
                                                                 <div class="abs w-70 h-70 abs-centered"></div>
                                                             </div>
                                                         </div>
@@ -173,18 +173,18 @@ document.addEventListener('DOMContentLoaded', function () {
                                         </div>
                                     </div>
                                     `;
-                                });
-                                // Initialize Swiper AFTER slides are injected
-                                if (window.Swiper) {
-                                    new Swiper('.swiper', {
-                                        pagination: {
-                                            el: '.swiper-pagination',
-                                            clickable: true
-                                        },
-                                        navigation: {
-                                            nextEl: '.swiper-button-next',
-                                            prevEl: '.swiper-button-prev'
-                                        }
-                                    });
-                                }
-                            });
+        });
+        // Initialize Swiper AFTER slides are injected
+        if (window.Swiper) {
+            new Swiper('.swiper', {
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true
+                },
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev'
+                }
+            });
+        }
+    });
