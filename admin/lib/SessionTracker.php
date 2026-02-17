@@ -31,9 +31,8 @@ class SessionTracker {
     }
 
     private function generateSessionId(): string {
-        $ua = $_SERVER['HTTP_USER_AGENT'] ?? '';
-        $ip = $_SERVER['REMOTE_ADDR'] ?? '';
-        return sha1($ip . $ua . uniqid((string)mt_rand(), true));
+        // Use cryptographically secure random bytes for session ID
+        return bin2hex(random_bytes(32));
     }
 
     private function storeNewSession(): void {

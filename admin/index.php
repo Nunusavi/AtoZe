@@ -8,356 +8,550 @@ use Analytics\Aggregator;
 $auth = new Auth(__DIR__ . '/config/users.json');
 
 if (!$auth->isLoggedIn()) {
-  header('Location: login.php');
-  exit;
+    header('Location: login.php');
+    exit;
 }
 
 $aggregator = new Aggregator(__DIR__ . '/logs', __DIR__ . '/sessions');
 
-$pageviews = $aggregator->getTotalPageviews();
-$visitors  = $aggregator->getUniqueVisitorCount();
-$bounce    = $aggregator->getBounceRate();
-$chartData = $aggregator->getPageviewsPerDay();
-$start = $_GET['start_date'] ?? null;
-$end = $_GET['end_date'] ?? null;
-$stats = Aggregator::getStats($start, $end);
+// Get date range from filters
+$startDate = $_GET['start_date'] ?? date('Y-m-d', strtotime('-7 days'));
+$endDate = $_GET['end_date'] ?? date('Y-m-d');
 
+// Get all stats
+$stats = $aggregator->getStats($startDate, $endDate);
+$pageviews = $aggregator->getTotalPageviews();
+$visitors = $aggregator->getUniqueVisitorCount();
+$bounce = $aggregator->getBounceRate();
+$conversionRate = $aggregator->getConversionRate();
+$activeVisitors = $aggregator->getActiveVisitors();
+$userJourneys = $aggregator->getUserJourneys(5);
+
+// Set the page title for the header
+$pageTitle = "Marketing Analytics Dashboard";
+
+// Include the new header
+require_once __DIR__ . '/partials/header.php';
 ?>
 
-<!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<style>
+.stat-card {
+    background: var(--bg-card);
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    transition: transform 0.2s;
+    border: 1px solid var(--border-main);
+}
+.stat-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+.stat-number {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--text-main);
+    line-height: 1.2;
+}
+.stat-label {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    margin-top: 0.5rem;
+    font-weight: 500;
+}
+.chart-container {
+    background: var(--bg-card);
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    border: 1px solid var(--border-main);
+}
+.chart-container h3 {
+    margin-bottom: 1rem;
+}
+.table-container {
+    background: var(--bg-card);
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    overflow-x: auto;
+    border: 1px solid var(--border-main);
+}
+.badge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+.badge-primary {
+    background: #3b82f6;
+    color: white;
+}
+.badge-success {
+    background: #10b981;
+    color: white;
+}
+.realtime-pulse {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background: #10b981;
+    border-radius: 50%;
+    margin-right: 0.5rem;
+    animation: pulse 2s infinite;
+}
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+</style>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="public/image/icon.webp" type="image/x-icon">
-    <title>Analytics Dashboard</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
-    <script>
-    tailwind.config = {
-        theme: {
-            extend: {
-                colors: {
-                    light1: '#E8E8E8',
-                    light2: '#F4F4F4',
-                    dark1: '#010A1A',
-                    dark2: '#1A2331',
-                    dark3: '#283243',
-                }
-            }
-        }
-    }
-    </script>
-    <style>
-    html[data-theme='dark'] {
-        --bg-main: #010A1A;
-        --bg-card: #1A2331;
-        --text-main: #fff;
-        --border-main: #283243;
-    }
-
-    html[data-theme='light'] {
-        --bg-main: #E8E8E8;
-        --bg-card: #F4F4F4;
-        --text-main: #1A2331;
-        --border-main: #E8E8E8;
-    }
-    </style>
-</head>
-
-<body class="relative h-screen w-full text-[var(--text-main)] transition-colors duration-300">
-    <div id="bg-dark"
-        class="fixed inset-0 min-h-screen w-full bg-slate-950 bg-[radial-gradient(circle_500px_at_50%_200px,#3e3e3e,transparent)] -z-10 pointer-events-none">
+<!-- Page Header -->
+<div class="mb-6">
+    <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-4">
+        <div>
+            <h1 class="text-3xl font-bold text-[var(--text-main)]">Marketing Analytics Dashboard</h1>
+            <p class="text-[var(--text-muted)] mt-1">Track your website performance and visitor behavior</p>
+        </div>
+        <div class="flex items-center gap-2 bg-[var(--bg-card)] px-4 py-2 rounded-lg border border-[var(--border-main)]">
+            <span class="realtime-pulse"></span>
+            <span class="text-[var(--text-main)]"><strong><?= $activeVisitors ?></strong> active now</span>
+        </div>
     </div>
-    <div id="bg-light"
-        class="fixed inset-0 min-h-screen w-full bg-slate-100 bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] bg-[size:6rem_4rem] [&>div]:absolute [&>div]:inset-0 [&>div]:bg-[radial-gradient(circle_800px_at_100%_200px,#d5c5ff,transparent)] -z-10 pointer-events-none">
+
+    <!-- Date Filter -->
+    <form method="GET" class="flex flex-wrap gap-3 items-end bg-[var(--bg-card)] p-4 rounded-lg border border-[var(--border-main)]">
+        <div class="flex-1 min-w-[150px]">
+            <label class="block text-sm font-medium mb-1 text-[var(--text-main)]">Start Date</label>
+            <input type="date" name="start_date" value="<?= htmlspecialchars($startDate) ?>"
+                class="w-full px-3 py-2 border rounded-md bg-[var(--bg-main)] border-[var(--border-main)] text-[var(--text-main)]" />
+        </div>
+        <div class="flex-1 min-w-[150px]">
+            <label class="block text-sm font-medium mb-1 text-[var(--text-main)]">End Date</label>
+            <input type="date" name="end_date" value="<?= htmlspecialchars($endDate) ?>"
+                class="w-full px-3 py-2 border rounded-md bg-[var(--bg-main)] border-[var(--border-main)] text-[var(--text-main)]" />
+        </div>
+        <button type="submit" class="px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors">
+            Apply Filter
+        </button>
+        <a href="?" class="px-6 py-2 border rounded-md border-[var(--border-main)] text-[var(--text-main)] hover:bg-[var(--bg-main)] transition-colors">Reset</a>
+    </form>
+</div>
+
+<!-- Key Metrics Cards -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+    <div class="stat-card">
+        <div class="stat-number"><?= number_format($pageviews) ?></div>
+        <div class="stat-label">Total Pageviews</div>
+        <div class="text-xs text-[var(--text-muted)] mt-1">All-time views</div>
     </div>
-    <div class="min-h-screen flex flex-col items-center justify-start py-8 px-2 w-full">
-        <div class="w-full flex flex-row justify-between items-center mb-6 px-4">
-            <h1 class="text-3xl font-bold ">Welcome, <?= htmlspecialchars($auth->getUser()) ?></h1>
-            <div class="flex items-center gap-4">
-                <form action="logout.php" method="post" class="inline">
-                    <button type="submit"
-                        class="flex items-center gap-2 px-4 py-2 rounded bg-red-600 text-white hover:bg-red-700 transition-colors duration-200 shadow focus:outline-none">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
-                            stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a2 2 0 01-2 2H7a2 2 0 01-2-2V7a2 2 0 012-2h4a2 2 0 012 2v1" />
-                        </svg>
-                        Logout
-                    </button>
-                </form>
-                <button id="themeToggle" aria-label="Toggle Theme"
-                    class="w-10 h-6 flex items-center bg-[var(--bg-card)] border border-[var(--border-main)] rounded-full p-1 transition-colors duration-300 focus:outline-none shadow relative">
-                    <span id="themeThumb"
-                        class="absolute left-1 top-1 w-4 h-4 bg-white rounded-full shadow transition-transform duration-300"></span>
-                    <svg id="themeIconDark"
-                        class="w-4 h-4 absolute left-1 top-1 text-yellow-400 transition-opacity duration-300"
-                        fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                        <path d="M21 12.79A9 9 0 1111.21 3a7 7 0 109.79 9.79z" />
-                    </svg>
-                    <svg id="themeIconLight"
-                        class="w-4 h-4 absolute right-1 top-1 text-gray-700 opacity-0 transition-opacity duration-300"
-                        fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                        <circle cx="12" cy="12" r="5" />
-                        <path
-                            d="M12 1v2m0 18v2m11-11h-2M3 12H1m16.95 7.07l-1.41-1.41M6.34 6.34L4.93 4.93m12.02 0l-1.41 1.41M6.34 17.66l-1.41 1.41" />
-                    </svg>
-                </button>
-                <!-- Theme toggle script moved to end of body to avoid redeclaration -->
-            </div>
+
+    <div class="stat-card">
+        <div class="stat-number"><?= number_format($visitors) ?></div>
+        <div class="stat-label">Unique Visitors</div>
+        <div class="text-xs text-[var(--text-muted)] mt-1">Total unique sessions</div>
+    </div>
+
+    <div class="stat-card">
+        <div class="stat-number"><?= $bounce ?>%</div>
+        <div class="stat-label">Bounce Rate</div>
+        <div class="text-xs mt-1 font-medium <?= $bounce < 40 ? 'text-green-500' : ($bounce < 60 ? 'text-yellow-500' : 'text-red-500') ?>">
+            <?= $bounce < 40 ? '✓ Excellent' : ($bounce < 60 ? '⚠ Good' : '✗ Needs improvement') ?>
         </div>
-        <div class="w-full grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6 px-4">
-            <div class="bg-[var(--bg-card)] rounded-xl shadow-lg p-6 flex flex-col items-start">
-                <h3 class="text-lg font-semibold mb-4 flex items-center gap-2">
-                    Export Data
-                </h3>
-                <ul class="space-y-2 w-full">
-                    <li>
-                        <a class="flex items-center gap-2 text-blue-500 hover:text-blue-700 font-medium transition-colors px-3 py-2 rounded hover:bg-blue-100/10 focus:outline-none focus:ring-2 focus:ring-blue-400"
-                            href="export.php?type=logs">
-                            <svg class="w-4 h-4 text-blue-400" fill="none" stroke="currentColor" stroke-width="2"
-                                viewBox="0 0 24 24">
-                                <path d="M4 17v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 9l5 5 5-5M12 4v12" />
-                            </svg>
-                            Download Logs
-                        </a>
-                    </li>
-                    <li>
-                        <a class="flex items-center gap-2 text-blue-500 hover:text-blue-700 font-medium transition-colors px-3 py-2 rounded hover:bg-blue-100/10 focus:outline-none focus:ring-2 focus:ring-blue-400"
-                            href="export.php?type=sessions">
-                            <svg class="w-4 h-4 text-blue-400" fill="none" stroke="currentColor" stroke-width="2"
-                                viewBox="0 0 24 24">
-                                <circle cx="12" cy="12" r="3" />
-                                <path
-                                    d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 01-2.83 2.83l-.06-.06A1.65 1.65 0 0015 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 008.6 15a1.65 1.65 0 00-1.82-.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.6a1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0015 8.6a1.65 1.65 0 001.82.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 15z" />
-                            </svg>
-                            Download Sessions
-                        </a>
-                    </li>
-                    <li>
-                        <a class="flex items-center gap-2 text-blue-500 hover:text-blue-700 font-medium transition-colors px-3 py-2 rounded hover:bg-blue-100/10 focus:outline-none focus:ring-2 focus:ring-blue-400"
-                            href="export.php?type=pageviews">
-                            <svg class="w-4 h-4 text-blue-400" fill="none" stroke="currentColor" stroke-width="2"
-                                viewBox="0 0 24 24">
-                                <path d="M3 12s4-8 9-8 9 8 9 8-4 8-9 8-9-8-9-8z" />
-                                <circle cx="12" cy="12" r="3" />
-                            </svg>
-                            Download Pageviews (30 days)
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            <form method="GET" class="bg-[var(--bg-card)] rounded-xl shadow-lg p-6 flex flex-col gap-2">
-                <label class="font-medium">Start:
-                    <input type="date" name="start_date" value="<?= htmlspecialchars($_GET['start_date'] ?? '') ?>"
-                        class="mt-1 block w-full rounded border border-[var(--border-main)] bg-transparent px-2 py-1" />
-                </label>
-                <label class="font-medium">End:
-                    <input type="date" name="end_date" value="<?= htmlspecialchars($_GET['end_date'] ?? '') ?>"
-                        class="mt-1 block w-full rounded border border-[var(--border-main)] bg-transparent px-2 py-1" />
-                </label>
-                <button type="submit"
-                    class="mt-2 px-4 py-2 rounded bg-blue-600 text-white hover:bg-blue-700">Filter</button>
-            </form>
+    </div>
+
+    <div class="stat-card">
+        <div class="stat-number"><?= $conversionRate ?>%</div>
+        <div class="stat-label">Conversion Rate</div>
+        <div class="text-xs text-[var(--text-muted)] mt-1"><?= $stats['conversions'] ?> conversions</div>
+    </div>
+</div>
+
+<!-- Charts Row 1: Pageviews & Visitors Trend -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+    <div class="chart-container">
+        <h3 class="text-lg font-semibold text-[var(--text-main)]">📈 Pageviews Trend</h3>
+        <div style="position: relative; height: 300px;">
+            <canvas id="pageviewsChart"></canvas>
         </div>
-        <div class="w-full grid grid-cols-1 md:grid-cols-3 gap-6 mb-6 px-4">
-            <div class="bg-[var(--bg-card)] rounded-xl shadow-lg p-6 flex flex-col items-center">
-                <h3 class="text-lg font-semibold mb-2">Total Pageviews</h3>
-                <div class="text-3xl font-bold"><?= $pageviews ?></div>
-            </div>
-            <div class="bg-[var(--bg-card)] rounded-xl shadow-lg p-6 flex flex-col items-center">
-                <h3 class="text-lg font-semibold mb-2">Unique Visitors</h3>
-                <div class="text-3xl font-bold"><?= $visitors ?></div>
-            </div>
-            <div class="bg-[var(--bg-card)] rounded-xl shadow-lg p-6 flex flex-col items-center">
-                <h3 class="text-lg font-semibold px-6 py-2">Bounce Rate</h3>
-                <div class="text-3xl font-bold"><?= $bounce ?>%</div>
-            </div>
+    </div>
+
+    <div class="chart-container">
+        <h3 class="text-lg font-semibold text-[var(--text-main)]">👥 Visitors Trend</h3>
+        <div style="position: relative; height: 300px;">
+            <canvas id="visitorsChart"></canvas>
         </div>
-        <div class="w-full grid grid-cols-1 xl:grid-cols-2 gap-6 mb-6 px-4">
-            <div class="bg-[var(--bg-card)] rounded-xl shadow-lg p-2">
-                <h3 class="text-lg font-semibold px-6 py-2">Pageviews (Last 7 Days)</h3>
-                <canvas id="viewsChart" height="200" class="bg-transparent"></canvas>
-            </div>
-            <div class="bg-[var(--bg-card)] rounded-xl shadow-lg p-2 flex flex-col gap-4">
-                <h3 class="text-lg font-semibold px-6  py-2">Pageviews Trend</h3>
-                <canvas id="pageviewsChart" class="bg-transparent w-full h-auto"
-                    style="min-height:200px; max-height:600px;"></canvas>
-                <script>
-                document.addEventListener('DOMContentLoaded', function() {
-                    // Calculate dynamic height based on data length
-                    const dataLength = <?= count($stats['pageviews']) ?>;
-                    // Minimum 200px, maximum 600px, 30px per data point
-                    const dynamicHeight = Math.max(200, Math.min(600, dataLength * 30));
-                    const canvas = document.getElementById('pageviewsChart');
-                    canvas.height = dynamicHeight;
-                });
-                </script>
-            </div>
+    </div>
+</div>
+
+<!-- Traffic Sources & Devices -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+    <!-- Traffic Sources -->
+    <div class="chart-container">
+        <h3 class="text-lg font-semibold text-[var(--text-main)] mb-4">🌐 Traffic Sources</h3>
+        <div style="position: relative; height: 250px; margin-bottom: 1rem;">
+            <canvas id="trafficSourcesChart"></canvas>
         </div>
-        <div class="w-full grid grid-cols-1 xl:grid-cols-2 gap-6 mb-6 px-4">
-            <div class="bg-[var(--bg-card)] rounded-xl shadow-lg p-2 flex flex-col gap-4">
-                <h3 class="text-lg font-semibold px-6 py-2">Visitors Trend</h3>
-                <canvas id="visitorsChart" height="200" class="bg-transparent"></canvas>
-            </div>
-            <div class="bg-[var(--bg-card)] rounded-xl shadow-lg p-2 flex flex-col gap-4">
-                <h3 class="text-lg font-semibold px-6 py-2">Events Trend</h3>
-                <canvas id="eventsChart" height="200" class="bg-transparent"></canvas>
-            </div>
-        </div>
-        <div class="w-full grid grid-cols-1 bg-[var(--bg-card)] rounded-xl shadow-lg p-6 overflow-x-auto px-4">
-            <h2 class="text-xl font-bold mb-2">Pages Visited</h2>
-            <table class="min-w-full text-left border border-[var(--border-main)] w-full">
+        <div class="mt-4">
+            <table class="w-full text-sm">
                 <thead>
-                    <tr class="bg-[var(--bg-card)] text-[var(--text-main)] border-b border-[var(--border-main)]">
-                        <th class="py-2 px-4">Page</th>
-                        <th class="py-2 px-4">Count</th>
+                    <tr class="border-b border-[var(--border-main)]">
+                        <th class="text-left py-2 text-[var(--text-main)]">Source</th>
+                        <th class="text-right py-2 text-[var(--text-main)]">Visitors</th>
+                        <th class="text-right py-2 text-[var(--text-main)]">%</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach (array_slice($stats['referrers'], 0, 10) as $ref => $count): ?>
-                    <tr class="even:bg-[var(--bg-main)] odd:bg-[var(--bg-card)] text-[var(--text-main)]">
-                        <td class="py-2 px-4"><?= htmlspecialchars($ref) ?></td>
-                        <td class="py-2 px-4"><?= $count ?></td>
+                    <?php
+                    $totalTraffic = array_sum($stats['traffic_sources']);
+                    $topSources = array_slice($stats['traffic_sources'], 0, 5, true);
+                    foreach ($topSources as $source => $count):
+                        $percentage = $totalTraffic > 0 ? round(($count / $totalTraffic) * 100, 1) : 0;
+                    ?>
+                    <tr class="border-b border-[var(--border-main)]">
+                        <td class="py-2 text-[var(--text-main)]"><?= htmlspecialchars($source) ?></td>
+                        <td class="text-right text-[var(--text-main)]"><?= number_format($count) ?></td>
+                        <td class="text-right text-[var(--text-muted)]"><?= $percentage ?>%</td>
                     </tr>
                     <?php endforeach; ?>
                 </tbody>
             </table>
         </div>
     </div>
-    </div>
-    <script>
-    // Enhanced theme toggle switch logic
-    (function() {
-        const themeToggle = document.getElementById('themeToggle');
-        const themeThumb = document.getElementById('themeThumb');
-        const iconDark = document.getElementById('themeIconDark');
-        const iconLight = document.getElementById('themeIconLight');
 
-        function setTheme(theme) {
-            document.documentElement.setAttribute('data-theme', theme);
-            localStorage.setItem('theme', theme);
-            if (theme === 'dark') {
-                themeThumb.style.transform = 'translateX(0)';
-                iconDark.style.opacity = '1';
-                iconLight.style.opacity = '0';
-                document.getElementById('bg-dark').style.display = '';
-                document.getElementById('bg-light').style.display = 'none';
-            } else {
-                themeThumb.style.transform = 'translateX(16px)';
-                iconDark.style.opacity = '0';
-                iconLight.style.opacity = '1';
-                document.getElementById('bg-dark').style.display = 'none';
-                document.getElementById('bg-light').style.display = '';
+    <!-- Device Breakdown -->
+    <div class="chart-container">
+        <h3 class="text-lg font-semibold text-[var(--text-main)] mb-4">📱 Device Breakdown</h3>
+        <div style="position: relative; height: 250px; margin-bottom: 1rem;">
+            <canvas id="devicesChart"></canvas>
+        </div>
+        <div class="mt-4 grid grid-cols-3 gap-2">
+            <?php
+            $deviceIcons = ['Desktop' => '💻', 'Mobile' => '📱', 'Tablet' => '📱'];
+            $totalDevices = array_sum($stats['devices']);
+            foreach ($stats['devices'] as $device => $count):
+                $percentage = $totalDevices > 0 ? round(($count / $totalDevices) * 100, 1) : 0;
+                $icon = $deviceIcons[$device] ?? '📱';
+            ?>
+            <div class="text-center p-3 rounded-lg bg-[var(--bg-main)] border border-[var(--border-main)]">
+                <div class="text-2xl mb-1"><?= $icon ?></div>
+                <div class="font-bold text-[var(--text-main)]"><?= $percentage ?>%</div>
+                <div class="text-xs text-[var(--text-muted)]"><?= $device ?></div>
+            </div>
+            <?php endforeach; ?>
+        </div>
+    </div>
+</div>
+
+<!-- Browser & OS Stats -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+    <div class="chart-container">
+        <h3 class="text-lg font-semibold text-[var(--text-main)] mb-4">🌐 Browser Distribution</h3>
+        <div style="position: relative; height: 250px;">
+            <canvas id="browsersChart"></canvas>
+        </div>
+    </div>
+
+    <div class="chart-container">
+        <h3 class="text-lg font-semibold text-[var(--text-main)] mb-4">💻 Operating Systems</h3>
+        <div style="position: relative; height: 250px;">
+            <canvas id="osChart"></canvas>
+        </div>
+    </div>
+</div>
+
+<!-- Top Pages -->
+<div class="table-container mb-6">
+    <h3 class="text-lg font-semibold text-[var(--text-main)] mb-4">🔥 Most Popular Pages</h3>
+    <table class="w-full">
+        <thead>
+            <tr class="border-b-2 border-[var(--border-main)]">
+                <th class="text-left py-3 text-[var(--text-main)]">Page</th>
+                <th class="text-center py-3 text-[var(--text-main)]">Views</th>
+                <th class="text-center py-3 text-[var(--text-main)]">Percentage</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+            $totalPageViews = array_sum($stats['pages']);
+            foreach ($stats['popular_pages'] as $page => $count):
+                $pagePercentage = $totalPageViews > 0 ? round(($count / $totalPageViews) * 100, 1) : 0;
+            ?>
+            <tr class="border-b border-[var(--border-main)]">
+                <td class="py-3 text-[var(--text-main)] font-medium"><?= htmlspecialchars($page) ?></td>
+                <td class="text-center">
+                    <span class="badge badge-primary"><?= number_format($count) ?></span>
+                </td>
+                <td class="text-center">
+                    <div class="flex items-center justify-center gap-2">
+                        <div class="w-32 bg-gray-700 rounded-full h-2">
+                            <div class="bg-blue-600 h-2 rounded-full" style="width: <?= $pagePercentage ?>%"></div>
+                        </div>
+                        <span class="text-sm text-[var(--text-muted)]"><?= $pagePercentage ?>%</span>
+                    </div>
+                </td>
+            </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+</div>
+
+<!-- User Journeys -->
+<?php if (!empty($userJourneys)): ?>
+<div class="table-container mb-6">
+    <h3 class="text-lg font-semibold text-[var(--text-main)] mb-2">🗺️ Common User Journeys</h3>
+    <p class="text-sm text-[var(--text-muted)] mb-4">See how visitors navigate through your website</p>
+    <table class="w-full">
+        <thead>
+            <tr class="border-b-2 border-[var(--border-main)]">
+                <th class="text-left py-3 text-[var(--text-main)]">Journey Path</th>
+                <th class="text-center py-3 text-[var(--text-main)]">Sessions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($userJourneys as $journey => $count): ?>
+            <tr class="border-b border-[var(--border-main)]">
+                <td class="py-3 text-[var(--text-main)] font-mono text-sm">
+                    <?= htmlspecialchars($journey) ?>
+                </td>
+                <td class="text-center">
+                    <span class="badge badge-success"><?= number_format($count) ?></span>
+                </td>
+            </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+</div>
+<?php endif; ?>
+
+<!-- Quick Actions -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+    <a href="export.php?type=logs" class="stat-card text-center no-underline hover:shadow-lg transition-shadow">
+        <div class="text-4xl mb-3">📥</div>
+        <div class="font-semibold text-[var(--text-main)] mb-1">Export Logs</div>
+        <div class="text-sm text-[var(--text-muted)]">Download raw analytics data</div>
+    </a>
+
+    <a href="export.php?type=sessions" class="stat-card text-center no-underline hover:shadow-lg transition-shadow">
+        <div class="text-4xl mb-3">👥</div>
+        <div class="font-semibold text-[var(--text-main)] mb-1">Export Sessions</div>
+        <div class="text-sm text-[var(--text-muted)]">Download visitor sessions</div>
+    </a>
+
+    <a href="export.php?type=pageviews" class="stat-card text-center no-underline hover:shadow-lg transition-shadow">
+        <div class="text-4xl mb-3">📊</div>
+        <div class="font-semibold text-[var(--text-main)] mb-1">Export Pageviews</div>
+        <div class="text-sm text-[var(--text-muted)]">Download pageview data</div>
+    </a>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Chart.js default config
+    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    const textColor = isDark ? '#ffffff' : '#1A2331';
+    const gridColor = isDark ? '#283243' : '#d2d6dc';
+
+    Chart.defaults.color = textColor;
+    Chart.defaults.borderColor = gridColor;
+
+    // Prepare data
+    const labels = <?= json_encode(array_keys($stats['pageviews'])) ?>;
+    const pageviews = <?= json_encode(array_values($stats['pageviews'])) ?>;
+    const visitors = <?= json_encode(array_values($stats['visitors'])) ?>;
+
+    // Common chart options
+    const commonOptions = {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: {
+                display: false
+            }
+        },
+        scales: {
+            y: {
+                beginAtZero: true,
+                ticks: { color: textColor },
+                grid: { color: gridColor }
+            },
+            x: {
+                ticks: { color: textColor },
+                grid: { color: gridColor }
             }
         }
+    };
 
-        function getTheme() {
-            return localStorage.getItem('theme') || 'dark';
-        }
-        setTheme(getTheme());
-        themeToggle.addEventListener('click', () => {
-            const current = getTheme();
-            setTheme(current === 'dark' ? 'light' : 'dark');
-        });
-    })();
+    // Pageviews Chart
+    new Chart(document.getElementById('pageviewsChart'), {
+        type: 'line',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'Pageviews',
+                data: pageviews,
+                borderColor: '#3b82f6',
+                backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                tension: 0.4,
+                fill: true,
+                borderWidth: 2
+            }]
+        },
+        options: commonOptions
+    });
 
-    // Chart.js logic - run immediately at end of body
-    function formatDateLabel(dateStr) {
-        // Try to parse ISO or yyyy-mm-dd
-        const d = new Date(dateStr);
-        if (isNaN(d)) return dateStr; // fallback if not a valid date
-        const dd = String(d.getDate()).padStart(2, '0');
-        const mm = String(d.getMonth() + 1).padStart(2, '0');
-        const yy = String(d.getFullYear()).slice(-2);
-        return `${dd}-${mm}-${yy}`;
-    }
+    // Visitors Chart
+    new Chart(document.getElementById('visitorsChart'), {
+        type: 'line',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'Visitors',
+                data: visitors,
+                borderColor: '#10b981',
+                backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                tension: 0.4,
+                fill: true,
+                borderWidth: 2
+            }]
+        },
+        options: commonOptions
+    });
 
-    const chartLabels = <?= json_encode(array_keys($chartData)) ?>.map(formatDateLabel);
-    const chartDataVals = <?= json_encode(array_values($chartData)) ?>;
-    const labels = <?= json_encode(array_keys($stats['pageviews'])) ?>.map(formatDateLabel);
-    const pageViews = <?= json_encode(array_values($stats['pageviews'])) ?>;
-    const visitors = <?= json_encode(array_values($stats['visitors'])) ?>;
-    const events = <?= json_encode(array_values($stats['events'])) ?>;
-
-    try {
-        const ctx = document.getElementById('viewsChart').getContext('2d');
-        new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: chartLabels,
-                datasets: [{
-                    label: 'Pageviews',
-                    data: chartDataVals,
-                    borderColor: '#007bff',
-                    fill: false,
-                    tension: 0.3
-                }]
-            },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
+    // Traffic Sources Chart
+    new Chart(document.getElementById('trafficSourcesChart'), {
+        type: 'doughnut',
+        data: {
+            labels: <?= json_encode(array_keys($stats['traffic_sources'])) ?>,
+            datasets: [{
+                data: <?= json_encode(array_values($stats['traffic_sources'])) ?>,
+                backgroundColor: [
+                    '#3b82f6',
+                    '#10b981',
+                    '#f59e0b',
+                    '#ef4444',
+                    '#8b5cf6',
+                    '#ec4899',
+                    '#06b6d4',
+                    '#84cc16'
+                ],
+                borderWidth: 2,
+                borderColor: isDark ? '#1A2331' : '#F4F4F4'
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'bottom',
+                    labels: { color: textColor, padding: 10 }
                 }
             }
-        });
-    } catch (e) {
-        console.error('viewsChart error', e);
-    }
+        }
+    });
 
-    try {
-        new Chart(document.getElementById('pageviewsChart').getContext('2d'), {
-            type: 'line',
-            data: {
-                labels,
-                datasets: [{
-                    label: 'Page Views',
-                    data: pageViews,
-                    borderColor: 'blue',
-                    fill: true
-                }]
+    // Devices Chart
+    new Chart(document.getElementById('devicesChart'), {
+        type: 'pie',
+        data: {
+            labels: <?= json_encode(array_keys($stats['devices'])) ?>,
+            datasets: [{
+                data: <?= json_encode(array_values($stats['devices'])) ?>,
+                backgroundColor: ['#3b82f6', '#10b981', '#f59e0b'],
+                borderWidth: 2,
+                borderColor: isDark ? '#1A2331' : '#F4F4F4'
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'bottom',
+                    labels: { color: textColor, padding: 10 }
+                }
+            }
+        }
+    });
+
+    // Browsers Chart
+    new Chart(document.getElementById('browsersChart'), {
+        type: 'bar',
+        data: {
+            labels: <?= json_encode(array_keys($stats['browsers'])) ?>,
+            datasets: [{
+                label: 'Users',
+                data: <?= json_encode(array_values($stats['browsers'])) ?>,
+                backgroundColor: '#3b82f6',
+                borderRadius: 4
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: { display: false }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: { color: textColor },
+                    grid: { color: gridColor }
+                },
+                x: {
+                    ticks: { color: textColor },
+                    grid: { display: false }
+                }
+            }
+        }
+    });
+
+    // OS Chart
+    new Chart(document.getElementById('osChart'), {
+        type: 'bar',
+        data: {
+            labels: <?= json_encode(array_keys($stats['os'])) ?>,
+            datasets: [{
+                label: 'Users',
+                data: <?= json_encode(array_values($stats['os'])) ?>,
+                backgroundColor: '#10b981',
+                borderRadius: 4
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: { display: false }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: { color: textColor },
+                    grid: { color: gridColor }
+                },
+                x: {
+                    ticks: { color: textColor },
+                    grid: { display: false }
+                }
+            }
+        }
+    });
+
+    // Re-render charts on theme change
+    const observer = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+            if (mutation.attributeName === 'data-theme') {
+                location.reload(); // Simple reload on theme change
             }
         });
-    } catch (e) {
-        console.error('pageviewsChart error', e);
-    }
+    });
+    observer.observe(document.documentElement, { attributes: true });
+});
+</script>
 
-    try {
-        new Chart(document.getElementById('visitorsChart').getContext('2d'), {
-            type: 'line',
-            data: {
-                labels,
-                datasets: [{
-                    label: 'Unique Visitors',
-                    data: visitors,
-                    borderColor: 'green',
-                    fill: false
-                }]
-            }
-        });
-    } catch (e) {
-        console.error('visitorsChart error', e);
-    }
-
-    try {
-        new Chart(document.getElementById('eventsChart').getContext('2d'), {
-            type: 'bar',
-            data: {
-                labels,
-                datasets: [{
-                    label: 'Events',
-                    data: events,
-                    backgroundColor: 'orange'
-                }]
-            }
-        });
-    } catch (e) {
-        console.error('eventsChart error', e);
-    }
-    </script>
-</body>
-
-</html>
+<?php
+require_once __DIR__ . '/partials/footer.php';
+?>

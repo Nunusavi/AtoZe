@@ -1,5 +1,6 @@
 [
     {
+        "id": "550e8400-e29b-41d4-a716-446655440001",
         "background": "images/background/3.webp",
         "title": "A To Ze Security",
         "headline": "CCTV Security Systems",
@@ -7,9 +8,13 @@
         "learnMoreText": "Learn More",
         "learnMoreLink": "products.html",
         "callText": "Call us",
-        "callLink": "tel:+251913332323"
+        "callLink": "tel:+251913332323",
+        "status": "published",
+        "created_at": "2025-01-01T00:00:00+00:00",
+        "updated_at": "2025-01-01T00:00:00+00:00"
     },
     {
+        "id": "550e8400-e29b-41d4-a716-446655440002",
         "background": "images/background/3.webp",
         "title": "A To Ze Security",
         "headline": "Inverters and Low Voltage Battery For your home power backup",
@@ -17,9 +22,13 @@
         "learnMoreText": "Learn More",
         "learnMoreLink": "products.html",
         "callText": "Call us",
-        "callLink": "tel:+251913332323"
+        "callLink": "tel:+251913332323",
+        "status": "published",
+        "created_at": "2025-01-01T00:00:00+00:00",
+        "updated_at": "2025-01-01T00:00:00+00:00"
     },
     {
+        "id": "550e8400-e29b-41d4-a716-446655440003",
         "background": "images/background/3.webp",
         "title": "A To Ze Security",
         "headline": "Employee Attendance System",
@@ -27,9 +36,13 @@
         "learnMoreText": "Learn More",
         "learnMoreLink": "products.html",
         "callText": "Call us now",
-        "callLink": "tel:+251913332323"
+        "callLink": "tel:+251913332323",
+        "status": "published",
+        "created_at": "2025-01-01T00:00:00+00:00",
+        "updated_at": "2025-01-01T00:00:00+00:00"
     },
     {
+        "id": "550e8400-e29b-41d4-a716-446655440004",
         "background": "images/background/3.webp",
         "title": "A To Ze Security",
         "headline": "Modern door control",
@@ -37,9 +50,13 @@
         "learnMoreText": "Learn More",
         "learnMoreLink": "products.html",
         "callText": "Call us now",
-        "callLink": "tel:+251913332323"
+        "callLink": "tel:+251913332323",
+        "status": "published",
+        "created_at": "2025-01-01T00:00:00+00:00",
+        "updated_at": "2025-01-01T00:00:00+00:00"
     },
     {
+        "id": "550e8400-e29b-41d4-a716-446655440005",
         "background": "images/background/3.webp",
         "title": "A To Ze Security",
         "headline": "Intercom Systems",
@@ -47,9 +64,13 @@
         "learnMoreText": "Learn More",
         "learnMoreLink": "products.html",
         "callText": "Call us now",
-        "callLink": "tel:+251913332323"
+        "callLink": "tel:+251913332323",
+        "status": "published",
+        "created_at": "2025-01-01T00:00:00+00:00",
+        "updated_at": "2025-01-01T00:00:00+00:00"
     },
     {
+        "id": "550e8400-e29b-41d4-a716-446655440006",
         "background": "images/background/3.webp",
         "title": "A To Ze Security",
         "headline": "Smart door locks",
@@ -57,6 +78,9 @@
         "learnMoreText": "Learn More",
         "learnMoreLink": "products.html",
         "callText": "Call us now",
-        "callLink": "tel:+251913332323"
+        "callLink": "tel:+251913332323",
+        "status": "published",
+        "created_at": "2025-01-01T00:00:00+00:00",
+        "updated_at": "2025-01-01T00:00:00+00:00"
     }
 ]
